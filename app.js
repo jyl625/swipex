@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const db = require("./config/keys").mongoURI;
+const users = require("./routes/api/users");
+const swipes = require("./routes/api/swipes");
 
 mongoose
   .connect(db, { useNewUrlParser: true})
@@ -11,6 +13,9 @@ mongoose
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
+
+app.use("/api/users", users)
+app.use("/api/swipes", swipes)
 
 const port = process.env.PORT || 5000;
 
