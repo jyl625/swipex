@@ -15,7 +15,7 @@ router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
     id: req.user.id,
-    handle: req.user.username,
+    username: req.user.username,
     email: req.user.email
   });
 })
@@ -80,7 +80,7 @@ router.post("/login", (req, res) => {
           if (isMatch) {
             const payload = {
               id: user.id,
-              handle: user.handle,
+              username: user.username,
               email: user.email
             };
 
