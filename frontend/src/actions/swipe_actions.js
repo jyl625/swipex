@@ -4,6 +4,8 @@ export const RECEIVE_SWIPES = "RECEIVE_SWIPES";
 export const RECEIVE_NEW_SWIPE = "RECEIVE_NEW_SWIPE";
 export const RECEIVE_USER_SWIPES = "RECEIVE_USER_SWIPES"
 
+
+
 export const receiveSwipes = swipes => ({
   type: RECEIVE_SWIPES,
   swipes
@@ -22,18 +24,18 @@ export const receiveUserSwipes = swipes => ({
 
 export const requestSwipes = () => dispatch => (
   fetchSwipes()
-    .then(swipes => dispatch(receiveSwipes(swipes)))
-    .fail(err => console.log(err))
+  .then(swipes => dispatch(receiveSwipes(swipes)))
+  .fail(err => console.log(err))
 )
 
 export const requestSwipe = swipeId => dispatch => (
   fetchSwipe(swipeId)
-    .then(swipe => dispatch(receiveSwipe(swipe)))
-    .fail(err => console.log(err))
+  .then(swipe => dispatch(receiveNewSwipe(swipe)))
+  .fail(err => console.log(err))
 )
 
 export const createSwipe = swipeData => dispatch => (
   createSwipe(swipeData)
-    .then(swipe => dispatch(receiveSwipe(swipe)))
-    .fail(err => console.log(err))
+  .then(swipe => dispatch(receiveNewSwipe(swipe)))
+  .fail(err => console.log(err))
 )
