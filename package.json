@@ -2,7 +2,7 @@
   "name": "swipex",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "server:debug": "nodemon --inspect app.js",
     "start": "node app.js",
@@ -30,7 +30,7 @@
     "mongoose": "^6.0.15",
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
-    "react-redux": "^7.2.6",
+    "tar": "^6.1.11",
     "validator": "^13.7.0"
   },
   "devDependencies": {
