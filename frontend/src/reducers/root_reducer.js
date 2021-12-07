@@ -4,11 +4,13 @@ import errors from './errors_reducer';
 import swipes from './swipe_reducer';
 import cafeterias from './cafeteria_reducer';
 
+
 const RootReducer = combineReducers({
   session,
   errors, 
   swipes,
-  cafeterias
+  cafeterias,
+
 });
 
 export default RootReducer;
