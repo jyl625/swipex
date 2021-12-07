@@ -4,6 +4,7 @@ const app = express();
 const db = require('./config/keys').mongoURI
 const users = require("./routes/api/users");
 const cafeterias = require('./routes/api/cafeterias')
+const sellposts = require('./routes/api/sellposts')
 const bodyParser = require('body-parser');
 const passport = require('passport');
 
@@ -24,6 +25,7 @@ require('./config/passport')(passport);
 app.get("/", (req, res) => res.send("Hello World"));
 app.use("/api/users", users);
 app.use("/api/cafeterias", cafeterias);
+app.use("/api/sellposts", sellposts);
 
 
 
