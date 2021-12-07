@@ -32,16 +32,15 @@ router.get('/user/:user_id', (req, res) => {
 });
 
 //create new sell post form
-router.post("/new", 
+router.post("/", 
   // passport.authenticate('jwt', { session: false }),
   (req, res) => {
-  // const { errors, isValid } = validateSellPost(req.body);
-
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
-
+  const { errors, isValid } = validateSellPost(req.body);
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   const newSellpost = new SellPost({
+    seller: req.body.seller,
     askPrice: req.body.askPrice,
     expiration: req.body.expiration,
     cafeId: req.body.cafeId,
@@ -50,33 +49,34 @@ router.post("/new",
   });
 
     newSellpost.save().then(sellpost => res.json(sellpost));
-})
+});
 
 //Edit an exsisting sell post form
-router.put('/:id', 
-  // passport.authenticate('jwt', { session: false }), 
-  (req, res) => {
-  const updatePost = new SellPost ({
-    seller: req.body.seller,
-    askPrice: req.body.askPrice,
-    expiration: req.body.expiration,
-    cafeId: req.body.cafeId,
-    open: req.body.open
-  });
-  SellPost.updateOne({ _id: req.params.id }, updatePost).then(
-    () => {
-      res.status(201).json({
-        message: "Sell post updated successfully!"
-      });
-    }
-  ).catch(
-    (error) => {
-      res.status(400).json({
-        error: error
-      });
-    }
-  );
-});
+
+// router.put('/:id', 
+//   // passport.authenticate('jwt', { session: false }), 
+//   (req, res) => {
+//   const updatePost = new SellPost ({
+//     seller: req.body.seller,
+//     askPrice: req.body.askPrice,
+//     expiration: req.body.expiration,
+//     cafeId: req.body.cafeId,
+//     open: req.body.open
+//   });
+//   SellPost.updateOne({ _id: req.params.id }, updatePost).then(
+//     () => {
+//       res.status(201).json({
+//         message: "Sell post updated successfully!"
+//       });
+//     }
+//   ).catch(
+//     (error) => {
+//       res.status(400).json({
+//         error: error
+//       });
+//     }
+//   );
+// });
   
 
 //delete an exsisting sell post form
