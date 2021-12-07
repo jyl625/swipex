@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 const ConversationSchema = new Schema(
   {
-    sellerId: {
+    seller: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true
     },
-    buyerId: {
+    buyer: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: true
