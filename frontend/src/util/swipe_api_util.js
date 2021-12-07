@@ -1,10 +1,10 @@
 import axio from 'axios';
 
-export const requestSwipes = () => {
+export const fetchSwipes = () => {
   return axios.get('api/swipes');
 }
 
-export const requestSwipe = id => {
+export const fetchSwipe = id => {
   return axios.get(`api/swipes/swipe/${id}`);
 }
 
