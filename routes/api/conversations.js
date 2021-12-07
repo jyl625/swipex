@@ -58,11 +58,11 @@ router.post('/',
   }
 );
 
-//update conversation
+// update conversation
 // router.patch('/:id',
 //   // passport.authenticate('jwt', { session: false }),
 //   (req, res) => {
-//     console.log(req.body)
+//     console.log(req)
 //     let comment = req.body.comments[0];
 //     Conversation.findByIdAndUpdate(req.params.id,
 //       {"$push": { "comments": comment }})
