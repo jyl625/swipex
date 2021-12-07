@@ -1,5 +1,8 @@
 
 // User
+
+const { Schema } = require("mongoose")
+
 // email + password for login
 const UserSchema = new Schema({
   username: {
@@ -75,12 +78,20 @@ const CafeSchema = new Schema({
 const ConversationSchema = new Schema({
   sellerId: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: "users",
+    required: true
   },
   buyerId: {
     type: Schema.Types.ObjectId,
-    ref: "users"
-  }
+    ref: "users",
+    required: true
+  },
+  comments: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Comment",
+    }
+  ]
 })
 
 // Commment --James
@@ -92,7 +103,7 @@ const CommentSchema = new Schema({
   },
   converstionId: {
     type: Schema.Types.ObjectId,
-    ref: "conversations"
+    ref: "Conversation"
   },
   content: {
     type: String,
@@ -114,15 +125,15 @@ const ExchangeSchema = new Schema({
   },
   sellPostId: {
     type: Schema.Types.ObjectId,
-    ref: "sellPosts"
+    ref: "SellPost"
   },
   sellerId: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: "User"
   },
   buyerId: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: "User"
   }
 })
 

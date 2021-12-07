@@ -5,6 +5,9 @@ const passport = require('passport');
 
 const Cafeteria = require('../../models/Cafeteria');
 
+router.get("/test", (req, res) => res.json({ msg: "This is the cafeterias route" }));
+
+
 //get all cafeteria
 router.get('/', (req, res) => {
   Cafeteria.find()
