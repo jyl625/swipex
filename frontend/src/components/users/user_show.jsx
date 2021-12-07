@@ -1,12 +1,11 @@
 import React from 'react';
 import ThreadIndexContainer from '../threads/thread_index_container';
 
-const UserShow = () => (
+const UserShow = ({user}) => (
   <div>
     <div>
-      
     </div>
-    <ThreadIndexContainer/>
+    <ThreadIndexContainer user={user}/>
     {/* SwipeSaleIndexContainer */}
   </div>
 )
