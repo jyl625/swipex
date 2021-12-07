@@ -1,7 +1,7 @@
 
 import { RECEIVE_NEW_SWIPE, RECEIVE_SWIPES, RECEIVE_USER_SWIPES } from "../actions/swipe_actions";
 
-const SwipesReducer = (state = { all: {}, user: {}, new: undefined}, action) => {
+const SwipesReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
   Object.freeze(state);
   const nextState = Object.assign({}, state);
   switch(action.type) {

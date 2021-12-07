@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const SwipeIndexItem = ({swipe}) => (
   <div Link to={`swipe/${swipe.id}`}>
     <img src="" alt="" />
-    {/* swipe imageUrl */}
+    {/* swipe(cafeteria) imageUrl */}
     {/* descriptions */}
     {/* location */}
   </div>
