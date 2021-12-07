@@ -53,7 +53,7 @@ router.post("/",
 
 //Edit an exsisting sell post form
 
-router.put('/:id', 
+router.patch('/:id', 
   // passport.authenticate('jwt', { session: false }), 
   (req, res) => {
   const updatePost = new SellPost ({
