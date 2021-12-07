@@ -1,3 +1,4 @@
+
 import { RECEIVE_SWIPE, RECEIVE_SWIPES } from "../actions/swipe_actions";
 
 const SwipesReducer = (state = { all: {}, swpie: undefined}, action) => {
@@ -7,7 +8,7 @@ const SwipesReducer = (state = { all: {}, swpie: undefined}, action) => {
     case RECEIVE_SWIPES:
       nextState.all = action.swipes.data;
       return nextState;
-    case RECEIVE_SWIPES:
+    case RECEIVE_SWIPE:
       nextState[action.swipe.id] = action.swipe;
       return nextState;
     default:
@@ -15,4 +16,4 @@ const SwipesReducer = (state = { all: {}, swpie: undefined}, action) => {
   }
 }
 
-export 
+export default SwipesReducer;

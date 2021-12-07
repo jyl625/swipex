@@ -1,4 +1,4 @@
-import axio from 'axios';
+import axios from 'axios';
 
 export const fetchSwipes = () => {
   return axios.get('api/swipes');
