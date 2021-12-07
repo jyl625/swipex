@@ -5,7 +5,7 @@ export const fetchSwipes = () => {
 }
 
 export const fetchSwipe = swipeId => {
-  return axios.get(`api/swipes/swipe/${swipeId}`);
+  return axios.get(`api/swipes/${swipeId}`);
 }
 
 export const createNewSwipe = swipeData => {
