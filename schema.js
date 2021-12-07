@@ -18,7 +18,7 @@ const UserSchema = new Schema({
   timestamps: true
 })
 
-//Sell post
+//Sell post -- Shuang
 
 const SellPostSchema = new Schema({
   seller: {
@@ -35,7 +35,7 @@ const SellPostSchema = new Schema({
   },
   cafeId: {
     type: Schema.Types.ObjectId,
-    ref: "cafes"
+    ref: "cafeterias"
   },
   open: {
     type: Boolean,
@@ -48,7 +48,7 @@ const SellPostSchema = new Schema({
 })
 
 
-// Cafe
+// Cafe -- done
 
 const CafeSchema = new Schema({
   name: {
@@ -70,7 +70,7 @@ const CafeSchema = new Schema({
 })
 
 
-// Conversation
+// Conversation -- James
 
 const ConversationSchema = new Schema({
   sellerId: {
@@ -83,7 +83,7 @@ const ConversationSchema = new Schema({
   }
 })
 
-// Commment
+// Commment --James
 
 const CommentSchema = new Schema({
   commentor: {
@@ -105,7 +105,7 @@ const CommentSchema = new Schema({
 })
 
 
-// exchange
+// exchange 
 
 const ExchangeSchema = new Schema({
   closePrice: {
