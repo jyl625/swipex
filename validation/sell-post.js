@@ -17,13 +17,13 @@ module.exports = function validateSellPost(data) {
     errors.expiration = 'Expiration Date is required';
   }
 
-  // if (Validator.validDate(data.expiration)) {
-  //   errors.expiration = 'Not a valid expiration date';
-  // }
+  if (!validDate(data.expiration)) {
+    errors.expiration = 'Not a valid expiration date';
+  }
 
-  // if (Validator.validPrice(data.askPrice)) {
-  //   errors.askPrice = 'Not a valid ask price';
-  // }
+  if (!validPrice(data.askPrice)) {
+    errors.askPrice = 'Not a valid ask price';
+  }
 
   return {
     errors,
