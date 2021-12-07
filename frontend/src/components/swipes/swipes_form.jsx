@@ -5,7 +5,7 @@ class SwipeForm extends React.Component {
     super(props);
 
     this.state = {
-      askPrice: 1,
+      askPrice: Number(0).toFixed(2),
       expirationDate: new Date(),
       cafeId: "A0000",
       mealType: "Breakfast",
@@ -58,6 +58,26 @@ class SwipeForm extends React.Component {
     ))
   }
 
+  updatePrice() {
+    return e => {
+      const str = e.currentTarget.value;
+      const charArr = str.split("");
+      const numOnlyArr = charArr.filter(char => !isNaN(char))
+
+      if (numOnlyArr.length < 2) {
+        while (numOnlyArr.length < 2) {
+          numOnlyArr.unshift(0)
+        }
+      } else {
+        numOnlyArr.splice(numOnlyArr.length-2, 0, ".")
+      }
+
+      const numOnlyStr = numOnlyArr.join("")
+      console.log(parseFloat(numOnlyStr))
+      this.setState({askPrice: parseFloat(numOnlyStr)})
+    }
+  }
+
   render() {
     console.log(this.state)
     return (
@@ -65,11 +85,16 @@ class SwipeForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <h1>Create a Swipe!</h1>
           <div>
-            <input type="number" 
+            <input type="text" 
+                  value={this.state.askPrice}
+                  onChange={this.updatePrice()}
+                  placeholder="0.00"
+            />
+            {/* <input type="number" 
                   value={this.state.askPrice}
                   onChange={this.update("askPrice")}
                   min="1" max="10" step="0.25"
-            />
+            /> */}
             <input type="date" 
                   value={this.state.expirationDate}
                   onChange={this.update("expirationDate")}
