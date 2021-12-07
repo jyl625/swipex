@@ -13,10 +13,6 @@ export const receiveSwipe = swipe => ({
   swipe
 }) 
 
-export const createSwipe = swipe => ({
-  type: CREATE_SWIPE,
-  swipe
-})
 
 export const requestSwipes = () => dispatch => (
   fetchSwipes()
