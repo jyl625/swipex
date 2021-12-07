@@ -1,13 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom"; 
 
-class SwipeIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const SwipeIndexItem = ({swipe}) => (
+  <div Link to={`swipe/${swipe.id}`}>
+    <img src="" alt="" />
+    {/* swipe imageUrl */}
+    {/* descriptions */}
+    {/* location */}
+  </div>
+)
 
-  componentDidMount()
-
-  render() {
-    return 
-  }
-}
+export default SwipeIndexItem;
