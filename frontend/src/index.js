@@ -14,7 +14,13 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 
 // We have not created this action yet, but will do so in the next step
-import { logout } from './actions/session_actions';
+import { logout, login } from './actions/session_actions';
+
+
+/////// TESTING ONLY ///////
+import axios from 'axios';
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -49,4 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
 
   ReactDOM.render(<Root store={store} />, root);
+
+
+  ///////// FOR TESTING ONLY //////////
+  window.dispatch = store.dispatch
+  window.login = login
+  window.axios = axios
 });

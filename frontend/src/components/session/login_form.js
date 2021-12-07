@@ -36,7 +36,6 @@ class LoginForm extends React.Component {
   // Handle form submission
   handleSubmit(e) {
     e.preventDefault();
-
     let user = {
       email: this.state.email,
       password: this.state.password
