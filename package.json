@@ -6,7 +6,10 @@
   "scripts": {
     "server:debug": "nodemon --inspect app.js",
     "start": "node app.js",
-    "server": "nodemon app.js"
+    "server": "nodemon app.js",
+    "frontend-install": "npm install --prefix frontend",
+    "frontend": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
   "repository": {
     "type": "git",
@@ -26,6 +29,7 @@
     "mongoose": "^6.0.15",
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
+    "tar": "^6.1.11",
     "validator": "^13.7.0"
   },
   "devDependencies": {
