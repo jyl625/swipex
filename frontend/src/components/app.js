@@ -25,7 +25,6 @@ const App = () => (
       <Route path="/swipe/:swipeId" component={SwipeShowContainer}/>
       
       <ProtectedRoute exact path="/createswipe" component={SwipesFormContainer} />
-
       {/* <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/new_tweet" component={TweetComposeContainer} /> */}
