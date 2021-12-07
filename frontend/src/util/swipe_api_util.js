@@ -8,6 +8,6 @@ export const fetchSwipe = swipeId => {
   return axios.get(`api/swipes/swipe/${swipeId}`);
 }
 
-export const createSwipe = swipeData => {
+export const createNewSwipe = swipeData => {
   return axios.post('api/swipes', swipeData);
 }

@@ -1,4 +1,4 @@
-import { RECEIVE_NEW_CAFETERIA, RECEIVE_CAFETERIAS } from '../actions/cafetiera_actions';
+import { RECEIVE_NEW_CAFETERIA, RECEIVE_CAFETERIAS } from '../actions/cafetera_actions';
 
 const CafeteriaReducer = (state = { all: {}, location: {}, new: undefined}, action) => {
   Object.freeze(state);

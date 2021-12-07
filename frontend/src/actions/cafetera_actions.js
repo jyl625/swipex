@@ -14,14 +14,14 @@ export const receiveCafeterias = cafeterias => ({
   cafeterias
 })
 
-export const requestCafeteria = cafeteriaId => (
+export const requestCafeteria = cafeteriaId => dispatch => (
   fetchCafeteria(cafeteriaId)
   .then(cafeteria => dispatch(receiveCafeteria(cafeteria)))
   .fail(err => console.log(err))
 )
 
-export const requestCafeterias = () => (
+export const requestCafeterias = () => dispatch => (
   fetchCafeterias()
-  .then(cafeterias => dispathc(receiveCafeterias(cafeterias)))
+  .then(cafeterias => dispatch(receiveCafeterias(cafeterias)))
   .fail(err => console.log(err))
 )

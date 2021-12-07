@@ -2,9 +2,9 @@ import React from 'react';
 import SwipeIndexItem from './swipe_index_item';
 
 class SwipeIndex extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   componentDidMount() {
     this.props.requestSwipes();
@@ -15,7 +15,7 @@ class SwipeIndex extends React.Component {
       <div>
         {
           this.props.swipes.map((swipe, idx) => {
-            <li key={idx}>
+            return <li key={idx}>
               <SwipeIndexItem swipe={swipe}/>
             </li>
           })

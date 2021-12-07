@@ -10,6 +10,7 @@ const SwipesReducer = (state = { all: {}, user: {}, new: undefined }, action) =>
       return nextState;
     case RECEIVE_USER_SWIPES:
       nextState.user = action.swipes.data;
+      return nextState;
     case RECEIVE_NEW_SWIPE:
       nextState.new = action.swipe.data;
       return nextState;

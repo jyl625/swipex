@@ -1,4 +1,4 @@
-import { fetchSwipes, fetchSwipe, createSwipe } from "../util/swipe_api_util";
+import { fetchSwipes, fetchSwipe, createNewSwipe } from "../util/swipe_api_util";
 
 export const RECEIVE_SWIPES = "RECEIVE_SWIPES";
 export const RECEIVE_NEW_SWIPE = "RECEIVE_NEW_SWIPE";
@@ -35,7 +35,7 @@ export const requestSwipe = swipeId => dispatch => (
 )
 
 export const createSwipe = swipeData => dispatch => (
-  createSwipe(swipeData)
+  createNewSwipe(swipeData)
   .then(swipe => dispatch(receiveNewSwipe(swipe)))
   .fail(err => console.log(err))
 )

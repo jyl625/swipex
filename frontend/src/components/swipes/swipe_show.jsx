@@ -1,14 +1,14 @@
-import react from 'react-redux';
+import React from 'react';
 
 class SwipeShow extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     return (
       <>
-
+        <div>TESTING SwipeShow</div>
       </>
     )
   }
