@@ -7,7 +7,8 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-  requestSwipes: () => dispatch(requestSwipes())
+  // requestSwipes: () => dispatch(requestSwipes())
+  requestSwipes: () => console.log("fetching swipes")
 })
 
 export default connect(mSTP, mDTP)(swipeIndex);
