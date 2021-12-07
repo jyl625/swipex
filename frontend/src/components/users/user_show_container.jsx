@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import UserShow from "./user_show";
 
 const mSTP = (state, ownProps) => ({
-  user: state.
+  user: state
 })
 
 const mDTP = dispatch => ({
