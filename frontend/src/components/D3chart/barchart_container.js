@@ -1,16 +1,16 @@
-import { connect } from 'react-redux';
-// import { requestCafeterias } from '../../actions/cafetera_actions';
-import BarChart from './barchart';
+// import { connect } from 'react-redux';
+// import {requestUserExchanges} from '../../actions/exchange_actions';
+// import BarChart from './barchart';
 
-const mapStateToProps = state => ({
+// const mapStateToProps = state => ({
     
-});
+// });
 
-const mapDispatchToProps = dispatch => ({
-  requestCafeterias: () => dispatch(requestCafeterias())
-})
+// const mapDispatchToProps = dispatch => ({
+//   requestUserExchanges: () => dispatch(requestUserExchanges())
+// })
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(BarChart);
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(BarChart);
