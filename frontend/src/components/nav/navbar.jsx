@@ -45,7 +45,11 @@ class NavBar extends React.Component {
   listCafeterias() {
     if (Object.keys(this.props.allCafeterias).length > 0) {
       return this.props.allCafeterias.map( cafeteria => {
-        return <Link to={'/'} key={cafeteria._id}>{cafeteria.name.toUpperCase()}</Link>
+        return <Link 
+                  to={`/cafeteria/${cafeteria.name.replace(/\s/g, "").toLowerCase()}`} 
+                  key={cafeteria._id}>{cafeteria.name.toUpperCase()}
+              </Link>
+                
       })
     }
   }

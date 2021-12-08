@@ -9,7 +9,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
       <Component {...props} />
     ) : (
         // Redirect to the tweets page if the user is authenticated
-      <Redirect to="/swipes" /> //want /swipes later
+      <Redirect to="/" /> //want /swipes later
     )
   )} />
 );
