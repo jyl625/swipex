@@ -4,6 +4,6 @@ export const fetchUserThreads = userId => (
   axios.get(`api/conversation/user/${userId}`)
 )
 
-export const createNewThreads = threadData => (
+export const createNewThread = threadData => (
   axios.post('api/conversation', threadData)
 )
