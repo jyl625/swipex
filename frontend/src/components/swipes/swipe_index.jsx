@@ -3,36 +3,99 @@ import SwipeIndexItem from './swipe_index_item';
 
 import '../stylings/reset.css'
 import '../stylings/swipe_index.css'
+// import signup_form from '../session/signup_form';
 
 class SwipeIndex extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  // }
+  constructor(props) {
+    super(props);
+
+    this.state = ({
+      swipesLoaded: false
+    })
+  }
 
   componentDidMount() {
-    this.props.requestSwipes();
+    if (!this.state.swipesLoaded) {
+      this.props.requestSwipes().then(() => {
+        this.setState({
+          swipesLoaded: true
+        })
+      })
+    }
     // need to request user
   }
 
   listIndexItems() {
-    
-
-    this.props.swipes.map((swipe, idx) => {
+    <div>TESTING</div>
+    // console.log(this.props.swipes)
     // this.props.swipes.map((swipe, idx) => {
-            return <li key={idx}>
-              <SwipeIndexItem swipe={swipe}/>
-            </li>
-          })
+    //         return <li key={idx}>
+    //           <SwipeIndexItem swipe={swipe}/>
+    //         </li>
+    //       })
+  }
+
+  listByCafeterias() {
+    if (this.props.cafeterias.length > 0) {
+    // if (this.props.cafeterias !== []) {
+      return this.props.cafeterias.map((cafeteria, idx) => {
+        return (
+          <div className="cafeteria-container" key={idx}>
+            <div>
+              {cafeteria.location} - {cafeteria.name.toUpperCase()}
+            </div>
+            <div className="swipe-index-items-container">
+              {this.listIndexItemsByCafeterias(cafeteria._id)}
+            </div>
+
+          </div>
+        )
+      })
+    } else {
+      return <div>Loading cafeterias</div>
+    }
+  }
+
+  listIndexItemsByCafeterias(cafeteriaId) {
+    const swipes = this.props.swipes
+    if (swipes.length !== 0) {
+      const filteredSwipes = this.selectSwipesByCafeterias(swipes, cafeteriaId);
+      // console.log("filtered",filteredSwipes)
+      return filteredSwipes.map ((swipe, idx) => {
+        return <SwipeIndexItem key={idx}swipe={swipe}/>
+      })
+    } else {
+      <div>No swipes to show here...</div>
+    }
+  }
+
+  selectSwipesByCafeterias(swipes, cafeteriaId) {
+    // console.log("swipes", this.props.swipes)
+    // console.log("cafeId", cafeteriaId)
+    // if (swipes.length !== 0) {
+      console.log("swipes",swipes)
+      return swipes.filter(swipe => {
+        return swipe.cafeId === cafeteriaId && swipe.open === true
+      })
+    // } else {
+    //   return []
+    // }
   }
 
   render() {
-    return (
-      <div className="swipe-index-page">
-        {
-          this.listIndexItems()
-        }
-      </div>
-    )
+    console.log("state", this.props)
+    if (this.props.cafeterias.length > 0 && this.state.swipesLoaded) {
+      return (
+        <div className="swipe-index-page">
+          <div className="content-wrapper"></div>
+          {
+            this.listByCafeterias()
+          }
+        </div>
+      )
+    } else {
+      return <div>Loading...</div>
+    }
   }
 }
 

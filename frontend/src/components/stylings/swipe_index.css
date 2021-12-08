@@ -1,5 +1,42 @@
 .swipe-index-page {
   background-color: white;
-  padding: 10px 200px;
+  height: fit-content;
+}
+
+.swipe-index-page .content-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+.cafeteria-container {
   width: 80%;
+  height: fit-content;
+  margin: 2em auto;
+  max-width: 1600px;
+  background-color: yellow;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px 5%; */
+}
+
+.swipe-index-items-container {
+  width: 80%;
+  margin: 2em auto 4em;
+  padding-bottom: 2em;
+  max-width: 1600px;
+  background-color: yellow;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  
+  gap: 40px 5%;
+}
+
+.swipe-index-item {
+  display: inline-block;
+  height: 16em;
+  width: 16em;
+  background-color: white;
 }
