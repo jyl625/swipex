@@ -8,9 +8,20 @@ const cafeterias = require('./routes/api/cafeterias')
 const sellposts = require('./routes/api/sellposts')
 const conversations = require('./routes/api/conversations');
 const ratings = require('./routes/api/ratings')
+const comments = require("./routes/api/comments");
+const exchanges = require("./routes/api/exchanges")
 
 const bodyParser = require('body-parser');
 const passport = require('passport');
+
+const path = require('path');
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 
 mongoose
@@ -30,6 +41,8 @@ app.use("/api/cafeterias", cafeterias);
 app.use("/api/sellposts", sellposts);
 app.use("/api/conversations", conversations);
 app.use("/api/ratings", ratings);
+app.use("/api/comments", comments);
+app.use("/api/exchanges", exchanges);
 
 
 

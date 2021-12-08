@@ -20,6 +20,20 @@ router.get('/current', passport.authenticate('jwt', { session: false }), (req, r
   });
 })
 
+//get user by userId
+router.get('/:id', (req, res) => {
+  passport.authenticate('jwt', { session: false }),
+    User.findById(req.params.id)
+      .then(user => res.json({
+        id: user.id,
+        username: user.username,
+      }))
+      .catch(err =>
+        res.status(404).json({ nouserfound: 'No user found with that ID' })
+      );
+});
+
+
 
 //register route
 router.post("/register", (req, res) => {

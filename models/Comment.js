@@ -9,7 +9,7 @@ const CommentSchema = new Schema(
       ref: "User",
       required: true
     },
-    conversationId: {
+    conversation: {
       type: Schema.Types.ObjectId,
       ref: "Conversation",
       required: true
@@ -17,11 +17,10 @@ const CommentSchema = new Schema(
     content: {
       type: String,
       required: true
-    },
-    timeCreated: {
-      type: Date,
-      default: new Date()
     }
+  },
+  {
+    timestamps: true
   }
 )
 
