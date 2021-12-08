@@ -3,7 +3,7 @@ import React from "react";
 
 const SwipeIndexItem = ({swipe}) => (
   <div className="swipe-index-item">
-    <div>{swipe.askPrice}-{swipe.expiration}</div>
+    <h2>{swipe.askPrice}-{swipe.expiration}-{swipe.mealType}</h2>
     {/* <div Link to={`swipe/${swipe.id}`}> */}
       <img src="" alt="" />
       {/* swipe(cafeteria) imageUrl */}

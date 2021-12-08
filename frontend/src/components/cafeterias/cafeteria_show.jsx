@@ -42,8 +42,9 @@ class CafeteriaShow extends React.Component {
       return cafeterias.map((cafeteria, idx) => {
         return (
           <div className="cafeteria-container" key={idx}>
-            <div>
-              {cafeteria.location} - {cafeteria.name.toUpperCase()}
+            <div className="cafeteria-name">
+              {/* {cafeteria.location} - {cafeteria.name.toUpperCase()} */}
+              {cafeteria.name.toUpperCase()}
             </div>
             <SwipeIndexContainerCopy cafeteria={cafeteria} key={idx}/>
           </div>
