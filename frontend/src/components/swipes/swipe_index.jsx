@@ -1,6 +1,9 @@
 import React from 'react';
 import SwipeIndexItem from './swipe_index_item';
 
+import '../stylings/reset.css'
+import '../stylings/swipe_index.css'
+
 class SwipeIndex extends React.Component {
   // constructor(props) {
   //   super(props);
@@ -8,17 +11,25 @@ class SwipeIndex extends React.Component {
 
   componentDidMount() {
     this.props.requestSwipes();
+    // need to request user
   }
 
-  render() {
-    return (
-      <div>
-        {
-          this.props.swipes.map((swipe, idx) => {
+  listIndexItems() {
+    
+
+    this.props.swipes.map((swipe, idx) => {
+    // this.props.swipes.map((swipe, idx) => {
             return <li key={idx}>
               <SwipeIndexItem swipe={swipe}/>
             </li>
           })
+  }
+
+  render() {
+    return (
+      <div className="swipe-index-page">
+        {
+          this.listIndexItems()
         }
       </div>
     )

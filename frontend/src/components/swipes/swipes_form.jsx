@@ -1,15 +1,18 @@
 import React from 'react';
 
+import '../stylings/reset.css'
+import '../stylings/swipe_form.css'
+
 class SwipeForm extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       askPrice: Number(0).toFixed(2),
-      expirationDate: new Date(),
-      cafeId: "A0000",
+      expiration: new Date(), // date needed "1999-20-20" format
+      cafeId: "61afc736f71ca14a2311581a",
       mealType: "Breakfast",
-      meetingDateTime: new Date()
+      meetingDateTime: new Date() //
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,17 +21,16 @@ class SwipeForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let swipe = {
-      askPrice: this.state.askPrice,
-      expirationDate: this.state.expirationDate,
+      seller: "61aed27a42cc3cab7be395a9",
+      askPrice: this.state.askPrice.toString(),
+      expiration: this.state.expiration.toString(),
       cafeId: this.state.cafeId,
       mealType: this.state.mealType,
       meetingDateTime: this.state.meetingDateTime
     }
-
-    this.props.createSwipes(swipe);
-    // this.setState({      //maybe not necessary
-
-    // })
+    console.log(swipe)
+    this.props.createSwipe(swipe);
+    this.props.history.push("/")
   }
 
   update(type) {
@@ -47,10 +49,10 @@ class SwipeForm extends React.Component {
 
   listCafeterias() {
     const cafeterias = {
-      "Cafeteria01": "A0001",
-      "Cafeteria02": "A0002",
-      "Cafeteria03": "A0003",
-      "Cafeteria04": "A0004"
+      "Reiber": "61afc736f71ca14a2311581a",
+      "Covel": "61afc768f71ca14a2311581c",
+      "DeNeve": "61afc788f71ca14a2311581e",
+      "Bruin Plate": "61afc7b0f71ca14a23115820"
     }
 
     return Object.keys(cafeterias).map((name, idx) => (
@@ -73,51 +75,59 @@ class SwipeForm extends React.Component {
       }
 
       const numOnlyStr = numOnlyArr.join("")
-      console.log(parseFloat(numOnlyStr))
-      this.setState({askPrice: parseFloat(numOnlyStr)})
+      console.log(Number(numOnlyStr).toFixed(2))
+      // console.log(parseFloat(numOnlyStr))
+      this.setState({askPrice: parseFloat(Number(numOnlyStr).toFixed(2))})
     }
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <h1>Create a Swipe!</h1>
-          <div>
-            <input type="text" 
-                  value={this.state.askPrice}
-                  onChange={this.updatePrice()}
-                  placeholder="0.00"
-            />
-            {/* <input type="number" 
-                  value={this.state.askPrice}
-                  onChange={this.update("askPrice")}
-                  min="1" max="10" step="0.25"
-            /> */}
-            <input type="date" 
-                  value={this.state.expirationDate}
-                  onChange={this.update("expirationDate")}
-            />
-            <select type="text" 
-                  value={this.state.cafeId}
-                  onChange={this.update("cafeId")}
-            >
-              {this.listCafeterias()}
-            </select>
-            <select value={this.state.mealType} 
-                    onChange={this.update("mealType")}>
-                {this.listMealTypes()}
-            </select>
-            <input type="datetime-local" 
-                  value={this.state.meetingDateTime}
-                  onChange={this.update("meetingDateTime")}
-            />
+      <div className="swipe-form-main">
+        <div className="swipe-form-wrapper">
+          <form onSubmit={this.handleSubmit}>
+            <h1>Post your swipe for sale!</h1>
+            {/* <div> */}
+              <div className="input-label">Price</div>
+              <input type="text" 
+                    value={Number(this.state.askPrice).toFixed(2)}
+                    // value={this.state.askPrice}
+                    onChange={this.updatePrice()}
+                    placeholder="0.00"
+              />
+
+              <div className="input-label">Location and Meal swipe type</div>
+              <div className="select-option-container">
+                <select type="text" 
+                      value={this.state.cafeId}
+                      onChange={this.update("cafeId")}
+                >
+                  {this.listCafeterias()}
+                </select>
+                <select value={this.state.mealType} 
+                        onChange={this.update("mealType")}>
+                    {this.listMealTypes()}
+                </select>
+              </div>
+  
+              <div className="input-label">Suggested meeting time</div>
+              <input type="datetime-local" 
+                    value={this.state.meetingDateTime}
+                    onChange={this.update("meetingDateTime")}
+              />
+
+              <div className="input-label">Post expiration date</div>
+              <input type="date" 
+                    value={this.state.expiration}
+                    onChange={this.update("expiration")}
+              />
 
 
-            <input type="submit" value="Submit"/>
-          </div>
-        </form>
+              <input type="submit" value="Submit"/>
+            {/* </div> */}
+          </form>
+        </div>
       </div>
     )
   }

@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
     .populate("seller", "username")
     .populate("buyer", "username")
     .populate("comments", "commentor content timeCreated")
+    .sort({updatedAt: -1})
     .exec()
     .then(conversations => res.json(conversations))
     .catch(err => res.status(404).json({ noconversationsfound: 'No conversations found' }));
@@ -26,8 +27,7 @@ router.get('/:id', (req, res) => {
   Conversation.findById(req.params.id)
     .populate("seller", "username")
     .populate("buyer", "username")
-    .populate("comments"
-    )
+    .populate("comments", "commentor content timeCreated")
     .exec()
     .then(conversation => res.json(conversation))
     .catch(err =>
@@ -42,6 +42,8 @@ router.get('/user/:user_id', (req, res) => {
   Conversation.find({"$or": [{ seller: req.params.user_id }, { buyer: req.params.user_id }]})
     .populate("seller", "username")
     .populate("buyer", "username")
+    .populate("comments", "timeCreated")
+    .sort({ updatedAt: -1 })
     .exec()
     .then(conversations => res.json(conversations))
     .catch(err =>
@@ -63,6 +65,7 @@ router.post('/',
       sellpost: req.body.sellpost,
       seller: req.body.seller,
       buyer: req.body.buyer,
+      timeUpdated: new Date(),
       comments: []
     });
     newConversation.save().then(conversation => res.json(conversation));
