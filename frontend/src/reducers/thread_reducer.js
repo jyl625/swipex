@@ -9,9 +9,13 @@ const ThreadsReducer = (state = {}, action) => {
   let nextState = Object.assign({}, state)
   switch(action.type){
     case RECEIVE_THREAD:
-      return action.thread.data;
+      nextState[action.thread.data._id] = action.thread.data;
+      return nextState;
     case RECEIVE_USER_THREADS:
-      nextState = Object.assign({}, action.userThreads.data);
+      nextState = {}
+      action.userThreads.forEach(userThread => {
+        nextState[userThread.data._id] = userThread.data;
+      })
       return nextState;
     case REMOVE_THREAD:
       delete nextState[action.threadId];
