@@ -14,6 +14,7 @@ import SwipeShowContainer from './swipes/swipe_show_container';
 //testing
 import SwipeIndexContainer from './swipes/swipe_index_container';
 //testing
+import UserShowContainer from './users/user_show_container';
 // import ProfileContainer from './profile/profile_container';
 // import TweetComposeContainer from './tweets/tweet_compose_container';
 
@@ -22,14 +23,14 @@ import SwipesFormContainer from './swipes/swipes_form_container'
 
 const App = () => (
   <div>
-    <NavBarContainer />
+    {/* <NavBarContainer /> */}
     <Switch>
       <AuthRoute exact path="/" component={MainPage} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route path="/swipes" component={SwipeIndexContainer}/>
       <Route path="/swipe/:swipeId" component={SwipeShowContainer}/>
-      
+      <Route path="/user/:userId" component={UserShowContainer}/>
       <ProtectedRoute exact path="/createswipe" component={SwipesFormContainer} />
       {/* <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />

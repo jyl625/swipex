@@ -1,8 +1,9 @@
-import { fetchSwipes, fetchSwipe, createNewSwipe } from "../util/swipe_api_util";
+import { fetchSwipes, fetchSwipe, fetchUserSwipes, createNewSwipe } from "../util/swipe_api_util";
 
 export const RECEIVE_SWIPES = "RECEIVE_SWIPES";
 export const RECEIVE_NEW_SWIPE = "RECEIVE_NEW_SWIPE";
 export const RECEIVE_USER_SWIPES = "RECEIVE_USER_SWIPES"
+export const RECEIVE_SWIPE = "RECEIVE_SWIPE";
 
 
 
@@ -21,6 +22,16 @@ export const receiveUserSwipes = swipes => ({
   swipes
 })
 
+export const receiveSwipe = swipe => ({
+  type: RECEIVE_SWIPE,
+  swipe
+})
+
+export const requestUserSwipes = userId => dispatch => (
+  fetchUserSwipes(userId)
+  .then(swipes => dispatch(receiveUserSwipes(swipes)))
+  .catch(err => console.log(err))
+)
 
 export const requestSwipes = () => dispatch => (
   fetchSwipes()
