@@ -8,9 +8,11 @@ const RatingSchema = new Schema({
   },
   sellerScore: {
     type: Number,
+    enum: [1, 2, 3, 4, 5]
   },
   buyerScore: {
     type: Number,
+    enum: [1, 2, 3, 4, 5]
   }
 })
 
