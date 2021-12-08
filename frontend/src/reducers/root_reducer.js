@@ -4,6 +4,7 @@ import errors from './errors_reducer';
 import swipes from './swipe_reducer';
 import cafeterias from './cafeteria_reducer';
 import users from './user_reducer';
+import threads from './thread_reducer';
 
 
 const RootReducer = combineReducers({
@@ -11,7 +12,8 @@ const RootReducer = combineReducers({
   errors, 
   swipes,
   cafeterias,
-  users
+  users,
+  threads
 });
 
 export default RootReducer;
