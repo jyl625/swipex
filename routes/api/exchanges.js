@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
 
 //create exchange
 router.post('/',
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   (req, res) => {
     // validate price input?
 

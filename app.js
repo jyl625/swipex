@@ -8,7 +8,7 @@ const cafeterias = require('./routes/api/cafeterias')
 const sellposts = require('./routes/api/sellposts')
 const conversations = require('./routes/api/conversations');
 const ratings = require('./routes/api/ratings')
-const comments = require("./routes/api/comments");
+const comments = require('./routes/api/comments');
 const exchanges = require("./routes/api/exchanges")
 
 const bodyParser = require('body-parser');

@@ -24,16 +24,16 @@ router.get('/:id', (req, res) => {
 router.post("/",
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
-    if (Rating.find({ ExchangeId: req.body.ExchangeId })) {
-      return res.status(400).json({newratingerror: 'ratings have already been submitted'})}
-    else{
+    // if (Rating.find({ exchangeId: req.body.exchangeId })) {
+    //   return res.status(400).json({newratingerror: 'ratings have already been submitted'})}
+    // else{
       const newRating = new Rating({
-        ExchangeId: req.body.ExchangeId,
+        exchangeId: req.body.exchangeId,
         sellerScore: req.body.sellerScore,
         buyerScore: req.body.buyerScore
       });
       newRating.save().then(rating => res.json(rating));
-    }
+    // }
   });
 
 //edit the rating form
