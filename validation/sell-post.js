@@ -25,6 +25,10 @@ module.exports = function validateSellPost(data) {
     errors.askPrice = 'Not a valid ask price';
   }
 
+  if (!validDate(data.meetingTime)) {
+    errors.meetingTime = 'Not a valid meeting time';
+  }
+
   return {
     errors,
     isValid: Object.keys(errors).length === 0

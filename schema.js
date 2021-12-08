@@ -139,16 +139,16 @@ const ExchangeSchema = new Schema({
 
 //rating
 
-// const RatingSchema = new Schema({
-//   exchangeId: {
-//     type: Schema.Type.ObjectId,
-//     ref: "exchanges"
-//   },
-//   sellerScore: {
-//     type: Number,
-//   },
-//   buyerScore: {
-//     type: Number,
-//   }
+const RatingSchema = new Schema({
+  exchangeId: {
+    type: Schema.Type.ObjectId,
+    ref: "exchanges"
+  },
+  sellerScore: {
+    type: Number,
+  },
+  buyerScore: {
+    type: Number,
+  }
   
-// })
+})
