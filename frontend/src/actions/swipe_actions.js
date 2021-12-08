@@ -25,17 +25,17 @@ export const receiveUserSwipes = swipes => ({
 export const requestSwipes = () => dispatch => (
   fetchSwipes()
   .then(swipes => dispatch(receiveSwipes(swipes)))
-  .fail(err => console.log(err))
+  .catch(err => console.log(err))
 )
 
 export const requestSwipe = swipeId => dispatch => (
   fetchSwipe(swipeId)
   .then(swipe => dispatch(receiveNewSwipe(swipe)))
-  .fail(err => console.log(err))
+  .catch(err => console.log(err))
 )
 
 export const createSwipe = swipeData => dispatch => (
   createNewSwipe(swipeData)
   .then(swipe => dispatch(receiveNewSwipe(swipe)))
-  .fail(err => console.log(err))
+  .catch(err => console.log(err))
 )

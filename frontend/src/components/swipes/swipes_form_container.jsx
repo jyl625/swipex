@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-// import { createSwipes } from '../../actions/swipe_actions';
+import { createSwipe } from '../../actions/swipe_actions';
 import SwipesForm from './swipes_form';
 
 
@@ -12,8 +12,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    // createSwipes: data => dispatch(createSwipes(data))
-    createSwipes: data => console.log(data)
+    createSwipe: data => dispatch(createSwipe(data))
+    // createSwipe: data => console.log(data)
   };
 };
 
