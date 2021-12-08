@@ -98,10 +98,8 @@ class SwipeForm extends React.Component {
                     onChange={this.updatePrice()}
                     placeholder="0.00"
               />
-              <input type="date" 
-                    value={this.state.expiration}
-                    onChange={this.update("expiration")}
-              />
+
+              <div className="input-label">Location and Meal swipe type</div>
               <div className="select-option-container">
                 <select type="text" 
                       value={this.state.cafeId}
@@ -115,9 +113,16 @@ class SwipeForm extends React.Component {
                 </select>
               </div>
   
+              <div className="input-label">Suggested meeting time</div>
               <input type="datetime-local" 
                     value={this.state.meetingDateTime}
                     onChange={this.update("meetingDateTime")}
+              />
+
+              <div className="input-label">Post expiration date</div>
+              <input type="date" 
+                    value={this.state.expiration}
+                    onChange={this.update("expiration")}
               />
 
 
