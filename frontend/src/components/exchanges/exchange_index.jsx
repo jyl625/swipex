@@ -7,6 +7,9 @@ class ExchangeIndex extends React.Component {
   }
 
   render() {
+    if (this.props.exchanges.length === 0)
+      return 'loading exchanges'
+     console.log(this.props.exchanges)
     return (
       <div>
         <h1>Past Sales Posts from {this.props.user.username}</h1>
