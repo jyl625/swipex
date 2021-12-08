@@ -8,11 +8,11 @@ const SellPostSchema = new Schema({
   },
   askPrice: {
     type: Number,
-    // required: true
+    required: true
   },
   expiration: {
     type: String, // or type: Integer to indicate days left
-    // required: true
+    required: true
   },
   cafeId: {
     type: Schema.Types.ObjectId, 
@@ -25,7 +25,15 @@ const SellPostSchema = new Schema({
   timeCreated: {
     type: Date,
     default: new Date().toISOString().slice(0, 10)
+  },
+  mealType: {
+    type: String,
+    enum: ['breakfast', 'lunch', 'dinner'],
+  },
+  meetingTime:{
+    type: String
   }
+
 })
 
 module.exports = SellPost = mongoose.model('SellPost', SellPostSchema);

@@ -45,7 +45,9 @@ router.post("/",
     expiration: req.body.expiration,
     cafeId: req.body.cafeId,
     open: req.body.open,
-    timeCreated: req.body.timeCreated
+    timeCreated: req.body.timeCreated,
+    mealType: req.body.mealType,
+    meetingTime: req.body.meetingTime
   });
 
     newSellpost.save().then(sellpost => res.json(sellpost));
@@ -53,35 +55,25 @@ router.post("/",
 
 //Edit an exsisting sell post form
 
-// router.put('/:id', 
-//   // passport.authenticate('jwt', { session: false }), 
-//   (req, res) => {
-//   const updatePost = new SellPost ({
-//     seller: req.body.seller,
-//     askPrice: req.body.askPrice,
-//     expiration: req.body.expiration,
-//     cafeId: req.body.cafeId,
-//     open: req.body.open
-//   });
-//   SellPost.updateOne({ _id: req.params.id }, updatePost).then(
-//     () => {
-//       res.status(201).json({
-//         message: "Sell post updated successfully!"
-//       });
-//     }
-//   ).catch(
-//     (error) => {
-//       res.status(400).json({
-//         error: error
-//       });
-//     }
-//   );
-// });
+router.patch('/:id', 
+  // passport.authenticate('jwt', { session: false }), 
+  (req, res) => {
+    SellPost.findById(req.params.id, (err, sellpost) => {
+      if (req.body._id) {
+        delete req.body._id;
+      }
+      for (let b in req.body) {
+        sellpost[b] = req.body[b];
+      }
+      sellpost.save();
+      res.json(sellpost);
+    })
+  })
   
 
 //delete an exsisting sell post form
 router.delete('/:id', 
-  // passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
   SellPost.deleteOne({_id: req.params.id}).then(
     ()=> {

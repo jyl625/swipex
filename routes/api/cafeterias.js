@@ -7,6 +7,19 @@ const Cafeteria = require('../../models/Cafeteria');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the cafeterias route" }));
 
+// create cafeteria
+router.post('/',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    const newCafeteria = new Cafeteria({
+      name: req.body.name,
+      location: req.body.location,
+      lat: req.body.lat,
+      lng: req.body.lng
+    });
+    newCafeteria.save().then(cafeteria => res.json(cafeteria));
+  }
+);
 
 //get all cafeteria
 router.get('/', (req, res) => {
