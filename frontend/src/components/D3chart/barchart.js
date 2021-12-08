@@ -1,6 +1,7 @@
 import {useD3} from '../hooks/useD3';
 import React from 'react';
 import * as d3 from 'd3';
+import { scaleTime } from 'd3-scale'
 
 function BarChart({ data }) {
   const ref = useD3(
@@ -11,9 +12,13 @@ function BarChart({ data }) {
 
       const x = d3
         .scaleBand()
-        .domain(data.map((d) => d.year))
+        .domain(data.map((d) => d.date))
         .rangeRound([margin.left, width - margin.right])
         .padding(0.1);
+      // const x = d3.scaleTime()
+      //   .domain([new Date(2021, 11, 1), new Date(2021, 11, 4)])
+      //   .rangeRound([margin.left, width - margin.right])
+      //   .padding(0.1);
 
       const y1 = d3
         .scaleLinear()
@@ -58,7 +63,7 @@ function BarChart({ data }) {
         .data(data)
         .join("rect")
         .attr("class", "bar")
-        .attr("x", (d) => x(d.year))
+        .attr("x", (d) => x(d.date))
         .attr("width", x.bandwidth())
         .attr("y", (d) => y1(d.closePrice))
         .attr("height", (d) => y1(0) - y1(d.closePrice));

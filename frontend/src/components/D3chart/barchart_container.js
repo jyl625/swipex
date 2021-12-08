@@ -1,16 +1,16 @@
-// import { connect } from 'react-redux';
-// import {requestUserExchanges} from '../../actions/exchange_actions';
-// import BarChart from './barchart';
+import { connect } from 'react-redux';
+import { requestExchanges} from '../../actions/exchange_actions';
+import BarchartData from './barchart_data'
 
-// const mapStateToProps = state => ({
-    
-// });
+const mapStateToProps = state => ({
+  exchanges: state.exchanges.all
+});
 
-// const mapDispatchToProps = dispatch => ({
-//   requestUserExchanges: () => dispatch(requestUserExchanges())
-// })
+const mapDispatchToProps = dispatch => ({
+  requestExchanges: () => dispatch(requestExchanges())
+})
 
-// export default connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(BarChart);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BarchartData);
