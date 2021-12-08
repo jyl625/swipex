@@ -33,7 +33,7 @@ router.get('/user/:user_id', (req, res) => {
 
 //create new sell post form
 router.post("/", 
-  passport.authenticate('jwt', { session: false }),
+  // passport.authenticate('jwt', { session: false }),
   (req, res) => {
   const { errors, isValid } = validateSellPost(req.body);
   if (!isValid) {
@@ -45,7 +45,9 @@ router.post("/",
     expiration: req.body.expiration,
     cafeId: req.body.cafeId,
     open: req.body.open,
-    timeCreated: req.body.timeCreated
+    timeCreated: req.body.timeCreated,
+    mealType: req.body.mealType,
+    meetingTime: req.body.meetingTime
   });
 
     newSellpost.save().then(sellpost => res.json(sellpost));
@@ -54,7 +56,7 @@ router.post("/",
 //Edit an exsisting sell post form
 
 router.patch('/:id', 
-  passport.authenticate('jwt', { session: false }), 
+  // passport.authenticate('jwt', { session: false }), 
   (req, res) => {
     SellPost.findById(req.params.id, (err, sellpost) => {
       if (req.body._id) {
