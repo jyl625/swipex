@@ -17,11 +17,11 @@ export const receiveCafeterias = cafeterias => ({
 export const requestCafeteria = cafeteriaId => dispatch => (
   fetchCafeteria(cafeteriaId)
   .then(cafeteria => dispatch(receiveCafeteria(cafeteria)))
-  .fail(err => console.log(err))
+  .catch(err => console.log(err))
 )
 
 export const requestCafeterias = () => dispatch => (
   fetchCafeterias()
   .then(cafeterias => dispatch(receiveCafeterias(cafeterias)))
-  .fail(err => console.log(err))
+  .catch(err => console.log(err))
 )
