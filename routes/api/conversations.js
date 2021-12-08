@@ -56,6 +56,7 @@ router.post('/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
     const newConversation = new Conversation({
+      sellpost: req.body.sellpost,
       seller: req.body.seller,
       buyer: req.body.buyer,
       comments: []

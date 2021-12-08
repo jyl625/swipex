@@ -3,7 +3,12 @@ const Schema = mongoose.Schema;
 
 
 const ConversationSchema = new Schema(
-  {
+  { 
+    sellpost: {
+      type: Schema.Types.ObjectId,
+      ref: "SellPost",
+      required: true
+    },
     seller: {
       type: Schema.Types.ObjectId,
       ref: "User",
