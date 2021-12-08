@@ -55,6 +55,10 @@ router.get('/user/:user_id', (req, res) => {
 router.post('/',
   passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    if (req.user.id !== req.body.seller && req.user.id !== req.body.buyer) {
+      return res.status(400).json({invalidconversationparty: "Current user is neither the seller or buyer"})
+    }
+    
     const newConversation = new Conversation({
       sellpost: req.body.sellpost,
       seller: req.body.seller,
