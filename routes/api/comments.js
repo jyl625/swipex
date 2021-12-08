@@ -44,6 +44,7 @@ router.post('/',
     newComment.save()
       .then(Conversation.findById(req.body.conversation)
         .then(conversation => {
+          // conversation.timeUpdated = new Date();
           conversation.comments.push(newComment);
           conversation.save();
         })
