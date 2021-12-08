@@ -13,5 +13,5 @@ export const fetchUserSwipes = userId => (
 )
 
 export const createNewSwipe = swipeData => {
-  return axios.post('api/sellposts', swipeData);
+  return axios.post('api/sellposts/', swipeData);
 }
