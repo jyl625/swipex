@@ -8,12 +8,11 @@ class ThreadIndex extends React.Component {
   }
 
   render() {
-    console.log(this.props.threads);
     if (Object.keys(this.props.threads).length === 0)
       return 'loading threads';
     return (
       <div>
-        <h3>List of Sellposts from {this.props.user.username}</h3>
+        <h1>Past Conversation of {this.props.user.username}</h1>
         <div>
         {
           this.props.threads.map(thread => (

@@ -19,10 +19,8 @@ class UserShow extends React.Component {
         <div>
         </div>
         <ThreadIndexCurrentContainer user={this.props.user}/>
-
-        {/* <SwipeIndexCurrentContainer user={user}/>
-        <SwipeIndexPastContainer user={user}/> */}
-        {/* SwipeSaleIndexContainer */}
+        <SwipeIndexCurrentContainer user={this.props.user}/>
+        <SwipeIndexPastContainer user={this.props.user}/>
       </div>
     )
   }
