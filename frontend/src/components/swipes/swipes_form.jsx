@@ -30,9 +30,7 @@ class SwipeForm extends React.Component {
     }
     console.log(swipe)
     this.props.createSwipe(swipe);
-    // this.setState({      //maybe not necessary
-
-    // })
+    this.props.history.push("/")
   }
 
   update(type) {
