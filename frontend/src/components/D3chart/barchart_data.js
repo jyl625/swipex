@@ -51,6 +51,9 @@ class BarchartData extends React.Component {
       { date: 29, closePrice: 6.87 },
       { date: 30, closePrice: 6.08 }]
 
+      // const storedDate = [];
+
+
 
     return (
       <div><BarChart data = {data} /></div>
