@@ -4,7 +4,7 @@ import ThreadIndex from './thread_index';
 
 
 const mSTP = state => ({
-  threads: state.threads.user,
+  threads: Object.values(state.threads.user),
   type: "Current"
 });
 

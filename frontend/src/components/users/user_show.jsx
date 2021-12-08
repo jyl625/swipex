@@ -5,34 +5,26 @@ import SwipeIndexCurrentContainer from '../swipes/swipe_index_current_container'
 import SwipeIndexPastContainer from '../swipes/swipe_index_past_container';
 
 class UserShow extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     this.props.requestUser(this.props.match.params.userId)
   }
 
   render() {
-    if (this.props.user) {
-      console.log(this.props);
+    console.log(this.props.user)
+    if (!this.props.user) 
+      return 'loading user'
     return (
       <div>
         <div>
         </div>
         <ThreadIndexCurrentContainer user={this.props.user}/>
+
         {/* <SwipeIndexCurrentContainer user={user}/>
         <SwipeIndexPastContainer user={user}/> */}
         {/* SwipeSaleIndexContainer */}
       </div>
     )
-    }
-    else {
-      console.log(this.props)
-      return (
-      <div>Loading User</div>
-      )
-    }
   }
 }
 
