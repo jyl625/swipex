@@ -7,9 +7,10 @@ class ThreadCommentListItem extends React.Component{
   }
 
   render(){
-    const {comment, otherUser} = this.props
+    const {comment, className} = this.props
+
     return (
-      <div>
+      <div className={className}>
         {comment.content}
       </div>
     )
