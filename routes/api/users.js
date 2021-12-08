@@ -37,7 +37,6 @@ router.get('/:id', (req, res) => {
 
 //register route
 router.post("/register", (req, res) => {
-  console.log(req)
   const { errors, isValid } = validateRegisterInput(req.body);
 
   if (!isValid) {
