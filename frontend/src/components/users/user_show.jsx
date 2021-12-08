@@ -10,8 +10,8 @@ const UserShow = ({user}) => (
     </div>
     <ThreadIndexCurrentContainer user={user}/>
     <ThreadIndexPastContainer user={user}/>
-    <SwipeIndexCurrentContainer user={user}/>
-    <SwipeIndexPastContainer user={user}/>
+    {/* <SwipeIndexCurrentContainer user={user}/>
+    <SwipeIndexPastContainer user={user}/> */}
     {/* SwipeSaleIndexContainer */}
   </div>
 )
