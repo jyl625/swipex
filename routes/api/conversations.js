@@ -10,9 +10,11 @@ router.get("/test", (req, res) => res.json({ msg: "This is the conversations rou
 
 // for testing, get all conversations
 router.get('/', (req, res) => {
+  passport.authenticate('jwt', { session: false }),
   Conversation.find()
-    .populate("sellerId", "username")
-    .populate("buyerId", "username")
+    .populate("seller", "username")
+    .populate("buyer", "username")
+    .populate("comments", "commentor content timeCreated")
     .exec()
     .then(conversations => res.json(conversations))
     .catch(err => res.status(404).json({ noconversationsfound: 'No conversations found' }));
@@ -20,9 +22,12 @@ router.get('/', (req, res) => {
 
 //get conversation by conversationId
 router.get('/:id', (req, res) => {
+  passport.authenticate('jwt', { session: false }),
   Conversation.findById(req.params.id)
-    .populate("sellerId", "username")
-    .populate("buyerId", "username")
+    .populate("seller", "username")
+    .populate("buyer", "username")
+    .populate("comments"
+    )
     .exec()
     .then(conversation => res.json(conversation))
     .catch(err =>
@@ -33,9 +38,10 @@ router.get('/:id', (req, res) => {
 
 //get all conversations of specific user by user_id
 router.get('/user/:user_id', (req, res) => {
-  Conversation.find({"$or": [{ sellerId: req.params.user_id }, { buyerId: req.params.user_id }]})
-    .populate("sellerId", "username")
-    .populate("buyerId", "username")
+  passport.authenticate('jwt', { session: false }),
+  Conversation.find({"$or": [{ seller: req.params.user_id }, { buyer: req.params.user_id }]})
+    .populate("seller", "username")
+    .populate("buyer", "username")
     .exec()
     .then(conversations => res.json(conversations))
     .catch(err =>
@@ -47,11 +53,16 @@ router.get('/user/:user_id', (req, res) => {
 
 //create conversation
 router.post('/',
-  // passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
+    if (req.user.id !== req.body.seller && req.user.id !== req.body.buyer) {
+      return res.status(400).json({invalidconversationparty: "Current user is neither the seller or buyer"})
+    }
+    
     const newConversation = new Conversation({
-      sellerId: req.body.sellerId,
-      buyerId: req.body.buyerId,
+      sellpost: req.body.sellpost,
+      seller: req.body.seller,
+      buyer: req.body.buyer,
       comments: []
     });
     newConversation.save().then(conversation => res.json(conversation));
@@ -74,7 +85,7 @@ router.post('/',
 
 //delete conversation by conversationId
 router.delete('/:id', 
-  // passport.authenticate('jwt', { session: false }),
+  passport.authenticate('jwt', { session: false }),
   (req, res) => {
     Conversation.findOneAndDelete({_id: req.params.id})
       .then(() => res.json({ msg: "conversation deleted", deleted: Conversation}))

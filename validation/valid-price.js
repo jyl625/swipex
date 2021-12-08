@@ -1,4 +1,4 @@
-const validPrice= price=> {
+const validPrice = price => {
 
   const regex_price = /^\d+(\.\d{0,2})?$/;
   const priceStr = price.toString();
