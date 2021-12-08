@@ -5,5 +5,5 @@ export const fetchCafeterias = () => (
 )
 
 export const fetchCafeteria = cafeteriaId => (
-  axios.get(`api/cafertia/${cafeteriaId}`)
+  axios.get(`api/cafertias/${cafeteriaId}`)
 )

@@ -5,6 +5,7 @@ import swipes from './swipe_reducer';
 import cafeterias from './cafeteria_reducer';
 import users from './user_reducer';
 import threads from './thread_reducer';
+import exchanges from './exchanges_reducer';
 
 
 const RootReducer = combineReducers({
@@ -13,7 +14,8 @@ const RootReducer = combineReducers({
   swipes,
   cafeterias,
   users,
-  threads
+  threads,
+  exchanges
 });
 
 export default RootReducer;
