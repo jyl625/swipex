@@ -1,15 +1,15 @@
 import { connect } from "react-redux";
-import SwipeIndex from './swipe_index';
+import CafeteriaShow from './cafeteria_show';
 import { requestSwipes } from "../../actions/swipe_actions";
 
 const mSTP = state => ({
-  // cafeterias: state.cafeterias.all,
-  swipes: state.swipes.all
+  cafeterias: state.cafeterias.all,
+  // swipes: state.swipes.all
 })
 
 const mDTP = dispatch => ({
-  requestSwipes: () => dispatch(requestSwipes())
+  // requestSwipes: () => dispatch(requestSwipes())
   // requestSwipes: () => console.log("fetching swipes")
 })
 
-export default connect(mSTP, mDTP)(SwipeIndex);
+export default connect(mSTP, mDTP)(CafeteriaShow);

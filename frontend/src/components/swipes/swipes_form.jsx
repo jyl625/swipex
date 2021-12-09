@@ -25,7 +25,7 @@ class SwipeForm extends React.Component {
       askPrice: this.state.askPrice.toString(),
       expiration: this.state.expiration.toString(),
       cafeId: this.state.cafeId,
-      mealType: this.state.mealType,
+      mealType: this.state.mealType.toLowerCase(),
       meetingDateTime: this.state.meetingDateTime
     }
     console.log(swipe)
@@ -43,7 +43,7 @@ class SwipeForm extends React.Component {
     const mealTypes = ["Breakfast", "Lunch", "Dinner"]
 
     return mealTypes.map((mealType, idx) => (
-      <option key={idx} value={`${mealType.toLowerCase()}`}>{`${mealType}`}</option>
+      <option key={idx} value={`${mealType}`}>{`${mealType}`}</option>
     ))
   }
 

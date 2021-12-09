@@ -1,19 +1,15 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-//testing
-import { Route, Switch } from 'react-router-dom';
-//testing
+import { Route, Switch, Redirect } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
 
 // import TweetsContainer from './tweets/tweets_container';
-import MainPage from './main/main_page';
+import MainPageContainer from './main/main_page_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
-//testing
 import SwipeShowContainer from './swipes/swipe_show_container';
-//testing
-import SwipeIndexContainer from './swipes/swipe_index_container';
-//testing
+import CafeteriaShowContainer from './cafeterias/cafeteria_show_container'
+import Footer from './footer/footer'
 // import ProfileContainer from './profile/profile_container';
 // import TweetComposeContainer from './tweets/tweet_compose_container';
 
@@ -24,17 +20,17 @@ const App = () => (
   <div>
     <NavBarContainer />
     <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
+      <AuthRoute exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <Route path="/swipes" component={SwipeIndexContainer}/>
+      <Route path="/cafeteria/:cafeteriaName" component={CafeteriaShowContainer}/>
+      {/* <Route path="/cafeteria/" component={CafeteriaShowContainer}/> */}
       <Route path="/swipe/:swipeId" component={SwipeShowContainer}/>
       
       <ProtectedRoute exact path="/createswipe" component={SwipesFormContainer} />
-      {/* <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
-      <ProtectedRoute exact path="/profile" component={ProfileContainer} />
-      <ProtectedRoute exact path="/new_tweet" component={TweetComposeContainer} /> */}
+      <Route render={() => <Redirect to={{ pathname: "/" }} />} />
     </Switch>
+    <Footer/>
   </div>
 );
 
