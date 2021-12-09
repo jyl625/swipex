@@ -12,7 +12,7 @@ class SwipeForm extends React.Component {
       expiration: new Date(), // date needed "1999-20-20" format
       cafeId: "61afc736f71ca14a2311581a",
       mealType: "Breakfast",
-      meetingDateTime: new Date() //
+      meetingTime: new Date() //
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,12 +21,12 @@ class SwipeForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let swipe = {
-      seller: "61aed27a42cc3cab7be395a9",
+      seller: this.props.currentUser.id,
       askPrice: this.state.askPrice.toString(),
       expiration: this.state.expiration.toString(),
       cafeId: this.state.cafeId,
-      mealType: this.state.mealType,
-      meetingDateTime: this.state.meetingDateTime
+      mealType: this.state.mealType.toLowerCase(),
+      meetingTime: this.state.meetingTime
     }
     console.log(swipe)
     this.props.createSwipe(swipe);
@@ -43,7 +43,7 @@ class SwipeForm extends React.Component {
     const mealTypes = ["Breakfast", "Lunch", "Dinner"]
 
     return mealTypes.map((mealType, idx) => (
-      <option key={idx} value={`${mealType.toLowerCase()}`}>{`${mealType}`}</option>
+      <option key={idx} value={`${mealType}`}>{`${mealType}`}</option>
     ))
   }
 
@@ -113,8 +113,8 @@ class SwipeForm extends React.Component {
   
               <div className="input-label">Suggested meeting time</div>
               <input type="datetime-local" 
-                    value={this.state.meetingDateTime}
-                    onChange={this.update("meetingDateTime")}
+                    value={this.state.meetingTime}
+                    onChange={this.update("meetingTime")}
               />
 
               <div className="input-label">Post expiration date</div>

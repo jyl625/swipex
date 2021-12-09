@@ -1,0 +1,108 @@
+.thread-page-wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+
+.thread-page-left{
+  display: flex;
+  width: 200px;
+}
+
+.thread-page-main{
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.thread-page-swipe-details{
+  margin: 32px 16px;
+  background-color: wheat;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.thread-page-avail-prompt{
+  background-color: white;
+  color: green;
+  font-size: 24px;
+  margin-bottom: 32px;
+}
+
+.thread-page-current-offers{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 120px;
+  margin-bottom: 32px;
+}
+
+.seller-offer-details, .buyer-offer-details{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: white;
+}
+
+.current-offer-price{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.deal-confirm-btn{
+  height: 20px;
+  width: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.thread-page-comment-wrapper{
+  width: 100%;
+  background-color:white;
+  margin-bottom: 16px;
+}
+
+
+.other-user-name{
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px black solid;
+}
+
+.otherUser-comment{
+  display: flex;
+  justify-content: flex-start;
+  color: green
+}
+
+.currentUser-comment{
+  display: flex;
+  justify-content: flex-end;
+  color:orange;
+}
+
+.comment-input-box{
+  margin-top: 8px;
+  border-top: 1px black solid;
+  padding: 16px 0;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.thread-page-right{
+  display: flex;
+  width: 200px;
+}
+
+.thread-offer-input{
+  margin: 32px 16px
+}
+

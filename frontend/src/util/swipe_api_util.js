@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchSwipes = () => {
-  return axios.get('api/sellposts');
+  return axios.get('api/sellposts/');
 }
 
 export const fetchSwipe = swipeId => {
