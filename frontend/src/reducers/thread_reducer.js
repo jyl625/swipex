@@ -19,6 +19,7 @@ const ThreadsReducer = (state = {}, action) => {
       return nextState;
     case REMOVE_THREAD:
       delete nextState[action.threadId];
+      return nextState;
     default:
       return state;
     }

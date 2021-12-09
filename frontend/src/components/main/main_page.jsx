@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import BarchartContainer from '../D3chart/barchart_container';
 
+import '../stylings/main_page.css'
+
 class MainPage extends React.Component {
   constructor(props) {
     super(props);
@@ -42,12 +44,12 @@ class MainPage extends React.Component {
     console.log(this.props.cafeterias)
     if (this.state.loadedCafeterias) {
       return (
-        <>
-          <div><BarchartContainer/></div>
+        <div className="main-page">
+          <div className="barchart-container"><BarchartContainer/></div>
           <div>
             {this.listCafeteriaLinks()}
           </div>
-        </>
+        </div>
       );
     } else {
       return <div>Loading Cafeterias...</div>

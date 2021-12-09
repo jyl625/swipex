@@ -1,16 +1,19 @@
 import React from "react";
-// import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom"; 
 
 const SwipeIndexItem = ({swipe}) => (
-  <div className="swipe-index-item">
-    <h2>{swipe.askPrice}-{swipe.expiration}-{swipe.mealType}</h2>
-    {/* <div Link to={`swipe/${swipe.id}`}> */}
+  <Link to={`/swipe/${swipe._id}`}>
+      <div className="swipe-index-item">
+      <h1>$ {Number(swipe.askPrice).toFixed(2)}</h1>
+      <h2>{swipe.mealType}</h2>
+      <h3>Post expires: {swipe.expiration}</h3>
       <img src="" alt="" />
       {/* swipe(cafeteria) imageUrl */}
       {/* descriptions */}
       {/* location */}
-    {/* </div> */}
-  </div>
+      {/* </div> */}
+    </div>
+  </Link>
 )
 
 export default SwipeIndexItem;
