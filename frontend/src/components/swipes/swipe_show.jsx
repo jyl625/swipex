@@ -28,7 +28,7 @@ class SwipeShow extends React.Component {
         this.props.currentUser.id,
         this.props.swipe.seller
       ).then((res) => {
-        debugger
+        // debugger
         if (res.thread.data) {
           return this.redirectToNewThread(res.thread.data._id)
         } else {
