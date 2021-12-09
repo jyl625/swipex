@@ -67,6 +67,7 @@ function BarChart({ data }) {
         .attr("width", x.bandwidth())
         .attr("y", (d) => y1(d.closePrice))
         .attr("height", (d) => y1(0) - y1(d.closePrice));
+        
     },
     [data.length]
   );
