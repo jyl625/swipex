@@ -13,6 +13,7 @@ const ExchangesReducer = (state = { all: {}, user: {}, new: undefined }, action)
       return nextState;
     case RECEIVE_NEW_EXCHANGE:
       nextState.new = action.exchange.data;
+      return nextState;
     default:
       return state;
   }
