@@ -86,12 +86,15 @@ class CafeteriaShow extends React.Component {
   render() {
     if (this.props.cafeterias.length > 0) {
       return (
-        <div className="cafeteria-show-page">
-          <div className="cafeteria-banner">
-            <img src="https://www.food-management.com/sites/food-management.com/files/styles/article_featured_retina/public/UCLA-dining_0.jpg?itok=vkDGYyJj" alt="cafeteria banner" />
+        <>
+          {/* {// in sert modal here} */}
+          <div className="cafeteria-show-page">
+            <div className="cafeteria-banner">
+              <img src="https://www.food-management.com/sites/food-management.com/files/styles/article_featured_retina/public/UCLA-dining_0.jpg?itok=vkDGYyJj" alt="cafeteria banner" />
+            </div>
+            {this.listCafeteriaSwipes()}
           </div>
-          {this.listCafeteriaSwipes()}
-        </div>
+        </>
       )
     } else {
       return <div>Loading...</div>

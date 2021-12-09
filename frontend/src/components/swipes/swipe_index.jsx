@@ -29,56 +29,36 @@ class SwipeIndex extends React.Component {
     // need to request user
   }
 
-  listIndexItems() {
-    <div>TESTING</div>
-    // console.log(this.props.swipes)
-    // this.props.swipes.map((swipe, idx) => {
-    //         return <li key={idx}>
-    //           <SwipeIndexItem swipe={swipe}/>
-    //         </li>
-    //       })
-  }
-
-  // listByCafeterias() {
-
-  //     let cafeterias = []
-  //     console.log(this.props.match.params.cafeteriaName)
-  //     if (this.props.match.params.cafeteriaName === undefined) {
-  //       cafeterias = [...this.props.cafeterias]
-  //     } else {
-  //       const selectedCafeteria = this.props.cafeterias.filter(cafeteria => {
-  //         return cafeteria.name.replace(/\s/g, "").toLowerCase() === this.props.match.params.cafeteriaName
-  //       })
-  //       cafeterias = selectedCafeteria;
-  //     }
-  //     return cafeterias.map((cafeteria, idx) => {
-  //       return (
-  //         <div className="cafeteria-container" key={idx}>
-  //           <div>
-  //             {cafeteria.location} - {cafeteria.name.toUpperCase()}
-  //           </div>
-  //           <div className="swipe-index-items-container">
-  //             {this.listIndexItemsByCafeterias(cafeteria._id)}
-  //           </div>
-
-  //         </div>
-  //       )
-  //     })
-  //   } else {
-  //     return <div>Loading cafeterias</div>
-  //   }
-  // }
-
   listIndexItemsByCafeterias(cafeteriaId) {
     const swipes = this.props.swipes
     if (swipes.length !== 0) {
-      const filteredSwipes = this.selectSwipesByCafeterias(swipes, cafeteriaId);
-      // console.log("filtered",filteredSwipes)
+      let filteredSwipes = this.selectSwipesByCafeterias(swipes, cafeteriaId);
+      filteredSwipes = (this.filterSwipes(filteredSwipes));
       return filteredSwipes.map ((swipe, idx) => {
         return <SwipeIndexItem key={idx}swipe={swipe}/>
       })
     } else {
       <div>No swipes to show here...</div>
+    }
+  }
+
+  filterSwipes(swipes) {
+    return swipes.filter(swipe => {
+      return this.state[swipe.mealType]
+    })
+  }
+  sortSwipes(swipes) {
+    return swipes.sort(this.sortMethod())
+  }
+
+  sortMethod() {
+    let sortType
+    //"new", "priceAsc", "priceDec", "exp"
+    switch (this.state.sort) {
+      case "new":
+        return (a,b) => a.timeCreated > b.timeCreated
+      default:
+        break;
     }
   }
 
@@ -160,7 +140,7 @@ class SwipeIndex extends React.Component {
 
   render() {
     // return <div>{this.props.cafeteria.name}</div>
-    console.log(this.state)
+    // console.log(this.state)
     if (this.state.swipesLoaded) {
       return (
         <div className="panel-container">

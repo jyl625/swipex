@@ -79,7 +79,9 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  padding: 0 2em;
+  padding: 0;
+  padding-left: 5%;
+  margin: 0 auto;
 }
 
 .filter-container, .sort-container{
@@ -129,10 +131,9 @@
   width: 100%;
   margin: 2em auto 4em;
   padding: 2em;
-  padding-left: 10%;
+  padding-left: 5%;
   max-width: 1600px;
   /* display: flex;
-  flex-wrap: wrap;
   justify-content: left; */
   column-count: 2;
   gap: 80px 10%;
