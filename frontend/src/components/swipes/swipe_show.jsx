@@ -66,13 +66,14 @@ class SwipeShow extends React.Component {
       return (
         <div className="swipe-show-page">
           <div className="swipe-info-container">
-            <div>$ {this.props.swipe.askPrice}</div>
-            <div>{this.findCafeteria(this.props.swipe.cafeId).name.toUpperCase()}</div>
-            <div>{this.props.swipe.mealType}</div>
-            <div>{this.props.swipe.expiration}</div>
-            <div>{this.props.swipe.seller}</div>
-            <div>{this.props.swipe.timeCreated}</div>
-            <div>{this.props.swipe.meetingTime}</div>
+            <div className="swipe-info-header"><strong>{this.findCafeteria(this.props.swipe.cafeId).name.toUpperCase()}</strong> Meal Swipe</div>
+            <div>{this.props.swipe.mealType.toUpperCase()}</div>
+            <div className="post-at">posted at: {this.props.swipe.timeCreated.slice(0,10)}</div>
+            <div><strong>$ {this.props.swipe.askPrice}</strong></div>
+            <div>Details:</div>
+            <div><strong>Expiration Date:</strong> {this.props.swipe.expiration}</div>
+            <div><strong>Let's meet at:</strong> {this.props.swipe.meetingTime}</div>
+            <div className="seller-id">Seller ID: {this.props.swipe.seller}</div>
           </div>
           {this.renderContactSellerButton()}
         </div>
