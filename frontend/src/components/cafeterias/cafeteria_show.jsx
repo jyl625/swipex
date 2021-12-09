@@ -30,7 +30,6 @@ class CafeteriaShow extends React.Component {
     if (this.props.cafeterias.length > 0) {
     // if (this.props.cafeterias !== []) {
       let cafeterias = []
-      console.log(this.props.match.params.cafeteriaName)
       if (this.props.match.params.cafeteriaName === "all") {
         cafeterias = [...this.props.cafeterias]
       } else {
@@ -41,14 +40,14 @@ class CafeteriaShow extends React.Component {
       }
       return cafeterias.map((cafeteria, idx) => {
         return (
-          <div className="panel-container">
-            <div className="left-pannel">
-              <div className="cafeteria-container" key={idx}>
-                <div className="cafeteria-name-container">
-                  <div className="cafeteria-name-wrapper">{cafeteria.name.toUpperCase()}</div>
-                </div>
+          // <div className="panel-container">
+          //   <div className="left-pannel">
+          //     <div className="cafeteria-container" key={idx}>
+          //       <div className="cafeteria-name-container">
+          //         <div className="cafeteria-name-wrapper">{cafeteria.name.toUpperCase()}</div>
+          //       </div>
                 <SwipeIndexContainer cafeteria={cafeteria} key={idx}/>
-              </div>
+              /* </div>
             </div>
             <div className="right-panel">
               <div className="map-container"></div>
@@ -76,7 +75,7 @@ class CafeteriaShow extends React.Component {
                 </ul>
               </div>
             </div>
-          </div>
+          </div> */
         )
       })
     } else {
@@ -85,7 +84,6 @@ class CafeteriaShow extends React.Component {
   }
 
   render() {
-    console.log("state", this.props)
     if (this.props.cafeterias.length > 0) {
       return (
         <div className="cafeteria-show-page">

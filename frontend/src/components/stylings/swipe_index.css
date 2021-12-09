@@ -75,14 +75,54 @@
   z-index: 2;
 }
 
+.sort-filter-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0 2em;
+}
+
+.filter-container, .sort-container{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+}
+
+.sort-container {
+  width: 60%;
+}
+
+.filter-container {
+  width: 40%;
+}
+
+.filter, .sort {
+  font-size: 16px;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  color: #09A603;
+  background-color: white;
+  border: 1px solid #09A603;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+
+.sort.selected, .filter.selected {
+  color: white;
+  background-color: #09A603;
+}
+
+
 .swipe-index {
   width: 80%;
   margin: 0 auto;
   max-width: 1600px;
   background-color: blue;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
+
+
 
 
 .swipe-index-items-container {

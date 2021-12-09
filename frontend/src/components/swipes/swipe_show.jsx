@@ -22,7 +22,6 @@ class SwipeShow extends React.Component {
 
   handleClick() {
     return () => {
-      console.log("clicked!")
       this.props.createThread({
         sellPost: this.props.match.params.swipeId,
         seller: this.props.swipe.seller,

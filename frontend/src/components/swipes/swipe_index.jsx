@@ -10,7 +10,11 @@ class SwipeIndex extends React.Component {
     super(props);
 
     this.state = ({
-      swipesLoaded: false
+      swipesLoaded: false,
+      sort: "new", //"new", "priceAsc", "priceDec", "exp"
+      breakfast: true,
+      lunch: true,
+      dinner: true
     })
   }
 
@@ -82,7 +86,6 @@ class SwipeIndex extends React.Component {
     // console.log("swipes", this.props.swipes)
     // console.log("cafeId", cafeteriaId)
     // if (swipes.length !== 0) {
-      console.log("swipes",swipes)
       return swipes.filter(swipe => {
         return swipe.cafeId === cafeteriaId && swipe.open === true
       })
@@ -91,16 +94,114 @@ class SwipeIndex extends React.Component {
     // }
   }
 
+  // this.state = ({
+  //   swipesLoaded: false,
+  //   sort: "new", //"new", "priceAsc", "priceDec", "exp"
+  //   breakfast: true,
+  //   lunch: true,
+  //   dinner: true
+  // })
+
+  renderFilterSort() {
+    return (
+      <div className="sort-filter-container">
+        <div className="sort-container">
+          <div className={`sort ${this.sortSelected("new")}`} 
+                onClick={this.selectSort("new")}>New</div>
+          <div className={`sort ${this.sortSelected("priceAsc")}`} 
+                onClick={this.selectSort("priceAsc")}>Price (asc)</div>
+          <div className={`sort ${this.sortSelected("priceDec")}`} 
+                onClick={this.selectSort("priceDec")}>Price (dec)</div>
+          <div className={`sort ${this.sortSelected("exp")}`} 
+                onClick={this.selectSort("exp")}>Expiring Soon</div>
+        </div>
+        <div className="filter-container">
+          <div className={`filter ${this.filterSelected("breakfast")}`} 
+                onClick={this.toggleFilter("breakfast")}>Breakfast</div>
+          <div className={`filter ${this.filterSelected("lunch")}`} 
+                onClick={this.toggleFilter("lunch")}>Lunch</div>
+          <div className={`filter ${this.filterSelected("dinner")}`} 
+                onClick={this.toggleFilter("dinner")}>Dinner</div>
+        </div>
+      </div>
+    )
+  }
+
+  sortSelected(sortType) {
+    if (this.state.sort === sortType) {
+      return "selected"
+    }
+  }
+
+  selectSort(sortType) {
+    return () => this.setState({
+      sort: sortType
+    })
+  }
+
+  filterSelected(filterType) {
+    if (this.state[filterType]) {
+      return "selected"
+    }
+  }
+
+  toggleFilter(filterType) {
+    switch (filterType) {
+      case "breakfast":
+        return () => this.setState({breakfast: !this.state.breakfast})
+      case "lunch":
+        return () => this.setState({lunch: !this.state.lunch})
+      case "dinner":
+        return () => this.setState({dinner: !this.state.dinner})
+      default:
+        break;
+    }
+  }
+
   render() {
     // return <div>{this.props.cafeteria.name}</div>
-    console.log("state", this.props)
+    console.log(this.state)
     if (this.state.swipesLoaded) {
       return (
-        // <div className="swipe-index">
-          <div className="swipe-index-items-container">
-            {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
+        <div className="panel-container">
+          <div className="left-pannel">
+            <div className="cafeteria-container">
+              <div className="cafeteria-name-container">
+                <div className="cafeteria-name-wrapper">{this.props.cafeteria.name.toUpperCase()}</div>
+              </div>
+              {this.renderFilterSort()}
+              <div className="swipe-index-items-container">
+                {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
+              </div>
+            </div>
+            </div>
+            <div className="right-panel">
+              <div className="map-container"></div>
+              <div className="menu-container">
+                <ul>Breakfast
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                </ul>
+                <ul>Lunch
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                </ul>
+                <ul>Dinner
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        // </div>
       )
     } else {
       return <div>Gathering swipes...</div>
