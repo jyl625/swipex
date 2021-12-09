@@ -55,7 +55,7 @@ class SwipeShow extends React.Component {
 
   renderContactSellerButton() {
     if (this.props.currentUser && this.props.currentUser.id === this.props.swipe.seller) {
-      return <div>YOU CAN'T BUY YOUR OWN SWIPES</div>
+      return <div>CAN'T BUY YOUR OWN SWIPES - no price fixing</div>
     } else {
       return <input type="button" value="Contact Seller" onClick={this.handleClick()}/>
     }

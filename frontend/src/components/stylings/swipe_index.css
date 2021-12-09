@@ -88,14 +88,14 @@
   color: #999;
 }
 
-.swipe-index-item:hover h2 {
-  /* color: black; */
-}
+/* .swipe-index-item:hover h2 {
+
+} */
 
 .swipe-index-item:hover h3 {
   color: black;
 }
-
+ 
 @keyframes up-bump {
   0% { padding-top: 2em; }
   50% { padding-top: 1.5em; }
