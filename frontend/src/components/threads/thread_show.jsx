@@ -2,6 +2,8 @@ import React from "react";
 
 import ThreadCommentListItem from "./thread_comment_list_item";
 
+import '../stylings/reset.css'
+import '../stylings/thread.css'
 
 class ThreadShow extends React.Component{
   constructor(props){
@@ -69,25 +71,27 @@ class ThreadShow extends React.Component{
     )})
 
     return(
-      <div>
+      <div className="thread-page-wrapper">
         
-        <div>
+        <div className="other-user-name">
           <h1>
             Chatting with {otherUser.username}
           </h1>
         </div>
           
-        <div>
+        <div className="comment-box">
           {commentList}
         </div>
 
-        <form onSubmit={this.handleSubmit}>
-          <label>Comment
-            <input type="text" value={this.state.comment} onChange={this.handleInput("comment")} />
-          </label>
+        <div className="comment-input-box">
+          <form onSubmit={this.handleSubmit}>
+            <label>Comment
+              <input type="text" value={this.state.comment} onChange={this.handleInput("comment")} />
+            </label>
 
-          <input type="submit" value="Send"/>
-        </form>
+            <input type="submit" value="Send"/>
+          </form>
+        </div>
       </div>
     )
   }
