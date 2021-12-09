@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import SwipeShow from './swipe_show';
 
 import {requestSwipe} from '../../actions/swipe_actions'
-import {createThread} from '../../actions/thread_actions'
+import {createThread, requestSellPostBuyerSellerThreads} from '../../actions/thread_actions'
 
 const mSTP = (state, ownProps) => ({
   swipe: state.swipes.single,
@@ -13,7 +13,9 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = (dispatch) => ({
   requestSwipe: (swipeId) => dispatch(requestSwipe(swipeId)),
-  createThread: (thread) => dispatch(createThread(thread))
+  createThread: (thread) => dispatch(createThread(thread)),
+  requestSellPostBuyerSellerThreads: (sellPostId, buyerId, sellerId) => 
+    dispatch(requestSellPostBuyerSellerThreads(sellPostId, buyerId, sellerId))
 })
 
 export default connect(mSTP, mDTP)(SwipeShow);
