@@ -56,7 +56,7 @@ class BarchartData extends React.Component {
 
 
     return (
-      <div><BarChart data = {data} /></div>
+      <div className="graph-container"><BarChart data = {data} /></div>
     )
   }
 }

@@ -1,8 +1,9 @@
 import React from "react";
-// import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom"; 
 
 const SwipeIndexItem = ({swipe}) => (
   <div className="swipe-index-item">
+    <Link to={`/swipe/${swipe._id}`}>test</Link>
     <h2>{swipe.askPrice}-{swipe.expiration}-{swipe.mealType}</h2>
     {/* <div Link to={`swipe/${swipe.id}`}> */}
       <img src="" alt="" />
