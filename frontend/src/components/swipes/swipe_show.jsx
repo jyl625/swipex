@@ -24,25 +24,27 @@ class SwipeShow extends React.Component {
     return () => {
       console.log("clicked!")
       this.props.createThread({
-        sellpost: this.props.match.params.swipeId,
+        sellPost: this.props.match.params.swipeId,
         seller: this.props.swipe.seller,
         buyer: this.props.currentUser.id
-      }).then(() => this.redirectToNewThread())
+      }).then((res) => {
+        // debugger
+        this.redirectToNewThread(res.thread.data._id)})
     }
   }
 
-  redirectToNewThread() {
-    console.log(this.props.threads)
-    let newThread
-    Object.keys(this.props.threads).forEach(threadId => {
-      const thread = this.props.threads[threadId]
-      if (thread.sellpost === this.props.match.params.swipeId) {
-        newThread = thread
-      }
-    })
-    console.log("just need to push)")
-    console.log(newThread)
-    this.props.history.push(`/threads/${newThread._id}`)
+  redirectToNewThread(newThreadId) {
+    // console.log(this.props.threads)
+    // let newThread
+    // Object.keys(this.props.threads).forEach(threadId => {
+    //   const thread = this.props.threads[threadId]
+    //   if (thread.sellPost === this.props.match.params.swipeId) {
+    //     newThread = thread
+    //   }
+    // })
+    // console.log("just need to push)")
+    // console.log(newThread)
+    this.props.history.push(`/threads/${newThreadId}`)
   }
 
   findCafeteria(cafeId) {
