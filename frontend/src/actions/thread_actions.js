@@ -36,7 +36,7 @@ export const requestThread = (threadId) => dispatch => (
     .then(thread => dispatch(receiveThread(thread)))
 )
 
-export const requestUserThread = (userId) => dispatch => (
+export const requestUserThreads = (userId) => dispatch => (
   ThreadAPIUtil.fetchUserThreads(userId)
     .then(threads => dispatch(receiveThreads(threads)))
 )

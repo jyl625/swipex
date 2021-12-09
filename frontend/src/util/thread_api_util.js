@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import axios from "axios";
 
 export const fetchThreads = () => {
@@ -20,14 +19,12 @@ export const createThread = threadData => {
 export const deleteThread = threadId => {
   return axios.delete(`api/conversations/${threadId}`);
 }
-=======
-import axios from 'axios';
 
-export const fetchUserThreads = userId => (
-  axios.get(`api/conversations/user/${userId}`)
-)
 
-export const createNewThread = threadData => (
-  axios.post('api/conversations', threadData)
-)
->>>>>>> main
+// export const fetchUserThreads = userId => (
+//   axios.get(`api/conversations/user/${userId}`)
+// )
+
+// export const createNewThread = threadData => (
+//   axios.post('api/conversations', threadData)
+// )
