@@ -20,6 +20,7 @@ import UserShowContainer from './users/user_show_container';
 
 
 import SwipesFormContainer from './swipes/swipes_form_container'
+import ThreadShowContainer from './threads/thread_show_container';
 
 const App = () => (
   <div>
@@ -32,6 +33,7 @@ const App = () => (
       <Route path="/swipe/:swipeId" component={SwipeShowContainer}/>
       <Route path="/user/:userId" component={UserShowContainer}/>
       <ProtectedRoute exact path="/createswipe" component={SwipesFormContainer} />
+      <ProtectedRoute exact path="/threads/:threadId" component={ThreadShowContainer} />
       {/* <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/new_tweet" component={TweetComposeContainer} /> */}
