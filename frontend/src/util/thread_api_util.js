@@ -16,6 +16,10 @@ export const createThread = threadData => {
   return axios.post('api/conversations/', threadData);
 }
 
+export const patchThread = threadData => {
+  return axios.patch(`api/conversations/${threadData._id}`, threadData)
+}
+
 export const deleteThread = threadId => {
   return axios.delete(`api/conversations/${threadId}`);
 }

@@ -46,6 +46,11 @@ export const createThread = (thread) => dispatch => (
     .then(thread => dispatch(receiveThread(thread)))
 )
 
+export const updateThread = (thread) => dispatch => (
+  ThreadAPIUtil.patchThread(thread)
+    // .then(thread => dispatch(receiveThread(thread)))
+)
+
 export const deleteThread = (threadId) => dispatch => (
   ThreadAPIUtil.deleteThread(threadId)
     .then(() => dispatch(removeThread(threadId)))
