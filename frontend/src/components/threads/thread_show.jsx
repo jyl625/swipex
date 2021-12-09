@@ -21,6 +21,7 @@ class ThreadShow extends React.Component{
     this.handleBuyerOffer = this.handleBuyerOffer.bind(this);
     this.handleSellerOffer = this.handleSellerOffer.bind(this);
     this.handleBuyConfirm = this.handleBuyConfirm.bind(this);
+    this.handleSellConfirm = this.handleSellConfirm.bind(this);
   }
 
   componentDidMount(){
@@ -90,10 +91,14 @@ class ThreadShow extends React.Component{
     }
     this.props.createNewExchange(newExchange)
       .then(res => {
+        const conversation = Object.assign({}, this.props.thread)
+        conversation["deal"] = this.props.thread.buyerOffer;
+        this.props.updateThread(conversation)
+      }).then(res => {
         this.setState({
           updated: this.state.updated + 1
         })
-      });;
+      })
   }
 
   handleBuyerOffer(e){
@@ -151,10 +156,10 @@ class ThreadShow extends React.Component{
     const currentBuyerOffer = (!thread.buyerOffer) ?
       0 : thread.buyerOffer;
 
-    const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal) ?
+    const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal && thread.sellerOffer) ?
       (<button onClick={this.handleBuyConfirm}>Confirm Buy</button>) : null
 
-    const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal) ?
+    const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal && thread.buyerOffer) ?
       (<button onClick={this.handleSellConfirm}>Confirm Sell</button>) : null
 
 
@@ -227,7 +232,7 @@ class ThreadShow extends React.Component{
             </div>
           </div>
 
-          <div className="thread-page-swipe-prompt">
+          <div className="thread-page-avail-prompt">
             {noLongerAvail}
             {dealSuccessMessage}
           </div>
