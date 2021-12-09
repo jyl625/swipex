@@ -3,7 +3,7 @@ import SwipeIndex from './swipe_index';
 import { requestSwipes } from "../../actions/swipe_actions";
 
 const mSTP = state => ({
-  cafeterias: state.cafeterias.all,
+  // cafeterias: state.cafeterias.all,
   swipes: state.swipes.all
 })
 

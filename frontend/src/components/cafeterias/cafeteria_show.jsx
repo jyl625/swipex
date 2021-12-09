@@ -1,5 +1,5 @@
 import React from 'react';
-import SwipeIndexContainerCopy from '../swipes/swipe_index_container_copy';
+import SwipeIndexContainer from '../swipes/swipe_index_container';
 
 import '../stylings/reset.css'
 import '../stylings/swipe_index.css'
@@ -46,13 +46,13 @@ class CafeteriaShow extends React.Component {
               {/* {cafeteria.location} - {cafeteria.name.toUpperCase()} */}
               {cafeteria.name.toUpperCase()}
             </div>
-            <SwipeIndexContainerCopy cafeteria={cafeteria} key={idx}/>
+            <SwipeIndexContainer cafeteria={cafeteria} key={idx}/>
           </div>
           
         )
       })
     } else {
-      return <div>Loading cafeterias</div>
+      return <div>Building cafeterias...</div>
     }
   }
 

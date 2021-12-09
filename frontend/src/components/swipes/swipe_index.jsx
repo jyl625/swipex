@@ -35,36 +35,35 @@ class SwipeIndex extends React.Component {
     //       })
   }
 
-  listByCafeterias() {
-    if (this.props.cafeterias.length > 0) {
-    // if (this.props.cafeterias !== []) {
-      let cafeterias = []
-      console.log(this.props.match.params.cafeteriaName)
-      if (this.props.match.params.cafeteriaName === undefined) {
-        cafeterias = [...this.props.cafeterias]
-      } else {
-        const selectedCafeteria = this.props.cafeterias.filter(cafeteria => {
-          return cafeteria.name.replace(/\s/g, "").toLowerCase() === this.props.match.params.cafeteriaName
-        })
-        cafeterias = selectedCafeteria;
-      }
-      return cafeterias.map((cafeteria, idx) => {
-        return (
-          <div className="cafeteria-container" key={idx}>
-            <div>
-              {cafeteria.location} - {cafeteria.name.toUpperCase()}
-            </div>
-            <div className="swipe-index-items-container">
-              {this.listIndexItemsByCafeterias(cafeteria._id)}
-            </div>
+  // listByCafeterias() {
 
-          </div>
-        )
-      })
-    } else {
-      return <div>Loading cafeterias</div>
-    }
-  }
+  //     let cafeterias = []
+  //     console.log(this.props.match.params.cafeteriaName)
+  //     if (this.props.match.params.cafeteriaName === undefined) {
+  //       cafeterias = [...this.props.cafeterias]
+  //     } else {
+  //       const selectedCafeteria = this.props.cafeterias.filter(cafeteria => {
+  //         return cafeteria.name.replace(/\s/g, "").toLowerCase() === this.props.match.params.cafeteriaName
+  //       })
+  //       cafeterias = selectedCafeteria;
+  //     }
+  //     return cafeterias.map((cafeteria, idx) => {
+  //       return (
+  //         <div className="cafeteria-container" key={idx}>
+  //           <div>
+  //             {cafeteria.location} - {cafeteria.name.toUpperCase()}
+  //           </div>
+  //           <div className="swipe-index-items-container">
+  //             {this.listIndexItemsByCafeterias(cafeteria._id)}
+  //           </div>
+
+  //         </div>
+  //       )
+  //     })
+  //   } else {
+  //     return <div>Loading cafeterias</div>
+  //   }
+  // }
 
   listIndexItemsByCafeterias(cafeteriaId) {
     const swipes = this.props.swipes
@@ -93,18 +92,18 @@ class SwipeIndex extends React.Component {
   }
 
   render() {
+    // return <div>{this.props.cafeteria.name}</div>
     console.log("state", this.props)
-    if (this.props.cafeterias.length > 0 && this.state.swipesLoaded) {
+    if (this.state.swipesLoaded) {
       return (
-        <div className="swipe-index-page">
-          <div className="content-wrapper"></div>
-          {
-            this.listByCafeterias()
-          }
-        </div>
+        // <div className="swipe-index">
+          <div className="swipe-index-items-container">
+            {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
+          </div>
+        // </div>
       )
     } else {
-      return <div>Loading...</div>
+      return <div>Gathering swipes...</div>
     }
   }
 }

@@ -8,7 +8,6 @@ import MainPageContainer from './main/main_page_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import SwipeShowContainer from './swipes/swipe_show_container';
-import SwipeIndexContainer from './swipes/swipe_index_container'; //can delete after cafeteria works
 import CafeteriaShowContainer from './cafeterias/cafeteria_show_container'
 import Footer from './footer/footer'
 // import ProfileContainer from './profile/profile_container';
