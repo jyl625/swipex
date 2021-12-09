@@ -22,6 +22,7 @@ class SwipeShow extends React.Component {
 
   handleClick() {
     return () => {
+
       console.log("clicked!")
       this.props.requestSellPostBuyerSellerThreads(
         this.props.match.params.swipeId,
@@ -53,6 +54,7 @@ class SwipeShow extends React.Component {
         //   this.redirectToNewThread(res.thread.data._id)
         // })
       // )
+
     }
   }
 
