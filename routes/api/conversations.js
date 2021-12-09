@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
   passport.authenticate('jwt', { session: false }),
   Conversation.find()
     .populate(
-      { path: "sellpost",
+      { path: "sellPost",
         populate: { path: 'cafeId', model: "Cafeteria", select: "name location"}
       })
     .populate("seller", "username")
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
   passport.authenticate('jwt', { session: false }),
   Conversation.findById(req.params.id)
     .populate(
-      { path: "sellpost",
+      { path: "sellPost",
         populate: { path: 'cafeId', model: "Cafeteria", select: "name location" }
       })
     .populate("seller", "username")
@@ -60,7 +60,46 @@ router.get('/user/:user_id', (req, res) => {
     );
 });
 
+//
+router.get('/user/:user_id/deal', (req, res) => {
+  passport.authenticate('jwt', { session: false }),
+  Conversation.find({
+    $and: [
+      { "$or": [{ seller: req.params.user_id }, { buyer: req.params.user_id }] },
+      { deal: { $ne: null }}
+    ]
+  })
+  .populate("seller", "username")
+  .populate("buyer", "username")
+  .populate("comments", "timeCreated")
+  .sort({ updatedAt: -1 })
+  .exec()
+  .then(conversations => res.json(conversations))
+  .catch(err =>
+    res.status(404).json({ noconversationsfound: 'No such conversations found for that user' }
+    )
+  );
+});
 
+router.get('/user/:user_id/nodeal', (req, res) => {
+  passport.authenticate('jwt', { session: false }),
+    Conversation.find({
+      $and: [
+        { "$or": [{ seller: req.params.user_id }, { buyer: req.params.user_id }] },
+        { deal: { $exists: false } }
+      ]
+    })
+      .populate("seller", "username")
+      .populate("buyer", "username")
+      .populate("comments", "timeCreated")
+      .sort({ updatedAt: -1 })
+      .exec()
+      .then(conversations => res.json(conversations))
+      .catch(err =>
+        res.status(404).json({ noconversationsfound: 'No such conversations found for that user' }
+        )
+      );
+});
 
 //create conversation
 router.post('/',
@@ -71,7 +110,7 @@ router.post('/',
     }
     
     const newConversation = new Conversation({
-      sellpost: req.body.sellpost,
+      sellPost: req.body.sellPost,
       seller: req.body.seller,
       buyer: req.body.buyer,
       timeUpdated: new Date(),
