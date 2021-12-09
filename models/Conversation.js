@@ -40,4 +40,6 @@ const ConversationSchema = new Schema(
   }
 )
 
+ConversationSchema.index({'sellPost':1, 'seller':1, 'buyer':1}, {unique: true})
+
 module.exports = Conversation = mongoose.model('Conversation', ConversationSchema);
