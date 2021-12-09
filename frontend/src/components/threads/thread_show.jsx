@@ -130,7 +130,7 @@ class ThreadShow extends React.Component{
 
 
   render(){
-    if (!this.props.thread) return null;
+    if (!this.props.thread || !this.props.thread.sellPost.cafeId) return null;
 
     const {thread, currentUser} = this.props
 
