@@ -35,7 +35,8 @@ class SwipeIndex extends React.Component {
       let filteredSwipes = this.selectSwipesByCafeterias(swipes, cafeteriaId);
       filteredSwipes = (this.filterSwipes(filteredSwipes));
       console.log(this.state.sort)
-      console.log(this.sortSwipes(filteredSwipes))
+      filteredSwipes = this.sortSwipes(filteredSwipes)
+      console.log("sorted", filteredSwipes)
       return filteredSwipes.map ((swipe, idx) => {
         return <SwipeIndexItem key={idx}swipe={swipe}/>
       })
@@ -50,19 +51,7 @@ class SwipeIndex extends React.Component {
     })
   }
   sortSwipes(swipes) {
-    switch (this.state.sort) {
-      case "new":
-        return swipes.sort((a,b) => a.timeCreated > b.timeCreated);
-      case "priceAsc":
-        return swipes.sort((a,b) => a.askPrice > b.askPrice);
-      case "priceDec":
-        return swipes.sort((a,b) => a.askPrice < b.askPrice);
-      case "exp":
-        return swipes.sort((a,b) => a.expiration < b.expiration);
-      default:
-        return [];
-    }
-    // return swipes.sort(this.sortMethod())
+    return swipes.sort(this.sortMethod())
   }
 
   sortMethod() {
@@ -71,11 +60,11 @@ class SwipeIndex extends React.Component {
       case "new":
         return (a,b) => a.timeCreated > b.timeCreated;
       case "priceAsc":
-        return (a,b) => a.askPrice > b.askPrice;
+        return (a,b) => a.askPrice - b.askPrice;
       case "priceDec":
-        return (a,b) => a.askPrice < b.askPrice;
+        return (a,b) => b.askPrice - a.askPrice;
       case "exp":
-        return (a,b) => a.expiration < b.expiration;
+        return (a,b) => new Date(a.expiration) - new Date(b.expiration);
       default:
         break;
     }
