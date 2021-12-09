@@ -36,7 +36,7 @@ function LineChart({ data }) {
       const yAxis = (g) =>
         g
           .attr("transform", `translate(${margin.left},0)`)
-          .style("color", "steelblue")
+          .style("color", "black")
           .call(d3.axisLeft(y).ticks(null, "s"))
           .call((g) => g.select(".domain").remove())
           .call((g) => g
@@ -51,15 +51,23 @@ function LineChart({ data }) {
       svg.select(".x-axis").call(xAxis);
       svg.select(".y-axis").call(yAxis);
 
+      // var dataSum = d3.sum(data, function (d) {
+      //   return d.closePrice;
+      // });
+
       svg.append("path")
         .datum(data)
         .attr("fill", "none")
-        .attr("stroke", "steelblue")
+        .attr("stroke", "#09A603")
         .attr("stroke-width", 1.5)
         .attr("d", d3.line()
           .x(function (d) { return x(d.preDate) })
           .y(function (d) { return y(d.closePrice) })
         )
+        // .attr("d2", d3.line()
+        //   .x(function (d) { return x(d.preDate) })
+        //   .y(function (d) { return y(dataSum / d.length) })
+        // )
 
     },
     [data.length]

@@ -40,7 +40,7 @@ function BarChart({ data }) {
       const y1Axis = (g) =>
         g
           .attr("transform", `translate(${margin.left},0)`)
-          .style("color", "steelblue")
+          .style("color", "black")
           .call(d3.axisLeft(y1).ticks(null, "s"))
           .call((g) => g.select(".domain").remove())
           .call((g) =>g
@@ -57,11 +57,17 @@ function BarChart({ data }) {
 
       svg
         .select(".plot-area")
-        .attr("fill", "steelblue")
         .selectAll(".bar")
         .data(data)
         .join("rect")
         .attr("class", "bar")
+        .attr("fill", function (d) { 
+          if (d.amount > 7){
+            return "#09A603"
+          }else if (d.amount > 3 && d.amount <= 7){
+            return "#5DD959"
+          }else
+          {return "#B5F2B3" }})
         .attr("x", (d) => x(d.preDate))
         .attr("width", x.bandwidth())
         .attr("y", (d) => y1(d.amount))
