@@ -22,13 +22,39 @@ class SwipeShow extends React.Component {
 
   handleClick() {
     return () => {
-      this.props.createThread({
-        sellPost: this.props.match.params.swipeId,
-        seller: this.props.swipe.seller,
-        buyer: this.props.currentUser.id
-      }).then((res) => {
-        // debugger
-        this.redirectToNewThread(res.thread.data._id)})
+
+      console.log("clicked!")
+      this.props.requestSellPostBuyerSellerThreads(
+        this.props.match.params.swipeId,
+        this.props.currentUser.id,
+        this.props.swipe.seller
+      ).then((res) => {
+        debugger
+        if (res.thread.data) {
+          return this.redirectToNewThread(res.thread.data._id)
+        } else {
+          this.props.createThread({
+          sellPost: this.props.match.params.swipeId,
+          seller: this.props.swipe.seller,
+          buyer: this.props.currentUser.id
+        }).then((res) => {
+          // debugger
+          this.redirectToNewThread(res.thread.data._id)
+        })
+        }
+
+        })
+      // .catch(
+        // this.props.createThread({
+        //   sellPost: this.props.match.params.swipeId,
+        //   seller: this.props.swipe.seller,
+        //   buyer: this.props.currentUser.id
+        // }).then((res) => {
+        //   // debugger
+        //   this.redirectToNewThread(res.thread.data._id)
+        // })
+      // )
+
     }
   }
 
