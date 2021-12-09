@@ -1,9 +1,9 @@
-import {useD3} from '../hooks/useD3';
+import { useD3 } from '../hooks/useD3';
 import React from 'react';
 import * as d3 from 'd3';
 import { scaleTime } from 'd3-scale'
 
-function BarChart({ data }) {
+function LineChart({ data }) {
   const ref = useD3(
     (svg) => {
       const height = 500;
@@ -15,14 +15,10 @@ function BarChart({ data }) {
         .domain(Array.from({ length: 30 }, (_, i) => i + 1))
         .rangeRound([margin.left, width - margin.right])
         .padding(0.1);
-      // const x = d3.scaleTime()
-      //   .domain([new preDate(2021, 11, 1), new preDate(2021, 11, 4)])
-      //   .rangeRound([margin.left, width - margin.right])
-      //   .padding(0.1);
 
-      const y1 = d3
+      const y = d3
         .scaleLinear()
-        .domain([0, d3.max(data, (d) => d.amount)])
+        .domain([0, d3.max(data, (d) => d.closePrice)])
         .rangeRound([height - margin.bottom, margin.top]);
 
       const xAxis = (g) =>
@@ -37,36 +33,34 @@ function BarChart({ data }) {
             .tickSizeOuter(0)
         );
 
-      const y1Axis = (g) =>
+      const yAxis = (g) =>
         g
           .attr("transform", `translate(${margin.left},0)`)
           .style("color", "steelblue")
-          .call(d3.axisLeft(y1).ticks(null, "s"))
+          .call(d3.axisLeft(y).ticks(null, "s"))
           .call((g) => g.select(".domain").remove())
-          .call((g) =>g
-              .append("text")
-              .attr("x", -margin.left)
-              .attr("y", 10)
-              .attr("fill", "currentColor")
-              .attr("text-anchor", "start")
-              .text(data.y1)
+          .call((g) => g
+            .append("text")
+            .attr("x", -margin.left)
+            .attr("y", 10)
+            .attr("fill", "currentColor")
+            .attr("text-anchor", "start")
+            .text(data.y)
           );
 
       svg.select(".x-axis").call(xAxis);
-      svg.select(".y-axis").call(y1Axis);
+      svg.select(".y-axis").call(yAxis);
 
-      svg
-        .select(".plot-area")
-        .attr("fill", "steelblue")
-        .selectAll(".bar")
-        .data(data)
-        .join("rect")
-        .attr("class", "bar")
-        .attr("x", (d) => x(d.preDate))
-        .attr("width", x.bandwidth())
-        .attr("y", (d) => y1(d.amount))
-        .attr("height", (d) => y1(0) - y1(d.amount));
-        
+      svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "steelblue")
+        .attr("stroke-width", 1.5)
+        .attr("d", d3.line()
+          .x(function (d) { return x(d.preDate) })
+          .y(function (d) { return y(d.closePrice) })
+        )
+
     },
     [data.length]
   );
@@ -88,4 +82,4 @@ function BarChart({ data }) {
   );
 }
 
-export default BarChart;
+export default LineChart;
