@@ -1,7 +1,7 @@
 
 import { RECEIVE_USER_EXCHANGES, RECEIVE_EXCHANGES } from "../actions/exchange_actions";
 
-const ExchangesReducer = (state = { all: [], user: {}, new: undefined }, action) => {
+const ExchangesReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
   Object.freeze(state);
   const nextState = Object.assign({}, state);
   

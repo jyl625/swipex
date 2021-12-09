@@ -17,9 +17,9 @@ class SwipeIndex extends React.Component {
   listIndexItems() {
     
 
-    this.props.swipes.map(swipe => {
+    this.props.swipes.map((swipe, idx) => {
     // this.props.swipes.map((swipe, idx) => {
-            return <li key={swipe.id}>
+            return <li key={idx}>
               <SwipeIndexItem swipe={swipe}/>
             </li>
           })

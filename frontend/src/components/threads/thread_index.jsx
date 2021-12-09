@@ -1,6 +1,9 @@
 import React from 'react';
 import ThreadIndexItem from './thread_index_item';
 
+import '../stylings/reset.css'
+import '../stylings/user_show.css'
+
 class ThreadIndex extends React.Component {
  
   componentDidMount() {
@@ -12,9 +15,9 @@ class ThreadIndex extends React.Component {
       return 'loading threads';
     console.log(this.props.threads)
     return (
-      <div>
+      <div className="usershow-item">
         <h1>Past Conversation of {this.props.user.username}</h1>
-        <div>
+        <div className="thread-index-container">
         {
           this.props.threads.map(thread => (
             <ThreadIndexItem key={thread.id} thread={thread}/>
