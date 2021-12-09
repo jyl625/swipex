@@ -3,9 +3,11 @@ import React from 'react';
 import '../stylings/reset.css'
 import '../stylings/swipe_form.css'
 
-class SwipeForm extends React.Component {
+class SwipesEditFormThread extends React.Component {
   constructor(props) {
     super(props);
+
+    //passing in.. swipeId -> use requestSwipe(swipeId)
 
     this.state = {
       askPrice: Number(0).toFixed(2),
@@ -18,10 +20,22 @@ class SwipeForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.props.requestSwipe(this.props.swipeId).then(() => {
+      this.setState({
+      askPrice: Number(this.props.swipe.askPrice).toFixed(2),
+      expiration: new Date(this.props.swipe.expiration), // date needed "1999-20-20" format
+      cafeId: this.props.swipe.cafeId,
+      mealType: this.props.swipe.mealType,
+      meetingDateTime: new Date(this.props.swipe.meetingDateTime) //
+      })
+    })
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     let swipe = {
-      seller: this.props.currentUser.id,
+      seller: "61aed27a42cc3cab7be395a9",
       askPrice: this.state.askPrice.toString(),
       expiration: this.state.expiration.toString(),
       cafeId: this.state.cafeId,
@@ -82,7 +96,7 @@ class SwipeForm extends React.Component {
   }
 
   render() {
-    // console.log(this.state)
+    console.log(this.state)
     return (
       <div className="swipe-form-main">
         <div className="swipe-form-wrapper">
@@ -133,4 +147,4 @@ class SwipeForm extends React.Component {
   }
 }
 
-export default SwipeForm;
+export default SwipesEditFormThread;
