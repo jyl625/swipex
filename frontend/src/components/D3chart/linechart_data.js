@@ -137,7 +137,7 @@ class LinechartData extends React.Component {
     // if (this.props.exchanges === []) return "";
     if (this.state.exchangeDataLoaded) {
       return (
-        <div><LineChart data={this.state.data} /></div>
+        <div className="graph-container"><LineChart data={this.state.data} /></div>
       )
     } else {
       return (
