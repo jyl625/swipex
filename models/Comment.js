@@ -17,11 +17,10 @@ const CommentSchema = new Schema(
     content: {
       type: String,
       required: true
-    },
-    timeCreated: {
-      type: Date,
-      default: new Date()
     }
+  },
+  {
+    timestamps: true
   }
 )
 

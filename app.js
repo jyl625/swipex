@@ -7,7 +7,9 @@ const users = require("./routes/api/users");
 const cafeterias = require('./routes/api/cafeterias')
 const sellposts = require('./routes/api/sellposts')
 const conversations = require('./routes/api/conversations');
-const comments = require("./routes/api/comments")
+const ratings = require('./routes/api/ratings')
+const comments = require('./routes/api/comments');
+const exchanges = require("./routes/api/exchanges")
 
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -38,7 +40,9 @@ app.use("/api/users", users);
 app.use("/api/cafeterias", cafeterias);
 app.use("/api/sellposts", sellposts);
 app.use("/api/conversations", conversations);
-app.use("/api/comments", comments)
+app.use("/api/ratings", ratings);
+app.use("/api/comments", comments);
+app.use("/api/exchanges", exchanges);
 
 
 

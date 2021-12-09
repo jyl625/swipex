@@ -1,0 +1,36 @@
+.thread-page-wrapper{
+  width: 400px;
+  margin: 0 auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.other-user-name{
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px black solid;
+}
+
+.otherUser{
+  display: flex;
+  justify-content: flex-start;
+  color: green
+}
+
+.currentUser{
+  display: flex;
+  justify-content: flex-end;
+  color:orange;
+}
+
+.comment-input-box{
+  margin-top: 8px;
+  border-top: 1px black solid;
+  padding: 32px 0;
+  display: flex;
+  justify-content: center;
+}

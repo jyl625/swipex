@@ -24,7 +24,7 @@ router.post('/',
 //get all cafeteria
 router.get('/', (req, res) => {
   Cafeteria.find()
-    .then(cafeteria => res.json(cafeteria))
+    .then(cafeterias => res.json(cafeterias))
     .catch(err => res.status(404).json({ nocafeteriafound: 'No cafeterias found' }));
 });
 
