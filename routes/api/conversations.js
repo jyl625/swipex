@@ -12,6 +12,10 @@ router.get("/test", (req, res) => res.json({ msg: "This is the conversations rou
 router.get('/', (req, res) => {
   passport.authenticate('jwt', { session: false }),
   Conversation.find()
+    .populate(
+      { path: "sellpost",
+        populate: { path: 'cafeId', model: "Cafeteria", select: "name location"}
+      })
     .populate("seller", "username")
     .populate("buyer", "username")
     .populate("comments", "commentor content timeCreated")
@@ -25,6 +29,10 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   passport.authenticate('jwt', { session: false }),
   Conversation.findById(req.params.id)
+    .populate(
+      { path: "sellpost",
+        populate: { path: 'cafeId', model: "Cafeteria", select: "name location" }
+      })
     .populate("seller", "username")
     .populate("buyer", "username")
     .populate("comments", "commentor content timeCreated")
@@ -53,6 +61,7 @@ router.get('/user/:user_id', (req, res) => {
 });
 
 
+
 //create conversation
 router.post('/',
   passport.authenticate('jwt', { session: false }),
@@ -73,17 +82,18 @@ router.post('/',
 );
 
 // update conversation
-// router.patch('/:id',
-//   // passport.authenticate('jwt', { session: false }),
-//   (req, res) => {
-//     console.log(req)
-//     let comment = req.body.comments[0];
-//     Conversation.findByIdAndUpdate(req.params.id,
-//       {"$push": { "comments": comment }})
-//       .then(conversation => res.json(conversation))
-//       .catch(err => res.status(404).json({ error: err }))
-//   }
-// );
+router.patch('/:id',
+  passport.authenticate('jwt', { session: false }),
+  (req, res) => {
+    Conversation.findById(req.params.id, (err, conversation) => {
+      for (let field in req.body) {
+        conversation[field] = req.body[field];
+      }
+      conversation.save()
+        .then(conversation => res.json(conversation));
+    })
+  }
+);
 
 
 //delete conversation by conversationId
