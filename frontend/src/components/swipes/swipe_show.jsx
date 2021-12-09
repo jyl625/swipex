@@ -9,6 +9,9 @@ class SwipeShow extends React.Component {
     this.state = {
       swipeLoaded: false
     }
+
+    this.handleClick = this.handleClick.bind(this)
+    this.redirectToNewThread = this.redirectToNewThread.bind(this)
   }
 
   componentDidMount() {
@@ -19,8 +22,27 @@ class SwipeShow extends React.Component {
 
   handleClick() {
     return () => {
-      return console.log("clicked!")
+      console.log("clicked!")
+      this.props.createThread({
+        sellpost: this.props.match.params.swipeId,
+        seller: this.props.swipe.seller,
+        buyer: this.props.currentUser.id
+      }).then(() => this.redirectToNewThread())
     }
+  }
+
+  redirectToNewThread() {
+    console.log(this.props.threads)
+    let newThread
+    Object.keys(this.props.threads).forEach(threadId => {
+      const thread = this.props.threads[threadId]
+      if (thread.sellpost === this.props.match.params.swipeId) {
+        newThread = thread
+      }
+    })
+    console.log("just need to push)")
+    console.log(newThread)
+    this.props.history.push(`/threads/${newThread._id}`)
   }
 
   findCafeteria(cafeId) {
