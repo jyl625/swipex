@@ -1,7 +1,6 @@
 import React from "react";
 
 import ThreadCommentListItem from "./thread_comment_list_item";
-import SwipesEditFormThreadContainer from '../swipes/swipes_edit_form_thread_container'
 
 import '../stylings/reset.css'
 import '../stylings/thread.css'
@@ -92,9 +91,6 @@ class ThreadShow extends React.Component{
 
             <input type="submit" value="Send"/>
           </form>
-        </div>
-        <div>
-          <SwipesEditFormThreadContainer swipeId={this.props.thread.sellpost}/>
         </div>
       </div>
     )
