@@ -17,11 +17,11 @@ class UserShow extends React.Component {
 
     if (!this.props.user) 
       return 'loading user'
-      
+
     return (
       <div className="usershow-main">
         <div className="usershow-wrapper">
-          <h1>{this.props.user.username}'s Profile</h1>
+          <div className="title">{this.props.user.username}'s Profile</div>
           <div className="usershow-column">
             <ThreadIndexCurrentContainer user={this.props.user}/>
             <ThreadIndexCurrentContainer user={this.props.user}/>

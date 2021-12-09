@@ -3,7 +3,6 @@ import { RECEIVE_NEW_SWIPE, RECEIVE_SWIPES, RECEIVE_USER_SWIPES, RECEIVE_SWIPE }
 
 const SwipesReducer = (state = { all: {}, user: {}, new: undefined, single: {} }, action) => {
   const nextState = Object.assign({}, state);
-  console.log(action.swipes)
   switch(action.type) {
     case RECEIVE_SWIPE:
       nextState.single = action.swipe.data;

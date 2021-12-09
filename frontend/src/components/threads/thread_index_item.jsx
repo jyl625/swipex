@@ -1,9 +1,8 @@
 import React from 'react';
 
 const ThreadIndexItem = ({thread}) => {
-  console.log(thread)
   return (
-  <div className="thread-index-item">
+  <div className="messages">
     <p>Sold to: {thread.buyer.username}</p>
     <ul>Comments: 
       {thread.comments.map(comment => (

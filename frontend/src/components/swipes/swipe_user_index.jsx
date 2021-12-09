@@ -15,9 +15,9 @@ class SwipeUserIndex extends React.Component {
     if (Object.keys(this.props.swipes).length === 0)
       return 'loading swipes'
     return (
-      <div className="usershow-item">
-        <h1>{this.props.user.username}</h1>
-        <div className="swipe-user-index">
+      <div className="usershow-item-container">
+        <div className="usershow-item-title">{this.props.user.username}</div>
+        <div className="usershow-item">
           { 
             this.props.swipes.map(swipe => (
               <SwipeUserIndexItem swipe={swipe}/>

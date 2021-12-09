@@ -13,9 +13,9 @@ class ExchangeIndex extends React.Component {
     if (this.props.exchanges.length === 0)
       return 'loading exchanges'
     return (
-      <div className="usershow-item">
-        <h1>Past Sales Posts from {this.props.user.username}</h1>
-        <div className="exchange-index-container">
+      <div className="usershow-item-container">
+        <div className="usershow-item-title">Past Sales Posts from {this.props.user.username}</div>
+        <div className="usershow-item">
           {
             this.props.exchanges.map(exchange => (
               <ExchangeIndexItem exchange={exchange}/>

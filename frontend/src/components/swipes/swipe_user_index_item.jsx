@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SwipeUserIndexItem = ({swipe}) => (
-  <div className="swipe-user-index-item">
+  <div className="messages">
     <li key={swipe.sellPost}>
       <p>Seller: {swipe.seller}</p>
       <p>MealType: {swipe.mealType}</p>
