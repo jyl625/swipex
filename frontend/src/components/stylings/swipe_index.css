@@ -12,7 +12,8 @@
 .cafeteria-container {
   width: 80%;
   height: fit-content;
-  margin: 2em auto;
+  margin: 0 auto;
+  padding: 52px 0;
   max-width: 1600px;
   /* background-color: green; */
   /* display: flex;
@@ -78,14 +79,21 @@
   background-position: 100% 100%;
   animation: up-bump 0.1s ease;
 }
+
+.swipe-index-item h1 {
+  font-size: 48px;
+}
+
+.swipe-index-item h3 {
+  color: #999;
+}
+
 .swipe-index-item:hover h2 {
   /* color: black; */
 }
-.swipe-index-item:hover h2 span {
-  color: white;
-}
+
 .swipe-index-item:hover h3 {
-  color: #999;
+  color: black;
 }
 
 @keyframes up-bump {

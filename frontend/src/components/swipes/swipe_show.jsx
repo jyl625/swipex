@@ -72,6 +72,7 @@ class SwipeShow extends React.Component {
             <div>{this.props.swipe.expiration}</div>
             <div>{this.props.swipe.seller}</div>
             <div>{this.props.swipe.timeCreated}</div>
+            <div>{this.props.swipe.meetingTime}</div>
           </div>
           {this.renderContactSellerButton()}
         </div>
