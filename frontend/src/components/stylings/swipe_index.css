@@ -88,9 +88,9 @@
   color: #999;
 }
 
-.swipe-index-item:hover h2 {
-  /* color: black; */
-}
+/* .swipe-index-item:hover h2 {
+
+} */
 
 .swipe-index-item:hover h3 {
   color: black;
