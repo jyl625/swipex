@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
-import { requestThread, requestUserThread } from "../../actions/thread_actions";
+import { requestThread, updateThread } from "../../actions/thread_actions";
 import ThreadShow from "./thread_show";
 import { createComment } from "../../actions/comment_actions";
+import { createNewExchange } from "../../actions/exchange_actions";
 
 const mSTP = (state, ownProps) => ({
   thread: state.threads[ownProps.match.params.threadId],
@@ -10,7 +11,9 @@ const mSTP = (state, ownProps) => ({
 
 const mDTP = (dispatch) => ({
   requestThread: (threadId) => dispatch(requestThread(threadId)),
-  createComment: (comment) => dispatch(createComment(comment))
+  updateThread: (thread) => dispatch(updateThread(thread)),
+  createComment: (comment) => dispatch(createComment(comment)),
+  createNewExchange: (exchange) => dispatch(createNewExchange(exchange))
 })
 
 export default connect(mSTP, mDTP)(ThreadShow);
