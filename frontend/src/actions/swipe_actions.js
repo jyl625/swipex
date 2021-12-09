@@ -44,7 +44,7 @@ export const requestSwipes = () => dispatch => (
 
 export const requestSwipe = swipeId => dispatch => (
   fetchSwipe(swipeId)
-  .then(swipe => dispatch(receiveNewSwipe(swipe)))
+  .then(swipe => dispatch(receiveSwipe(swipe)))
   .catch(err => console.log(err))
 )
 

@@ -1,0 +1,108 @@
+/* Includes css for both cafeteria and swipe index */
+
+/* Cafeteria Show Page CSS */
+.cafeteria-show-page {
+  background-color: white;
+  height: fit-content;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+.cafeteria-container {
+  width: 80%;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 52px 0;
+  max-width: 1600px;
+  /* background-color: green; */
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px 5%; */
+}
+
+.cafeteria-name {
+  font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 52px;
+  font-weight: bold;
+  color: #09A603
+}
+
+.swipe-index {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 1600px;
+  background-color: blue;
+  display: flex;
+  justify-content: center;
+}
+
+
+.swipe-index-items-container {
+  width: 100%;
+  margin: 2em auto 4em;
+  padding: 2em;
+  padding-left: 10%;
+  max-width: 1600px;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: left; */
+  column-count: 2;
+  gap: 80px 10%;
+}
+
+.swipe-index-item {
+  display: inline-block;
+  height: 16em;
+  width: 24em;
+  margin-top: 2em;
+  padding: 2em;
+  /* background-color: #B5F2B3; */
+  border-radius: 25px;
+  border: 1px solid black;
+  box-shadow: 4px 4px #888888;
+
+  font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-weight: bold;
+  color: black;
+  background: linear-gradient(
+     white, white 50%, #B5F2B3 50%, #B5F2B3
+  );
+  background-size: 100% 202%;
+  transition: all 0.1s ease;
+  animation: down-bump 0.1s ease;
+  cursor: pointer;
+}
+
+.swipe-index-item:hover {
+  background-position: 100% 100%;
+  animation: up-bump 0.1s ease;
+}
+
+.swipe-index-item h1 {
+  font-size: 48px;
+}
+
+.swipe-index-item h3 {
+  color: #999;
+}
+
+/* .swipe-index-item:hover h2 {
+
+} */
+
+.swipe-index-item:hover h3 {
+  color: black;
+}
+ 
+@keyframes up-bump {
+  0% { padding-top: 2em; }
+  50% { padding-top: 1.5em; }
+  100% { padding-top: 2em; }
+}
+@keyframes down-bump {
+  0% { padding-top: 2em; }
+  50% { padding-top: 2.5em; }
+  100% { padding-top: 2em; }
+}

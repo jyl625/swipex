@@ -1,26 +1,59 @@
-import { fetchUserThreads, createNewThread } from '../util/thread_api_util';
+import * as ThreadAPIUtil from "../util/thread_api_util";
 
+export const RECEIVE_THREADS = "RECEIVE_THREADS";
+export const RECEIVE_THREAD = "RECEIVE_THREAD";
 export const RECEIVE_USER_THREADS = "RECEIVE_USER_THREADS";
-export const RECEIVE_NEW_THREAD = "RECEIVE_NEW_THREAD";
+export const REMOVE_THREAD = "REMOVE_THREAD";
 
-export const receiveUserThreads = threads => ({
-  type: RECEIVE_USER_THREADS,
+export const receiveThreads = (threads) => ({
+  type: RECEIVE_THREADS,
   threads
 })
 
-export const receiveNewThread = thread => ({
-  type: RECEIVE_NEW_THREAD,
+export const receiveThread = (thread) => ({
+  type: RECEIVE_THREAD,
   thread
 })
 
-export const requestUserThreads = userId => dispatch => (
-  fetchUserThreads(userId)
-  .then(threads => dispatch(receiveUserThreads(threads)))
-  .catch(err => console.log(err))
+export const receiveUserThreads = (userThreads) => ({
+  type: RECEIVE_USER_THREADS,
+  userThreads
+})
+
+export const removeThread = (threadId) => ({
+  type: REMOVE_THREAD,
+  threadId
+})
+
+
+export const requestThreads = () => dispatch => (
+  ThreadAPIUtil.fetchThreads()
+    .then(threads => dispatch(receiveThreads(threads)))
 )
 
-export const requestNewThread = threadData => dispatch => (
-  createNewThread(threadData)
-  .then(thread => dispatch(receiveNewThread(thread)))
-  .catch(err => console.log(err))
+export const requestThread = (threadId) => dispatch => (
+  ThreadAPIUtil.fetchThread(threadId)
+    .then(thread => dispatch(receiveThread(thread)))
 )
+
+export const requestUserThreads = (userId) => dispatch => (
+  ThreadAPIUtil.fetchUserThreads(userId)
+    .then(threads => dispatch(receiveThreads(threads)))
+)
+
+export const createThread = (thread) => dispatch => (
+  ThreadAPIUtil.createThread(thread)
+    .then(thread => dispatch(receiveThread(thread)))
+)
+
+export const updateThread = (thread) => dispatch => (
+  ThreadAPIUtil.patchThread(thread)
+    // .then(thread => dispatch(receiveThread(thread)))
+)
+
+export const deleteThread = (threadId) => dispatch => (
+  ThreadAPIUtil.deleteThread(threadId)
+    .then(() => dispatch(removeThread(threadId)))
+)
+
+

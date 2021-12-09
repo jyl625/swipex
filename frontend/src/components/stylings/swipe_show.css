@@ -1,0 +1,14 @@
+.swipe-show-page {
+  background-color: white;
+  height: fit-content;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1600px;
+}
+
+.swipe-info-container {
+  width: 80%;
+  height: fit-content;
+  margin: 2em auto;
+  max-width: 1600px;
+}

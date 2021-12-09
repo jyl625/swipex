@@ -10,7 +10,8 @@ const ExchangeSchema = new Schema(
     },
     sellPost: {
       type: Schema.Types.ObjectId,
-      ref: "SellPost"
+      ref: "SellPost",
+      unique: true
     },
     seller: {
       type: Schema.Types.ObjectId,
