@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router";
+
 
 import ThreadCommentListItem from "./thread_comment_list_item";
 
@@ -25,8 +27,6 @@ class ThreadShow extends React.Component{
   }
 
   componentDidMount(){
-    // setInterval(
-    // ()=>this.props.requestThread(this.props.match.params.threadId), 1000) 
     this.props.requestThread(this.props.match.params.threadId)
       .then((res) => this.setState({sellerOffer: res.thread.data.sellPost.askPrice}))
   }
@@ -310,7 +310,7 @@ class ThreadShow extends React.Component{
   }
 }
 
-export default ThreadShow;
+export default withRouter(ThreadShow);
 
 
 
