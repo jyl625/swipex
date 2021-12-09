@@ -22,27 +22,54 @@ class SwipeShow extends React.Component {
 
   handleClick() {
     return () => {
+
       console.log("clicked!")
-      this.props.createThread({
-        sellpost: this.props.match.params.swipeId,
-        seller: this.props.swipe.seller,
-        buyer: this.props.currentUser.id
-      }).then(() => this.redirectToNewThread())
+      this.props.requestSellPostBuyerSellerThreads(
+        this.props.match.params.swipeId,
+        this.props.currentUser.id,
+        this.props.swipe.seller
+      ).then((res) => {
+        debugger
+        if (res.thread.data) {
+          return this.redirectToNewThread(res.thread.data._id)
+        } else {
+          this.props.createThread({
+          sellPost: this.props.match.params.swipeId,
+          seller: this.props.swipe.seller,
+          buyer: this.props.currentUser.id
+        }).then((res) => {
+          // debugger
+          this.redirectToNewThread(res.thread.data._id)
+        })
+        }
+
+        })
+      // .catch(
+        // this.props.createThread({
+        //   sellPost: this.props.match.params.swipeId,
+        //   seller: this.props.swipe.seller,
+        //   buyer: this.props.currentUser.id
+        // }).then((res) => {
+        //   // debugger
+        //   this.redirectToNewThread(res.thread.data._id)
+        // })
+      // )
+
     }
   }
 
-  redirectToNewThread() {
-    console.log(this.props.threads)
-    let newThread
-    Object.keys(this.props.threads).forEach(threadId => {
-      const thread = this.props.threads[threadId]
-      if (thread.sellpost === this.props.match.params.swipeId) {
-        newThread = thread
-      }
-    })
-    console.log("just need to push)")
-    console.log(newThread)
-    this.props.history.push(`/threads/${newThread._id}`)
+  redirectToNewThread(newThreadId) {
+    // console.log(this.props.threads)
+    // let newThread
+    // Object.keys(this.props.threads).forEach(threadId => {
+    //   const thread = this.props.threads[threadId]
+    //   if (thread.sellPost === this.props.match.params.swipeId) {
+    //     newThread = thread
+    //   }
+    // })
+    // console.log("just need to push)")
+    // console.log(newThread)
+    this.props.history.push(`/threads/${newThreadId}`)
   }
 
   findCafeteria(cafeId) {

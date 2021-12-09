@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const SellPost = require("mongoose").model("SellPost")
 
 const ExchangeSchema = new Schema(
   {
@@ -26,5 +26,15 @@ const ExchangeSchema = new Schema(
     timestamps: true
   }
 )
+
+ExchangeSchema.statics.findByCafeId = function(cafeId){
+  const query = this.findOne();
+  SellPost.findOne({"cafeId": cafeId}, function(error, sellPost){
+    query.where(
+      {sellPost: mongoose.Types.ObjectId(sellPost._id)}
+    ).exec()
+  })
+  return query;
+}
 
 module.exports = Exchange = mongoose.model('Exchange', ExchangeSchema);
