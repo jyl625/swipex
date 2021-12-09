@@ -12,11 +12,11 @@ function BarChart({ data }) {
 
       const x = d3
         .scaleBand()
-        .domain(data.map((d) => d.date))
+        .domain(Array.from({ length: 30 }, (_, i) => i + 1))
         .rangeRound([margin.left, width - margin.right])
         .padding(0.1);
       // const x = d3.scaleTime()
-      //   .domain([new Date(2021, 11, 1), new Date(2021, 11, 4)])
+      //   .domain([new preDate(2021, 11, 1), new preDate(2021, 11, 4)])
       //   .rangeRound([margin.left, width - margin.right])
       //   .padding(0.1);
 
@@ -63,10 +63,11 @@ function BarChart({ data }) {
         .data(data)
         .join("rect")
         .attr("class", "bar")
-        .attr("x", (d) => x(d.date))
+        .attr("x", (d) => x(d.preDate))
         .attr("width", x.bandwidth())
         .attr("y", (d) => y1(d.closePrice))
         .attr("height", (d) => y1(0) - y1(d.closePrice));
+        
     },
     [data.length]
   );
