@@ -61,4 +61,5 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch
   window.login = login
   window.axios = axios
+  window.getState = store.getState
 });

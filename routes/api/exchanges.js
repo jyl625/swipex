@@ -23,6 +23,15 @@ router.get('/:id', (req, res) => {
     );
 });
 
+//get exchange by userId
+router.get('/user/:user_id', (req, res) => {
+  Exchange.find({ seller: req.params.user_id })
+    .then(exchanges => res.json(exchanges))
+    .catch(err =>
+      res.status(404).json({ noexchangesfound: 'No exchange found'})    
+    )
+})
+
 
 //create exchange
 router.post('/',
