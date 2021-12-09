@@ -65,7 +65,7 @@ class ThreadShow extends React.Component{
     e.preventDefault();
     const newExchange = {
       closePrice: this.props.thread.sellerOffer,
-      sellPost: this.props.thread.sellpost._id,
+      sellPost: this.props.thread.sellPost._id,
       seller: this.props.thread.buyer._id,
       buyer: this.props.thread.seller._id
     }
@@ -85,7 +85,7 @@ class ThreadShow extends React.Component{
     e.preventDefault();
     const newExchange = {
       closePrice: this.props.thread.buyerOffer,
-      sellPost: this.props.thread.sellpost._id,
+      sellPost: this.props.thread.sellPost._id,
       seller: this.props.thread.buyer._id,
       buyer: this.props.thread.seller._id
     }
@@ -151,7 +151,7 @@ class ThreadShow extends React.Component{
     )})
 
     const currentSellerOffer = (!thread.sellerOffer) ? 
-      thread.sellpost.askPrice : thread.sellerOffer;
+      thread.sellPost.askPrice : thread.sellerOffer;
 
     const currentBuyerOffer = (!thread.buyerOffer) ?
       0 : thread.buyerOffer;
@@ -164,10 +164,10 @@ class ThreadShow extends React.Component{
 
 
     const buyOfferPrice = (thread.buyerOffer) ? 
-      thread.buyerOffer : thread.sellpost.askPrice
+      thread.buyerOffer : thread.sellPost.askPrice
 
     const sellOfferPrice = (thread.sellerOffer) ?
-      thread.sellerOffer : thread.sellpost.askPrice
+      thread.sellerOffer : thread.sellPost.askPrice
 
     const buyOfferInput = (thread.buyer.username === currentUser.username && !thread.deal) ?
       (<div className="buyer-offer-input">
@@ -196,7 +196,7 @@ class ThreadShow extends React.Component{
       </div>) : null
 
       
-    const noLongerAvail = (!thread.sellpost.open && !thread.deal) ? 
+    const noLongerAvail = (!thread.sellPost.open && !thread.deal) ? 
       (<div>This swipe is no longer available</div>) : null
     
     const dealSuccessMessage = (thread.deal) ?
@@ -216,19 +216,19 @@ class ThreadShow extends React.Component{
         <div className="thread-page-main">
           <div className="thread-page-swipe-details">
             <div>
-              Asking Price: {thread.sellpost.askPrice}
+              Asking Price: {thread.sellPost.askPrice}
             </div>
             <div>
-              Expiration: {thread.sellpost.expiration}
+              Expiration: {thread.sellPost.expiration}
             </div>
             <div>
-              Cafeteria: {thread.sellpost.mealType}
+              Cafeteria: {thread.sellPost.mealType}
             </div>
             <div>
-              {thread.sellpost.cafeId.name}
+              {thread.sellPost.cafeId.name}
             </div>
             <div>
-              {thread.sellpost.cafeId.location}
+              {thread.sellPost.cafeId.location}
             </div>
           </div>
 
