@@ -1,13 +1,13 @@
 import React from 'react';
-
-import '../stylings/swipe_show.css'
+import '../stylings/swipe_show.css';
+import { withRouter } from "react-router";
 
 class SwipeShow extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      swipeLoaded: false
+      swipeLoaded: true
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -15,9 +15,9 @@ class SwipeShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.requestSwipe(this.props.match.params.swipeId).then(() => {
-      this.setState({swipeLoaded: true})
-    })
+    // this.props.requestSwipe(this.props.match.params.swipeId).then(() => {
+    //   this.setState({swipeLoaded: true})
+    // })
   }
 
   handleClick() {
@@ -25,7 +25,7 @@ class SwipeShow extends React.Component {
 
       console.log("clicked!")
       this.props.requestSellPostBuyerSellerThreads(
-        this.props.match.params.swipeId,
+        this.props.swipe._id,
         this.props.currentUser.id,
         this.props.swipe.seller
       ).then((res) => {
@@ -34,11 +34,10 @@ class SwipeShow extends React.Component {
           return this.redirectToNewThread(res.thread.data._id)
         } else {
           this.props.createThread({
-          sellPost: this.props.match.params.swipeId,
+          sellPost: this.props.swipe._id,
           seller: this.props.swipe.seller,
           buyer: this.props.currentUser.id
         }).then((res) => {
-          // debugger
           this.redirectToNewThread(res.thread.data._id)
         })
         }
@@ -88,18 +87,36 @@ class SwipeShow extends React.Component {
     }
   }
 
+  parseTimeString = (timeStr) => {
+    const dateObj = new Date(timeStr)
+    const dateString = dateObj.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+      weekday: 'short',
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+    const timeString = dateObj.toLocaleTimeString("en-US", {
+      timeZone: "America/Los_Angeles",
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+    return `${dateString} at ${timeString}`
+  }
+
   render() {
     if (this.state.swipeLoaded) {
       return (
         <div className="swipe-show-page">
           <div className="swipe-info-container">
+            <span onClick={this.props.closeModal} className="close-x">X</span>
             <div className="swipe-info-header"><strong>{this.findCafeteria(this.props.swipe.cafeId).name.toUpperCase()}</strong> Meal Swipe</div>
             <div>{this.props.swipe.mealType.toUpperCase()}</div>
             <div className="post-at">posted at: {this.props.swipe.timeCreated.slice(0,10)}</div>
             <div><strong>$ {this.props.swipe.askPrice}</strong></div>
             <div>Details:</div>
             <div><strong>Expiration Date:</strong> {this.props.swipe.expiration}</div>
-            <div><strong>Let's meet at:</strong> {this.props.swipe.meetingTime}</div>
+            <div><strong>Let's meet at:</strong> {this.parseTimeString(this.props.swipe.meetingTime)}</div>
             <div className="seller-id">Seller ID: {this.props.swipe.seller}</div>
           </div>
           {this.renderContactSellerButton()}
@@ -111,4 +128,4 @@ class SwipeShow extends React.Component {
   }
 }
 
-export default SwipeShow;
+export default withRouter(SwipeShow);

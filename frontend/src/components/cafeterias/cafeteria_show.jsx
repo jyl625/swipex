@@ -1,8 +1,9 @@
 import React from 'react';
 import SwipeIndexContainer from '../swipes/swipe_index_container';
-
-import '../stylings/reset.css'
-import '../stylings/swipe_index.css'
+import '../stylings/reset.css';
+import '../stylings/swipe_index.css';
+import Modal from '../modal/modal';
+import '../stylings/modal.css'
 // import signup_form from '../session/signup_form';
 
 class CafeteriaShow extends React.Component {
@@ -14,7 +15,7 @@ class CafeteriaShow extends React.Component {
   //   })
   // }
 
-  // componentDidMount() {
+  componentDidMount() {
   //   if (!this.state.swipesLoaded) {
   //     this.props.requestSwipes().then(() => {
   //       this.setState({
@@ -23,7 +24,7 @@ class CafeteriaShow extends React.Component {
   //     })
   //   }
   //   // need to request user
-  // }
+  }
 
 
   listCafeteriaSwipes() {
@@ -87,7 +88,7 @@ class CafeteriaShow extends React.Component {
     if (this.props.cafeterias.length > 0) {
       return (
         <>
-          {/* {// in sert modal here} */}
+          <Modal/>
           <div className="cafeteria-show-page">
             <div className="cafeteria-banner">
               <img src="https://www.food-management.com/sites/food-management.com/files/styles/article_featured_retina/public/UCLA-dining_0.jpg?itok=vkDGYyJj" alt="cafeteria banner" />
