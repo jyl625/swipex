@@ -45,13 +45,13 @@ class ThreadIndex extends React.Component {
       if (keyA < keyB) return 1;
       else return -1;
     });
-    // const countType = (this.props.threadType === 'Past') ? 'PC' : 'CC';
-    // if (!this.state.countUpdated) {
-    //   this.props.updateCount(countType, sortedThreads.length)
-    //   this.setState({
-    //     countUpdated: true
-    //   })
-    // }
+    const countType = (this.props.threadType === 'Past') ? 'PC' : 'CC';
+    if (!this.state.countUpdated) {
+      this.props.updateCount(countType, sortedThreads.length)
+      this.setState({
+        countUpdated: true
+      })
+    }
     console.log(sortedThreads)
     return sortedThreads.map(thread => 
        <ThreadIndexItem 
