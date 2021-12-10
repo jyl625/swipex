@@ -10,38 +10,41 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+ 
 }
 
 .usershow-info-title-wrapper{
-  text-align: center;
+
   display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100px;
   width: 100%;
   padding: 20px;
 }
 
 .usershow-info {
-
+ text-align: center;
 }
 
 .usershow-info-content{
   text-align: center;
   display: flex;
   height: 300px;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
+  
 }
 
 .usershow-column {
   text-align: center;
   display: flex;
-  width: 80%;
   flex-direction: row;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  padding: 20px;
+
 }
 
 .title {
@@ -51,30 +54,42 @@
 }
 .usershow-item-container {
   display: flex;
+  width: 500px;
   flex-direction: column;
+  justify-content: center;
+  border: orange;
   background-color: paleturquoise;
+  padding: 20px;
+  margin-bottom: bottom;
   border-radius: 25px;
-  border: 1px solid black;
-  box-shadow: 4px 4px #888888;
-  margin-bottom: 200px;
-  margin-top: 0px;
 }
 .usershow-item {
-
+  width: 400px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   margin-bottom: bottom;
 }
 
 .usershow-item-title {
-  position: relative;
-  height: 50px;
+ 
 }
 
 .messages {
-  display: inline-block;
-  margin-top: 2em;
-  padding: 2em;
-  width: 100%;
+
+  padding: 20px;
+  text-align: center;
+  height: 200px;
+  width: 400px;
   background-color: plum;
-  
+  border-radius: 25px;
+  margin: 20px;
+}
+
+.message:hover {
+  background-position: 100% 100%;
+  animation: up-bump 0.1s ease;
 }
 
 

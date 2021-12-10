@@ -52,16 +52,22 @@ class ThreadIndex extends React.Component {
     //     countUpdated: true
     //   })
     // }
+    console.log(sortedThreads)
     return sortedThreads.map(thread => 
-       <ThreadIndexItem key={thread._id} thread={thread}/>
+       <ThreadIndexItem key={thread._id} thread={thread} threadType={this.props.threadType}/>
     )
   }
 
   render() {
+    let title;
+    if (this.props.threadType === 'Past')
+      title = (<div className="usershow-item-title" >Past Conversations of {this.props.user.username}</div>)
+    else
+      title = (<div className="usershow-item-title" >Current Conversations of {this.props.user.username}</div>)
 
     return (
       <div className="usershow-item-container">
-        <div className="usershow-item-title" >Past Conversation of {this.props.user.username}</div>
+        {title}
         <div className="usershow-item">
         {
           this.listThread()
