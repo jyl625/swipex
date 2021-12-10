@@ -28,12 +28,20 @@ class NavBar extends React.Component {
             <div className="navbar-links-container">
                 {/* <Link to={'/tweets'}>All Tweets</Link> */}
                 {/* <Link to={'/profile'}>Profile</Link> */}
-                <Link to={'/profile'}>
+                <div className="profile">
+                  <Link to={'/profile'}>
                   <img className="profile-img" 
-                        src="/images/bx-user.svg"
-                        alt="profile"  />Profile</Link>
-                <Link to={'/createswipe'}>Post your swipes</Link>
-                <button onClick={this.logoutUser}>Logout</button>
+                        src="/images/id-card-regular.svg"
+                        alt="profile"  /></Link>
+                </div>
+                <div className="post-swipe">
+                  <Link to={'/createswipe'}><img src="images/plus-square-regular.svg"/></Link>
+                </div>
+                <div className="logout"
+                  onClick={this.logoutUser}>
+                    <img src="images/power-off-solid.svg"/>
+                </div>
+
             </div>
         );
       } else {
@@ -76,7 +84,7 @@ class NavBar extends React.Component {
             { this.getLinks() }
           </div>
           <div className="navbar-wrapper-bottom">
-            <Link to={`/`}>Home</Link>
+            <Link to={`/`}>HOME</Link>
             {this.listCafeterias()}
             <Link to={`/cafeteria/all`}>ALL</Link>
           </div>

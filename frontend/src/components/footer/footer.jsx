@@ -8,9 +8,11 @@ import '../stylings/footer.css'
 const Footer = () => {
   return (
       <footer>
-        <div>
-          <div className="footer-copyright">
-            Copyright &copy; 2021 SwipeX
+        <div className="footer-wrapper">
+          <div>
+            <div className="footer-copyright">
+              Copyright &copy; 2021 SwipeX
+            </div>
           </div>
         </div>
       <div className="footer-links-wrapper">
