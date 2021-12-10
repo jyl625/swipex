@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+import '../stylings/sign_up_form.css'
+
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -59,40 +61,37 @@ class SignupForm extends React.Component {
     return (
       <div className="signup-form-container">
         <form onSubmit={this.handleSubmit}>
-          <div>INTRODUCE YOURSELF</div>
           <div className="signup-form">
+            <img className="logo"src="images/swipex_logo_80px_h.png" alt="logo"/>
             <br />
-              <div>Hi there! My name is</div>
-              <input type="text"
+ 
+              <input type="text" className="input"
                 value={this.state.username}
                 onChange={this.update('username')}
                 placeholder="Username"
             />
             
             <br/>
-              <div>Here's my email address:</div>
-              <input type="text"
+              <input type="text" className="input"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
 
             <br/>
-              <div>And here's my password:</div>
-              <input type="password"
+              <input type="password" className="input"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
             <br/>
-              <div>Confirm your password</div>
-              <input type="password"
+              <input type="password" className="input"
                 value={this.state.password2}
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
             <br/>
-            <input type="submit" value="Sign Up" />
+            <input className="button"type="submit" value="Sign Up" />
             {this.renderErrors()}
           </div>
         </form>
