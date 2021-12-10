@@ -321,7 +321,7 @@ class ThreadShow extends React.Component{
                 </h1>
               </div>
               <div className="current-offer-price">
-                $ {currentSellerOffer}
+                $ {Number(currentSellerOffer).toFixed(2)}
               </div>
               <div className="deal-confirm-btn">
                 {confirmBuyBtn}
@@ -335,7 +335,7 @@ class ThreadShow extends React.Component{
                 </h1>
               </div>
               <div className="current-offer-price">
-                $ {currentBuyerOffer}
+                $ {Number(currentBuyerOffer).toFixed(2)}
               </div>
               <div className="deal-confirm-btn">
                 {confirmSellBtn}
