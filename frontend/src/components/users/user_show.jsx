@@ -73,11 +73,11 @@ class UserShow extends React.Component {
           <div id="CC" className="usershow-column">
             <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount}/>
           </div>
-          <div id="PC" className="usershow-column">
-            <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount}/>
-          </div>
           <div id="PS" className="usershow-column">
             <SwipeUserIndexContainer user={this.props.user} updateCount={this.updateCount}/>
+          </div>
+          <div id="PC" className="usershow-column">
+            <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount}/>
           </div>
           <div id="CS" className="usershow-column">
             <ExchangeIndexContainer user={this.props.user} updateCount={this.updateCount}/>
