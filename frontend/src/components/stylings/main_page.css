@@ -19,6 +19,7 @@
   width: 100%;
   height: fit-content;
   margin: 0;
+  margin-left: -20px;
   max-width: 1600px;
   display: flex;
   justify-content: center;
@@ -36,8 +37,8 @@
 
 .cafeteria-links-container{
   display:flex;
-  flex-direction: column;
-  width: 33%;
+  flex-wrap: wrap;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -54,30 +55,33 @@
 }
 
 .link-item {
-  flex-grow: 1;
-  margin: 0.5em 0.25em;
+  width: 50%;
+  margin: 0;
   padding: 0.25em;
   
 }
 
 .cafe-link {
-  height: 80px;
-  width: 250px;
+  height: 200px;
+  width: 80%;
   display: flex;
+  margin: 20px auto;
   padding: 1em;
   border-radius: 25px;
   border: 1px solid black;
   box-shadow: 4px 4px #888888;
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
-  background-color: #F28705;
   justify-content: center;
-  color: white
+  color: white;
+  text-shadow: -1px 1px 0 #000;
 }
 
 .cafe-link:hover{
-  background-color: #D2F251;
-  color: black;
+  color: white;
+  font-size: 48px; 
+  text-shadow: -1px 1px 0 #000;
+
 }
 
 .exchange-count {
@@ -92,6 +96,19 @@
   font-size: 19px;
   font-weight: bold;
   color: gray;
+}
+
+.cafe-link.deneve {
+  background-position: 0 -100px;;
+}
+.cafe-link.rieber {
+  background-position: 0 -300px;;
+}
+.cafe-link.BruinPlate {
+  background-position: 0 -600px;;
+}
+.cafe-link.covel {
+  background-position: 0 -600px;;
 }
 
 

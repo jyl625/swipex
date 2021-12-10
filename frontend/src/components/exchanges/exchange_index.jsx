@@ -16,12 +16,12 @@ class ExchangeIndex extends React.Component {
   }
 
   listExchange() {
-    // if (!this.state.countUpdated) {
-    //   this.props.updateCount('PS', this.props.exchanges.length)
-    //   this.setState({
-    //     countUpdated: true
-    //   })
-    // }
+    if (!this.state.countUpdated) {
+      this.props.updateCount('PS', this.props.exchanges.length)
+      this.setState({
+        countUpdated: true
+      })
+    }
     this.props.exchanges.map(exchange => {
       return <ExchangeIndexItem exchange={exchange}/>
     })
