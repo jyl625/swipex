@@ -19,6 +19,7 @@
   width: 100%;
   height: fit-content;
   margin: 0;
+  margin-left: -20px;
   max-width: 1600px;
   display: flex;
   justify-content: center;
@@ -36,8 +37,8 @@
 
 .cafeteria-links-container{
   display:flex;
-  flex-direction: column;
-  width: 33%;
+  flex-wrap: wrap;
+  width: 100%;
   justify-content: center;
   align-items: center;
 }
@@ -54,16 +55,17 @@
 }
 
 .link-item {
-  flex-grow: 1;
-  margin: 0.5em 0.25em;
+  width: 50%;
+  margin: 0;
   padding: 0.25em;
   
 }
 
 .cafe-link {
-  height: 80px;
-  width: 250px;
+  height: 200px;
+  width: 750px;
   display: flex;
+  margin: 20px auto;
   padding: 1em;
   border-radius: 25px;
   border: 1px solid black;

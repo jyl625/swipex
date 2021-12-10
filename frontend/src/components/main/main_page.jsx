@@ -36,7 +36,9 @@ class MainPage extends React.Component {
         return <div key={idx} className="link-item">
                   <Link to={`/cafeteria/${cafeteria.name.replace(/\s/g, "").toLowerCase()}`}
                     key={cafeteria._id}>
-                      <div className="cafe-link">{cafeteria.name.toUpperCase()}</div>
+                      <div className="cafe-link">{cafeteria.name.toUpperCase()}
+                        <img src="" alt="" />
+                      </div>
                   </Link>
               </div>
       })
