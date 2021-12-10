@@ -109,7 +109,7 @@ class SwipeForm extends React.Component {
       return (
         <div className="swipe-form-main">
           <div className="swipe-form-wrapper">
-            <h1>Post your swipe for sale!</h1>
+            <h1>Swipe Sell Order Form</h1>
             <div className="form-content">
               <form onSubmit={this.handleSubmit}>
                   <div className="input-label">Price</div>
