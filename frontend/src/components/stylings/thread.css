@@ -153,6 +153,10 @@
   color: var(--color1)
 }
 
+.deal-confirm-btn{
+  height: 28px;
+}
+
 .deal-confirm-btn>button{
   height: 28px;
   width: 120px;
