@@ -32,7 +32,8 @@ class ExchangeIndex extends React.Component {
       return 'loading exchanges'
     return (
       <div className="usershow-item-container">
-        <div className="usershow-item-title">Past Sales Posts from {this.props.user.username}</div>
+        <div className="usershow-item-title">Sales History</div>
+        {/* <div className="usershow-item-title">Past Sales from {this.props.user.username}</div> */}
         <div className="usershow-item">
           {
            this.listExchange()

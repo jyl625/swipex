@@ -37,8 +37,8 @@ const App = () => (
       <ProtectedRoute path="/user/:userId" component={UserShowContainer}/>
       <ProtectedRoute exact path="/createswipe" component={SwipesFormContainer} />
       <ProtectedRoute exact path="/threads/:threadId" component={ThreadShowContainer} />
-      <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       <Route exact path="/meet-the-team" component={Team}/>
+      <Route render={() => <Redirect to={{ pathname: "/" }} />} />
       {/* <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/new_tweet" component={TweetComposeContainer} /> */}
