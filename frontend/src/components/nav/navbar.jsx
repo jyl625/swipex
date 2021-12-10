@@ -28,7 +28,10 @@ class NavBar extends React.Component {
             <div className="navbar-links-container">
                 {/* <Link to={'/tweets'}>All Tweets</Link> */}
                 {/* <Link to={'/profile'}>Profile</Link> */}
-                <Link to={'/profile'}>Hello {`${this.props.currentUser.username}`}</Link>
+                <Link to={'/profile'}>
+                  <img className="profile-img" 
+                        src="/images/bx-user.svg"
+                        alt="profile"  />Profile</Link>
                 <Link to={'/createswipe'}>Post your swipes</Link>
                 <button onClick={this.logoutUser}>Logout</button>
             </div>
@@ -41,6 +44,16 @@ class NavBar extends React.Component {
             </div>
         );
       }
+  }
+
+  logo() {
+    return (
+      <div className="navbar-logo">
+        <Link to={'/'}>
+          <img src="images/swipex_logo_80px_h.png" alt="logo"/>
+        </Link>
+      </div>
+    )
   }
 
   listCafeterias() {
@@ -59,7 +72,7 @@ class NavBar extends React.Component {
     return (
       <div className="navbar-container">
           <div className="navbar-wrapper-top">
-            <div className="navbar-logo"><h1><Link to={'/'}>SwipeX</Link></h1></div>
+            { this.logo() }
             { this.getLinks() }
           </div>
           <div className="navbar-wrapper-bottom">
