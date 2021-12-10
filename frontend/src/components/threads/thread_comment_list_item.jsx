@@ -11,7 +11,9 @@ class ThreadCommentListItem extends React.Component{
 
     return (
       <div className={className}>
-        {comment.content}
+        <div>
+          {comment.content}
+        </div>
       </div>
     )
   }
