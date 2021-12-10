@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import SwipeIndex from './swipe_index';
-import { requestSwipes } from "../../actions/swipe_actions";
+import { requestSwipes, requestSwipe } from "../../actions/swipe_actions";
+import { openModal } from "../../actions/modal_actions";
 
 const mSTP = state => ({
   // cafeterias: state.cafeterias.all,
@@ -8,7 +9,10 @@ const mSTP = state => ({
 })
 
 const mDTP = dispatch => ({
-  requestSwipes: () => dispatch(requestSwipes())
+  requestSwipes: () => dispatch(requestSwipes()),
+  swipeShow: () => dispatch(openModal('swipeshow')),
+  requestSwipe: (swipeId) => dispatch(requestSwipe(swipeId))
+  
   // requestSwipes: () => console.log("fetching swipes")
 })
 

@@ -30,7 +30,10 @@ class SwipeIndex extends React.Component {
   }
 
   listIndexItemsByCafeterias(cafeteriaId) {
-    const swipes = this.props.swipes
+    const swipes = this.props.swipes;
+    const swipeShow = this.props.swipeShow;
+    const requestSwipe = this.props.requestSwipe.bind(this);
+
     if (swipes.length !== 0) {
       let filteredSwipes = this.selectSwipesByCafeterias(swipes, cafeteriaId);
       filteredSwipes = (this.filterSwipes(filteredSwipes));
@@ -38,7 +41,7 @@ class SwipeIndex extends React.Component {
       filteredSwipes = this.sortSwipes(filteredSwipes)
       console.log("sorted", filteredSwipes)
       return filteredSwipes.map ((swipe, idx) => {
-        return <SwipeIndexItem key={idx}swipe={swipe}/>
+        return <SwipeIndexItem key={idx} swipe={swipe} swipeShow={swipeShow} requestSwipe={requestSwipe}/>
       })
     } else {
       <div>No swipes to show here...</div>
