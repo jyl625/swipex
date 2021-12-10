@@ -34,6 +34,9 @@ class SwipeIndex extends React.Component {
     if (swipes.length !== 0) {
       let filteredSwipes = this.selectSwipesByCafeterias(swipes, cafeteriaId);
       filteredSwipes = (this.filterSwipes(filteredSwipes));
+      console.log(this.state.sort)
+      filteredSwipes = this.sortSwipes(filteredSwipes)
+      console.log("sorted", filteredSwipes)
       return filteredSwipes.map ((swipe, idx) => {
         return <SwipeIndexItem key={idx}swipe={swipe}/>
       })
@@ -52,11 +55,16 @@ class SwipeIndex extends React.Component {
   }
 
   sortMethod() {
-    let sortType
     //"new", "priceAsc", "priceDec", "exp"
     switch (this.state.sort) {
       case "new":
-        return (a,b) => a.timeCreated > b.timeCreated
+        return (a,b) => a.timeCreated > b.timeCreated;
+      case "priceAsc":
+        return (a,b) => a.askPrice - b.askPrice;
+      case "priceDec":
+        return (a,b) => b.askPrice - a.askPrice;
+      case "exp":
+        return (a,b) => new Date(a.expiration) - new Date(b.expiration);
       default:
         break;
     }
