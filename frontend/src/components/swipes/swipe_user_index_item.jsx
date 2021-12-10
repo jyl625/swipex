@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 const SwipeUserIndexItem = ({swipe}) => (
   <Link to={`/swipe/${swipe._id}`}>
     <div className="messages" >
-      <div>MealType: {swipe.mealType}</div>
-      <div>AskPrice: {swipe.askPrice}</div>
-      <div>Expired at: {swipe.expiration}</div>
+      <div><span className="usershow-index-item-grey">Meal Type:</span>  {swipe.mealType}</div>
+      <div><span className="usershow-index-item-grey">Asking price:</span>   ${Number(swipe.askPrice).toFixed(2)}</div>
+      <div><span className="usershow-index-item-grey">Expired at:</span>  {swipe.expiration}</div>
     </div>
   </Link>
 )

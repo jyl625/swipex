@@ -8,7 +8,8 @@ const mSTP = state => {
   return {
   threads: Object.values(state.threads),
   swipes: state.swipes.user,
-  threadType: "Current"
+  threadType: "Current",
+  currentUser: state.session.user,
 }};
 
 const mDTP = dispatch => ({

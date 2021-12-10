@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaGithubAlt } from "react-icons/fa";
+import { Link } from "react-router-dom"
 
 
 import '../stylings/footer.css'
@@ -25,9 +26,9 @@ const Footer = () => {
                 onMouseOver={({ target }) => target.style.color = "#F28705"}
                 onMouseOut={({target}) => target.style.color = "#B5F2B3"}/>
             </a>
-            <a href={"/meet-the-team"}>
+            <Link to="/meet-the-team">
               <span>Meet the Team</span>
-            </a>
+            </Link>
           </div>
         </div>
       </footer>

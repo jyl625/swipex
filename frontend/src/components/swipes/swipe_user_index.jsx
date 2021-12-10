@@ -40,7 +40,8 @@ class SwipeUserIndex extends React.Component {
     
     return (
       <div className="usershow-item-container">
-        <div className="usershow-item-title">Ongoing Sales Posts from {this.props.user.username}</div>
+        <div className="usershow-item-title">For Sale</div>
+        {/* <div className="usershow-item-title">Ongoing Sales Posts from {this.props.user.username}</div> */}
         <div className="usershow-item">
           { 
            this.listSwipes()
