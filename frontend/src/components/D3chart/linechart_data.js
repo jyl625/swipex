@@ -61,7 +61,8 @@ class LinechartData extends React.Component {
         if (allDate.includes(exchangeDate)) {
           let index = allDate.findIndex(date => date === exchangeDate);
           data[index].amount += 1;
-          data[index].closePrice = +((data[index].closePrice + exchanges[i].closePrice) / data[index].amount).toFixed(2)
+          data[index].closePrice = +((data[index].closePrice * (data[index].amount -1) + exchanges[i].closePrice) / data[index].amount).toFixed(2)
+          // console.log(data[29])
         }
         else {
           data.shift();
@@ -75,6 +76,7 @@ class LinechartData extends React.Component {
       this.setState({ exchangeDataLoaded: true, data: data })
     }
   }
+  
 
   render() {
     // let data = [
