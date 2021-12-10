@@ -21,6 +21,7 @@ import CurrentUserShowContainer from './users/current_user_show_container'
 
 import SwipesFormContainer from './swipes/swipes_form_container'
 import ThreadShowContainer from './threads/thread_show_container';
+import Team from './team/team';
 
 const App = () => (
   <div>
@@ -37,6 +38,7 @@ const App = () => (
       <ProtectedRoute exact path="/createswipe" component={SwipesFormContainer} />
       <ProtectedRoute exact path="/threads/:threadId" component={ThreadShowContainer} />
       <Route render={() => <Redirect to={{ pathname: "/" }} />} />
+      <Route exact path="/meet-the-team" component={Team}/>
       {/* <ProtectedRoute exact path="/tweets" component={TweetsContainer} />
       <ProtectedRoute exact path="/profile" component={ProfileContainer} />
       <ProtectedRoute exact path="/new_tweet" component={TweetComposeContainer} /> */}
