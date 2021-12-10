@@ -6,10 +6,14 @@
 }
 
 .swipe-form-wrapper {
-  width: 80%;
-  margin: 0 auto;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  width: fit-content;
+  margin: 80px auto;
+  padding: 20px;
+  border-color: lightgrey;
+  background-color: white;
+  border: solid;
+  border-color: lightgrey;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.12);
 }
 
 .form-content {
@@ -21,6 +25,8 @@
   margin-top: 1.5em;
   margin-bottom: 0.25em;
   padding-left: 0.25em;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .swipe-form-wrapper form {
@@ -35,9 +41,10 @@
 
 .swipe-form-wrapper h1{
   text-align: center;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 48px;
-  color: #09A603;
+  color: black;
   font-weight: bolder;
 }
 
@@ -65,4 +72,16 @@
   width: 50%;
   margin: 0 25%;
   margin-top: 2em;
+  background-color: #5DD959;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.swipe-form-wrapper input[type="submit"]:hover {
+  background-color: #09A603;
 }
