@@ -147,6 +147,7 @@ class ThreadShow extends React.Component{
   }
 
   render(){
+
     if (!this.props.thread || !this.props.thread.sellPost.cafeId) return null;
 
     const {thread, currentUser} = this.props
@@ -155,7 +156,11 @@ class ThreadShow extends React.Component{
       this.props.history.push("/profile")
     }
 
-    const otherUser = (thread.buyer.username === currentUser.username) ? thread.seller : thread.buyer
+    const otherUser = (thread.buyer.username === currentUser.username) ?  thread.seller : thread.buyer
+
+    const sellerName = (thread.seller.username === currentUser.username) ? "Your" : `${thread.seller.username}'s`
+
+    const buyerName = (thread.buyer.username === currentUser.username) ? "Your" : `${thread.buyer.username}'s`
 
     const commentList = thread.comments.map((comment,i)=>{
       // debugger
@@ -174,10 +179,10 @@ class ThreadShow extends React.Component{
       0 : thread.buyerOffer;
 
     const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal) ?
-      (<button onClick={this.handleBuyConfirm}>Confirm Buy</button>) : null
+      (<button onClick={this.handleBuyConfirm}>Ok, fine!</button>) : null
 
     const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal && thread.buyerOffer) ?
-      (<button onClick={this.handleSellConfirm}>Confirm Sell</button>) : null
+      (<button onClick={this.handleSellConfirm}>Ok, fine!</button>) : null
 
 
     const buyOfferPrice = (thread.buyerOffer) ? 
@@ -230,7 +235,7 @@ class ThreadShow extends React.Component{
 
     const dealSuccessMessage = (thread.deal) ?
       ( <div className="deal-success-prompt">
-          <div>Congrates! Swipe exchanged at ${thread.deal}!</div>
+        <div>Congrats! Swipe exchanged at ${Number(thread.deal).toFixed(2)}!</div>
           <div className="thread-map-container">{this.renderMap()}</div>
         </div>    
       ) : null
@@ -313,11 +318,15 @@ class ThreadShow extends React.Component{
             {dealSuccessMessage}
           </div>
 
+          <div id="scroll-container">
+            <div id="scroll-text">Click "OK, fine!" to confirm an exchange.</div>
+          </div>
+
           <div className="thread-page-current-offers">
             <div className="seller-offer-details">
               <div>
                 <h1>
-                  Seller's Offer
+                  {sellerName} Offer
                 </h1>
               </div>
               <div className="current-offer-price">
@@ -331,7 +340,7 @@ class ThreadShow extends React.Component{
             <div className="buyer-offer-details">
               <div>
                 <h1>
-                  Buyer's Offer
+                  {buyerName} Offer
                 </h1>
               </div>
               <div className="current-offer-price">
@@ -349,7 +358,7 @@ class ThreadShow extends React.Component{
           <div className="thread-page-comment-wrapper">
             <div className="other-user-name">
               <h1>
-                leave messages for {otherUser.username}
+                Leave a message for <span>{otherUser.username}</span>
               </h1>
             </div>
 
@@ -359,13 +368,11 @@ class ThreadShow extends React.Component{
 
             <div className="comment-input-box">
               <form onSubmit={this.handleSubmit} className="comment-input-form">
-                <label>
-                  <input 
-                    type="text" 
-                    value={this.state.comment} 
-                    onChange={this.handleInput("comment")}
-                    className="comment-text-input" />
-                </label>
+                <input 
+                  type="text" 
+                  value={this.state.comment} 
+                  onChange={this.handleInput("comment")}
+                  className="comment-text-input" />
 
                 <input 
                   type="submit"
@@ -378,10 +385,12 @@ class ThreadShow extends React.Component{
 
           <div className="thread-page-nav">
             <button onClick={this.handleBackCafe}>
-              Back to {(thread.sellPost.cafeId.name).toUpperCase()}
+              <p>Back to</p> 
+              {(thread.sellPost.cafeId.name).toUpperCase()}
             </button>
             <button onClick={this.handleBackProfile}>
-              Back to Profile
+              <p>Back to</p>
+              <p>Profile</p>
             </button>
           </div>
 
