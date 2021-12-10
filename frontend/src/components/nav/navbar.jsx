@@ -28,7 +28,7 @@ class NavBar extends React.Component {
             <div className="navbar-links-container">
                 {/* <Link to={'/tweets'}>All Tweets</Link> */}
                 {/* <Link to={'/profile'}>Profile</Link> */}
-                <Link to={''}>Hello {`${this.props.currentUser.username}`}</Link>
+                <Link to={'/profile'}>Hello {`${this.props.currentUser.username}`}</Link>
                 <Link to={'/createswipe'}>Post your swipes</Link>
                 <button onClick={this.logoutUser}>Logout</button>
             </div>
@@ -63,9 +63,9 @@ class NavBar extends React.Component {
             { this.getLinks() }
           </div>
           <div className="navbar-wrapper-bottom">
-            <Link to={`/`} key="1">Home</Link>
+            <Link to={`/`}>Home</Link>
             {this.listCafeterias()}
-            <Link to={`/cafeteria/all`} key="1">ALL</Link>
+            <Link to={`/cafeteria/all`}>ALL</Link>
           </div>
       </div>
     );

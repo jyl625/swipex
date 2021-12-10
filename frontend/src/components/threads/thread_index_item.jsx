@@ -1,15 +1,21 @@
 import React from 'react';
-
-const ThreadIndexItem = ({thread}) => {
-  console.log(thread)
-  return (
-  <div>
-    <p>Sold to: {thread.buyer.username}</p>
-    <p>Comment: {thread.comments[0]._id}</p>
-    <p>Buy from: {thread.seller.username}</p>
-    <p>SellPost: {thread.sellpost}</p>
-    <p>Time sent: {thread.timeUpdated}</p>
-  </div>)
-}
+import { Link } from 'react-router-dom';
+const ThreadIndexItem = ({thread}) => (
+  <Link to={`/threads/${thread.id}`}>
+    <div className="messages">
+      <p>Sold to: {thread.buyer.username}</p>
+      <ul>Comments: 
+        {thread.comments.map(comment => (
+          <li key={comment._id}>
+            {comment._id}
+          </li>
+        ))}
+        </ul>
+      <p>Buy from: {thread.seller.username}</p>
+      <p>SellPost: {thread.sellpost}</p>
+      <p>Sent: {thread.updatedAt}</p>
+    </div>
+  </Link>
+)
 
 export default ThreadIndexItem;

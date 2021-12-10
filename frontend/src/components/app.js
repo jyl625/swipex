@@ -14,6 +14,7 @@ import Footer from './footer/footer'
 import SwipeIndexContainer from './swipes/swipe_index_container';
 //testing
 import UserShowContainer from './users/user_show_container';
+import CurrentUserShowContainer from './users/current_user_show_container'
 // import ProfileContainer from './profile/profile_container';
 // import TweetComposeContainer from './tweets/tweet_compose_container';
 
@@ -31,7 +32,8 @@ const App = () => (
       <Route path="/cafeteria/:cafeteriaName" component={CafeteriaShowContainer}/>
       {/* <Route path="/cafeteria/" component={CafeteriaShowContainer}/> */}
       <Route path="/swipe/:swipeId" component={SwipeShowContainer}/>
-      <Route path="/user/:userId" component={UserShowContainer}/>
+      <ProtectedRoute path="/profile" component={CurrentUserShowContainer}/>
+      <ProtectedRoute path="/user/:userId" component={UserShowContainer}/>
       <ProtectedRoute exact path="/createswipe" component={SwipesFormContainer} />
       <ProtectedRoute exact path="/threads/:threadId" component={ThreadShowContainer} />
       <Route render={() => <Redirect to={{ pathname: "/" }} />} />
