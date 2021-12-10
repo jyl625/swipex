@@ -1,6 +1,8 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
+import '../stylings/login_form.css'
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -59,26 +61,27 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form">
+      <div className="login-form-container">
         <form onSubmit={this.handleSubmit}>
-          <div>
-              <input type="text"
+          <div className="login-form">
+            <img className="logo"src="images/swipex_logo_80px_h.png" alt="logo"/>
+              <input type="text" className="login-input"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
             <br/>
-              <input type="password"
+              <input type="password" className="login-input"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
             <br/>
-            <input type="submit" value="Submit" />
+            <input className="login-button" type="submit" value="Log In" />
             {this.renderErrors()}
+            <button className="login-button" onClick={() => this.props.login(this.props.demoUser)}>Demo</button>
           </div>
         </form>
-        <button className="demo-button" onClick={() => this.props.login(this.props.demoUser)}>Demo</button>
       </div>
     );
   }
