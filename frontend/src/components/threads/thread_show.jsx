@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router";
+
 
 import ThreadCommentListItem from "./thread_comment_list_item";
 
@@ -25,9 +27,8 @@ class ThreadShow extends React.Component{
   }
 
   componentDidMount(){
-    // setInterval(
-    // ()=>this.props.requestThread(this.props.match.params.threadId), 1000) 
     this.props.requestThread(this.props.match.params.threadId)
+      .then((res) => this.setState({sellerOffer: res.thread.data.sellPost.askPrice}))
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -63,8 +64,9 @@ class ThreadShow extends React.Component{
 
   handleBuyConfirm(e){
     e.preventDefault();
+    const closePrice = (this.props.thread.sellerOffer) ? this.props.thread.sellerOffer : this.state.sellerOffer;
     const newExchange = {
-      closePrice: this.props.thread.sellerOffer,
+      closePrice: closePrice,
       sellPost: this.props.thread.sellPost._id,
       seller: this.props.thread.buyer._id,
       buyer: this.props.thread.seller._id
@@ -72,7 +74,7 @@ class ThreadShow extends React.Component{
     this.props.createNewExchange(newExchange)
       .then(res => {
         const conversation = Object.assign({}, this.props.thread)
-        conversation["deal"] = this.props.thread.sellerOffer;
+        conversation["deal"] = closePrice;
         this.props.updateThread(conversation)
       }).then(res => {
         this.setState({
@@ -156,7 +158,7 @@ class ThreadShow extends React.Component{
     const currentBuyerOffer = (!thread.buyerOffer) ?
       0 : thread.buyerOffer;
 
-    const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal && thread.sellerOffer) ?
+    const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal) ?
       (<button onClick={this.handleBuyConfirm}>Confirm Buy</button>) : null
 
     const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal && thread.buyerOffer) ?
@@ -308,7 +310,7 @@ class ThreadShow extends React.Component{
   }
 }
 
-export default ThreadShow;
+export default withRouter(ThreadShow);
 
 
 

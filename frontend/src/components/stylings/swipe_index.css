@@ -128,13 +128,14 @@
 
 
 .swipe-index-items-container {
-  width: 100%;
+  /* width: 100%; */
   margin: 2em auto 4em;
   padding: 2em;
   padding-left: 5%;
   max-width: 1600px;
-  /* display: flex;
-  justify-content: left; */
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: left; */
   column-count: 2;
   gap: 80px 10%;
 }
