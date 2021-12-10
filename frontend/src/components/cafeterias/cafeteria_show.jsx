@@ -89,12 +89,7 @@ class CafeteriaShow extends React.Component {
       return (
         <>
           <Modal/>
-          <div className="cafeteria-show-page">
-            <div className="cafeteria-banner">
-              <img src="https://www.food-management.com/sites/food-management.com/files/styles/article_featured_retina/public/UCLA-dining_0.jpg?itok=vkDGYyJj" alt="cafeteria banner" />
-            </div>
-            {this.listCafeteriaSwipes()}
-          </div>
+          {this.listCafeteriaSwipes()}
         </>
       )
     } else {
