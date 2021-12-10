@@ -65,33 +65,33 @@ class SignupForm extends React.Component {
             <img className="logo"src="images/swipex_logo_80px_h.png" alt="logo"/>
             <br />
  
-              <input type="text" className="input"
+              <input type="text" className="signup-input"
                 value={this.state.username}
                 onChange={this.update('username')}
                 placeholder="Username"
             />
             
             <br/>
-              <input type="text" className="input"
+              <input type="text" className="signup-input"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
 
             <br/>
-              <input type="password" className="input"
+              <input type="password" className="signup-input"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
             <br/>
-              <input type="password" className="input"
+              <input type="password" className="signup-input"
                 value={this.state.password2}
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
             <br/>
-            <input className="button"type="submit" value="Sign Up" />
+            <input className="signup-button" type="submit" value="Sign Up" />
             {this.renderErrors()}
           </div>
         </form>
