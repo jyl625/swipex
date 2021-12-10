@@ -39,24 +39,41 @@
   height: 40px;
 }
 
-.profile-img {
 
-}
-
-.navbar-links-container a {
-  color: black;
-}
 
 .navbar-links-container {
-  width: fit-content;
+  width: 150px;;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-right: 50px;
 }
 
-.navbar-links-container a {
-  margin: 0 1em;
-}
 
 .navbar-wrapper-bottom a {
     color: black;
     margin: 0 4em 0 0;
 }
 
+.profile, .post-swipe, .logout {
+  height: 30px;
+  width: 30px;
+
+}
+
+
+.logout img {
+  height: 24px;
+  cursor: pointer;
+}
+
+.profile img {
+  height: 27px;
+
+
+}
+
+.post-swipe img {
+  height: 27px;
+  margin-left: 4px;
+}

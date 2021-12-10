@@ -7,7 +7,7 @@ class SwipeShow extends React.Component {
     super(props);
 
     this.state = {
-      swipeLoaded: true,
+      swipeLoaded: false,
       error: false
     }
 
@@ -16,9 +16,9 @@ class SwipeShow extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.requestSwipe(this.props.match.params.swipeId).then(() => {
-    //   this.setState({swipeLoaded: true})
-    // })
+    this.props.requestSwipe(this.props.match.params.swipeId).then(() => {
+      this.setState({swipeLoaded: true})
+    })
   }
 
   handleClick() {
@@ -38,8 +38,6 @@ class SwipeShow extends React.Component {
 
 
         if (res.thread.data) {
-          this.props.closeModal();
-          console.log("modal close")
           return this.redirectToNewThread(res.thread.data._id)
         } else {
           this.props.createThread({
@@ -47,8 +45,6 @@ class SwipeShow extends React.Component {
             seller: this.props.swipe.seller,
             buyer: this.props.currentUser.id
           }).then((res) => {
-            this.props.closeModal();
-            console.log("modal close")
             this.redirectToNewThread(res.thread.data._id)
           })
         }
@@ -114,20 +110,21 @@ class SwipeShow extends React.Component {
   render() {
     if (this.state.swipeLoaded) {
       return (
-        <div className="swipe-show-page">
-          <div className="swipe-info-container">
-            <span onClick={this.props.closeModal} className="close-x">X</span>
-            <div className="swipe-info-header"><strong>{this.findCafeteria(this.props.swipe.cafeId).name.toUpperCase()}</strong> Meal Swipe</div>
-            <div>{this.props.swipe.mealType.toUpperCase()}</div>
-            <div className="post-at">posted at: {this.props.swipe.timeCreated.slice(0,10)}</div>
-            <div><strong>$ {this.props.swipe.askPrice}</strong></div>
-            <div>Details:</div>
-            <div><strong>Expiration Date:</strong> {this.props.swipe.expiration}</div>
-            <div><strong>Let's meet at:</strong> {this.parseTimeString(this.props.swipe.meetingTime)}</div>
-            <div className="seller-id">Seller ID: {this.props.swipe.seller}</div>
+        <div className="swipe-show-page-wrapper">
+          <div className="swipe-show-page">
+            <div className="swipe-info-container">
+              <div className="swipe-info-header"><strong>{this.findCafeteria(this.props.swipe.cafeId).name.toUpperCase()}</strong> Meal Swipe</div>
+              <div>{this.props.swipe.mealType.toUpperCase()}</div>
+              <div className="post-at">posted at: {this.props.swipe.timeCreated.slice(0,10)}</div>
+              <div><strong>$ {this.props.swipe.askPrice}</strong></div>
+              <div>Details:</div>
+              <div><strong>Expiration Date:</strong> {this.props.swipe.expiration}</div>
+              <div><strong>Let's meet at:</strong> {this.parseTimeString(this.props.swipe.meetingTime)}</div>
+              <div className="seller-id">Seller ID: {this.props.swipe.seller}</div>
+            </div>
+            {this.renderContactSellerButton()}
+            {this.displayErrors()}
           </div>
-          {this.renderContactSellerButton()}
-          {this.displayErrors()}
         </div>
       )
     } else {

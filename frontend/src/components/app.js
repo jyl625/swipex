@@ -7,7 +7,7 @@ import NavBarContainer from './nav/navbar_container';
 import MainPageContainer from './main/main_page_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
-import SwipeShowContainer from './swipes/swipe_show_container';
+import SwipeShowPageContainer from './swipes/swipe_show_page_container';
 import CafeteriaShowContainer from './cafeterias/cafeteria_show_container'
 import Footer from './footer/footer'
 //testing
@@ -32,7 +32,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
       <Route path="/cafeteria/:cafeteriaName" component={CafeteriaShowContainer}/>
       {/* <Route path="/cafeteria/" component={CafeteriaShowContainer}/> */}
-      <Route path="/swipe/:swipeId" component={SwipeShowContainer}/>
+      <Route path="/swipe/:swipeId" component={SwipeShowPageContainer}/>
       <ProtectedRoute path="/profile" component={CurrentUserShowContainer}/>
       <ProtectedRoute path="/user/:userId" component={UserShowContainer}/>
       <ProtectedRoute exact path="/createswipe" component={SwipesFormContainer} />
