@@ -56,4 +56,9 @@ export const deleteThread = (threadId) => dispatch => (
     .then(() => dispatch(removeThread(threadId)))
 )
 
+export const requestSellPostBuyerSellerThreads = (sellPostId, buyerId, sellerId) => dispatch => (
+  ThreadAPIUtil.fetchSellPostBuyerSellerThread(sellPostId, buyerId, sellerId)
+    .then(thread => dispatch(receiveThread(thread)))
+)
+
 

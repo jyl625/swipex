@@ -28,8 +28,17 @@ router.get('/user/:user_id', (req, res) => {
   Exchange.find({ seller: req.params.user_id })
     .then(exchanges => res.json(exchanges))
     .catch(err =>
-      res.status(404).json({ noexchangesfound: 'No exchange found'})    
+      res.status(404).json({ noexchangesfound: 'No exchanges found'})    
     )
+})
+
+//get exchange by cafeId
+router.get('/cafe/:cafe_id', (req, res) => {
+  Exchange.findByCafeId(req.params.cafe_id)
+    .then(exchanges => res.json(exchanges))
+      .catch(err =>
+        res.status(404).json({ noexchangesfound: 'No exchanges found' })
+      )
 })
 
 

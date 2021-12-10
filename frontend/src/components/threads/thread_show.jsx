@@ -1,4 +1,6 @@
 import React from "react";
+import { withRouter } from "react-router";
+
 
 import ThreadCommentListItem from "./thread_comment_list_item";
 
@@ -17,7 +19,8 @@ class ThreadShow extends React.Component{
     }
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleGoBack = this.handleGoBack.bind(this);
+    this.handleBackProfile = this.handleBackProfile.bind(this);
+    this.handleBackCafe = this.handleBackCafe.bind(this);
     this.handleBuyerOffer = this.handleBuyerOffer.bind(this);
     this.handleSellerOffer = this.handleSellerOffer.bind(this);
     this.handleBuyConfirm = this.handleBuyConfirm.bind(this);
@@ -25,9 +28,8 @@ class ThreadShow extends React.Component{
   }
 
   componentDidMount(){
-    // setInterval(
-    // ()=>this.props.requestThread(this.props.match.params.threadId), 1000) 
     this.props.requestThread(this.props.match.params.threadId)
+      .then((res) => this.setState({sellerOffer: res.thread.data.sellPost.askPrice}))
   }
 
   componentDidUpdate(prevProps, prevState){
@@ -63,16 +65,17 @@ class ThreadShow extends React.Component{
 
   handleBuyConfirm(e){
     e.preventDefault();
+    const closePrice = (this.props.thread.sellerOffer) ? this.props.thread.sellerOffer : this.state.sellerOffer;
     const newExchange = {
-      closePrice: this.props.thread.sellerOffer,
-      sellPost: this.props.thread.sellpost._id,
+      closePrice: closePrice,
+      sellPost: this.props.thread.sellPost._id,
       seller: this.props.thread.buyer._id,
       buyer: this.props.thread.seller._id
     }
     this.props.createNewExchange(newExchange)
       .then(res => {
         const conversation = Object.assign({}, this.props.thread)
-        conversation["deal"] = this.props.thread.sellerOffer;
+        conversation["deal"] = closePrice;
         this.props.updateThread(conversation)
       }).then(res => {
         this.setState({
@@ -85,7 +88,7 @@ class ThreadShow extends React.Component{
     e.preventDefault();
     const newExchange = {
       closePrice: this.props.thread.buyerOffer,
-      sellPost: this.props.thread.sellpost._id,
+      sellPost: this.props.thread.sellPost._id,
       seller: this.props.thread.buyer._id,
       buyer: this.props.thread.seller._id
     }
@@ -122,20 +125,25 @@ class ThreadShow extends React.Component{
       })
   }
 
-  handleGoBack(e){
+  handleBackProfile(e){
     e.preventDefault();
     this.props.history.push("/")
+  }
+
+  handleBackCafe(e) {
+    e.preventDefault();
+    this.props.history.push(`/cafeteria/${this.props.thread.sellPost.cafeId.name}`)
   }
 
 
 
   render(){
-    if (!this.props.thread) return null;
+    if (!this.props.thread || !this.props.thread.sellPost.cafeId) return null;
 
     const {thread, currentUser} = this.props
 
     if (thread.buyer.username !== currentUser.username && thread.seller.username !== currentUser.username){
-      this.props.history.push("/")
+      this.props.history.push("/profile")
     }
 
     const otherUser = (thread.buyer.username === currentUser.username) ? thread.seller : thread.buyer
@@ -151,12 +159,12 @@ class ThreadShow extends React.Component{
     )})
 
     const currentSellerOffer = (!thread.sellerOffer) ? 
-      thread.sellpost.askPrice : thread.sellerOffer;
+      thread.sellPost.askPrice : thread.sellerOffer;
 
     const currentBuyerOffer = (!thread.buyerOffer) ?
       0 : thread.buyerOffer;
 
-    const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal && thread.sellerOffer) ?
+    const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal) ?
       (<button onClick={this.handleBuyConfirm}>Confirm Buy</button>) : null
 
     const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal && thread.buyerOffer) ?
@@ -164,44 +172,90 @@ class ThreadShow extends React.Component{
 
 
     const buyOfferPrice = (thread.buyerOffer) ? 
-      thread.buyerOffer : thread.sellpost.askPrice
+      thread.buyerOffer : thread.sellPost.askPrice
 
     const sellOfferPrice = (thread.sellerOffer) ?
-      thread.sellerOffer : thread.sellpost.askPrice
+      thread.sellerOffer : thread.sellPost.askPrice
 
     const buyOfferInput = (thread.buyer.username === currentUser.username && !thread.deal) ?
-      (<div className="buyer-offer-input">
-        <input
-          type="number"
-          defaultValue={parseFloat(buyOfferPrice)}
-          step="0.01"
-          onChange={this.handleInput("buyerOffer")}
-        />
+      (<div className="user-offer-input">
+        <div>
+          <h1>Offer to buy at</h1>
+        </div>
+        <div className="offer-input-box">
+          <input
+            type="number"
+            defaultValue={parseFloat(buyOfferPrice)}
+            step="0.01"
+            onChange={this.handleInput("buyerOffer")}
+          />
+        </div>
         <button onClick={this.handleBuyerOffer}>
-          Make an offer
+          Send
         </button>
       </div>) : null
 
     const sellOfferInput = (thread.seller.username === currentUser.username && !thread.deal) ?
-      (<div className="seller-offer-input">
-        <input
-          type="number"
-          defaultValue={parseFloat(sellOfferPrice)}
-          step="0.01"
-          onChange={this.handleInput("sellerOffer")}
-        />
+      (<div className="user-offer-input">
+        <div>
+          <h1>Offer to sell at</h1>
+        </div>
+        <div className="offer-input-box">
+          <input
+            type="number"
+            defaultValue={parseFloat(sellOfferPrice)}
+            step="0.01"
+            onChange={this.handleInput("sellerOffer")}
+          />
+        </div>
         <button onClick={this.handleSellerOffer}>
-          Make an offer
+          Send
         </button>
       </div>) : null
 
       
-    const noLongerAvail = (!thread.sellpost.open && !thread.deal) ? 
+    const noLongerAvail = (!thread.sellPost.open && !thread.deal) ? 
       (<div>This swipe is no longer available</div>) : null
     
     const dealSuccessMessage = (thread.deal) ?
-      (<div>Congrates, sold at $ {thread.deal}</div>) : null
+      (<div>Congrates! Swipe exchanged at ${thread.deal}!</div>) : null
 
+    const capitalize = (string) => {
+      return string[0].toUpperCase() + string.slice(1)
+    }
+
+    const parseTimeString = (timeStr) => {
+      const dateObj = new Date(timeStr)
+      const dateString = dateObj.toLocaleString("en-US", {
+        timeZone: "America/Los_Angeles",
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      })
+      const timeString = dateObj.toLocaleTimeString("en-US", {
+        timeZone: "America/Los_Angeles",
+        hour: '2-digit',
+        minute: '2-digit'
+      })
+      return `${dateString} at ${timeString}`
+    }
+
+    const parseTimeStringShort = (timeStr) => {
+      const dateObj = new Date(timeStr)
+      const dateString = dateObj.toLocaleString("en-US", {
+        timeZone: "America/Los_Angeles",
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      })
+      const timeString = dateObj.toLocaleTimeString("en-US", {
+        timeZone: "America/Los_Angeles",
+        hour: '2-digit',
+        minute: '2-digit'
+      })
+      return `${dateString} at ${timeString}`
+    }
 
     return(
       
@@ -215,21 +269,26 @@ class ThreadShow extends React.Component{
 
         <div className="thread-page-main">
           <div className="thread-page-swipe-details">
-            <div>
-              Asking Price: {thread.sellpost.askPrice}
+            <div className="thread-page-swipe-details-top">
+              <h1>
+                $ {Number(thread.sellPost.askPrice).toFixed(2)}
+              </h1>
+              <h2>
+                {capitalize(thread.sellPost.mealType)}
+              </h2>
+              <h2>
+                {(thread.sellPost.cafeId.name).toUpperCase()} @ {thread.sellPost.cafeId.location}
+              </h2>
+              <h2>
+                Meet @ {parseTimeString(thread.sellPost.meetingTime)}
+              </h2>
             </div>
-            <div>
-              Expiration: {thread.sellpost.expiration}
-            </div>
-            <div>
-              Cafeteria: {thread.sellpost.mealType}
-            </div>
-            <div>
-              {thread.sellpost.cafeId.name}
-            </div>
-            <div>
-              {thread.sellpost.cafeId.location}
-            </div>
+            <h3>
+              Post expires:  {thread.sellPost.expiration}
+            </h3>
+            <h3>
+              Post created: {parseTimeStringShort(thread.sellPost.timeCreated)}
+            </h3>
           </div>
 
           <div className="thread-page-avail-prompt">
@@ -240,10 +299,12 @@ class ThreadShow extends React.Component{
           <div className="thread-page-current-offers">
             <div className="seller-offer-details">
               <div>
-                Seller's Offer
+                <h1>
+                  Seller's Offer
+                </h1>
               </div>
               <div className="current-offer-price">
-                {currentSellerOffer}
+                $ {currentSellerOffer}
               </div>
               <div className="deal-confirm-btn">
                 {confirmBuyBtn}
@@ -252,10 +313,12 @@ class ThreadShow extends React.Component{
 
             <div className="buyer-offer-details">
               <div>
-                Buyer's Offer
+                <h1>
+                  Buyer's Offer
+                </h1>
               </div>
               <div className="current-offer-price">
-                {currentBuyerOffer}
+                $ {currentBuyerOffer}
               </div>
               <div className="deal-confirm-btn">
                 {confirmSellBtn}
@@ -269,7 +332,7 @@ class ThreadShow extends React.Component{
           <div className="thread-page-comment-wrapper">
             <div className="other-user-name">
               <h1>
-                Chatting with {otherUser.username}
+                leave messages for {otherUser.username}
               </h1>
             </div>
 
@@ -278,19 +341,30 @@ class ThreadShow extends React.Component{
             </div>
 
             <div className="comment-input-box">
-              <form onSubmit={this.handleSubmit}>
-                <label>Comment
-                  <input type="text" value={this.state.comment} onChange={this.handleInput("comment")} />
+              <form onSubmit={this.handleSubmit} className="comment-input-form">
+                <label>
+                  <input 
+                    type="text" 
+                    value={this.state.comment} 
+                    onChange={this.handleInput("comment")}
+                    className="comment-text-input" />
                 </label>
 
-                <input type="submit" value="Send" />
+                <input 
+                  type="submit"
+                  value="Send"
+                  className="comment-text-send"
+                />
               </form>
             </div>
           </div>
 
           <div className="thread-page-nav">
-            <button onClick={this.handleGoBack}>
-              Go back
+            <button onClick={this.handleBackCafe}>
+              Back to {(thread.sellPost.cafeId.name).toUpperCase()}
+            </button>
+            <button onClick={this.handleBackProfile}>
+              Back to Profile
             </button>
           </div>
 
@@ -308,7 +382,7 @@ class ThreadShow extends React.Component{
   }
 }
 
-export default ThreadShow;
+export default withRouter(ThreadShow);
 
 
 

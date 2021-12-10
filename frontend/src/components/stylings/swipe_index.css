@@ -7,14 +7,67 @@
   width: 100%;
   margin: 0 auto;
   max-width: 1600px;
+  z-index: 0;
+}
+
+.panel-container {
+  display: flex;
+}
+
+.left-pannel {
+  width: 80%;
+}
+
+.right-pannel {
+  width: 20%;
+  background-color: green;
+}
+
+.map-container {
+  height: 400px;
+  width: 400px;
+  background-color: gray;
+  margin-right: 2em;
+  margin-top: 4em;
+}
+
+.cafeteria-banner {
+  height: 12em;
+  background-color: yellow;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.cafeteria-banner .rieber {
+  width: 100%;
+  object-position: center -470px;
+  z-index: -1;
+}
+.cafeteria-banner .covel {
+  width: 100%;
+  object-position: center -500px;
+  z-index: -1;
+}
+
+.cafeteria-banner .deneve {
+  width: 100%;
+  object-position: center -220px;
+  z-index: -1;
+}
+
+.cafeteria-banner .BruinPlate {
+  width: 100%;
+  object-position: center -410px;
+  z-index: -1;
 }
 
 .cafeteria-container {
-  width: 80%;
+  width: 100%;
   height: fit-content;
-  margin: 0 auto;
-  padding: 52px 0;
+  margin: 0;
+  padding: 0 0;
   max-width: 1600px;
+  z-index: 1;
   /* background-color: green; */
   /* display: flex;
   flex-wrap: wrap;
@@ -22,12 +75,63 @@
   gap: 5px 5%; */
 }
 
-.cafeteria-name {
+.cafeteria-name-container {
   font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   font-size: 52px;
   font-weight: bold;
-  color: #09A603
+  color: #09A603;
+  background-color: white;
+  /* margin-top: -0.9em; */
+  z-index: 1;
 }
+
+.cafeteria-name-wrapper {
+  border-radius: 25px;
+  background-color: white;
+  width: fit-content;
+  padding: 0.2em 0.5em;
+  z-index: 2;
+}
+
+.sort-filter-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0;
+  padding-left: 5%;
+  margin: 0 auto;
+}
+
+.filter-container, .sort-container{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+}
+
+.sort-container {
+  width: 60%;
+}
+
+.filter-container {
+  width: 40%;
+}
+
+.filter, .sort {
+  font-size: 16px;
+  padding: 0.5em 1em;
+  border-radius: 20px;
+  color: #09A603;
+  background-color: white;
+  border: 1px solid #09A603;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+
+.sort.selected, .filter.selected {
+  color: white;
+  background-color: #09A603;
+}
+
 
 .swipe-index {
   width: 80%;
@@ -35,19 +139,21 @@
   max-width: 1600px;
   background-color: blue;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 
+
+
 .swipe-index-items-container {
-  width: 100%;
+  /* width: 100%; */
   margin: 2em auto 4em;
   padding: 2em;
-  padding-left: 10%;
+  padding-left: 5%;
   max-width: 1600px;
-  /* display: flex;
+  display: flex;
   flex-wrap: wrap;
-  justify-content: left; */
+  /* justify-content: left; */
   column-count: 2;
   gap: 80px 10%;
 }
