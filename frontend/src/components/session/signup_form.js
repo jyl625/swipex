@@ -21,6 +21,7 @@ class SignupForm extends React.Component {
       this.props.history.push('/login');
     }
  
+    
     this.setState({errors: nextProps.errors})
   }
 
