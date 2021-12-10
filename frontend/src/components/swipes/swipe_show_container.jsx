@@ -9,7 +9,8 @@ const mSTP = (state, ownProps) => ({
   swipe: state.swipes.single,
   cafeterias: state.cafeterias.all,
   currentUser: state.session.user,
-  threads: state.threads
+  threads: state.threads,
+  session: state.session
 });
 
 const mDTP = (dispatch) => ({
