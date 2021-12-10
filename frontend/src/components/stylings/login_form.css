@@ -1,4 +1,4 @@
-.signup-form-container {
+.login-form-container {
   background-color: #5DD959;
   height: 100vh;
   margin: 0 auto;
@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-.signup-form {
+.login-form {
   background-color: #B5F2B3;
   height: auto;
   height: 500px;
@@ -28,7 +28,7 @@
   border-radius: 25px;
 }
 
-.signup-input {
+.login-input {
   padding: 9px 0px 7px 9px;
   font-size: 12px;
   width: 14em;
@@ -37,23 +37,23 @@
   background: #fafafa;
   border-radius: 25px;
   border: 1px solid #efefef;
-  margin: 2px;
+  margin: 5px;
 }
 
-.signup-button{
+.login-button{
   font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   font-size: 15px;
-  padding: 10px;
+  padding: 7px;
   font-weight: bold;
   color: white;
   background-color: #F28705;
   /* margin-top: -0.9em; */
   z-index: 1;
   border-radius: 25px;
-  margin: 20px;
+  margin: 5px;
 }
 
-.signup-button:hover {
+.login-button:hover {
   background-position: 100% 100%;
   animation: up-bump 0.1s ease;
 }
