@@ -52,10 +52,10 @@ class UserShow extends React.Component {
               <div className="usershow-info-title">{this.props.user.username}'s Profile</div>
             </div>
             <div className="usershow-info-content">
-                <div>Total Ongoing Conversations Posts: {this.state.PC}</div>
-                <div>Total Open Sellposts: {this.state.CC}</div>
-                <div>Total Closed Conversions: {this.state.PS}</div>
-                <div>Total Prcoessed Exchanges: {this.state.CS}</div>
+                <div>Total Closed Conversations: {this.state.PC}</div>
+                <div>Total Open Conversation: {this.state.CC}</div>
+                <div>Total Closed Swipe Sales: {this.state.PS}</div>
+                <div>Total Open Swipe Sales: {this.state.CS}</div>
             </div>
           </div>
           <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
@@ -67,7 +67,7 @@ class UserShow extends React.Component {
           <HashLink smooth to={`/user/${this.props.user.id}#PS`}>
             <div className="link">Current Sellpost</div>
           </HashLink>
-          <HashLink smoother to={`/user/${this.props.user.id}#CS`}>
+          <HashLink smooth to={`/user/${this.props.user.id}#CS`}>
             <div className="link">Closed Exchanges</div>
           </HashLink>
           <div id="CC" className="usershow-column">

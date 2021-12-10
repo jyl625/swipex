@@ -7,6 +7,9 @@ import '../stylings/user_show.css'
 class ThreadIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = ({
+      countUpdated: false
+    })
   }
   
   componentDidMount() {
@@ -20,7 +23,6 @@ class ThreadIndex extends React.Component {
     if (this.props.threads.length === 0)
       return 'loading threads';
     let filteredThreads = [];
-    debugger
     console.log(this.props.threads.length)
     this.props.swipes.forEach(swipe => {
       // console.log(swipe)
@@ -38,19 +40,25 @@ class ThreadIndex extends React.Component {
     });
     console.log(this.props.threadType)
     console.log(filteredThreads);
-    const sortedThreads = this.props.threads.sort(function(a, b) {
+    const sortedThreads = filteredThreads.sort(function(a, b) {
       var keyA = new Date(a.updatedAt), keyB = new Date (b.updatedAt);
       if (keyA < keyB) return 1;
       else return -1;
     });
-    this.props.updateCount('CC', sortedThreads.length)
+    // const countType = (this.props.threadType === 'Past') ? 'PC' : 'CC';
+    // if (!this.state.countUpdated) {
+    //   this.props.updateCount(countType, sortedThreads.length)
+    //   this.setState({
+    //     countUpdated: true
+    //   })
+    // }
     return sortedThreads.map(thread => 
-       <ThreadIndexItem key={thread.id} thread={thread}/>
+       <ThreadIndexItem key={thread._id} thread={thread}/>
     )
   }
 
   render() {
-  
+
     return (
       <div className="usershow-item-container">
         <div className="usershow-item-title" >Past Conversation of {this.props.user.username}</div>

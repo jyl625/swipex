@@ -33,9 +33,9 @@ class MainPage extends React.Component {
     // if (Object.keys(this.props.cafeterias).length !== 0) {
       return this.props.cafeterias.map((cafeteria, idx) => {
         // return <Link to={`/cafeteria/`}
-        return <div className="link-item">
+        return <div key={idx} className="link-item">
                   <Link to={`/cafeteria/${cafeteria.name.replace(/\s/g, "").toLowerCase()}`}
-                    key={idx}>
+                    key={cafeteria._id}>
                       <div className="cafe-link">{cafeteria.name.toUpperCase()}</div>
                   </Link>
               </div>

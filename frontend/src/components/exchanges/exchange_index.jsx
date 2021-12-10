@@ -5,10 +5,27 @@ import '../stylings/reset.css'
 import '../stylings/user_show.css'
 
 class ExchangeIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = ({
+      countUpdated: false
+    })
+  }
   componentDidMount() {
     this.props.requestUserExchanges(this.props.user.id);
   }
 
+  listExchange() {
+    // if (!this.state.countUpdated) {
+    //   this.props.updateCount('PS', this.props.exchanges.length)
+    //   this.setState({
+    //     countUpdated: true
+    //   })
+    // }
+    this.props.exchanges.map(exchange => {
+      return <ExchangeIndexItem exchange={exchange}/>
+    })
+  }
 
   render() {
     if (this.props.exchanges.length === 0)
@@ -18,10 +35,7 @@ class ExchangeIndex extends React.Component {
         <div className="usershow-item-title">Past Sales Posts from {this.props.user.username}</div>
         <div className="usershow-item">
           {
-            this.props.exchanges.map(exchange => {
-              this.props.updateCount('PS', this.props.exchanges.length)
-              return <ExchangeIndexItem exchange={exchange}/>
-            })
+           this.listExchange()
           }
         </div>
       </div>
