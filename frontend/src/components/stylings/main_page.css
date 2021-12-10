@@ -4,11 +4,12 @@
   width: 100%;
   margin: 0 auto;
   max-width: 1600px;
+  padding-top: 50px;
 }
 
 .content-wrapper-container {
   display: flex;
-  justify-content: left;
+  justify-content: space-evenly;
   max-width: 1600px;
 }
 
@@ -17,6 +18,10 @@
   height: fit-content;
   margin: 0;
   max-width: 1600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 50px;
 }
 
 .linechart-container {
@@ -24,12 +29,15 @@
   height: fit-content;
   margin: 0;
   max-width: 1600px;
+  padding-left: 100px;
 }
 
 .cafeteria-links-container{
   display:flex;
   flex-direction: column;
   width: 33%;
+  justify-content: center;
+  align-items: center;
 }
 
 .cafeteria-links-container a {
@@ -47,18 +55,40 @@
   flex-grow: 1;
   margin: 0.5em 0.25em;
   padding: 0.25em;
+  
 }
 
 .cafe-link {
-  height: 100%;
-  width: 100%;
-  display: inline-block;
+  height: 80px;
+  width: 250px;
+  display: flex;
   padding: 1em;
   border-radius: 25px;
   border: 1px solid black;
   box-shadow: 4px 4px #888888;
   font-size: 24px;
   font-weight: bold;
+  background-color: #F28705;
+  justify-content: center;
+  color: white
+}
+
+.cafe-link:hover{
+  background-color: #D2F251;
+}
+
+.exchange-count {
+  padding-left: 100px;
+  font-size: 19px;
+  font-weight: bold;
+  color: gray;
+}
+
+.close-price {
+  padding-left: 200px;
+  font-size: 19px;
+  font-weight: bold;
+  color: gray;
 }
 
 

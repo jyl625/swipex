@@ -47,6 +47,10 @@ class MainPage extends React.Component {
     if (this.state.loadedCafeterias) {
       return (
         <div className="main-page">
+          <div className="chart-title">
+            <span className="exchange-count">past 30-days meal swipes exchange counts</span>
+            <span className="close-price">past 30-days meal swipes close price</span>
+          </div>
           <div className="content-wrapper-container">
             <div className="barchart-container"><BarchartContainer/></div>
             <div className="linechart-container"><LinechartContainer/></div>
