@@ -22,12 +22,12 @@ class SwipeUserIndex extends React.Component {
       if (keyA < keyB) return 1;
       else return -1;
     });
-    // if (!this.state.countUpdated) {
-    //   this.props.updateCount('CS', sortedSwipes.length)
-    //   this.setState({
-    //     countUpdated: true
-    //   })
-    // }
+    if (!this.state.countUpdated) {
+      this.props.updateCount('CS', sortedSwipes.length)
+      this.setState({
+        countUpdated: true
+      })
+    }
       return sortedSwipes.map(swipe => 
       <SwipeUserIndexItem key={swipe._id} swipe={swipe}/>
     )

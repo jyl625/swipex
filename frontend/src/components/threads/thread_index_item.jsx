@@ -47,7 +47,7 @@ const ThreadIndexItem = ({thread, threadType, currentUser}) => {
           </ul> */}
         {/* {buy} */}
         {/* <p>SellPost: {thread.sellpost}</p> */}
-        <p class="last-message-on">Last message on {parseTimeStringShort(thread.updatedAt)}</p>
+        <p className="last-message-on">Last message on {parseTimeStringShort(thread.updatedAt)}</p>
       </div>
     </Link>
     )
