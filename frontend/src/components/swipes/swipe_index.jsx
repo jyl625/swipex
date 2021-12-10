@@ -1,5 +1,6 @@
 import React from 'react';
 import SwipeIndexItem from './swipe_index_item';
+// import Keys from '../../../../config/keys'
 
 import '../stylings/reset.css'
 import '../stylings/swipe_index.css'
@@ -146,6 +147,17 @@ class SwipeIndex extends React.Component {
     }
   }
 
+  renderMap() {
+    const lat = this.props.cafeteria.lat
+    const lng = this.props.cafeteria.lng
+    const googleAPIKey = require('../../config/keys').googleAPIKey
+    return (
+      <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">
+        <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=17&size=400x400&maptype=roadmap&markers=size:large%7Ccolor:blue%7C${lat},${lng}&key=${googleAPIKey}`} alt="map" />
+      </a>
+    )
+  }
+
   render() {
     // return <div>{this.props.cafeteria.name}</div>
     // console.log(this.state)
@@ -164,7 +176,9 @@ class SwipeIndex extends React.Component {
             </div>
             </div>
             <div className="right-panel">
-              <div className="map-container"></div>
+              <div className="map-container">
+                {this.renderMap()}
+              </div>
               <div className="menu-container">
                 <ul>Breakfast
                   <li>Item 1</li>
