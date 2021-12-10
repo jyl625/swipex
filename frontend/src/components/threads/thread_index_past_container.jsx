@@ -6,7 +6,8 @@ import ThreadIndex from './thread_index';
 const mSTP = state => ({
   threads: Object.values(state.threads),
   swipes: state.swipes.user,
-  threadType: "Past"
+  threadType: "Past",
+  currentUser: state.session.user
 })
 
 const mDTP = dispatch => ({

@@ -48,11 +48,21 @@ class MainPage extends React.Component {
       return (
         <div className="main-page">
           <div className="content-wrapper-container">
-            <div className="barchart-container"><BarchartContainer/></div>
-            <div className="linechart-container"><LinechartContainer/></div>
-            <div className="cafeteria-links-container">
-              {this.listCafeteriaLinks()}
+          <div className="chart-wrapper">
+            <div className="chart-title">
+              <span className="exchange-count">past 30-days meal swipes exchange counts</span>
             </div>
+            <div className="barchart-container"><BarchartContainer/></div>
+          </div>
+          <div className="chart-wrapper">
+            <div className="chart-title">
+              <span className="close-price">past 30-days meal swipes close price</span>
+            </div>
+            <div className="linechart-container"><LinechartContainer/></div>
+          </div>
+          </div>
+          <div className="cafeteria-links-container">
+            {this.listCafeteriaLinks()}
           </div>
         </div>
       );

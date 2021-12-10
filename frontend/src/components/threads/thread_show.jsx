@@ -127,7 +127,7 @@ class ThreadShow extends React.Component{
 
   handleBackProfile(e){
     e.preventDefault();
-    this.props.history.push("/")
+    this.props.history.push("/profile")
   }
 
   handleBackCafe(e) {
@@ -179,10 +179,10 @@ class ThreadShow extends React.Component{
       0 : thread.buyerOffer;
 
     const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal) ?
-      (<button onClick={this.handleBuyConfirm}>Ok, fine!</button>) : null
+      (<button onClick={this.handleBuyConfirm}>Let's Go!</button>) : null
 
     const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal && thread.buyerOffer) ?
-      (<button onClick={this.handleSellConfirm}>Ok, fine!</button>) : null
+      (<button onClick={this.handleSellConfirm}>Let's Go!</button>) : null
 
 
     const buyOfferPrice = (thread.buyerOffer) ? 
@@ -319,7 +319,7 @@ class ThreadShow extends React.Component{
           </div>
 
           <div id="scroll-container">
-            <div id="scroll-text">Click "OK, fine!" to confirm an exchange.</div>
+            <div id="scroll-text">Click "Let's Go!" to confirm an exchange. Or put in a new offer.</div>
           </div>
 
           <div className="thread-page-current-offers">

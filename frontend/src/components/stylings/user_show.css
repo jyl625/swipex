@@ -1,6 +1,10 @@
 .usershow-main {
-  background-color: beige;
-  display: block;
+  max-width: 1600px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
   font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
@@ -8,36 +12,172 @@
 
 .usershow-wrapper {
   display: flex;
-  width: 100%;
-  flex-direction: column;
- 
+  width: 90%;
+  justify-content: space-between;
 }
 
-.usershow-info-title-wrapper{
+.usershow-nav-left{
+  width: 240px;
+}
 
+.usershow-nav-links{
+  position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+  z-index: 2;
+  margin: 32px 16px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  height: 100px;
-  width: 100%;
-  padding: 20px;
+  height: 15em;
+  width: 15em;
+  padding: 1em;
+  border-radius: 25px;
+  /* border: 1px solid black; */
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  background-color: var(--color3);
+  color: black;
 }
 
-.usershow-info {
- text-align: center;
+.usershow-nav-links>a:hover{
+  text-decoration: underline;
+  transform: scale(1.2);
+  color: var(--color5);
+}
+
+.usershow-content-middle{
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.usershow-column{
+  margin: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  /* height: 12em; */
+  width: 32em;
+  padding: 1em;
+  border-radius: 25px;
+  border: 2px solid var(--color1);
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  background-color: white;
+  color: black;
+}
+
+.usershow-item-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.usershow-item-title{
+  margin: 16px;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color5);
+}
+
+.messages{
+  width: 24em;
+  padding: 1em;
+  border-radius: 15px;
+  border: 1px solid var(--color2);
+  box-shadow: 2px 1px #888888;
+  color: black;
+  margin: 16px 0;
+  background: linear-gradient(
+     white, white 50%, #B5F2B3 50%, #B5F2B3
+  );
+  background-size: 100% 202%;
+  transition: all 0.1s ease;
+  /* animation: down-bump 0.1s ease; */
+  cursor: pointer;
+}
+
+.messages:hover {
+  background-position: 100% 100%;
+  transform: scale(1.05);
+  /* animation: up-bump 0.1s ease; */
+}
+
+.usershow-otheruser-name{
+  color: var(--color1);
+}
+
+.last-message-on, .usershow-index-item-grey{
+  color: #999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.usershow-info-right{
+  width: 240px;
+}
+
+.usershow-info-wrapper{
+  position: -webkit-sticky;
+	position: sticky;
+	top: 0;
+  z-index: 2;
+  margin: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 24em;
+  width: 15em;
+  padding: 1em;
+  border-radius: 25px;
+  /* border: 1px solid black; */
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  color: black;
+  background-color: var(--color3);
+  color: black;
+}
+
+.usershow-info-title{
+  font-size: 32px;
+  margin: 16px 0;
+  padding: 8px;
+  border: 1px solid white;
+  background-color: white;
+  border-radius: 10px;
 }
 
 .usershow-info-content{
-  text-align: center;
   display: flex;
-  height: 300px;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  
+  flex-direction: column;
 }
 
-.usershow-column {
+.usershow-info-content>div{
+  margin: 16px 0;
+}
+
+.usershow-info-content>div>span{
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color5);
+}
+
+
+/* .usershow-column {
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -47,11 +187,7 @@
 
 }
 
-.title {
-  display: flex;
 
-  background-color: paleturquoise;
-}
 .usershow-item-container {
   display: flex;
   width: 500px;
@@ -72,9 +208,6 @@
    margin-bottom: bottom;
 }
 
-.usershow-item-title {
- 
-}
 
 .messages {
 
@@ -94,7 +227,7 @@
 
 
 
-
+ */
 
 
 

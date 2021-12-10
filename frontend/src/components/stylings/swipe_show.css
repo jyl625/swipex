@@ -71,6 +71,10 @@ input[type=button]:hover {
   background-color: #09A603;
 }
 
+input[type=button].your-own {
+  background-color: gray;
+}
+
 .close-x{
   float: right;
   cursor: pointer;

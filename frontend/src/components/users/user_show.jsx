@@ -47,40 +47,53 @@ class UserShow extends React.Component {
     return (
       <div className="usershow-main">
         <div className="usershow-wrapper">
-          <div className="usershow-info">
-            <div className="usershow-info-title-wrapper">
-              <div className="usershow-info-title">{this.props.user.username}'s Profile</div>
+
+          <div className="usershow-nav-left">
+            <div className="usershow-nav-links">
+              <HashLink smooth to={`/user/${this.props.user.id}#CC`}>
+                <div className="link">Open Chats</div>
+              </HashLink>
+              <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
+                <div className="link">Closed Chats</div>
+              </HashLink>
+              <HashLink smooth to={`/user/${this.props.user.id}#PS`}>
+                <div className="link">Current Swipes</div>
+              </HashLink>
+              <HashLink smooth to={`/user/${this.props.user.id}#CS`}>
+                <div className="link">Closed Deals</div>
+              </HashLink>
             </div>
-            <div className="usershow-info-content">
-                <div>Total Closed Conversations: {this.state.PC}</div>
-                <div>Total Open Conversation: {this.state.CC}</div>
-                <div>Total Closed Swipe Sales: {this.state.PS}</div>
-                <div>Total Open Swipe Sales: {this.state.CS}</div>
+          </div>
+
+          <div className="usershow-content-middle">
+            <div id="CC" className="usershow-column">
+              <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} />
+            </div>
+            <div id="PS" className="usershow-column">
+              <SwipeUserIndexContainer user={this.props.user} updateCount={this.updateCount} />
+            </div>
+            <div id="PC" className="usershow-column">
+              <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount} />
+            </div>
+            <div id="CS" className="usershow-column">
+              <ExchangeIndexContainer user={this.props.user} updateCount={this.updateCount} />
             </div>
           </div>
-          <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
-            <div className="link">Closed Conversation</div>
-          </HashLink>
-          <HashLink smooth to={`/user/${this.props.user.id}#CC`}>
-            <div className="link">Open Convsersation</div>
-          </HashLink>
-          <HashLink smooth to={`/user/${this.props.user.id}#PS`}>
-            <div className="link">Current Sellpost</div>
-          </HashLink>
-          <HashLink smooth to={`/user/${this.props.user.id}#CS`}>
-            <div className="link">Closed Exchanges</div>
-          </HashLink>
-          <div id="CC" className="usershow-column">
-            <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount}/>
-          </div>
-          <div id="PS" className="usershow-column">
-            <SwipeUserIndexContainer user={this.props.user} updateCount={this.updateCount}/>
-          </div>
-          <div id="PC" className="usershow-column">
-            <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount}/>
-          </div>
-          <div id="CS" className="usershow-column">
-            <ExchangeIndexContainer user={this.props.user} updateCount={this.updateCount}/>
+
+          <div className="usershow-info-right">
+            <div className="usershow-info-wrapper">
+              <div className="usershow-info-title">
+                {this.props.user.username}
+              </div>
+              
+              <div className="usershow-info-content">
+                <div>Past Chats: <span>{this.state.PC}</span></div>
+                <div>Open Chat: <span>{this.state.CC}</span></div>
+                <div>Closed Swipe Sales: <span>{this.state.PS}</span></div>
+                <div>Open Swipe Sales: <span>{this.state.CS}</span></div>
+              </div>
+              
+            </div>
           </div>
         </div>
       </div>

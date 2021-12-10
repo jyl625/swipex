@@ -5,16 +5,18 @@
   margin: 0 auto;
   max-width: 1600px;
   padding-top: 50px;
+  min-height: 1200px;
 }
 
 .content-wrapper-container {
   display: flex;
   justify-content: space-evenly;
   max-width: 1600px;
+  margin: 0 auto;
 }
 
 .barchart-container {
-  width: 33%;
+  width: 100%;
   height: fit-content;
   margin: 0;
   max-width: 1600px;
@@ -25,7 +27,7 @@
 }
 
 .linechart-container {
-  width: 33%;
+  width: 50%;
   height: fit-content;
   margin: 0;
   max-width: 1600px;
@@ -75,6 +77,7 @@
 
 .cafe-link:hover{
   background-color: #D2F251;
+  color: black;
 }
 
 .exchange-count {
