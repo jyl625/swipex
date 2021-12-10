@@ -14,7 +14,7 @@ router.get('/', (req, res) => {
   Conversation.find()
     .populate(
       { path: "sellPost",
-        populate: { path: 'cafeId', model: "Cafeteria", select: "name location"}
+        populate: { path: 'cafeId', model: "Cafeteria", select: "name location lat lng"}
       })
     .populate("seller", "username")
     .populate("buyer", "username")
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
   Conversation.findById(req.params.id)
     .populate(
       { path: "sellPost",
-        populate: { path: 'cafeId', model: "Cafeteria", select: "name location" }
+        populate: { path: 'cafeId', model: "Cafeteria", select: "name location lat lng" }
       })
     .populate("seller", "username")
     .populate("buyer", "username")
