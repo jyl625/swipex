@@ -38,7 +38,7 @@ export const requestThread = (threadId) => dispatch => (
 
 export const requestUserThreads = (userId) => dispatch => (
   ThreadAPIUtil.fetchUserThreads(userId)
-    .then(threads => dispatch(receiveThreads(threads)))
+    .then(threads => dispatch(receiveUserThreads(threads)))
 )
 
 export const createThread = (thread) => dispatch => (

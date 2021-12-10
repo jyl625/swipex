@@ -1,6 +1,21 @@
+:root {
+  --color1: #09A603;
+  --color2: #5DD959;
+  --color3: #B5F2B3;
+  --color4: #D2F25E;
+  --color5: #F28705;
+}
+
 .thread-page-wrapper{
+  width: 80%;
+  height: fit-content;
+  margin: 2em auto;
+  padding-bottom: 2em;
+  max-width: 1600px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  background-color: white;
+  font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;;
 }
 
 .thread-page-left{
@@ -16,93 +31,341 @@
 }
 
 .thread-page-swipe-details{
-  margin: 32px 16px;
-  background-color: wheat;
+  display: inline-block;
+  height: 12em;
+  width: 24em;
+  margin-top: 2em;
+  padding: 2em;
+  border-radius: 25px;
   border: 1px solid black;
-  border-radius: 5px;
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  color: black;
+  background: linear-gradient(
+     var(--color3) 50%, var(--color3)
+  );
+  background-size: 100% 202%;
+  transition: all 0.1s ease;
+  animation: down-bump 0.1s ease;
 }
 
-.thread-page-avail-prompt{
-  background-color: white;
-  color: green;
+/* .thread-page-swipe-details:hover {
+  background-position: 100% 100%;
+  animation: up-bump 0.1s ease;
+} */
+
+.thread-page-swipe-details h1 {
+  font-size: 36px;
+}
+
+.thread-page-swipe-details h2 {
+  font-size: 17px;
+}
+
+.thread-page-swipe-details h3 {
+  color: #999;
+}
+
+/* .thread-page-swipe-details:hover h3 {
+  color: black;
+} */
+ 
+
+
+
+
+
+
+
+
+.thread-page-avail-prompt{  
+  color: var(--color5);
   font-size: 24px;
-  margin-bottom: 32px;
+  font-weight: 600;
+  margin: 16px 0;
+}
+
+.deal-success-prompt{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.no-longer-avail-prompt{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.thread-map-container {
+  height: 300px;
+  width: 300px;
+  background-color: gray;
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .thread-page-current-offers{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
   width: 100%;
   height: 120px;
   margin-bottom: 32px;
+
+  height: 10em;
+  width: 24em;
+  padding: 1em;
+  border-radius: 25px;
+  border: 1px solid black;
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  color: black;
+  background: linear-gradient(
+     var(--color3) 50%, var(--color3)
+  );
+  background-size: 100% 202%;
 }
 
 .seller-offer-details, .buyer-offer-details{
   height: 100%;
+  width: 150px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  align-items: center;
   background-color: white;
+  border-radius: 15px;
 }
 
 .current-offer-price{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 8px;
+  border: 2px solid var(--color5);
+  border-radius: 5px;
+  font-size: 20px;
+  color: var(--color1)
 }
 
 .deal-confirm-btn{
-  height: 20px;
-  width: 80px;
+  height: 28px;
+}
+
+.deal-confirm-btn>button{
+  height: 28px;
+  width: 120px;
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: var(--color5);
+  color: white
+}
+
+.deal-confirm-btn>button:hover{
+  -webkit-filter: brightness(80%)
 }
 
 .thread-page-comment-wrapper{
   width: 100%;
   background-color:white;
   margin-bottom: 16px;
+  width: 100%;
+  margin-bottom: 32px;
+  width: 24em;
+  padding: 1em;
+  border-radius: 25px;
+  border: 1px solid black;
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  color: black;
+  background: white;
+  background-size: 100% 202%;
 }
 
 
 .other-user-name{
   display: flex;
   justify-content: center;
-  font-size: 24px;
+  font-size: 22px;
   padding-bottom: 8px;
   margin-bottom: 8px;
-  border-bottom: 1px black solid;
+  border-bottom: 1px var(--color3) solid;
+  color: var(--color1)
+}
+
+.comment-box{
+  min-height: 100px;
 }
 
 .otherUser-comment{
   display: flex;
   justify-content: flex-start;
-  color: green
+}
+
+.otherUser-comment>div{
+  font-weight: 400;
+  padding: 5px 10px;
+  border: 0.1px var(--color2) solid;
+  border-radius: 5px;
+  background-color: white;
 }
 
 .currentUser-comment{
   display: flex;
   justify-content: flex-end;
-  color:orange;
+  margin: 2px 0;
 }
+
+.currentUser-comment>div{
+  font-weight: 400;
+  padding: 5px 10px;
+  border: 0.1px var(--color2) solid;
+  border-radius: 5px;
+  background-color: var(--color3);
+}
+
+
+
+
+
 
 .comment-input-box{
   margin-top: 8px;
-  border-top: 1px black solid;
+  border-top: 1px var(--color3) solid;
   padding: 16px 0;
   display: flex;
   justify-content: flex-end;
 }
 
+.comment-input-form{
+  display: flex;
+}
+
+.comment-text-input{
+  margin-right: 8px;
+  background-color: white;
+  border: 1px grey solid;
+  border-radius: 5px;
+  height: 32px;
+  width: 100%;
+}
+
+.comment-text-send{
+  cursor: pointer;
+}
+
+
+.thread-page-nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+.thread-page-nav>button{
+  margin: 0 16px;
+  width: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: var(--color5);
+  color: white
+}
+
+.thread-page-nav>button:hover{
+  -webkit-filter: brightness(80%)
+}
+
+
+
+
 
 .thread-page-right{
   display: flex;
-  width: 200px;
+  width: 240px;
 }
 
 .thread-offer-input{
   margin: 32px 16px
+}
+
+.user-offer-input{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 12em;
+  width: 13em;
+  padding: 2em;
+  border-radius: 25px;
+  border: 1px solid black;
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  color: black;
+  background: linear-gradient(
+     var(--color1) 50%, var(--color1)
+  );
+  color: white;
+}
+
+.user-offer-input h1{
+  font-size: 20px;
+}
+
+
+.offer-input-box{
+  display: inline-block;
+  position: relative;
+}
+
+.offer-input-box input{
+  padding-left: 15px;
+  height: 36px;
+  width: 105px;
+  border-radius: 5px;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--color1);
+  text-align: right;
+}
+
+.offer-input-box:before{
+  position: absolute;
+  line-height: 32px;
+  content:"$";
+  left:5px;
+	top:2px;
+  color: black;
+}
+
+.user-offer-input>button{
+  border-radius: 5px;
+  cursor: pointer;
+  height: 36px;
+  width: 105px;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: var(--color5);
+  color: white
+}
+
+.user-offer-input>button:hover{
+  -webkit-filter: brightness(80%)
 }
 

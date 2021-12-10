@@ -10,9 +10,9 @@
 
 .navbar-wrapper-top {
   width: 100%;
-  height: 48px;
+  height: 62px;
   margin: 0 auto;
-  padding: .2em 1em .2em;
+  padding: 1em 3em .2em;
   max-width: 1600px;
   display: flex;
   justify-content: space-between;
@@ -21,8 +21,8 @@
 
 .navbar-wrapper-bottom {
   width: 100%;
-  height: 40px;
-  padding: .2em 1em .2em 1em;
+  height: 48px;
+  padding: .2em 1em .2em 3em;
   margin: 0 auto;
   max-width: 1600px;
   display: flex;
@@ -35,11 +35,15 @@
   width: fit-content;
 }
 
-.navbar-logo h1 {
-  font-size: 2em;
+.navbar-logo img {
+  height: 40px;
 }
 
-.navbar-logo a, .navbar-links-container a {
+.profile-img {
+
+}
+
+.navbar-links-container a {
   color: black;
 }
 

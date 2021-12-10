@@ -166,6 +166,10 @@ class SwipeIndex extends React.Component {
     // console.log(this.state)
     if (this.state.swipesLoaded) {
       return (
+                  <div className="cafeteria-show-page">
+            <div className="cafeteria-banner">
+              <img className={`${this.props.cafeteria.name.replace(/\s/g, "")}`} src={this.props.cafeteria.photoUrls[0]} alt="cafeteria banner" />
+            </div>
         <div className="panel-container">
           <div className="left-pannel">
             <div className="cafeteria-container">
@@ -207,6 +211,7 @@ class SwipeIndex extends React.Component {
               </div>
             </div>
           </div>
+                   </div>
       )
     } else {
       return <div>Gathering swipes...</div>

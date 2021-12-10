@@ -4,6 +4,7 @@ import { RECEIVE_USER_EXCHANGES, RECEIVE_EXCHANGES, RECEIVE_NEW_EXCHANGE} from "
 const ExchangesReducer = (state = { all: {}, user: {}, new: undefined }, action) => {
   Object.freeze(state);
   const nextState = Object.assign({}, state);
+  
   switch(action.type) {
     case RECEIVE_USER_EXCHANGES:
       nextState.user = action.exchanges.data;
