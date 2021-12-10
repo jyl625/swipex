@@ -38,8 +38,6 @@ class SwipeShow extends React.Component {
 
 
         if (res.thread.data) {
-          this.props.closeModal();
-          console.log("modal close")
           return this.redirectToNewThread(res.thread.data._id)
         } else {
           this.props.createThread({
@@ -47,8 +45,6 @@ class SwipeShow extends React.Component {
             seller: this.props.swipe.seller,
             buyer: this.props.currentUser.id
           }).then((res) => {
-            this.props.closeModal();
-            console.log("modal close")
             this.redirectToNewThread(res.thread.data._id)
           })
         }
