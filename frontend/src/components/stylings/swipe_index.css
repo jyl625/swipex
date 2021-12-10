@@ -38,8 +38,26 @@
   z-index: 1;
 }
 
-.cafeteria-banner img {
-  object-position: center -350px;
+.cafeteria-banner .rieber {
+  width: 100%;
+  object-position: center -470px;
+  z-index: -1;
+}
+.cafeteria-banner .covel {
+  width: 100%;
+  object-position: center -500px;
+  z-index: -1;
+}
+
+.cafeteria-banner .deneve {
+  width: 100%;
+  object-position: center -220px;
+  z-index: -1;
+}
+
+.cafeteria-banner .BruinPlate {
+  width: 100%;
+  object-position: center -410px;
   z-index: -1;
 }
 

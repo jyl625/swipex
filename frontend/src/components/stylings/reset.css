@@ -56,3 +56,12 @@ table {
 strong {
 	font-weight: bold;
 }
+a, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
