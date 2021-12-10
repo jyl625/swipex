@@ -75,7 +75,6 @@ class LinechartData extends React.Component {
       }
       this.setState({ exchangeDataLoaded: true, data: data })
     }
-    debugger
   }
   
 
