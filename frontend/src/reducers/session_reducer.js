@@ -18,6 +18,7 @@ const SessionReducer = (state = initialState, action) => {
         user: action.currentUser
       }
     case RECEIVE_USER_SIGN_IN: //added
+      debugger
       return {
         isAuthenticated: true,
         user: action.currentUser
