@@ -42,6 +42,12 @@
   font-size: 14px;
 }
 
+.swipe-show-error {
+  color: red;
+  font-size: 14px;
+  padding-left: 3.3em;
+}
+
 input[type=button] {
   background-color: #5DD959;
   border: none;

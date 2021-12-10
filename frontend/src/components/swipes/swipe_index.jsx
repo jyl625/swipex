@@ -187,7 +187,7 @@ class SwipeIndex extends React.Component {
                 {this.renderMap()}
               </div>
               <div className="menu-container">
-                <ul>Breakfast
+                {/* <ul>Breakfast
                   <li>Item 1</li>
                   <li>Item 2</li>
                   <li>Item 3</li>
@@ -207,7 +207,7 @@ class SwipeIndex extends React.Component {
                   <li>Item 3</li>
                   <li>Item 4</li>
                   <li>Item 5</li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>

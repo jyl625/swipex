@@ -7,7 +7,8 @@ class SwipeShow extends React.Component {
     super(props);
 
     this.state = {
-      swipeLoaded: true
+      swipeLoaded: true,
+      error: false
     }
 
     this.handleClick = this.handleClick.bind(this)
@@ -22,39 +23,35 @@ class SwipeShow extends React.Component {
 
   handleClick() {
     return () => {
-
-      console.log("clicked!")
-      this.props.requestSellPostBuyerSellerThreads(
-        this.props.swipe._id,
-        this.props.currentUser.id,
-        this.props.swipe.seller
-      ).then((res) => {
+      console.log(this.props.currentUser)
+      if (!this.props.session.isAuthenticated) {
+        console.log("here")
+        this.setState( {
+          error: true
+        })
+      } else {
+        this.props.requestSellPostBuyerSellerThreads(
+          this.props.swipe._id,
+          this.props.currentUser.id,
+          this.props.swipe.seller
+        ).then((res) => {
 
 
         if (res.thread.data) {
           return this.redirectToNewThread(res.thread.data._id)
         } else {
           this.props.createThread({
-          sellPost: this.props.swipe._id,
-          seller: this.props.swipe.seller,
-          buyer: this.props.currentUser.id
-        }).then((res) => {
-          this.redirectToNewThread(res.thread.data._id)
-        })
+            sellPost: this.props.swipe._id,
+            seller: this.props.swipe.seller,
+            buyer: this.props.currentUser.id
+          }).then((res) => {
+            this.redirectToNewThread(res.thread.data._id)
+          })
         }
 
         })
-      // .catch(
-        // this.props.createThread({
-        //   sellPost: this.props.match.params.swipeId,
-        //   seller: this.props.swipe.seller,
-        //   buyer: this.props.currentUser.id
-        // }).then((res) => {
-        //   // debugger
-        //   this.redirectToNewThread(res.thread.data._id)
-        // })
-      // )
-
+      }
+      
     }
   }
 
@@ -105,6 +102,11 @@ class SwipeShow extends React.Component {
     return `${dateString} at ${timeString}`
   }
 
+  displayErrors() {
+    if (this.state.error) 
+      return <div className="swipe-show-error">Must log in first!</div>
+  }
+
   render() {
     if (this.state.swipeLoaded) {
       return (
@@ -121,6 +123,7 @@ class SwipeShow extends React.Component {
             <div className="seller-id">Seller ID: {this.props.swipe.seller}</div>
           </div>
           {this.renderContactSellerButton()}
+          {this.displayErrors()}
         </div>
       )
     } else {
