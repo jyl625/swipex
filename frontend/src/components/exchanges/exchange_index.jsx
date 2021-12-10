@@ -9,6 +9,7 @@ class ExchangeIndex extends React.Component {
     this.props.requestUserExchanges(this.props.user.id);
   }
 
+
   render() {
     if (this.props.exchanges.length === 0)
       return 'loading exchanges'
@@ -17,9 +18,10 @@ class ExchangeIndex extends React.Component {
         <div className="usershow-item-title">Past Sales Posts from {this.props.user.username}</div>
         <div className="usershow-item">
           {
-            this.props.exchanges.map(exchange => (
-              <ExchangeIndexItem exchange={exchange}/>
-            ))
+            this.props.exchanges.map(exchange => {
+              this.props.updateCount('PS', this.props.exchanges.length)
+              return <ExchangeIndexItem exchange={exchange}/>
+            })
           }
         </div>
       </div>

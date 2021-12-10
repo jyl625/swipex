@@ -13,7 +13,7 @@ const ThreadIndexItem = ({thread}) => {
       </ul>
     <p>Buy from: {thread.seller.username}</p>
     <p>SellPost: {thread.sellpost}</p>
-    <p>Time sent: {thread.timeUpdated}</p>
+    <p>Sent: {thread.updatedAt}</p>
   </div>)
 }
 
