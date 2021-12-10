@@ -127,7 +127,7 @@ class ThreadShow extends React.Component{
 
   handleBackProfile(e){
     e.preventDefault();
-    this.props.history.push("/")
+    this.props.history.push("/profile")
   }
 
   handleBackCafe(e) {
