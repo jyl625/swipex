@@ -15,8 +15,10 @@ class UserShow extends React.Component {
       PC: 0,
       CC: 0,
       PS: 0,
-      CS: 0
+      CS: 0,
+      loaded: false
     })
+    
     this.updateCount = this.updateCount.bind(this);
   }
 
@@ -27,11 +29,19 @@ class UserShow extends React.Component {
   }
 
   componentDidMount() {
+    // debugger
     this.props.requestUser(this.props.userId)
+    .then(() => {
+      // debugger
+      this.props.requestUserThreads(this.props.userId)
+    .then(() => this.props.requestUserSwipes(this.props.userId)
+    .then(() => this.setState({ loaded: true }))
+    )
+    })
   }
 
   render() {
-    if (!this.props.user || Object.keys(this.props.user).length === 0) 
+    if (!this.props.user || Object.keys(this.props.user).length === 0 || !this.state.loaded) 
       return 'loading'
     console.log(this.state)
     return (
@@ -39,7 +49,6 @@ class UserShow extends React.Component {
         <div className="usershow-wrapper">
           <div className="usershow-info">
             <div className="usershow-info-title-wrapper">
-              <div>{this.props.user.username}</div>
               <div className="usershow-info-title">{this.props.user.username}'s Profile</div>
             </div>
             <div className="usershow-info-content">
@@ -65,7 +74,7 @@ class UserShow extends React.Component {
             <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount}/>
           </div>
           <div id="PC" className="usershow-column">
-            <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount}/>
+            <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount}/>
           </div>
           <div id="PS" className="usershow-column">
             <SwipeUserIndexContainer user={this.props.user} updateCount={this.updateCount}/>

@@ -5,15 +5,39 @@ import '../stylings/reset.css'
 import '../stylings/user_show.css'
 
 class ThreadIndex extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   
   componentDidMount() {
-    this.props.requestUserThreads(this.props.user.id)
+    // this.props.requestUserThreads(this.props.user.id)
+    // .then(() => this.props.requestUserSwipes(this.props.user.id)
+    // .then(() => this.setState({ loaded: true }))
+    // )
   }
 
   listThread() {
     if (this.props.threads.length === 0)
       return 'loading threads';
-  
+    let filteredThreads = [];
+    debugger
+    console.log(this.props.threads.length)
+    this.props.swipes.forEach(swipe => {
+      // console.log(swipe)
+      if ((this.props.threadType === 'Past' && !swipe.open) || (this.props.threadType === 'Current' && swipe.open)) {
+        // console.log(this.props.threads)
+          this.props.threads.forEach(thread => {
+            // console.log(thread.sellPost === swipe._id)
+          if (thread.sellPost === swipe._id) {
+            filteredThreads.push(thread)
+
+          }
+        })
+      }
+        
+    });
+    console.log(this.props.threadType)
+    console.log(filteredThreads);
     const sortedThreads = this.props.threads.sort(function(a, b) {
       var keyA = new Date(a.updatedAt), keyB = new Date (b.updatedAt);
       if (keyA < keyB) return 1;

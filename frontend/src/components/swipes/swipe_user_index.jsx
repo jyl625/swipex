@@ -7,7 +7,7 @@ import '../stylings/user_show.css'
 class SwipeUserIndex extends React.Component {
   
   componentDidMount() {
-    this.props.requestUserSwipes(this.props.user.id)
+    // this.props.requestUserSwipes(this.props.user.id)
   }
 
   listSwipes() {
