@@ -1,7 +1,6 @@
 .swipe-form-main {
   background-color: white;
   width: 100%;
-  padding-top: 90px;
   display: flex;
   justify-content: center;
 }
@@ -9,7 +8,11 @@
 .swipe-form-wrapper {
   width: 80%;
   margin: 0 auto;
-  padding: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.form-content {
   display: flex;
   justify-content: center;
 }
@@ -28,6 +31,19 @@
 
   width: 100%;
   padding: 1em 1em;
+}
+
+.swipe-form-wrapper h1{
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 48px;
+  color: #09A603;
+  font-weight: bolder;
+}
+
+.form-content img {
+  margin-left: 40px;
+  margin-top: 40px;
 }
 
 .select-option-container {

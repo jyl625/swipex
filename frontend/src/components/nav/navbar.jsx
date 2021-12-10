@@ -76,7 +76,7 @@ class NavBar extends React.Component {
             { this.getLinks() }
           </div>
           <div className="navbar-wrapper-bottom">
-            <Link to={`/`}>Home</Link>
+            <Link to={`/`}>HOME</Link>
             {this.listCafeterias()}
             <Link to={`/cafeteria/all`}>ALL</Link>
           </div>
