@@ -25,6 +25,10 @@ export const deleteThread = threadId => {
   return axios.delete(`api/conversations/${threadId}`);
 }
 
+export const fetchSellPostBuyerSellerThread = (sellPostId, buyerId, sellerId) => {
+  return axios.get(`api/conversations/${sellPostId}/${buyerId}/${sellerId}`)
+}
+
 
 // export const fetchUserThreads = userId => (
 //   axios.get(`api/conversations/user/${userId}`)

@@ -7,10 +7,14 @@ import {
 const ThreadsReducer = (state = {}, action) => {
   Object.freeze(state);
   let nextState = Object.assign({}, state)
+  // debugger
   switch(action.type){
     case RECEIVE_THREAD:
-      nextState[action.thread.data._id] = action.thread.data;
-      return nextState;
+      if (!action.thread.data) {return nextState}
+      else {
+        nextState[action.thread.data._id] = action.thread.data 
+        return nextState
+      };
     case RECEIVE_USER_THREADS:
       nextState = {}
       action.userThreads.data.forEach(userThread => {

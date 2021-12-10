@@ -42,11 +42,12 @@ export const requestSwipes = () => dispatch => (
   .catch(err => console.log(err))
 )
 
-export const requestSwipe = swipeId => dispatch => (
+export const requestSwipe = swipeId => dispatch => {
+  return(
   fetchSwipe(swipeId)
   .then(swipe => dispatch(receiveSwipe(swipe)))
-  .catch(err => console.log(err))
-)
+  .catch(err => console.log(err)))
+}
 
 export const createSwipe = swipeData => dispatch => (
   createNewSwipe(swipeData)

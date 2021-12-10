@@ -44,7 +44,6 @@ class MainPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.cafeterias)
     if (this.state.loadedCafeterias) {
       return (
         <div className="main-page">
