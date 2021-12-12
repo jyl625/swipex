@@ -86,6 +86,7 @@ class ThreadShow extends React.Component{
 
   handleSellConfirm(e) {
     e.preventDefault();
+    // debugger
     const newExchange = {
       closePrice: this.props.thread.buyerOffer,
       sellPost: this.props.thread.sellPost._id,
@@ -97,6 +98,7 @@ class ThreadShow extends React.Component{
         const conversation = Object.assign({}, this.props.thread)
         conversation["deal"] = this.props.thread.buyerOffer;
         this.props.updateThread(conversation)
+        // debugger
       }).then(res => {
         this.setState({
           updated: this.state.updated + 1
@@ -191,7 +193,9 @@ class ThreadShow extends React.Component{
     const sellOfferPrice = (thread.sellerOffer) ?
       thread.sellerOffer : thread.sellPost.askPrice
 
-    const buyOfferInput = (thread.buyer.username === currentUser.username && !thread.deal) ?
+    // debugger
+
+    const buyOfferInput = (thread.buyer.username === currentUser.username && !thread.deal && thread.sellPost.open) ?
       (<div className="user-offer-input">
         <div>
           <h1>Offer to buy at</h1>
@@ -209,7 +213,7 @@ class ThreadShow extends React.Component{
         </button>
       </div>) : null
 
-    const sellOfferInput = (thread.seller.username === currentUser.username && !thread.deal) ?
+    const sellOfferInput = (thread.seller.username === currentUser.username && !thread.deal && thread.sellPost.open) ?
       (<div className="user-offer-input">
         <div>
           <h1>Offer to sell at</h1>
