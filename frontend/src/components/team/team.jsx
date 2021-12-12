@@ -25,19 +25,6 @@ const Team = () => {
             </div>
           </div>
           
-          <div className="teammate">
-            <img src="images/Shuang_Zheng.jpg" alt="Jean" />
-            <h2>Shuang Zheng</h2>
-            <h3>Flex/Data Visualization Lead</h3>
-            <div className="teammate-links">
-              <a href="https://github.com/shuangzsy">
-                <FaGithub color="#09A603" size={50}></FaGithub>
-              </a>
-              <a href="https://www.linkedin.com/in/shuang-zheng-54a3109b/">
-                <FaLinkedin color="#09A603" size={50}></FaLinkedin>
-              </a>
-            </div>
-          </div>
 
           <div className="teammate">
             <img src="images/James_Hong.jpg" alt="Jean" />
@@ -67,6 +54,19 @@ const Team = () => {
             </div>
           </div>
 
+          <div className="teammate">
+            <img src="images/Shuang_Zheng.jpg" alt="Jean" />
+            <h2>Shuang Zheng</h2>
+            <h3>Flex/Data Visualization Lead</h3>
+            <div className="teammate-links">
+              <a href="https://github.com/shuangzsy">
+                <FaGithub color="#09A603" size={50}></FaGithub>
+              </a>
+              <a href="https://www.linkedin.com/in/shuang-zheng-54a3109b/">
+                <FaLinkedin color="#09A603" size={50}></FaLinkedin>
+              </a>
+            </div>
+          </div>
 
         </div>
 
