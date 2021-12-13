@@ -38,8 +38,8 @@ class ThreadIndex extends React.Component {
       }
         
     });
-    console.log(this.props.threadType)
-    console.log(filteredThreads);
+    // console.log(this.props.threadType)
+    // console.log(filteredThreads);
     const sortedThreads = filteredThreads.sort(function(a, b) {
       var keyA = new Date(a.updatedAt), keyB = new Date (b.updatedAt);
       if (keyA < keyB) return 1;

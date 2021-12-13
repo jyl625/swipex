@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
       // this.props.history.push('/swipes');
-      console.log("Log in Successful")
+      // console.log("Log in Successful")
     }
 
     // Set or clear errors

@@ -43,7 +43,7 @@ class UserShow extends React.Component {
   render() {
     if (!this.props.user || Object.keys(this.props.user).length === 0 || !this.state.loaded) 
       return 'loading'
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="usershow-main">
         <div className="usershow-wrapper">
