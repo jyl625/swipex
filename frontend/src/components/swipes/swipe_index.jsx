@@ -164,6 +164,7 @@ class SwipeIndex extends React.Component {
     // const googleAPIKey = process.env.GOOGLE_API_KEY
     if (!this.state.googleAPIKey)
       return null;
+    console.log(this.state.googleAPIKey)
     return (
       <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">
         <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=17&size=400x400&maptype=roadmap&markers=size:large%7Ccolor:blue%7C${lat},${lng}&key=${this.state.googleAPIKey}`} alt="map" />
