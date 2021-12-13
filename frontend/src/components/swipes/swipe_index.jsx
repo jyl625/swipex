@@ -15,11 +15,17 @@ class SwipeIndex extends React.Component {
       sort: "new", //"new", "priceAsc", "priceDec", "exp"
       breakfast: true,
       lunch: true,
-      dinner: true
+      dinner: true,
+      googleAPIKey: null
     })
   }
 
   componentDidMount() {
+    if (!this.state.googleAPIKey) {
+      this.setState({
+        googleAPIKey: require('../../config/keys').googleAPIKey
+      })
+    }
     if (!this.state.swipesLoaded) {
       this.props.requestSwipes().then(() => {
         this.setState({
@@ -155,10 +161,12 @@ class SwipeIndex extends React.Component {
     const lat = this.props.cafeteria.lat
     const lng = this.props.cafeteria.lng
     // const googleAPIKey = require('../../config/keys').googleAPIKey
-    const googleAPIKey = process.env.GOOGLE_API_KEY
+    // const googleAPIKey = process.env.GOOGLE_API_KEY
+    if (!this.state.googleAPIKey)
+      return null;
     return (
       <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">
-        <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=17&size=400x400&maptype=roadmap&markers=size:large%7Ccolor:blue%7C${lat},${lng}&key=${googleAPIKey}`} alt="map" />
+        <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=17&size=400x400&maptype=roadmap&markers=size:large%7Ccolor:blue%7C${lat},${lng}&key=${this.state.googleAPIKey}`} alt="map" />
       </a>
     )
   }
