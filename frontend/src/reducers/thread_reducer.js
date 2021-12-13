@@ -20,7 +20,7 @@ const ThreadsReducer = (state = {}, action) => {
       action.userThreads.data.forEach(userThread => {
         nextState[userThread._id] = userThread;
       })
-      console.log(nextState)
+      // console.log(nextState)
       return nextState;
     case REMOVE_THREAD:
       delete nextState[action.threadId];

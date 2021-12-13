@@ -38,9 +38,9 @@ class SwipeIndex extends React.Component {
     if (swipes.length !== 0) {
       let filteredSwipes = this.selectSwipesByCafeterias(swipes, cafeteriaId);
       filteredSwipes = (this.filterSwipes(filteredSwipes));
-      console.log(this.state.sort)
+      // console.log(this.state.sort)
       filteredSwipes = this.sortSwipes(filteredSwipes)
-      console.log("sorted", filteredSwipes)
+      // console.log("sorted", filteredSwipes)
       return filteredSwipes.map ((swipe, idx) => {
         return <SwipeIndexItem key={idx} swipe={swipe} swipeShow={swipeShow} requestSwipe={requestSwipe}/>
       })
