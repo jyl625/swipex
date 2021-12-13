@@ -23,7 +23,7 @@ class SwipeIndex extends React.Component {
   componentDidMount() {
     if (!this.state.googleAPIKey) {
       this.setState({
-        googleAPIKey: require('../../config/keys').googleAPIKey
+        googleAPIKey: process.env.GOOGLE_API_KEY
       })
     }
     if (!this.state.swipesLoaded) {
