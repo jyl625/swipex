@@ -71,14 +71,11 @@ class NavBar extends React.Component {
   listCafeterias() {
     if (Object.keys(this.props.allCafeterias).length > 0) {
       return this.props.allCafeterias.map( cafeteria => {
-        return <div className="link-wrapper"> 
-                <Link 
+        return  <Link 
                     className="cafeteria-link"
                     to={`/cafeteria/${cafeteria.name.replace(/\s/g, "").toLowerCase()}`} 
-                    key={cafeteria._id}>{cafeteria.name.toUpperCase()}
-                </Link>
-              </div>
-                
+                    key={cafeteria._id}><div className="link-wrapper">{cafeteria.name.toUpperCase()}</div>
+                </Link>     
       })
     }
   }
@@ -91,13 +88,13 @@ class NavBar extends React.Component {
             { this.getLinks() }
           </div>
           <div className="navbar-wrapper-bottom">
-            <div className="link-wrapper"> 
-              <Link className="home-link" to={`/`}>HOME</Link>
-            </div>
+            <Link className="home-link" to={`/`}>
+              <div className="link-wrapper">HOME</div>
+            </Link>
             {this.listCafeterias()}
-            <div className="link-wrapper"> 
-              <Link className="home-link" to={`/cafeteria/all`}>ALL</Link>
-            </div>
+            <Link className="home-link" to={`/cafeteria/all`}>
+              <div className="link-wrapper">ALL</div>
+            </Link>
           </div>
       </div>
     );
