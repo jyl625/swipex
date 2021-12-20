@@ -17,6 +17,9 @@ class SwipeUserIndex extends React.Component {
   }
 
   listSwipes() {
+    if (Object.keys(this.props.swipes).length === 0)
+      return 'No swipes for sale yet'
+      
     const sortedSwipes = this.props.swipes.sort(function(a, b) {
       var keyA = new Date(a.expiration), keyB = new Date (b.expiration);
       if (keyA < keyB) return 1;
@@ -35,8 +38,8 @@ class SwipeUserIndex extends React.Component {
 
   render() {
 
-    if (Object.keys(this.props.swipes).length === 0)
-      return 'loading swipes'
+    // if (Object.keys(this.props.swipes).length === 0)
+    //   return 'No swipes for sale'
     
     return (
       <div className="usershow-item-container">

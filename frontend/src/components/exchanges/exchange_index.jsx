@@ -16,6 +16,8 @@ class ExchangeIndex extends React.Component {
   }
 
   listExchange() {
+    if (this.props.exchanges.length === 0)
+      return 'No exchanges yet'
     if (!this.state.countUpdated) {
       this.props.updateCount('PS', this.props.exchanges.length)
       this.setState({
@@ -28,8 +30,8 @@ class ExchangeIndex extends React.Component {
   }
 
   render() {
-    if (this.props.exchanges.length === 0)
-      return 'loading exchanges'
+    // if (this.props.exchanges.length === 0)
+    //   return 'loading exchanges'
     return (
       <div className="usershow-item-container">
         <div className="usershow-item-title">Sales History</div>
