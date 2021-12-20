@@ -1,13 +1,15 @@
 import {connect} from "react-redux";
 import ThreadSellInput from "./thread_sell_input";
 import { closeModal } from '../../actions/modal_actions';
+import { updateThread } from "../../actions/thread_actions";
 
 const mSTP = state => ({
-
+  thread: state.threads.new
 })
 
 const mDTP = dispatch => ({
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  updateThread: (thread) => dispatch(updateThread(thread)),
 })
 
-export default connect(null, mDTP)(ThreadSellInput);
+export default connect(mSTP, mDTP)(ThreadSellInput);

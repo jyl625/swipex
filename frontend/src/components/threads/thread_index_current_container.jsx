@@ -6,7 +6,7 @@ import ThreadIndex from './thread_index';
 
 const mSTP = state => {
   return {
-  threads: Object.values(state.threads),
+  threads: Object.values(state.threads.user),
   swipes: state.swipes.user,
   threadType: "Current",
   currentUser: state.session.user,

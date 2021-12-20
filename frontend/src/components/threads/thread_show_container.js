@@ -7,7 +7,8 @@ import { openModal } from "../../actions/modal_actions";
 
 
 const mSTP = (state, ownProps) => ({
-  thread: state.threads[ownProps.match.params.threadId],
+  // thread: state.threads[ownProps.match.params.threadId],
+  thread: state.threads.new,
   currentUser: state.session.user,
 })
 
