@@ -22,7 +22,7 @@
 .navbar-wrapper-bottom {
   width: 100%;
   height: 48px;
-  padding: .2em 1em .2em;
+  padding: .2em 1em 0;
   margin: 0 auto;
   max-width: 1600px;
   display: flex;
@@ -42,27 +42,45 @@
 
 
 .navbar-links-container {
-  width: 150px;;
+  width: 170px;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
 }
 
+.link-wrapper {
+  height: 40px;
+  width: fit-content;
+  padding: 10px 0 10px 0;
+  margin-right: 4em;
+}
 
-.navbar-wrapper-bottom a {
-    color: black;
-    margin: 0 4em 0 0;
+.link-wrapper:hover {
+  border-bottom: 4px solid #F28705;
+  margin-bottom: -3px;
+  height: 44px;
+  /* padding-bottom: 18px; */
+}
+
+.cafeteria-link, .home-link {
+    font-size: 18px;
+    font-weight: bold;
+    color: #09A603;
+    /* color: black; */
+    margin: 0 0 0 0;
 }
 
 .profile, .post-swipe, .logout {
   height: 30px;
   width: 30px;
-
+  padding: auto;
 }
 
 
 .logout img {
-  height: 24px;
+  height: 26px;
+  padding-top: 1px;
+  padding-left: 3px;
   cursor: pointer;
 }
 
