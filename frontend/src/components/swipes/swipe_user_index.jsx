@@ -17,8 +17,7 @@ class SwipeUserIndex extends React.Component {
   }
 
   listSwipes() {
-    if (Object.keys(this.props.swipes).length === 0)
-      return 'No swipes for sale yet'
+
       
     const sortedSwipes = this.props.swipes.sort(function(a, b) {
       var keyA = new Date(a.expiration), keyB = new Date (b.expiration);
@@ -31,6 +30,8 @@ class SwipeUserIndex extends React.Component {
         countUpdated: true
       })
     }
+      if (sortedSwipes.length === 0)
+        return 'No swipes for sale yet'
       return sortedSwipes.map(swipe => 
       <SwipeUserIndexItem key={swipe._id} swipe={swipe}/>
     )
