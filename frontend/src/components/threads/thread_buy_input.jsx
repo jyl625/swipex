@@ -39,7 +39,7 @@ class ThreadBuyInput extends React.Component {
     const {thread} = this.props;
     
     const buyOfferPrice = (thread.buyerOffer) ?
-      thread.buyerOffer : thread.buyPost.askPrice
+      thread.buyerOffer : thread.sellPost.askPrice
 
     const updatePrompt = (this.state.updated !== 0) ? <div>Offer updated</div> : null;
 

@@ -181,11 +181,17 @@ class ThreadShow extends React.Component{
     const currentBuyerOffer = (!thread.buyerOffer) ?
       0 : thread.buyerOffer;
 
+    // const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal) ?
+    //   (<button onClick={this.handleBuyConfirm}>Confirm Purchase</button>) : null
+
     const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal) ?
-      (<button onClick={this.handleBuyConfirm}>Let's Go!</button>) : null
+      (<button onClick={()=>this.props.buyConfirmShow()}>Confirm Purchase</button>) : null
 
     const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal && thread.buyerOffer) ?
-      (<button onClick={this.handleSellConfirm}>Let's Go!</button>) : null
+      (<button onClick={()=>this.props.sellConfirmShow()}>Confirm Sell</button>) : null
+
+    // const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal && thread.buyerOffer) ?
+    //   (<button onClick={this.handleSellConfirm}>Confirm Sell</button>) : null
 
 
     const buyOfferPrice = (thread.buyerOffer) ? 
