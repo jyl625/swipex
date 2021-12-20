@@ -2,7 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SwipeShowContainer from '../swipes/swipe_show_container';
-
+import ThreadSellInputContainer from "../threads/thread_sell_input_container";
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -12,6 +12,9 @@ function Modal({ modal, closeModal }) {
   switch (modal) {
     case 'swipeshow':
       component = <SwipeShowContainer />;
+      break;
+    case 'sellOfferInput':
+      component = <ThreadSellInputContainer/>;
       break;
     default:
       return null;

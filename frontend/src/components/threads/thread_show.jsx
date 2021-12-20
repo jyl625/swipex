@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import Modal from "../modal/modal";
 
 
 import ThreadCommentListItem from "./thread_comment_list_item";
@@ -152,7 +153,7 @@ class ThreadShow extends React.Component{
 
     if (!this.props.thread || !this.props.thread.sellPost.cafeId) return null;
 
-    const {thread, currentUser} = this.props
+    const {thread, currentUser, } = this.props
 
     if (thread.buyer.username !== currentUser.username && thread.seller.username !== currentUser.username){
       this.props.history.push("/profile")
@@ -281,15 +282,31 @@ class ThreadShow extends React.Component{
       return `${dateString} at ${timeString}`
     }
 
-
+    // debugger
 
     return(
       
+      
       <div className="thread-page-wrapper">
         
+        <Modal/>
+
         <div className="thread-page-left">
           <div className="thread-offer-input">
             {sellOfferInput}
+          </div>
+          <div className="thread-offer-input">
+            {buyOfferInput}
+          </div>
+          <div className="thread-page-nav">
+            <button onClick={this.handleBackCafe}>
+              <p>Back to</p>
+              {(thread.sellPost.cafeId.name).toUpperCase()}
+            </button>
+            <button onClick={this.handleBackProfile}>
+              <p>Back to</p>
+              <p>Profile</p>
+            </button>
           </div>
         </div>
 
@@ -322,9 +339,9 @@ class ThreadShow extends React.Component{
             {dealSuccessMessage}
           </div>
 
-          <div id="scroll-container">
+          {/* <div id="scroll-container">
             <div id="scroll-text">Click "Let's Go!" to confirm an exchange. Or put in a new offer.</div>
-          </div>
+          </div> */}
 
           <div className="thread-page-current-offers">
             <div className="seller-offer-details">
@@ -338,6 +355,13 @@ class ThreadShow extends React.Component{
               </div>
               <div className="deal-confirm-btn">
                 {confirmBuyBtn}
+              </div>
+
+              {/* open sell offer input modal on click*/}
+              <div>
+                <button onClick={() => this.props.sellInputShow()}>
+                  Make a new offer
+                </button>
               </div>
             </div>
 
@@ -356,9 +380,10 @@ class ThreadShow extends React.Component{
 
             </div>
           </div>
+        </div>
 
-          
 
+        <div className="thread-page-right">
           <div className="thread-page-comment-wrapper">
             <div className="other-user-name">
               <h1>
@@ -372,13 +397,13 @@ class ThreadShow extends React.Component{
 
             <div className="comment-input-box">
               <form onSubmit={this.handleSubmit} className="comment-input-form">
-                <input 
-                  type="text" 
-                  value={this.state.comment} 
+                <input
+                  type="text"
+                  value={this.state.comment}
                   onChange={this.handleInput("comment")}
                   className="comment-text-input" />
 
-                <input 
+                <input
                   type="submit"
                   value="Send"
                   className="comment-text-send"
@@ -387,24 +412,7 @@ class ThreadShow extends React.Component{
             </div>
           </div>
 
-          <div className="thread-page-nav">
-            <button onClick={this.handleBackCafe}>
-              <p>Back to</p> 
-              {(thread.sellPost.cafeId.name).toUpperCase()}
-            </button>
-            <button onClick={this.handleBackProfile}>
-              <p>Back to</p>
-              <p>Profile</p>
-            </button>
-          </div>
-
-        </div>
-
-
-        <div className="thread-page-right">
-          <div className="thread-offer-input">
-            {buyOfferInput}
-          </div>
+          
         </div>
 
       </div>
