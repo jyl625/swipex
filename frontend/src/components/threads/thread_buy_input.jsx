@@ -1,15 +1,15 @@
 import React from "react";
 
 
-class ThreadSellInput extends React.Component {
+class ThreadBuyInput extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      sellerOffer: null,
+      buyerOffer: null,
       updated: 0,
     }
     this.handleInput = this.handleInput.bind(this);
-    this.handleSellerOffer = this.handleSellerOffer.bind(this);
+    this.handleBuyerOffer = this.handleBuyerOffer.bind(this);
   }
 
   handleInput(type) {
@@ -19,10 +19,10 @@ class ThreadSellInput extends React.Component {
     }
   }
 
-  handleSellerOffer(e) {
+  handleBuyerOffer(e) {
     e.preventDefault();
     const conversation = Object.assign({}, this.props.thread)
-    conversation["sellerOffer"] = this.state.sellerOffer;
+    conversation["buyerOffer"] = this.state.buyerOffer;
     this.props.updateThread(conversation)
     .then((res) => {
       // debugger
@@ -38,8 +38,8 @@ class ThreadSellInput extends React.Component {
     
     const {thread} = this.props;
     
-    const sellOfferPrice = (thread.sellerOffer) ?
-      thread.sellerOffer : thread.sellPost.askPrice
+    const buyOfferPrice = (thread.buyerOffer) ?
+      thread.buyerOffer : thread.buyPost.askPrice
 
     const updatePrompt = (this.state.updated !== 0) ? <div>Offer updated</div> : null;
 
@@ -48,20 +48,20 @@ class ThreadSellInput extends React.Component {
         <span onClick={this.props.closeModal} className="close-x">X</span>
         <div className="user-offer-input">
           <div>
-            <h1>Offer to sell at</h1>
+            <h1>Offer to buy at</h1>
           </div>
           <div className="offer-input-box">
             <input
               type="number"
-              defaultValue={parseFloat(sellOfferPrice)}
+              defaultValue={parseFloat(buyOfferPrice)}
               step="0.01"
-              onChange={this.handleInput("sellerOffer")}
+              onChange={this.handleInput("buyerOffer")}
             />
           </div>
           <div>
             {updatePrompt}
           </div>
-          <button onClick={this.handleSellerOffer}>
+          <button onClick={this.handleBuyerOffer}>
             Send
           </button>
         </div>
@@ -70,4 +70,4 @@ class ThreadSellInput extends React.Component {
   }
 }
 
-export default ThreadSellInput;
+export default ThreadBuyInput;

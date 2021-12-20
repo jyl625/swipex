@@ -3,6 +3,7 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import SwipeShowContainer from '../swipes/swipe_show_container';
 import ThreadSellInputContainer from "../threads/thread_sell_input_container";
+import ThreadBuyInputContainer from '../threads/thread_buy_input_container';
 
 function Modal({ modal, closeModal }) {
   if (!modal) {
@@ -15,6 +16,9 @@ function Modal({ modal, closeModal }) {
       break;
     case 'sellOfferInput':
       component = <ThreadSellInputContainer/>;
+      break;
+    case 'buyOfferInput':
+      component = <ThreadBuyInputContainer/>;
       break;
     default:
       return null;

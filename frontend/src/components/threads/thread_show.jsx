@@ -196,41 +196,58 @@ class ThreadShow extends React.Component{
 
     // debugger
 
+    // const buyOfferInput = (thread.buyer.username === currentUser.username && !thread.deal && thread.sellPost.open) ?
+    //   (<div className="user-offer-input">
+    //     <div>
+    //       <h1>Offer to buy at</h1>
+    //     </div>
+    //     <div className="offer-input-box">
+    //       <input
+    //         type="number"
+    //         defaultValue={parseFloat(buyOfferPrice)}
+    //         step="0.01"
+    //         onChange={this.handleInput("buyerOffer")}
+    //       />
+    //     </div>
+    //     <button onClick={this.handleBuyerOffer}>
+    //       Send
+    //     </button>
+    //   </div>) : null
+
     const buyOfferInput = (thread.buyer.username === currentUser.username && !thread.deal && thread.sellPost.open) ?
-      (<div className="user-offer-input">
-        <div>
-          <h1>Offer to buy at</h1>
-        </div>
-        <div className="offer-input-box">
-          <input
-            type="number"
-            defaultValue={parseFloat(buyOfferPrice)}
-            step="0.01"
-            onChange={this.handleInput("buyerOffer")}
-          />
-        </div>
-        <button onClick={this.handleBuyerOffer}>
-          Send
+      // open sell offer input modal on click 
+      (<div>
+        <button onClick={() => this.props.buyInputShow()}>
+          Make a new offer
         </button>
       </div>) : null
 
     const sellOfferInput = (thread.seller.username === currentUser.username && !thread.deal && thread.sellPost.open) ?
-      (<div className="user-offer-input">
-        <div>
-          <h1>Offer to sell at</h1>
-        </div>
-        <div className="offer-input-box">
-          <input
-            type="number"
-            defaultValue={parseFloat(sellOfferPrice)}
-            step="0.01"
-            onChange={this.handleInput("sellerOffer")}
-          />
-        </div>
-        <button onClick={this.handleSellerOffer}>
-          Send
+      // open sell offer input modal on click 
+      (<div>
+        <button onClick={() => this.props.sellInputShow()}>
+          Make a new offer
         </button>
       </div>) : null
+      
+    // const sellOfferInput = (thread.seller.username === currentUser.username && !thread.deal && thread.sellPost.open) ?
+    //   (<div className="user-offer-input">
+    //     <div>
+    //       <h1>Offer to sell at</h1>
+    //     </div>
+    //     <div className="offer-input-box">
+    //       <input
+    //         type="number"
+    //         defaultValue={parseFloat(sellOfferPrice)}
+    //         step="0.01"
+    //         onChange={this.handleInput("sellerOffer")}
+    //       />
+    //     </div>
+    //     <button onClick={this.handleSellerOffer}>
+    //       Send
+    //     </button>
+    //   </div>) : null
+
 
       
     const noLongerAvail = (!thread.sellPost.open && !thread.deal) ? 
@@ -291,24 +308,15 @@ class ThreadShow extends React.Component{
         
         <Modal/>
 
-        <div className="thread-page-left">
-          <div className="thread-offer-input">
+        {/* <div className="thread-page-left"> */}
+          {/* <div className="thread-offer-input">
             {sellOfferInput}
           </div>
           <div className="thread-offer-input">
             {buyOfferInput}
-          </div>
-          <div className="thread-page-nav">
-            <button onClick={this.handleBackCafe}>
-              <p>Back to</p>
-              {(thread.sellPost.cafeId.name).toUpperCase()}
-            </button>
-            <button onClick={this.handleBackProfile}>
-              <p>Back to</p>
-              <p>Profile</p>
-            </button>
-          </div>
-        </div>
+          </div> */}
+          
+        {/* </div> */}
 
         <div className="thread-page-main">
           <div className="thread-page-swipe-details">
@@ -358,11 +366,7 @@ class ThreadShow extends React.Component{
               </div>
 
               {/* open sell offer input modal on click*/}
-              <div>
-                <button onClick={() => this.props.sellInputShow()}>
-                  Make a new offer
-                </button>
-              </div>
+              {sellOfferInput}
             </div>
 
             <div className="buyer-offer-details">
@@ -377,8 +381,20 @@ class ThreadShow extends React.Component{
               <div className="deal-confirm-btn">
                 {confirmSellBtn}
               </div>
+              {buyOfferInput}
 
             </div>
+          </div>
+
+          <div className="thread-page-nav">
+            <button onClick={this.handleBackCafe}>
+              <p>Back to</p>
+              {(thread.sellPost.cafeId.name).toUpperCase()}
+            </button>
+            <button onClick={this.handleBackProfile}>
+              <p>Back to</p>
+              <p>Profile</p>
+            </button>
           </div>
         </div>
 

@@ -17,7 +17,8 @@ const mDTP = (dispatch) => ({
   updateThread: (thread) => dispatch(updateThread(thread)),
   createComment: (comment) => dispatch(createComment(comment)),
   createNewExchange: (exchange) => dispatch(createNewExchange(exchange)),
-  sellInputShow: () => dispatch(openModal("sellOfferInput"))
+  sellInputShow: () => dispatch(openModal("sellOfferInput")),
+  buyInputShow: () => dispatch(openModal("buyOfferInput"))
 })
 
 export default connect(mSTP, mDTP)(ThreadShow);
