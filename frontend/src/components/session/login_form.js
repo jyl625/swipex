@@ -15,6 +15,7 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this);
   }
 
   // Once the user has been authenticated, redirect to the Swipes page
@@ -44,6 +45,13 @@ class LoginForm extends React.Component {
     };
 
     this.props.login(user); 
+  }
+
+  handleDemoLogin() {
+    return (e) => {
+      e.preventDefault();
+      this.props.login(this.props.demoUser)
+    }
   }
 
   // Render the session errors if there are any
@@ -79,7 +87,7 @@ class LoginForm extends React.Component {
             <br/>
             <input className="login-button" type="submit" value="Log In" />
             {this.renderErrors()}
-            <button className="login-button" onClick={() => this.props.login(this.props.demoUser)}>Demo</button>
+            <button className="login-button" onClick={this.handleDemoLogin()}>Demo</button>
           </div>
         </form>
       </div>

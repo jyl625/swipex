@@ -33,7 +33,6 @@
 
 .cafeteria-banner {
   height: 12em;
-  background-color: yellow;
   overflow: hidden;
   z-index: 1;
 }
@@ -177,13 +176,13 @@
   );
   background-size: 100% 202%;
   transition: all 0.1s ease;
-  animation: down-bump 0.1s ease;
+  /* animation: down-bump 0.1s ease; */
   cursor: pointer;
 }
 
 .swipe-index-item:hover {
   background-position: 100% 100%;
-  animation: up-bump 0.1s ease;
+  /* animation: up-bump 0.1s ease; */
 }
 
 .swipe-index-item h1 {
@@ -202,7 +201,7 @@
   color: black;
 }
  
-@keyframes up-bump {
+/* @keyframes up-bump {
   0% { padding-top: 2em; }
   50% { padding-top: 1.5em; }
   100% { padding-top: 2em; }
@@ -211,4 +210,4 @@
   0% { padding-top: 2em; }
   50% { padding-top: 2.5em; }
   100% { padding-top: 2em; }
-}
+} */

@@ -35,11 +35,15 @@ class NavBar extends React.Component {
                         alt="profile"  /></Link>
                 </div>
                 <div className="post-swipe">
-                  <Link to={'/createswipe'}><img src="images/plus-square-regular.svg"/></Link>
+                  <Link to={'/createswipe'}>
+                    <img src="images/plus-square-regular.svg"
+                    alt="create swipe"/>
+                  </Link>
                 </div>
                 <div className="logout"
                   onClick={this.logoutUser}>
-                    <img src="images/power-off-solid.svg"/>
+                    {/* <img src="images/power-off-solid.svg"/> */}
+                    <img src="images/logout.png" alt="logout"/>
                 </div>
 
             </div>
@@ -67,11 +71,11 @@ class NavBar extends React.Component {
   listCafeterias() {
     if (Object.keys(this.props.allCafeterias).length > 0) {
       return this.props.allCafeterias.map( cafeteria => {
-        return <Link 
-                  to={`/cafeteria/${cafeteria.name.replace(/\s/g, "").toLowerCase()}`} 
-                  key={cafeteria._id}>{cafeteria.name.toUpperCase()}
-              </Link>
-                
+        return  <Link 
+                    className="cafeteria-link"
+                    to={`/cafeteria/${cafeteria.name.replace(/\s/g, "").toLowerCase()}`} 
+                    key={cafeteria._id}><div className="link-wrapper">{cafeteria.name.toUpperCase()}</div>
+                </Link>     
       })
     }
   }
@@ -84,9 +88,13 @@ class NavBar extends React.Component {
             { this.getLinks() }
           </div>
           <div className="navbar-wrapper-bottom">
-            <Link to={`/`}>HOME</Link>
+            <Link className="home-link" to={`/`}>
+              <div className="link-wrapper">HOME</div>
+            </Link>
             {this.listCafeterias()}
-            <Link to={`/cafeteria/all`}>ALL</Link>
+            <Link className="home-link" to={`/cafeteria/all`}>
+              <div className="link-wrapper">ALL</div>
+            </Link>
           </div>
       </div>
     );
