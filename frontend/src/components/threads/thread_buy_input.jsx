@@ -41,7 +41,7 @@ class ThreadBuyInput extends React.Component {
     const buyOfferPrice = (thread.buyerOffer) ?
       thread.buyerOffer : thread.sellPost.askPrice
 
-    const updatePrompt = (this.state.updated !== 0) ? <div>Offer updated</div> : null;
+    const updatePrompt = (this.state.updated !== 0) ? <div>sending</div> : null;
 
     return (
       <div>
@@ -58,12 +58,12 @@ class ThreadBuyInput extends React.Component {
               onChange={this.handleInput("buyerOffer")}
             />
           </div>
-          <div>
-            {updatePrompt}
-          </div>
           <button onClick={this.handleBuyerOffer}>
             Send
           </button>
+          <div>
+            {updatePrompt}
+          </div>
         </div>
       </div>
     )

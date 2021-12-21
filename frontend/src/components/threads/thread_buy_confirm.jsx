@@ -80,6 +80,8 @@ class ThreadBuyConfirm extends React.Component {
 
     const updatePrompt = (this.state.updated !== 0) ? <div>confirming</div> : null;
 
+    const sellPrice = (thread.sellerOffer) ? thread.sellerOffer : thread.sellPost.askPrice
+
     return (
       <div>
         <div className="thread-page-swipe-details">
@@ -107,9 +109,9 @@ class ThreadBuyConfirm extends React.Component {
         <span onClick={this.props.closeModal} className="confirm-close-x">X</span>
         <div className="user-offer-confirm-details">
           <div className="user-offer-confirm-prompt">
-            Buy this swipe for ${Number(thread.sellerOffer).toFixed(2)}?
+            Buy this swipe for ${Number(sellPrice).toFixed(2)}?
           </div>
-          <div className="user-offer-confirm">
+          <div className="user-offer-confirm-btn">
             <button onClick={this.handleBuyConfirm}>Confirm Purchase</button>
           </div>
           <div className="user-offer-confirming-prompt">
