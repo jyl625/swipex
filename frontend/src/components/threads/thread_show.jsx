@@ -8,6 +8,8 @@ import ThreadCommentListItem from "./thread_comment_list_item";
 import '../stylings/reset.css'
 import '../stylings/thread.css'
 
+require('dotenv').config();
+
 class ThreadShow extends React.Component{
   constructor(props){
     super(props);
@@ -141,7 +143,9 @@ class ThreadShow extends React.Component{
   renderMap() {
     const lat = this.props.thread.sellPost.cafeId.lat
     const lng = this.props.thread.sellPost.cafeId.lng
-    const googleAPIKey = require('../../config/keys').googleAPIKey
+    // const googleAPIKey = require('../../config/keys').googleAPIKey
+    const googleAPIKey = process.env.REACT_APP_GOOGLE_API_KEY;
+    console.log(googleAPIKey)
     return (
       <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">
         <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=17&size=300x300&maptype=roadmap&markers=size:large%7Ccolor:blue%7C${lat},${lng}&key=${googleAPIKey}`} alt="map" />
