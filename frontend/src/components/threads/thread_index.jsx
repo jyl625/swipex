@@ -20,8 +20,7 @@ class ThreadIndex extends React.Component {
   }
 
   listThread() {
-    if (this.props.threads.length === 0)
-      return 'No threads yet';
+
     let filteredThreads = [];
     console.log(this.props.threads.length)
     // debugger
@@ -54,6 +53,8 @@ class ThreadIndex extends React.Component {
       })
     }
     console.log(sortedThreads)
+      if (sortedThreads.length === 0)
+      return 'No threads yet';
     return sortedThreads.map(thread => 
        <ThreadIndexItem 
         key={thread._id} 
