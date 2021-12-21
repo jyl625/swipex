@@ -45,7 +45,7 @@ class ThreadBuyInput extends React.Component {
 
     return (
       <div>
-        <span onClick={this.props.closeModal} className="close-x">X</span>
+        <span onClick={this.props.closeModal} className="input-close-x">X</span>
         <div className="user-offer-input">
           <div>
             <h1>Offer to buy at</h1>

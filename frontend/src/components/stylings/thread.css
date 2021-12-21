@@ -7,21 +7,15 @@
 }
 
 .thread-page-wrapper{
-  width: 80%;
+  width: 90%;
   height: fit-content;
   margin: 2em auto;
   padding-bottom: 2em;
   max-width: 1600px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   background-color: white;
   font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;;
-}
-
-.thread-page-left{
-  display: flex;
-  flex-direction: column;
-  width: 240px;
 }
 
 .thread-page-main{
@@ -36,6 +30,7 @@
   height: 12em;
   width: 28em;
   margin-top: 2em;
+  margin-bottom: 1em;
   padding: 2em;
   border-radius: 25px;
   border: 1px solid black;
@@ -47,13 +42,9 @@
   );
   background-size: 100% 202%;
   transition: all 0.1s ease;
-  animation: down-bump 0.1s ease;
+  /* animation: down-bump 0.1s ease; */
 }
 
-/* .thread-page-swipe-details:hover {
-  background-position: 100% 100%;
-  animation: up-bump 0.1s ease;
-} */
 
 .thread-page-swipe-details h1 {
   font-size: 36px;
@@ -66,17 +57,6 @@
 .thread-page-swipe-details h3 {
   color: #999;
 }
-
-/* .thread-page-swipe-details:hover h3 {
-  color: black;
-} */
- 
-
-
-
-
-
-
 
 
 .thread-page-avail-prompt{  
@@ -91,6 +71,14 @@
   flex-direction: column;
   align-items: center;
   margin: 8px 0;
+}
+
+.deal-success-prompt>div{
+  text-align: center;
+}
+
+.deal-success-prompt p{
+  margin: 6px 0;
 }
 
 .no-longer-avail-prompt{
@@ -110,7 +98,7 @@
   align-items: center;
 }
 
-.thread-page-current-offers{
+.thread-page-current-seller-offer, .thread-page-current-buyer-offer{
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -130,15 +118,20 @@
   background-size: 100% 202%;
 }
 
-.seller-offer-details, .buyer-offer-details{
+.seller-offer-wrapper, .buyer-offer-wrapper{
   height: 100%;
-  width: 190px;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
   background-color: white;
   border-radius: 15px;
+}
+
+.current-offer-title{
+  margin: 10px 0;
+  font-size: 20px;
 }
 
 .current-offer-price{
@@ -148,9 +141,19 @@
   padding: 8px;
   border: 2px solid var(--color5);
   border-radius: 5px;
-  font-size: 20px;
-  color: var(--color1)
+  font-size: 36px;
+  color: var(--color1);
+  margin-right: 10px;
 }
+
+.current-offer-details{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+
+/* button for showing confirm modal */
 
 .deal-confirm-btn{
   height: 36px;
@@ -158,7 +161,7 @@
 
 .deal-confirm-btn>button{
   height: 36px;
-  width: 120px;
+  width: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -176,14 +179,38 @@
 
 
 
+/* button for showing input modal */
+.input-show-btn{
+  height: 36px;
+}
 
+.input-show-btn>button{
+  height: 36px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: var(--color5);
+  color: white
+}
+
+.input-show-btn>button:hover{
+  -webkit-filter: brightness(80%)
+}
+
+
+
+/* nav buttons */
 .thread-page-nav{
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
-
-
 
 .thread-page-nav>button{
   margin: 0 16px;
@@ -194,7 +221,7 @@
   align-items: center; */
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
   background-color: var(--color5);
   color: white
@@ -211,9 +238,9 @@
 .thread-page-right{
   display: flex;
   flex-direction: column;
-  width: 240px;
+  width: 600px;
+  align-items: center;
 }
-
 
 .thread-page-comment-wrapper{
   margin: 32px 16px;
@@ -233,7 +260,6 @@
   background: white;
   background-size: 100% 202%;
 }
-
 
 .other-user-name{
   display: flex;
@@ -319,32 +345,61 @@
 
 
 
-
+/* offer input modal */
 .thread-offer-input{
   margin: 32px 16px
 }
+
+/* .user-offer-input-wrapper{
+  border-radius: 25px;
+  border: 1px solid black;
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  color: black;
+  background: var(--color1);
+  height: 300px;
+  width: 300px;
+} */
 
 .user-offer-input{
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 12em;
-  width: 13em;
+  height: 300px;
+  width: 300px;
   padding: 2em;
   border-radius: 25px;
   border: 1px solid black;
   box-shadow: 4px 4px #888888;
   font-weight: bold;
   color: black;
-  background: linear-gradient(
-     var(--color1) 50%, var(--color1)
-  );
+  background: var(--color1);
   color: white;
 }
 
 .user-offer-input h1{
+  font-size: 32px;
+}
+
+.user-offer-input-prompt{
   font-size: 20px;
+  color: white;
+}
+
+.input-close-x{
+  float: right;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--color1);
+  margin: 5px;
+  font-size: 24px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.input-close-x:hover {
+  background-color: #B5F2B3;
 }
 
 
@@ -355,11 +410,11 @@
 
 .offer-input-box input{
   padding-left: 15px;
-  height: 36px;
-  width: 105px;
+  height: 48px;
+  width: 200px;
   border-radius: 5px;
   align-items: center;
-  font-size: 22px;
+  font-size: 36px;
   font-weight: 600;
   color: var(--color1);
   text-align: right;
@@ -367,8 +422,9 @@
 
 .offer-input-box:before{
   position: absolute;
-  line-height: 32px;
+  line-height: 48px;
   content:"$";
+  font-size: 36px;
   left:5px;
 	top:2px;
   color: black;
@@ -377,9 +433,9 @@
 .user-offer-input>button{
   border-radius: 5px;
   cursor: pointer;
-  height: 36px;
-  width: 105px;
-  font-size: 20px;
+  height: 48px;
+  width: 120px;
+  font-size: 32px;
   font-weight: 600;
   background-color: var(--color5);
   color: white
@@ -401,6 +457,77 @@
   font-weight: 700;
 }
 
+
+/* sell buy confirm modal */
+.user-offer-confirm-details{
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 12em;
+  width: 28em;
+  padding: 2em;
+  border-radius: 25px;
+  border: 1px solid black;
+  box-shadow: 4px 4px #888888;
+  font-weight: bold;
+  color: black;
+  background: var(--color1);
+  color: white;
+}
+
+.confirm-close-x{
+  float: right;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--color1);
+  margin: 5px;
+  font-size: 24px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.confirm-close-x:hover {
+  background-color: #B5F2B3;
+}
+
+.user-offer-confirm-prompt{
+  font-size: 28px;
+}
+
+
+.user-offer-confirm-btn{
+  height: 36px;
+}
+
+.user-offer-confirm-btn>button{
+  height: 36px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: var(--color5);
+  color: white
+}
+
+.user-offer-confirm-btn>button:hover{
+  -webkit-filter: brightness(80%)
+}
+
+.user-offer-confirming-prompt{
+  font-size: 20px;
+  color: white;
+}
+
+
+
+
+/* scroll text */
 #scroll-text {
   /* animation properties */
   -moz-transform: translateX(100%);

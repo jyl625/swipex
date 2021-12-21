@@ -25,7 +25,7 @@ function Modal({ modal, closeModal }) {
     case 'buyOfferConfirm':
       component = <ThreadBuyConfirmContainer/>;
       break;
-    case 'buySellConfirm':
+    case 'sellOfferConfirm':
       component = <ThreadSellConfirmContainer/>;
       break;
     default:

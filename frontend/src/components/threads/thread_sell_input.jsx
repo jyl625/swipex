@@ -41,11 +41,11 @@ class ThreadSellInput extends React.Component {
     const sellOfferPrice = (thread.sellerOffer) ?
       thread.sellerOffer : thread.sellPost.askPrice
 
-    const updatePrompt = (this.state.updated !== 0) ? <div>Offer updated</div> : null;
+    const updatePrompt = (this.state.updated !== 0) ? <div>sending</div> : null;
 
     return (
-      <div>
-        <span onClick={this.props.closeModal} className="close-x">X</span>
+      <div className="user-offer-input-wrapper">
+        <span onClick={this.props.closeModal} className="input-close-x">X</span>
         <div className="user-offer-input">
           <div>
             <h1>Offer to sell at</h1>
@@ -58,12 +58,12 @@ class ThreadSellInput extends React.Component {
               onChange={this.handleInput("sellerOffer")}
             />
           </div>
-          <div>
-            {updatePrompt}
-          </div>
           <button onClick={this.handleSellerOffer}>
             Send
           </button>
+          <div className="user-offer-input-prompt">
+            {updatePrompt}
+          </div>
         </div>
       </div>
     )

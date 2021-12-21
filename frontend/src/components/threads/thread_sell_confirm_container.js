@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import ThreadSellConfirm from "./thread_buy_confirm";
+import ThreadSellConfirm from "./thread_sell_confirm";
 import { closeModal } from '../../actions/modal_actions';
 import { requestThread, updateThread } from "../../actions/thread_actions";
 import { createNewExchange } from "../../actions/exchange_actions";
