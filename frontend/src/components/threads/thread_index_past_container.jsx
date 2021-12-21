@@ -4,7 +4,7 @@ import { requestUserSwipes } from '../../actions/swipe_actions';
 import ThreadIndex from './thread_index';
 
 const mSTP = state => ({
-  threads: Object.values(state.threads),
+  threads: Object.values(state.threads.user),
   swipes: state.swipes.user,
   threadType: "Past",
   currentUser: state.session.user

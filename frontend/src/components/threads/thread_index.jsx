@@ -24,6 +24,7 @@ class ThreadIndex extends React.Component {
       return 'No threads yet';
     let filteredThreads = [];
     console.log(this.props.threads.length)
+    // debugger
     this.props.swipes.forEach(swipe => {
       // console.log(swipe)
       if ((this.props.threadType === 'Past' && !swipe.open) || (this.props.threadType === 'Current' && swipe.open)) {

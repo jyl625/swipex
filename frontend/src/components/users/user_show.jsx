@@ -53,11 +53,11 @@ class UserShow extends React.Component {
               <HashLink smooth to={`/user/${this.props.user.id}#CC`}>
                 <div className="link">Open Chats</div>
               </HashLink>
-              <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
-                <div className="link">Closed Chats</div>
-              </HashLink>
               <HashLink smooth to={`/user/${this.props.user.id}#PS`}>
                 <div className="link">Current Swipes</div>
+              </HashLink>
+              <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
+                <div className="link">Closed Chats</div>
               </HashLink>
               <HashLink smooth to={`/user/${this.props.user.id}#CS`}>
                 <div className="link">Closed Deals</div>
