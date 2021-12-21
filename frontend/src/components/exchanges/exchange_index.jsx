@@ -33,6 +33,7 @@ class ExchangeIndex extends React.Component {
   render() {
     // if (this.props.exchanges.length === 0)
     //   return 'loading exchanges'
+    
     return (
       <div className="usershow-item-container">
         <div className="usershow-item-title">Sales History</div>
