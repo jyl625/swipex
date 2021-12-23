@@ -25,7 +25,7 @@ class SwipeUserIndex extends React.Component {
       else return -1;
     });
     if (!this.state.countUpdated) {
-      this.props.updateCount('CS', sortedSwipes.length)
+      this.props.updateCount('PS', sortedSwipes.length)
       this.setState({
         countUpdated: true
       })
@@ -44,7 +44,7 @@ class SwipeUserIndex extends React.Component {
     
     return (
       <div className="usershow-item-container">
-        <div className="usershow-item-title">For Sale</div>
+        <div className="usershow-item-title">Current Swipes For Sale</div>
         {/* <div className="usershow-item-title">Ongoing Sales Posts from {this.props.user.username}</div> */}
         <div className="usershow-item">
           { 
