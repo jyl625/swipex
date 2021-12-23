@@ -187,15 +187,29 @@
 
 .swipe-index-item h1 {
   font-size: 48px;
+  line-height: 50px;
+}
+
+.swipe-index-item h2 {
+  /* line-height: 36px; */
+  margin-top: 10px;
 }
 
 .swipe-index-item h3 {
   color: #999;
+  text-align: right;
+  line-height: 1.5em;
 }
 
-/* .swipe-index-item:hover h2 {
+.stripe-container {
+  height: 36px;
+}
 
-} */
+.stripe {
+  background-color: black;
+  height: 24px;
+  margin: 24px -33px 0px;
+}
 
 .swipe-index-item:hover h3 {
   color: black;

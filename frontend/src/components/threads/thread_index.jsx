@@ -22,7 +22,6 @@ class ThreadIndex extends React.Component {
   listThread() {
 
     let filteredThreads = [];
-    console.log(this.props.threads.length)
     // debugger
     this.props.swipes.forEach(swipe => {
       // console.log(swipe)
