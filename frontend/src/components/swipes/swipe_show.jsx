@@ -23,9 +23,9 @@ class SwipeShow extends React.Component {
 
   handleClick() {
     return () => {
-      console.log(this.props.currentUser)
+      // console.log(this.props.currentUser)
       if (!this.props.session.isAuthenticated) {
-        console.log("here")
+        // console.log("here")
         this.setState( {
           error: true
         })
@@ -39,7 +39,7 @@ class SwipeShow extends React.Component {
 
         if (res.thread.data) {
           this.props.closeModal();
-          console.log("modal close")
+          // console.log("modal close")
           return this.redirectToNewThread(res.thread.data._id)
         } else {
           this.props.createThread({
@@ -48,7 +48,7 @@ class SwipeShow extends React.Component {
             buyer: this.props.currentUser.id
           }).then((res) => {
             this.props.closeModal();
-            console.log("modal close")
+            // console.log("modal close")
             this.redirectToNewThread(res.thread.data._id)
           })
         }

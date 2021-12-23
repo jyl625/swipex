@@ -17,17 +17,21 @@ class SwipeUserIndex extends React.Component {
   }
 
   listSwipes() {
+
+      
     const sortedSwipes = this.props.swipes.sort(function(a, b) {
       var keyA = new Date(a.expiration), keyB = new Date (b.expiration);
       if (keyA < keyB) return 1;
       else return -1;
     });
     if (!this.state.countUpdated) {
-      this.props.updateCount('CS', sortedSwipes.length)
+      this.props.updateCount('PS', sortedSwipes.length)
       this.setState({
         countUpdated: true
       })
     }
+      if (sortedSwipes.length === 0)
+        return 'No swipes for sale yet'
       return sortedSwipes.map(swipe => 
       <SwipeUserIndexItem key={swipe._id} swipe={swipe}/>
     )
@@ -35,12 +39,12 @@ class SwipeUserIndex extends React.Component {
 
   render() {
 
-    if (Object.keys(this.props.swipes).length === 0)
-      return 'loading swipes'
+    // if (Object.keys(this.props.swipes).length === 0)
+    //   return 'No swipes for sale'
     
     return (
       <div className="usershow-item-container">
-        <div className="usershow-item-title">For Sale</div>
+        <div className="usershow-item-title">Current Swipes For Sale</div>
         {/* <div className="usershow-item-title">Ongoing Sales Posts from {this.props.user.username}</div> */}
         <div className="usershow-item">
           { 

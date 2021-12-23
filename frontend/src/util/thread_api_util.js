@@ -9,7 +9,7 @@ export const fetchThread = threadId => {
 }
 
 export const fetchUserThreads = userId => {
-  console.log(userId)
+  // console.log(userId)
   return axios.get(`api/conversations/user/${userId}`);
 }
 

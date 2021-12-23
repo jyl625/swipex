@@ -23,9 +23,9 @@ class SwipeShow extends React.Component {
 
   handleClick() {
     return () => {
-      console.log(this.props.currentUser)
+      // console.log(this.props.currentUser)
       if (!this.props.session.isAuthenticated) {
-        console.log("here")
+        // console.log("here")
         this.setState( {
           error: true
         })

@@ -43,7 +43,7 @@ class UserShow extends React.Component {
   render() {
     if (!this.props.user || Object.keys(this.props.user).length === 0 || !this.state.loaded) 
       return 'loading'
-    console.log(this.state)
+    // console.log(this.state)
     return (
       <div className="usershow-main">
         <div className="usershow-wrapper">
@@ -51,13 +51,13 @@ class UserShow extends React.Component {
           <div className="usershow-nav-left">
             <div className="usershow-nav-links">
               <HashLink smooth to={`/user/${this.props.user.id}#CC`}>
-                <div className="link">Open Chats</div>
-              </HashLink>
-              <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
-                <div className="link">Closed Chats</div>
+                <div className="link">Open Threads</div>
               </HashLink>
               <HashLink smooth to={`/user/${this.props.user.id}#PS`}>
                 <div className="link">Current Swipes</div>
+              </HashLink>
+              <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
+                <div className="link">Closed Threads</div>
               </HashLink>
               <HashLink smooth to={`/user/${this.props.user.id}#CS`}>
                 <div className="link">Closed Deals</div>
@@ -87,10 +87,10 @@ class UserShow extends React.Component {
               </div>
               
               <div className="usershow-info-content">
-                <div>Past Chats: <span>{this.state.PC}</span></div>
-                <div>Open Chat: <span>{this.state.CC}</span></div>
-                <div>Closed Swipe Sales: <span>{this.state.PS}</span></div>
-                <div>Open Swipe Sales: <span>{this.state.CS}</span></div>
+                <div>Open Threads: <span>{this.state.CC}</span></div>
+                <div>Current Swipes: <span>{this.state.PS}</span></div>
+                <div>Closed Threads: <span>{this.state.PC}</span></div>
+                <div>Closed Deals: <span>{this.state.CS}</span></div>
               </div>
               
             </div>

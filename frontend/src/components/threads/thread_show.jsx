@@ -1,11 +1,14 @@
 import React from "react";
 import { withRouter } from "react-router";
+import Modal from "../modal/modal";
 
 
 import ThreadCommentListItem from "./thread_comment_list_item";
 
 import '../stylings/reset.css'
 import '../stylings/thread.css'
+
+require('dotenv').config();
 
 class ThreadShow extends React.Component{
   constructor(props){
@@ -140,7 +143,8 @@ class ThreadShow extends React.Component{
   renderMap() {
     const lat = this.props.thread.sellPost.cafeId.lat
     const lng = this.props.thread.sellPost.cafeId.lng
-    const googleAPIKey = require('../../config/keys').googleAPIKey
+    // const googleAPIKey = require('../../config/keys').googleAPIKey
+    const googleAPIKey = process.env.REACT_APP_GOOGLE_API_KEY;
     return (
       <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">
         <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=17&size=300x300&maptype=roadmap&markers=size:large%7Ccolor:blue%7C${lat},${lng}&key=${googleAPIKey}`} alt="map" />
@@ -152,7 +156,7 @@ class ThreadShow extends React.Component{
 
     if (!this.props.thread || !this.props.thread.sellPost.cafeId) return null;
 
-    const {thread, currentUser} = this.props
+    const {thread, currentUser, } = this.props
 
     if (thread.buyer.username !== currentUser.username && thread.seller.username !== currentUser.username){
       this.props.history.push("/profile")
@@ -180,69 +184,62 @@ class ThreadShow extends React.Component{
     const currentBuyerOffer = (!thread.buyerOffer) ?
       0 : thread.buyerOffer;
 
+
     const confirmBuyBtn = (thread.buyer.username === currentUser.username && !thread.deal) ?
-      (<button onClick={this.handleBuyConfirm}>Let's Go!</button>) : null
+      (<button onClick={()=>this.props.buyConfirmShow()}>Confirm Purchase</button>) : null
 
     const confirmSellBtn = (thread.seller.username === currentUser.username && !thread.deal && thread.buyerOffer) ?
-      (<button onClick={this.handleSellConfirm}>Let's Go!</button>) : null
+      (<button onClick={()=>this.props.sellConfirmShow()}>Confirm Sell</button>) : null
 
 
-    const buyOfferPrice = (thread.buyerOffer) ? 
-      thread.buyerOffer : thread.sellPost.askPrice
+    // const buyOfferPrice = (thread.buyerOffer) ? 
+    //   thread.buyerOffer : thread.sellPost.askPrice
 
-    const sellOfferPrice = (thread.sellerOffer) ?
-      thread.sellerOffer : thread.sellPost.askPrice
+    // const sellOfferPrice = (thread.sellerOffer) ?
+    //   thread.sellerOffer : thread.sellPost.askPrice
 
     // debugger
 
     const buyOfferInput = (thread.buyer.username === currentUser.username && !thread.deal && thread.sellPost.open) ?
-      (<div className="user-offer-input">
-        <div>
-          <h1>Offer to buy at</h1>
-        </div>
-        <div className="offer-input-box">
-          <input
-            type="number"
-            defaultValue={parseFloat(buyOfferPrice)}
-            step="0.01"
-            onChange={this.handleInput("buyerOffer")}
-          />
-        </div>
-        <button onClick={this.handleBuyerOffer}>
-          Send
+      // open sell offer input modal on click 
+      (<div className="input-show-btn">
+        <button onClick={() => this.props.buyInputShow()}>
+          Make a new offer
         </button>
       </div>) : null
 
     const sellOfferInput = (thread.seller.username === currentUser.username && !thread.deal && thread.sellPost.open) ?
-      (<div className="user-offer-input">
-        <div>
-          <h1>Offer to sell at</h1>
-        </div>
-        <div className="offer-input-box">
-          <input
-            type="number"
-            defaultValue={parseFloat(sellOfferPrice)}
-            step="0.01"
-            onChange={this.handleInput("sellerOffer")}
-          />
-        </div>
-        <button onClick={this.handleSellerOffer}>
-          Send
+      // open sell offer input modal on click 
+      (<div className="input-show-btn">
+        <button onClick={() => this.props.sellInputShow()}>
+          Make a new offer
         </button>
       </div>) : null
-
-      
+            
     const noLongerAvail = (!thread.sellPost.open && !thread.deal) ? 
       (<div className="no-longer-avail-promtp">This swipe is no longer available</div>) : null
     
+    let dealSuccessMessage;
 
+    let dealSuccessMap = (thread.deal) ? (<div className="thread-map-container">{this.renderMap()}</div>) : null;
 
-    const dealSuccessMessage = (thread.deal) ?
-      ( <div className="deal-success-prompt">
-        <div>Congrats! Swipe exchanged at ${Number(thread.deal).toFixed(2)}!</div>
-          <div className="thread-map-container">{this.renderMap()}</div>
-        </div>    
-      ) : null
+    if (thread.deal && thread.buyer.username === currentUser.username) {
+      dealSuccessMessage = (<div className="deal-success-prompt">
+        <div>
+          <p>Congrats!</p>
+          <p>You purchased the swipe at ${Number(thread.deal).toFixed(2)} from {thread.seller.username}!</p>    
+        </div>
+      </div> )
+    } else if (thread.deal && thread.seller.username === currentUser.username){
+      dealSuccessMessage = (<div className="deal-success-prompt">
+        <div>
+          <p>Congrats!</p>
+          <p>You sold the swipe at ${Number(thread.deal).toFixed(2)} to {thread.buyer.username}!</p>
+          </div>
+      </div>)
+    } else {
+      dealSuccessMessage = null
+    }
 
     const capitalize = (string) => {
       return string[0].toUpperCase() + string.slice(1)
@@ -281,17 +278,14 @@ class ThreadShow extends React.Component{
       return `${dateString} at ${timeString}`
     }
 
-
+    // debugger
 
     return(
       
+      
       <div className="thread-page-wrapper">
         
-        <div className="thread-page-left">
-          <div className="thread-offer-input">
-            {sellOfferInput}
-          </div>
-        </div>
+        <Modal/>
 
         <div className="thread-page-main">
           <div className="thread-page-swipe-details">
@@ -322,43 +316,54 @@ class ThreadShow extends React.Component{
             {dealSuccessMessage}
           </div>
 
-          <div id="scroll-container">
+          {/* <div id="scroll-container">
             <div id="scroll-text">Click "Let's Go!" to confirm an exchange. Or put in a new offer.</div>
-          </div>
+          </div> */}
 
-          <div className="thread-page-current-offers">
-            <div className="seller-offer-details">
-              <div>
+          <div className="thread-page-current-seller-offer">
+            <div className="seller-offer-wrapper">
+              <div className="current-offer-title">
                 <h1>
-                  {sellerName} Offer
+                  {sellerName} offer to sell this swipe
                 </h1>
               </div>
-              <div className="current-offer-price">
-                $ {Number(currentSellerOffer).toFixed(2)}
-              </div>
-              <div className="deal-confirm-btn">
-                {confirmBuyBtn}
-              </div>
-            </div>
-
-            <div className="buyer-offer-details">
-              <div>
-                <h1>
-                  {buyerName} Offer
-                </h1>
-              </div>
-              <div className="current-offer-price">
-                $ {Number(currentBuyerOffer).toFixed(2)}
-              </div>
-              <div className="deal-confirm-btn">
-                {confirmSellBtn}
+              <div className="current-offer-details">
+                <div className="current-offer-price">
+                  $ {Number(currentSellerOffer).toFixed(2)}
+                </div>
+                <div className="deal-confirm-btn">
+                  {confirmBuyBtn}
+                </div>
+                {/* open sell offer input modal on click*/}
+                {sellOfferInput}
               </div>
 
             </div>
           </div>
 
-          
+          <div className="thread-page-current-buyer-offer">
+            <div className="buyer-offer-wrapper">
+              <div className="current-offer-title">
+                <h1>
+                  {buyerName} offer to buy this swipe
+                </h1>
+              </div>
+              <div className="current-offer-details">
+                <div className="current-offer-price">
+                  $ {Number(currentBuyerOffer).toFixed(2)}
+                </div>
+                <div className="deal-confirm-btn">
+                  {confirmSellBtn}
+                </div>
+                {buyOfferInput}
+              </div>
+            </div>
+          </div>
+        </div>
 
+
+        <div className="thread-page-right">
+          {dealSuccessMap}
           <div className="thread-page-comment-wrapper">
             <div className="other-user-name">
               <h1>
@@ -372,13 +377,13 @@ class ThreadShow extends React.Component{
 
             <div className="comment-input-box">
               <form onSubmit={this.handleSubmit} className="comment-input-form">
-                <input 
-                  type="text" 
-                  value={this.state.comment} 
+                <input
+                  type="text"
+                  value={this.state.comment}
                   onChange={this.handleInput("comment")}
                   className="comment-text-input" />
 
-                <input 
+                <input
                   type="submit"
                   value="Send"
                   className="comment-text-send"
@@ -386,10 +391,9 @@ class ThreadShow extends React.Component{
               </form>
             </div>
           </div>
-
           <div className="thread-page-nav">
             <button onClick={this.handleBackCafe}>
-              <p>Back to</p> 
+              <p>Back to</p>
               {(thread.sellPost.cafeId.name).toUpperCase()}
             </button>
             <button onClick={this.handleBackProfile}>
@@ -397,16 +401,7 @@ class ThreadShow extends React.Component{
               <p>Profile</p>
             </button>
           </div>
-
         </div>
-
-
-        <div className="thread-page-right">
-          <div className="thread-offer-input">
-            {buyOfferInput}
-          </div>
-        </div>
-
       </div>
     )
   }

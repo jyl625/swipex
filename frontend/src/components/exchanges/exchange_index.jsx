@@ -16,23 +16,27 @@ class ExchangeIndex extends React.Component {
   }
 
   listExchange() {
+
     if (!this.state.countUpdated) {
-      this.props.updateCount('PS', this.props.exchanges.length)
+      this.props.updateCount('CS', this.props.exchanges.length)
       this.setState({
         countUpdated: true
       })
     }
-    this.props.exchanges.map(exchange => {
+    if (this.props.exchanges.length === 0)
+      return 'No exchanges yet'
+    return this.props.exchanges.map(exchange => {
       return <ExchangeIndexItem exchange={exchange}/>
     })
   }
 
   render() {
-    if (this.props.exchanges.length === 0)
-      return 'loading exchanges'
+    // if (this.props.exchanges.length === 0)
+    //   return 'loading exchanges'
+    
     return (
       <div className="usershow-item-container">
-        <div className="usershow-item-title">Sales History</div>
+        <div className="usershow-item-title">Closed Deals</div>
         {/* <div className="usershow-item-title">Past Sales from {this.props.user.username}</div> */}
         <div className="usershow-item">
           {

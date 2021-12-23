@@ -33,7 +33,6 @@
 
 .cafeteria-banner {
   height: 12em;
-  background-color: yellow;
   overflow: hidden;
   z-index: 1;
 }
@@ -177,32 +176,46 @@
   );
   background-size: 100% 202%;
   transition: all 0.1s ease;
-  animation: down-bump 0.1s ease;
+  /* animation: down-bump 0.1s ease; */
   cursor: pointer;
 }
 
 .swipe-index-item:hover {
   background-position: 100% 100%;
-  animation: up-bump 0.1s ease;
+  /* animation: up-bump 0.1s ease; */
 }
 
 .swipe-index-item h1 {
   font-size: 48px;
+  line-height: 50px;
+}
+
+.swipe-index-item h2 {
+  /* line-height: 36px; */
+  margin-top: 10px;
 }
 
 .swipe-index-item h3 {
   color: #999;
+  text-align: right;
+  line-height: 1.5em;
 }
 
-/* .swipe-index-item:hover h2 {
+.stripe-container {
+  height: 36px;
+}
 
-} */
+.stripe {
+  background-color: black;
+  height: 24px;
+  margin: 24px -33px 0px;
+}
 
 .swipe-index-item:hover h3 {
   color: black;
 }
  
-@keyframes up-bump {
+/* @keyframes up-bump {
   0% { padding-top: 2em; }
   50% { padding-top: 1.5em; }
   100% { padding-top: 2em; }
@@ -211,4 +224,4 @@
   0% { padding-top: 2em; }
   50% { padding-top: 2.5em; }
   100% { padding-top: 2em; }
-}
+} */

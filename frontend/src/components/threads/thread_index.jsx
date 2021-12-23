@@ -20,10 +20,9 @@ class ThreadIndex extends React.Component {
   }
 
   listThread() {
-    if (this.props.threads.length === 0)
-      return 'loading threads';
+
     let filteredThreads = [];
-    console.log(this.props.threads.length)
+    // debugger
     this.props.swipes.forEach(swipe => {
       // console.log(swipe)
       if ((this.props.threadType === 'Past' && !swipe.open) || (this.props.threadType === 'Current' && swipe.open)) {
@@ -38,8 +37,8 @@ class ThreadIndex extends React.Component {
       }
         
     });
-    console.log(this.props.threadType)
-    console.log(filteredThreads);
+    // console.log(this.props.threadType)
+    // console.log(filteredThreads);
     const sortedThreads = filteredThreads.sort(function(a, b) {
       var keyA = new Date(a.updatedAt), keyB = new Date (b.updatedAt);
       if (keyA < keyB) return 1;
@@ -53,6 +52,8 @@ class ThreadIndex extends React.Component {
       })
     }
     console.log(sortedThreads)
+      if (sortedThreads.length === 0)
+      return 'No threads yet';
     return sortedThreads.map(thread => 
        <ThreadIndexItem 
         key={thread._id} 
@@ -66,10 +67,10 @@ class ThreadIndex extends React.Component {
   render() {
     let title;
     if (this.props.threadType === 'Past')
-      title = (<div className="usershow-item-title" >Past Chats</div>)
+      title = (<div className="usershow-item-title" >Closed Threads</div>)
       // title = (<div className="usershow-item-title" >Past Chats of {this.props.user.username}</div>)
     else
-      title = (<div className="usershow-item-title" >Open Chats</div>)
+      title = (<div className="usershow-item-title" >Open Threads</div>)
       // title = (<div className="usershow-item-title" >Open Chats of {this.props.user.username}</div>)
 
     return (

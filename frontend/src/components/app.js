@@ -23,6 +23,8 @@ import SwipesFormContainer from './swipes/swipes_form_container'
 import ThreadShowContainer from './threads/thread_show_container';
 import Team from './team/team';
 
+require('dotenv').config();
+
 const App = () => (
   <div>
     <NavBarContainer />

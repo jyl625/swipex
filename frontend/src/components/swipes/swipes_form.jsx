@@ -29,7 +29,7 @@ class SwipeForm extends React.Component {
       mealType: this.state.mealType.toLowerCase(),
       meetingTime: this.state.meetingTime
     }
-    console.log(swipe)
+    // console.log(swipe)
     this.props.createSwipe(swipe);
     this.props.history.push("/")
   }
@@ -89,7 +89,7 @@ class SwipeForm extends React.Component {
       }
 
       const numOnlyStr = numOnlyArr.join("")
-      console.log(Number(numOnlyStr).toFixed(2))
+      // console.log(Number(numOnlyStr).toFixed(2))
       // console.log(parseFloat(numOnlyStr))
       this.setState({askPrice: parseFloat(Number(numOnlyStr).toFixed(2))})
     }
