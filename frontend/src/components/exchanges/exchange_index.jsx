@@ -26,7 +26,6 @@ class ExchangeIndex extends React.Component {
     if (this.props.exchanges.length === 0)
       return 'No exchanges yet'
     return this.props.exchanges.map(exchange => {
-      console.log(exchange)
       return <ExchangeIndexItem exchange={exchange}/>
     })
   }

@@ -1,7 +1,6 @@
 import React from 'react'
 
 const ExchangeIndexItem = ({exchange}) => {
-  console.log(exchange)
   return (
     <div className="messages">
       {/* <div><span className="usershow-index-item-grey">SellPost:</span> {exchange.sellPost}</div> */}
