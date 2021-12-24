@@ -146,21 +146,30 @@
 
 .swipe-index-items-container {
   /* width: 100%; */
-  margin: 2em auto 4em;
+  margin: 2em 10% 2em 0;
   padding: 2em;
   padding-left: 5%;
+  padding-right: 5%;
   max-width: 1600px;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: left; */
+  /* justify-content: space-around; */
+  justify-content: left;
   column-count: 2;
-  gap: 80px 10%;
+  gap: 80px 16%;
+}
+
+@media screen and (max-width: 1575px) {
+  .swipe-index-items-container {
+    justify-content: space-around;
+  }
 }
 
 .swipe-index-item {
   display: inline-block;
   height: 16em;
   width: 24em;
+  margin: 0 auto;
   margin-top: 2em;
   padding: 2em;
   /* background-color: #B5F2B3; */
