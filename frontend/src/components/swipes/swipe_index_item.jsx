@@ -37,8 +37,6 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
 
   const handleClick = () => {
     return () => {
-      // console.log(swipe)
-      // console.log("hello")
       requestSwipe(swipe._id).then(() => {swipeShow()})
     }
   }
@@ -63,10 +61,6 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
         <h3>Post created: {parseTimeStringShort(swipe.timeCreated)}</h3>
 
         <img src="" alt="" />
-        {/* swipe(cafeteria) imageUrl */}
-        {/* descriptions */}
-        {/* location */}
-        {/* </div> */}
       </div>
     </div>
   )
