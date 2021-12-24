@@ -153,10 +153,16 @@
   max-width: 1600px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
-  /* justify-content: left; */
-  /* column-count: 2;
-  gap: 80px 16%; */
+  /* justify-content: space-around; */
+  justify-content: left;
+  column-count: 2;
+  gap: 80px 16%;
+}
+
+@media screen and (max-width: 1575px) {
+  .swipe-index-items-container {
+    justify-content: space-around;
+  }
 }
 
 .swipe-index-item {
