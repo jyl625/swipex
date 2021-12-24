@@ -88,9 +88,9 @@ class UserShow extends React.Component {
               
               <div className="usershow-info-content">
                 <div>Open Threads: <span>{this.state.CC}</span></div>
-                <div>Current Swipes: <span>{this.state.PS}</span></div>
+                <div>Current Swipes: <span>{this.state.CS}</span></div>
                 <div>Closed Threads: <span>{this.state.PC}</span></div>
-                <div>Closed Deals: <span>{this.state.CS}</span></div>
+                <div>Closed Deals: <span>{this.state.PS}</span></div>
               </div>
               
             </div>

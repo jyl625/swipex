@@ -18,7 +18,7 @@ class ExchangeIndex extends React.Component {
   listExchange() {
 
     if (!this.state.countUpdated) {
-      this.props.updateCount('CS', this.props.exchanges.length)
+      this.props.updateCount('PS', this.props.exchanges.length)
       this.setState({
         countUpdated: true
       })
