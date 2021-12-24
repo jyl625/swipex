@@ -37,8 +37,6 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
 
   const handleClick = () => {
     return () => {
-      // console.log(swipe)
-      // console.log("hello")
       requestSwipe(swipe._id).then(() => {swipeShow()})
     }
   }
