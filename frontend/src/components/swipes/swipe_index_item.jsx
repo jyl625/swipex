@@ -63,10 +63,6 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
         <h3>Post created: {parseTimeStringShort(swipe.timeCreated)}</h3>
 
         <img src="" alt="" />
-        {/* swipe(cafeteria) imageUrl */}
-        {/* descriptions */}
-        {/* location */}
-        {/* </div> */}
       </div>
     </div>
   )
