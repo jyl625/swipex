@@ -168,21 +168,21 @@ class SwipeIndex extends React.Component {
   render() {
     if (this.state.swipesLoaded) {
       return (
-                  <div className="cafeteria-show-page">
-            <div className="cafeteria-banner">
-              <img className={`${this.props.cafeteria.name.replace(/\s/g, "")}`} src={this.props.cafeteria.photoUrls[0]} alt="cafeteria banner" />
-            </div>
-        <div className="panel-container">
-          <div className="left-pannel">
-            <div className="cafeteria-container">
-              <div className="cafeteria-name-container">
-                <div className="cafeteria-name-wrapper">{this.props.cafeteria.name.toUpperCase()}</div>
+        <div className="cafeteria-show-page">
+          <div className="cafeteria-banner">
+            <img className={`${this.props.cafeteria.name.replace(/\s/g, "")}`} src={this.props.cafeteria.photoUrls[0]} alt="cafeteria banner" />
+          </div>
+          <div className="panel-container">
+            <div className="left-panel">
+              <div className="cafeteria-container">
+                <div className="cafeteria-name-container">
+                  <div className="cafeteria-name-wrapper">{this.props.cafeteria.name.toUpperCase()}</div>
+                </div>
+                {this.renderFilterSort()}
+                <div className="swipe-index-items-container">
+                  {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
+                </div>
               </div>
-              {this.renderFilterSort()}
-              <div className="swipe-index-items-container">
-                {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
-              </div>
-            </div>
             </div>
             <div className="right-panel">
               <div className="map-container">
@@ -213,7 +213,7 @@ class SwipeIndex extends React.Component {
               </div>
             </div>
           </div>
-                   </div>
+        </div>
       )
     } else {
       return <div>Gathering swipes...</div>
