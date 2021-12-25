@@ -156,7 +156,7 @@ class SwipeIndex extends React.Component {
   renderMap() {
     const lat = this.props.cafeteria.lat
     const lng = this.props.cafeteria.lng
-    // const googleAPIKey = require('../../config/keys').googleAPIKey
+ 
     const googleAPIKey = process.env.REACT_APP_GOOGLE_API_KEY;
     return (
       <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">
@@ -166,8 +166,6 @@ class SwipeIndex extends React.Component {
   }
 
   render() {
-    // return <div>{this.props.cafeteria.name}</div>
-    // console.log(this.state)
     if (this.state.swipesLoaded) {
       return (
                   <div className="cafeteria-show-page">
