@@ -12,7 +12,7 @@ class ExchangeIndex extends React.Component {
     })
   }
   componentDidMount() {
-    this.props.requestUserExchanges(this.props.user.id);
+   
   }
 
   listExchange() {

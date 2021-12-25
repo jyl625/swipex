@@ -30,12 +30,17 @@ class UserShow extends React.Component {
 
   componentDidMount() {
     // debugger
+    console.log(this.props)
     this.props.requestUser(this.props.userId)
     .then(() => {
       // debugger
       this.props.requestUserThreads(this.props.userId)
-    .then(() => this.props.requestUserSwipes(this.props.userId)
-    .then(() => this.setState({ loaded: true }))
+    .then(
+      () => this.props.requestUserSwipes(this.props.userId)
+      .then(
+        () => this.props.requestUserExchanges(this.props.userId)
+        .then(() => this.setState({ loaded: true }))
+        )
     )
     })
   }
@@ -53,13 +58,13 @@ class UserShow extends React.Component {
               <HashLink smooth to={`/user/${this.props.user.id}#CC`}>
                 <div className="link">Open Threads</div>
               </HashLink>
-              <HashLink smooth to={`/user/${this.props.user.id}#PS`}>
+              <HashLink smooth to={`/user/${this.props.user.id}#CS`}>
                 <div className="link">Current Swipes</div>
               </HashLink>
               <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
                 <div className="link">Closed Threads</div>
               </HashLink>
-              <HashLink smooth to={`/user/${this.props.user.id}#CS`}>
+              <HashLink smooth to={`/user/${this.props.user.id}#PS`}>
                 <div className="link">Closed Deals</div>
               </HashLink>
             </div>
@@ -69,13 +74,13 @@ class UserShow extends React.Component {
             <div id="CC" className="usershow-column">
               <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} />
             </div>
-            <div id="PS" className="usershow-column">
+            <div id="CS" className="usershow-column">
               <SwipeUserIndexContainer user={this.props.user} updateCount={this.updateCount} />
             </div>
             <div id="PC" className="usershow-column">
               <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount} />
             </div>
-            <div id="CS" className="usershow-column">
+            <div id="PS" className="usershow-column">
               <ExchangeIndexContainer user={this.props.user} updateCount={this.updateCount} />
             </div>
           </div>
