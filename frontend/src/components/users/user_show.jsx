@@ -49,21 +49,50 @@ class UserShow extends React.Component {
     if (!this.props.user || Object.keys(this.props.user).length === 0 || !this.state.loaded) 
       return 'loading'
     // console.log(this.state)
+    let otherUserLinkCC;
+    let otherUserLinkPC;
+    let otherUserContentCC;
+    let otherUserContentPC;
+    let otherUserStatsCC;
+    let otherUserStatsPC;
+    if (this.props.type === 'current') {
+      otherUserLinkCC = (
+        <HashLink smooth to={`/user/${this.props.user.id}#CC`}>
+          <div className="link">Open Threads</div>
+        </HashLink>)
+      otherUserLinkPC = (
+        <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
+          <div className="link">Closed Threads</div>
+        </HashLink>
+      )
+      otherUserContentCC = (
+        <div id="CC" className="usershow-column">
+          <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/>
+        </div>
+      )
+      otherUserContentPC = (
+        <div id="PC" className="usershow-column">
+          <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/>
+        </div>
+      )
+      otherUserStatsCC = (
+        <div>Open Threads: <span>{this.state.CC}</span></div>
+      )
+      otherUserStatsPC = (
+        <div>Closed Threads: <span>{this.state.PC}</span></div>
+      )
+    }
     return (
       <div className="usershow-main">
         <div className="usershow-wrapper">
 
           <div className="usershow-nav-left">
             <div className="usershow-nav-links">
-              <HashLink smooth to={`/user/${this.props.user.id}#CC`}>
-                <div className="link">Open Threads</div>
-              </HashLink>
+              {otherUserLinkCC}
               <HashLink smooth to={`/user/${this.props.user.id}#CS`}>
                 <div className="link">Current Swipes</div>
               </HashLink>
-              <HashLink smooth to={`/user/${this.props.user.id}#PC`}>
-                <div className="link">Closed Threads</div>
-              </HashLink>
+              {otherUserLinkPC}
               <HashLink smooth to={`/user/${this.props.user.id}#PS`}>
                 <div className="link">Closed Deals</div>
               </HashLink>
@@ -71,15 +100,11 @@ class UserShow extends React.Component {
           </div>
 
           <div className="usershow-content-middle">
-            <div id="CC" className="usershow-column">
-              <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} />
-            </div>
+            {otherUserContentCC}
             <div id="CS" className="usershow-column">
               <SwipeUserIndexContainer user={this.props.user} updateCount={this.updateCount} />
             </div>
-            <div id="PC" className="usershow-column">
-              <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount} />
-            </div>
+            {otherUserContentPC}
             <div id="PS" className="usershow-column">
               <ExchangeIndexContainer user={this.props.user} updateCount={this.updateCount} />
             </div>
@@ -88,13 +113,14 @@ class UserShow extends React.Component {
           <div className="usershow-info-right">
             <div className="usershow-info-wrapper">
               <div className="usershow-info-title">
-                {this.props.user.username}
+                {this.props.user.username}'s
+                Homepage
               </div>
               
               <div className="usershow-info-content">
-                <div>Open Threads: <span>{this.state.CC}</span></div>
+                {otherUserStatsCC}
                 <div>Current Swipes: <span>{this.state.CS}</span></div>
-                <div>Closed Threads: <span>{this.state.PC}</span></div>
+                {otherUserStatsPC}
                 <div>Closed Deals: <span>{this.state.PS}</span></div>
               </div>
               

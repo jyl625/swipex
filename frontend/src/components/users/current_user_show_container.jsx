@@ -8,7 +8,7 @@ import { requestUserExchanges } from '../../actions/exchange_actions'
 const mSTP = (state, ownProps) => ({
   user: state.users.all[state.session.user.id],
   userId: state.session.user.id,
-  threadType: 'current'
+  type: 'current'
 })
 
 const mDTP = dispatch => ({
