@@ -1,4 +1,4 @@
-#SwipeX
+# SwipeX
 
 SwipeX is a real-time trading platform that provides meal swipes exchange services for college students who are unable to use up their meal swipes and those who look to enjoy the delicious food in university cafeterias.
 
