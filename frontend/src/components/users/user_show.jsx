@@ -67,9 +67,9 @@ class UserShow extends React.Component {
               <HashLink smooth to={`/profile#CS`}>
                 <div className="link">Current Swipes</div>
               </HashLink>
-              <HashLink smooth to={`/profile#PC`}>
+              {/* <HashLink smooth to={`/profile#PC`}>
                 <div className="link">Closed Threads</div>
-              </HashLink>
+              </HashLink> */}
               <HashLink smooth to={`/profile#PS`}>
                 <div className="link">Closed Deals</div>
               </HashLink>
@@ -83,17 +83,17 @@ class UserShow extends React.Component {
           <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/>
         </div>
       )
-      otherUserContentPC = (
-        <div id="PC" className="usershow-column">
-          <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/>
-        </div>
-      )
+      // otherUserContentPC = (
+      //   <div id="PC" className="usershow-column">
+      //     <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/>
+      //   </div>
+      // )
       otherUserStatsCC = (
         <div>Open Threads: <span>{this.state.CC}</span></div>
       )
-      otherUserStatsPC = (
-        <div>Closed Threads: <span>{this.state.PC}</span></div>
-      )
+      // otherUserStatsPC = (
+      //   <div>Closed Threads: <span>{this.state.PC}</span></div>
+      // )
     }
     else {
 
