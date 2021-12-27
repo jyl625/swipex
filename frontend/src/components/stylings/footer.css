@@ -2,10 +2,7 @@ footer{
   background-color: var(--color1);
   width: 100%;
 
-  clear: both;
-  position: relative;
-  height: 100px;
-  margin-top: 300px;
+  height: 72px;
 
   display: flex;
   align-items: center;
