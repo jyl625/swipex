@@ -6,6 +6,7 @@ import { scaleTime } from 'd3-scale'
 function BarChart({ data }) {
   const ref = useD3(
     (svg) => {
+      d3.selectAll('svg > g > *').remove();
       const height = 500;
       const width = 500;
       const margin = { top: 20, right: 30, bottom: 30, left: 40 };
@@ -15,10 +16,6 @@ function BarChart({ data }) {
         .domain(Array.from({ length: 30 }, (_, i) => i + 1))
         .rangeRound([margin.left, width - margin.right])
         .padding(0.1);
-      // const x = d3.scaleTime()
-      //   .domain([new preDate(2021, 11, 1), new preDate(2021, 11, 4)])
-      //   .rangeRound([margin.left, width - margin.right])
-      //   .padding(0.1);
 
       const y1 = d3
         .scaleLinear()
@@ -50,8 +47,7 @@ function BarChart({ data }) {
               .attr("fill", "currentColor")
               .attr("text-anchor", "start")
               .text(data.y1)
-          );
-              
+          );  
       svg.select(".x-axis").call(xAxis);
       svg.select(".y-axis").call(y1Axis);
 

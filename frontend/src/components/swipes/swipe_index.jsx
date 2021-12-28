@@ -197,8 +197,8 @@ class SwipeIndex extends React.Component {
             </div>
             </div>
             <div>
-              <div className="barchart-container">< BarchartContainer cafeSwipes={cafeSwipes}/></div>
-              <div className="linechart-container"><LinechartContainer cafeSwipes={cafeSwipes}/></div>
+              <div className="barchart-container-cafe">< BarchartContainer cafeSwipes={cafeSwipes}/></div>
+              <div className="linechart-container-cafe"><LinechartContainer cafeSwipes={cafeSwipes}/></div>
 
               <div className="right-panel">
                 <div className="map-container">
