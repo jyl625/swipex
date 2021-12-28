@@ -161,7 +161,7 @@
   gap: 80px 12%;
 }
 
-@media screen and (max-width: 1575px) {
+@media screen and (max-width: 1590px) {
   .cafeteria-name-container {
     /* position: sticky; */
     top: 0px;
