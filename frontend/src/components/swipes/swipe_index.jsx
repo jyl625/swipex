@@ -1,10 +1,11 @@
 import React from 'react';
 import SwipeIndexItem from './swipe_index_item';
 // import Keys from '../../../../config/keys'
-
-import '../stylings/reset.css'
-import '../stylings/swipe_index.css'
+import '../stylings/reset.css';
+import '../stylings/swipe_index.css';
 // import signup_form from '../session/signup_form';
+import BarchartContainer from '../D3chart/barchart_container';
+import LinechartContainer from '../D3chart/linechart_container'
 
 require('dotenv').config();
 
@@ -88,6 +89,12 @@ class SwipeIndex extends React.Component {
     // }
   }
 
+  selectSwipesByCafeteriasWithClose(swipes, cafeteriaId) {
+    return swipes.filter(swipe => {
+      return swipe.cafeId === cafeteriaId && swipe.open === false
+    })
+  }
+
   // this.state = ({
   //   swipesLoaded: false,
   //   sort: "new", //"new", "priceAsc", "priceDec", "exp"
@@ -167,51 +174,61 @@ class SwipeIndex extends React.Component {
 
   render() {
     if (this.state.swipesLoaded) {
+      let cafeSwipes;
+      cafeSwipes = this.selectSwipesByCafeteriasWithClose(this.props.swipes, this.props.cafeteria._id)
+      // console.log(cafeSwipes)
+
       return (
-        <div className="cafeteria-show-page">
-          <div className="cafeteria-banner">
+            <div className="cafeteria-show-page">
+            <div className="cafeteria-banner">
             <img className={`${this.props.cafeteria.name.replace(/\s/g, "")}`} src={this.props.cafeteria.photoUrls[0]} alt="cafeteria banner" />
-          </div>
-          <div className="panel-container">
-            <div className="left-panel">
-              <div className="cafeteria-container">
-                <div className="cafeteria-name-container">
-                  <div className="cafeteria-name-wrapper">{this.props.cafeteria.name.toUpperCase()}</div>
+            </div>
+        <div className="panel-container">
+          <div className="left-pannel">
+            <div className="cafeteria-container">
+              <div className="cafeteria-name-container">
+                <div className="cafeteria-name-wrapper">{this.props.cafeteria.name.toUpperCase()}</div>
+              </div>
+              {this.renderFilterSort()}
+              <div className="swipe-index-items-container">
+                {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
+              </div>
+            </div>
+            </div>
+            <div>
+              <div className="barchart-container-cafe">< BarchartContainer cafeSwipes={cafeSwipes}/></div>
+              <div className="linechart-container-cafe"><LinechartContainer cafeSwipes={cafeSwipes}/></div>
+
+              <div className="right-panel">
+                <div className="map-container">
+                  {this.renderMap()}
                 </div>
-                {this.renderFilterSort()}
-                <div className="swipe-index-items-container">
-                  {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
+                <div className="menu-container">
+                  {/* <ul>Breakfast
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                  </ul>
+                  <ul>Lunch
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                  </ul>
+                  <ul>Dinner
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                  </ul> */}
                 </div>
               </div>
             </div>
-            <div className="right-panel">
-              <div className="map-container">
-                {this.renderMap()}
-              </div>
-              <div className="menu-container">
-                {/* <ul>Breakfast
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                  <li>Item 4</li>
-                  <li>Item 5</li>
-                </ul>
-                <ul>Lunch
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                  <li>Item 4</li>
-                  <li>Item 5</li>
-                </ul>
-                <ul>Dinner
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                  <li>Item 4</li>
-                  <li>Item 5</li>
-                </ul> */}
-              </div>
-            </div>
+
           </div>
         </div>
       )

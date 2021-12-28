@@ -54,7 +54,18 @@ class LinechartData extends React.Component {
 
     if (this.props.exchanges !== [] && !this.state.exchangeDataLoaded) {
       let allDate = data.map((d) => d.date);
-      let exchanges = this.props.exchanges;
+      let exchanges;
+
+      if (this.props.cafeSwipes) {
+        let swipeId = [];
+        this.props.cafeSwipes.map(swipe => {
+          swipeId.push(swipe._id)
+          console.log(swipeId)
+        })
+        exchanges = this.props.exchanges.filter(exchange => swipeId.includes(exchange.sellPost));
+      } else {
+        exchanges = this.props.exchanges;
+      }
 
       for (let i = 0; i < exchanges.length; i++) {
         let exchangeDate = exchanges[i].updatedAt.slice(0, 10);
