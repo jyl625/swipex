@@ -114,7 +114,7 @@ class SwipeIndex extends React.Component {
           <div className={`sort ${this.sortSelected("priceAsc")}`} 
                 onClick={this.selectSort("priceAsc")}>Price (asc)</div>
           <div className={`sort ${this.sortSelected("priceDec")}`} 
-                onClick={this.selectSort("priceDec")}>Price (dec)</div>
+                onClick={this.selectSort("priceDec")}>Price (dsc)</div>
  
         </div>
         <div className="filter-container">
@@ -163,7 +163,7 @@ class SwipeIndex extends React.Component {
   renderMap() {
     const lat = this.props.cafeteria.lat
     const lng = this.props.cafeteria.lng
-    // const googleAPIKey = require('../../config/keys').googleAPIKey
+ 
     const googleAPIKey = process.env.REACT_APP_GOOGLE_API_KEY;
     return (
       <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">
@@ -173,7 +173,6 @@ class SwipeIndex extends React.Component {
   }
 
   render() {
-
     if (this.state.swipesLoaded) {
       let cafeSwipes;
       cafeSwipes = this.selectSwipesByCafeteriasWithClose(this.props.swipes, this.props.cafeteria._id)
@@ -231,7 +230,7 @@ class SwipeIndex extends React.Component {
             </div>
 
           </div>
-                   </div>
+        </div>
       )
     } else {
       return <div>Gathering swipes...</div>

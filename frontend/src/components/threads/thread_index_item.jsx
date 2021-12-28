@@ -27,11 +27,11 @@ const ThreadIndexItem = ({thread, threadType, currentUser}) => {
   let seller;
   let buy;
   if (threadType === 'Current') {
-    seller = (<p>Chat with <span className="usershow-otheruser-name">{otherUser.username}</span></p>)
+    seller = (<p>Thread with <span className="usershow-otheruser-name">{otherUser.username}</span></p>)
     buy = (<p>Last offer from {thread.seller.username}</p>)
   }
   else {
-    seller = (<p>Previous chat with <span className="usershow-otheruser-name">{otherUser.username}</span></p>)
+    seller = (<p>Previous thread with <span className="usershow-otheruser-name">{otherUser.username}</span></p>)
     buy = (<p>Sold to {thread.seller.username}</p>)
   }
   return (
