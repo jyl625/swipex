@@ -179,21 +179,21 @@ class SwipeIndex extends React.Component {
       // console.log(cafeSwipes)
 
       return (
-            <div className="cafeteria-show-page">
-            <div className="cafeteria-banner">
+        <div className="cafeteria-show-page">
+          <div className="cafeteria-banner">
             <img className={`${this.props.cafeteria.name.replace(/\s/g, "")}`} src={this.props.cafeteria.photoUrls[0]} alt="cafeteria banner" />
-            </div>
-        <div className="panel-container">
-          <div className="left-panel">
-            <div className="cafeteria-container">
-              <div className="cafeteria-name-container">
-                <div className="cafeteria-name-wrapper">{this.props.cafeteria.name.toUpperCase()}</div>
+          </div>
+          <div className="panel-container">
+            <div className="left-panel">
+              <div className="cafeteria-container">
+                <div className="cafeteria-name-container">
+                  <div className="cafeteria-name-wrapper">{this.props.cafeteria.name.toUpperCase()}</div>
+                </div>
+                {this.renderFilterSort()}
+                <div className="swipe-index-items-container">
+                  {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
+                </div>
               </div>
-              {this.renderFilterSort()}
-              <div className="swipe-index-items-container">
-                {this.listIndexItemsByCafeterias(this.props.cafeteria._id)}
-              </div>
-            </div>
             </div>
             <div>
               <div className="barchart-container-cafe">< BarchartContainer cafeSwipes={cafeSwipes}/></div>
