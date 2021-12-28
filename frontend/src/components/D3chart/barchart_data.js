@@ -51,10 +51,22 @@ class BarchartData extends React.Component {
       { preDate: 28, amount: 4, date: "2021-11-28", closePrice: 7.51 },
       { preDate: 29, amount: 7, date: "2021-11-29", closePrice: 6.87 },
       { preDate: 30, amount: 5, date: "2021-11-30", closePrice: 6.08 }]
+    
+      if (this.props.exchanges !== [] && !this.state.exchangeDataLoaded) {
+        let allDate = data.map((d) => d.date);
+        let exchanges;
 
-    if (this.props.exchanges !== [] && !this.state.exchangeDataLoaded) {
-      let allDate = data.map((d) => d.date);
-      let exchanges = this.props.exchanges;
+      if (this.props.cafeSwipes) {
+        let swipeId = [];
+        this.props.cafeSwipes.map(swipe => {
+          swipeId.push(swipe._id)
+          console.log(swipeId)
+        })
+        exchanges = this.props.exchanges.filter(exchange => swipeId.includes(exchange.sellPost));
+      }else{
+        exchanges = this.props.exchanges;
+      }
+        debugger
 
       for (let i = 0; i < exchanges.length; i++) {
         let exchangeDate = exchanges[i].updatedAt.slice(0, 10);
@@ -136,6 +148,7 @@ class BarchartData extends React.Component {
       
     // if (this.props.exchanges === []) return "";
     if (this.state.exchangeDataLoaded){
+      console.log("inner",this.props.cafeSwipes)
     return (
 
       <div className="graph-container"><BarChart data = {this.state.data} /></div>

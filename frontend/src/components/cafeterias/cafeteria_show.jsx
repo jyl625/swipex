@@ -3,7 +3,7 @@ import SwipeIndexContainer from '../swipes/swipe_index_container';
 import '../stylings/reset.css';
 import '../stylings/swipe_index.css';
 import Modal from '../modal/modal';
-import '../stylings/modal.css'
+import '../stylings/modal.css';
 // import signup_form from '../session/signup_form';
 
 class CafeteriaShow extends React.Component {
@@ -47,7 +47,9 @@ class CafeteriaShow extends React.Component {
           //       <div className="cafeteria-name-container">
           //         <div className="cafeteria-name-wrapper">{cafeteria.name.toUpperCase()}</div>
           //       </div>
-                <SwipeIndexContainer cafeteria={cafeteria} key={idx}/>
+                <div>
+                  <SwipeIndexContainer cafeteria={cafeteria} key={idx}/>
+                </div>
               /* </div>
             </div>
             <div className="right-panel">

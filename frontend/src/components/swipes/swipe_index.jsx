@@ -1,10 +1,11 @@
 import React from 'react';
 import SwipeIndexItem from './swipe_index_item';
 // import Keys from '../../../../config/keys'
-
-import '../stylings/reset.css'
-import '../stylings/swipe_index.css'
+import '../stylings/reset.css';
+import '../stylings/swipe_index.css';
 // import signup_form from '../session/signup_form';
+import BarchartContainer from '../D3chart/barchart_container';
+import LinechartContainer from '../D3chart/linechart_container'
 
 require('dotenv').config();
 
@@ -88,6 +89,12 @@ class SwipeIndex extends React.Component {
     // }
   }
 
+  selectSwipesByCafeteriasWithClose(swipes, cafeteriaId) {
+    return swipes.filter(swipe => {
+      return swipe.cafeId === cafeteriaId && swipe.open === false
+    })
+  }
+
   // this.state = ({
   //   swipesLoaded: false,
   //   sort: "new", //"new", "priceAsc", "priceDec", "exp"
@@ -166,13 +173,16 @@ class SwipeIndex extends React.Component {
   }
 
   render() {
-    // return <div>{this.props.cafeteria.name}</div>
-    // console.log(this.state)
+
     if (this.state.swipesLoaded) {
+      let cafeSwipes;
+      cafeSwipes = this.selectSwipesByCafeteriasWithClose(this.props.swipes, this.props.cafeteria._id)
+      // console.log(cafeSwipes)
+
       return (
-                  <div className="cafeteria-show-page">
+            <div className="cafeteria-show-page">
             <div className="cafeteria-banner">
-              <img className={`${this.props.cafeteria.name.replace(/\s/g, "")}`} src={this.props.cafeteria.photoUrls[0]} alt="cafeteria banner" />
+            <img className={`${this.props.cafeteria.name.replace(/\s/g, "")}`} src={this.props.cafeteria.photoUrls[0]} alt="cafeteria banner" />
             </div>
         <div className="panel-container">
           <div className="left-pannel">
@@ -186,6 +196,10 @@ class SwipeIndex extends React.Component {
               </div>
             </div>
             </div>
+
+            <div className="barchart-container">< BarchartContainer cafeSwipes={cafeSwipes}/></div>
+            <div className="linechart-container"><LinechartContainer cafeSwipes={cafeSwipes}/></div>
+
             <div className="right-panel">
               <div className="map-container">
                 {this.renderMap()}

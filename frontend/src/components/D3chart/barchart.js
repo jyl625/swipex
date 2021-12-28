@@ -85,6 +85,7 @@ function BarChart({ data }) {
         width: "100%",
         marginRight: "0px",
         marginLeft: "0px",
+        backgroundColor: "AliceBlue"
       }}
     >
       <g className="plot-area" />

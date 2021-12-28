@@ -59,7 +59,7 @@ function LineChart({ data }) {
         .datum(data)
         .attr("fill", "none")
         .attr("stroke", "#09A603")
-        .attr("stroke-width", 1.5)
+        .attr("stroke-width", 3)
         .attr("d", d3.line()
           .x(function (d) { return x(d.preDate) })
           .y(function (d) { return y(d.closePrice) })
@@ -81,6 +81,7 @@ function LineChart({ data }) {
         width: "100%",
         marginRight: "0px",
         marginLeft: "0px",
+        backgroundColor: "AliceBlue"
       }}
     >
       <g className="plot-area" />
