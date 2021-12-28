@@ -65,7 +65,7 @@ class BarchartData extends React.Component {
       }else{
         exchanges = this.props.exchanges;
       }
-        // debugger
+        debugger
 
       for (let i = 0; i < exchanges.length; i++) {
         let exchangeDate = exchanges[i].updatedAt.slice(0, 10);
