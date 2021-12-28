@@ -184,7 +184,7 @@ class SwipeIndex extends React.Component {
             <img className={`${this.props.cafeteria.name.replace(/\s/g, "")}`} src={this.props.cafeteria.photoUrls[0]} alt="cafeteria banner" />
             </div>
         <div className="panel-container">
-          <div className="left-pannel">
+          <div className="left-panel">
             <div className="cafeteria-container">
               <div className="cafeteria-name-container">
                 <div className="cafeteria-name-wrapper">{this.props.cafeteria.name.toUpperCase()}</div>
