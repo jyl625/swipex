@@ -196,38 +196,40 @@ class SwipeIndex extends React.Component {
               </div>
             </div>
             </div>
+            <div>
+              <div className="barchart-container">< BarchartContainer cafeSwipes={cafeSwipes}/></div>
+              <div className="linechart-container"><LinechartContainer cafeSwipes={cafeSwipes}/></div>
 
-            <div className="barchart-container">< BarchartContainer cafeSwipes={cafeSwipes}/></div>
-            <div className="linechart-container"><LinechartContainer cafeSwipes={cafeSwipes}/></div>
-
-            <div className="right-panel">
-              <div className="map-container">
-                {this.renderMap()}
-              </div>
-              <div className="menu-container">
-                {/* <ul>Breakfast
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                  <li>Item 4</li>
-                  <li>Item 5</li>
-                </ul>
-                <ul>Lunch
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                  <li>Item 4</li>
-                  <li>Item 5</li>
-                </ul>
-                <ul>Dinner
-                  <li>Item 1</li>
-                  <li>Item 2</li>
-                  <li>Item 3</li>
-                  <li>Item 4</li>
-                  <li>Item 5</li>
-                </ul> */}
+              <div className="right-panel">
+                <div className="map-container">
+                  {this.renderMap()}
+                </div>
+                <div className="menu-container">
+                  {/* <ul>Breakfast
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                  </ul>
+                  <ul>Lunch
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                  </ul>
+                  <ul>Dinner
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                  </ul> */}
+                </div>
               </div>
             </div>
+
           </div>
                    </div>
       )

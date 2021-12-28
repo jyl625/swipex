@@ -60,13 +60,12 @@ class BarchartData extends React.Component {
         let swipeId = [];
         this.props.cafeSwipes.map(swipe => {
           swipeId.push(swipe._id)
-          console.log(swipeId)
         })
         exchanges = this.props.exchanges.filter(exchange => swipeId.includes(exchange.sellPost));
       }else{
         exchanges = this.props.exchanges;
       }
-        debugger
+        // debugger
 
       for (let i = 0; i < exchanges.length; i++) {
         let exchangeDate = exchanges[i].updatedAt.slice(0, 10);

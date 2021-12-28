@@ -51,7 +51,7 @@ function BarChart({ data }) {
               .attr("text-anchor", "start")
               .text(data.y1)
           );
-
+              
       svg.select(".x-axis").call(xAxis);
       svg.select(".y-axis").call(y1Axis);
 
