@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import Modal from "../modal/modal";
+import { Link } from 'react-router-dom';
 
 
 import ThreadCommentListItem from "./thread_comment_list_item";
@@ -367,7 +368,10 @@ class ThreadShow extends React.Component{
           <div className="thread-page-comment-wrapper">
             <div className="other-user-name">
               <h1>
-                Leave a message for <span>{otherUser.username}</span>
+                Leave a message for 
+                <Link to={`/user/${otherUser._id}`}>
+                  <span> {otherUser.username}</span>
+                </Link>
               </h1>
             </div>
 

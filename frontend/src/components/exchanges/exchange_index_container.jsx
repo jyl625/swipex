@@ -7,7 +7,7 @@ const mSTP = (state, ownProps) => ({
 });
 
 const mDTP = dispatch => ({
-  requestUserExchanges: userId => dispatch(requestUserExchanges(userId))
+  requestUserExchanges: userId => dispatch(requestUserExchanges(userId)),
 })
 
 export default connect(mSTP, mDTP)(ExchangeIndex);

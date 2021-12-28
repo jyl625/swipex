@@ -25,7 +25,7 @@ class SwipeUserIndex extends React.Component {
       else return -1;
     });
     if (!this.state.countUpdated) {
-      this.props.updateCount('PS', sortedSwipes.length)
+      this.props.updateCount('CS', sortedSwipes.length)
       this.setState({
         countUpdated: true
       })

@@ -12,7 +12,7 @@ class ExchangeIndex extends React.Component {
     })
   }
   componentDidMount() {
-    this.props.requestUserExchanges(this.props.user.id);
+   
   }
 
   listExchange() {
@@ -20,7 +20,7 @@ class ExchangeIndex extends React.Component {
     if (this.props.exchanges.length === 0)
     return 'No exchanges yet'
     if (!this.state.countUpdated) {
-      this.props.updateCount('CS', this.props.exchanges.length)
+      this.props.updateCount('PS', this.props.exchanges.length)
       this.setState({
         countUpdated: true
       })
