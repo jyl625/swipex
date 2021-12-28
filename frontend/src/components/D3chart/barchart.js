@@ -4,9 +4,11 @@ import * as d3 from 'd3';
 import { scaleTime } from 'd3-scale'
 
 function BarChart({ data }) {
+  
+  
   const ref = useD3(
+    
     (svg) => {
-      d3.selectAll('svg > g > *').remove();
       const height = 500;
       const width = 500;
       const margin = { top: 20, right: 30, bottom: 30, left: 40 };
