@@ -20,7 +20,7 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
     const dateString = dateObj.toLocaleString("en-US", { 
       timeZone: "America/Los_Angeles", 
       year: 'numeric', 
-      month: 'short', 
+      month: 'numeric', 
       day: 'numeric' 
     })
     const timeString = dateObj.toLocaleTimeString("en-US", {
@@ -35,12 +35,15 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
     return string[0].toUpperCase() + string.slice(1)
   }
 
-  let handleClick = () => {
+  const handleClick = () => {
     return () => {
-      // console.log(swipe)
-      // console.log("hello")
       requestSwipe(swipe._id).then(() => {swipeShow()})
     }
+  }
+
+  const parseExpiration = (expirationStr) => {
+    const dateStrParts = expirationStr.split("-")
+    return `${dateStrParts[1]}/${dateStrParts[2]}/${dateStrParts[0]}`
   }
 
   return (
@@ -51,14 +54,13 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
           <h2>{capitalize(swipe.mealType)}</h2>
           <h2>Meet @ {parseTimeString(swipe.meetingTime)}</h2>
         </div>
-        <h3>Post expires: {swipe.expiration}</h3>
+        <div className="stripe-container">
+          <div className="stripe"></div>
+        </div>
+        <h3>Post expires: {parseExpiration(swipe.expiration)}</h3>
         <h3>Post created: {parseTimeStringShort(swipe.timeCreated)}</h3>
 
         <img src="" alt="" />
-        {/* swipe(cafeteria) imageUrl */}
-        {/* descriptions */}
-        {/* location */}
-        {/* </div> */}
       </div>
     </div>
   )

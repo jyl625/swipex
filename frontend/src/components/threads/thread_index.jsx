@@ -22,7 +22,6 @@ class ThreadIndex extends React.Component {
   listThread() {
 
     let filteredThreads = [];
-    console.log(this.props.threads.length)
     // debugger
     this.props.swipes.forEach(swipe => {
       // console.log(swipe)
@@ -68,10 +67,10 @@ class ThreadIndex extends React.Component {
   render() {
     let title;
     if (this.props.threadType === 'Past')
-      title = (<div className="usershow-item-title" >Past Chats</div>)
+      title = (<div className="usershow-item-title" >Closed Threads</div>)
       // title = (<div className="usershow-item-title" >Past Chats of {this.props.user.username}</div>)
     else
-      title = (<div className="usershow-item-title" >Open Chats</div>)
+      title = (<div className="usershow-item-title" >Open Threads</div>)
       // title = (<div className="usershow-item-title" >Open Chats of {this.props.user.username}</div>)
 
     return (
