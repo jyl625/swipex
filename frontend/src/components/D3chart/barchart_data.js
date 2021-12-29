@@ -19,6 +19,13 @@ class BarchartData extends React.Component {
     )
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.cafeName !== this.props.match.params.cafeteriaName) {
+      // this.setState({cafeName: this.props.match.params.cafeteriaName})
+      this.loadData()
+    }
+  }
+
   loadData() {
     let data = [
       { preDate: 1, amount: 3, date: "2021-11-1", closePrice: 10.74 },
@@ -52,7 +59,7 @@ class BarchartData extends React.Component {
       { preDate: 29, amount: 7, date: "2021-11-29", closePrice: 6.87 },
       { preDate: 30, amount: 5, date: "2021-11-30", closePrice: 6.08 }]
     
-      if (this.props.exchanges !== [] && !this.state.exchangeDataLoaded) {
+      if (this.props.exchanges !== []) {
         let allDate = data.map((d) => d.date);
         let exchanges;
 
@@ -84,6 +91,7 @@ class BarchartData extends React.Component {
         }
       }
       this.setState({ exchangeDataLoaded: true, data: data })
+        console.log("barchart data loaded")
     }
   }
 

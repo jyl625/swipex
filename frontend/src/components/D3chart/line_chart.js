@@ -4,11 +4,14 @@ import * as d3 from 'd3';
 import { scaleTime } from 'd3-scale'
 
 function LineChart({ data }) {
+
   const ref = useD3(
     (svg) => {
       const height = 500;
       const width = 500;
       const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+
+      d3.select("#line-chart-lines").remove();
 
       const x = d3
         .scaleBand()
@@ -57,6 +60,7 @@ function LineChart({ data }) {
 
       svg.append("path")
         .datum(data)
+        .attr("id", "line-chart-lines") // add id to the line and remove it at rerendering above at line 14: d3.select("#line-chart-lines").remove()
         .attr("fill", "none")
         .attr("stroke", "#09A603")
         .attr("stroke-width", 3)
@@ -70,8 +74,10 @@ function LineChart({ data }) {
         // )
 
     },
-    [data.length]
+    [data]
   );
+
+  console.log(data[29].closePrice)
 
   return (
     <svg
@@ -89,6 +95,9 @@ function LineChart({ data }) {
       <g className="x-axis" />
       <g className="y-axis" />
     </svg>
+    // <div>
+    //   {data[29].closePrice}
+    // </div>
   );
 }
 

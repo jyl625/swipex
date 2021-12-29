@@ -13,6 +13,9 @@ function BarChart({ data }) {
       const width = 500;
       const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
+      d3.select("#bar-chart-bars").remove();
+
+
       const x = d3
         .scaleBand()
         .domain(Array.from({ length: 30 }, (_, i) => i + 1))
@@ -58,6 +61,7 @@ function BarChart({ data }) {
         .selectAll(".bar")
         .data(data)
         .join("rect")
+        .attr("id", "bar-chart-bars") // add id to remove bars on rerendering
         .attr("class", "bar")
         .attr("fill", function (d) { 
           if (d.amount > 7){
@@ -72,8 +76,11 @@ function BarChart({ data }) {
         .attr("height", (d) => y1(0) - y1(d.amount));
         
     },
-    [data.length]
+    [data]
   );
+
+  console.log(`new bar data last point: ${data[29].closePrice}`)
+
 
   return (
     <svg
