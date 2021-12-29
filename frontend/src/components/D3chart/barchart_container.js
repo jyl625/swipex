@@ -1,10 +1,13 @@
 import { connect } from 'react-redux';
 import { requestExchanges} from '../../actions/exchange_actions';
 import BarchartData from './barchart_data'
+import { withRouter } from 'react-router-dom';
+
 
 const mapStateToProps = (state, ownProps) => ({
   exchanges: Object.values(state.exchanges.all),
-  cafeSwipes: ownProps.cafeSwipes
+  cafeSwipes: ownProps.cafeSwipes,
+  cafeName: ownProps.match.params.cafeteriaName
   // cafeExchanges: (() => {
   //   const cafeSwipes = Object.values(ownProps.cafeSwipes);
   //   const cafeSwipesPostId = [];
@@ -19,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
   requestExchanges: () => dispatch(requestExchanges())
 })
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(BarchartData);
+)(BarchartData));
