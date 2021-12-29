@@ -3,7 +3,7 @@ import React from 'react';
 import * as d3 from 'd3';
 import { scaleTime } from 'd3-scale'
 
-function BarChart({ data }) {
+function BarChart({ data, cafeId }) {
   
   
   const ref = useD3(
@@ -13,7 +13,9 @@ function BarChart({ data }) {
       const width = 500;
       const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
-      d3.select("#bar-chart-bars").remove();
+      // d3.select(`#bar-chart-bars-${cafeId}`).remove();
+      // d3.select(`#bar-plot-area-${cafeId}`).select(`#bar-chart-bars-${cafeId}`).remove();
+      d3.select(`#bar-plot-area-${cafeId}`).select(".bar").remove();
 
 
       const x = d3
@@ -57,11 +59,11 @@ function BarChart({ data }) {
       svg.select(".y-axis").call(y1Axis);
 
       svg
-        .select(".plot-area")
+        .select(`#bar-plot-area-${cafeId}`)
         .selectAll(".bar")
         .data(data)
         .join("rect")
-        .attr("id", "bar-chart-bars") // add id to remove bars on rerendering
+        .attr("id", `bar-chart-bars-${cafeId}`) // add id to remove bars on rerendering
         .attr("class", "bar")
         .attr("fill", function (d) { 
           if (d.amount > 7){
@@ -95,7 +97,7 @@ function BarChart({ data }) {
           backgroundColor: "White"
         }}
       >
-        <g className="plot-area" />
+        <g id={`bar-plot-area-${cafeId}`} />
         <g className="x-axis" />
         <g className="y-axis" />
       </svg>
