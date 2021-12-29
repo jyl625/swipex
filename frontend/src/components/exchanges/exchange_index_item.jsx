@@ -9,21 +9,27 @@ class ExchangeIndexItem extends React.Component {
 
   componentDidMount() {
     this.props.requestUser(this.props.exchange.buyer)
-    .then((userId) => this.props.requestUserThreads(userId))
+    .then(userId => this.props.requestUserThreads(userId))
   }
 
 
   render() {
-    const singleUser = this.props.user.filter(user => user.id === this.props.exchange.buyer)[0];
+    const buyer = this.props.user.filter(user => user.id === this.props.exchange.buyer)[0];
+    const seller = this.props.user.filter(user => user.id === this.props.exchange.seller)[0];
     const thread = this.props.threads.filter(thread => thread.sellPost === this.props.exchange.sellPost)[0];
-  
-    if (!singleUser || singleUser.length === 0 || !thread || thread.length === 0)
-      return "loading";
+    if (!buyer || !seller || !thread)
+      return "";
+    let username;
+    if (this.props.exchange.buyer !== this.props.currentUser.id) {
+      username = (<div><span className="usershow-index-item-grey">Buyer:</span> {buyer.username}</div>)
+    }
+    else {
+      username = (<div><span className="usershow-index-item-grey">Seller:</span> {seller.username}</div>)
+    }
     return (
       <Link to={`/threads/${thread._id}`}>
         <div className="messages">
-          {/* <div><span className="usershow-index-item-grey">SellPost:</span> {exchange.sellPost}</div> */}
-          <div><span className="usershow-index-item-grey">Buyer:</span> {singleUser.username}</div>
+          {username}
           <div><span className="usershow-index-item-grey">Closed at:</span> ${Number(this.props.exchange.closePrice).toFixed(2)}</div>
           <div><span className="usershow-index-item-grey">Last updated at:</span> {this.props.exchange.updatedAt}</div>
         </div>
@@ -34,7 +40,8 @@ class ExchangeIndexItem extends React.Component {
 
 const mSTP = state => ({
   user: Object.values(state.users.all),
-  threads: state.threads.user
+  threads: state.threads.user,
+  currentUser: state.session.user
 })
 
 const mDTP = dispatch => ({
