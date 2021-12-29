@@ -158,7 +158,7 @@ class BarchartData extends React.Component {
       console.log("inner",this.props.cafeSwipes)
     return (
 
-      <div className="graph-container"><BarChart data = {this.state.data} /></div>
+      <div className="graph-container"><BarChart data = {this.state.data} cafeId={this.props.cafeId}/></div>
     )}else{
       return (
       <div>Building Data...</div>

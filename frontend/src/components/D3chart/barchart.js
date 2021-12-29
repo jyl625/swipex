@@ -83,21 +83,26 @@ function BarChart({ data }) {
 
 
   return (
-    <svg
-      ref={ref}
-      style={{
-        height: 500,
-        width: "100%",
-        marginRight: "0px",
-        marginLeft: "0px",
-        // backgroundColor: "AliceBlue"
-        backgroundColor: "White"
-      }}
-    >
-      <g className="plot-area" />
-      <g className="x-axis" />
-      <g className="y-axis" />
-    </svg>
+    <>
+      <svg
+        ref={ref}
+        style={{
+          height: 500,
+          width: "100%",
+          marginRight: "0px",
+          marginLeft: "0px",
+          // backgroundColor: "AliceBlue"
+          backgroundColor: "White"
+        }}
+      >
+        <g className="plot-area" />
+        <g className="x-axis" />
+        <g className="y-axis" />
+      </svg>
+      <div>
+        Today's Volume: {data[29].amount} exchange(s)
+      </div>
+    </>
   );
 }
 
