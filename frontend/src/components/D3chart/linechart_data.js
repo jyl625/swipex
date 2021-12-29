@@ -8,18 +8,27 @@ class LinechartData extends React.Component {
     super(props);
     this.state = {
       exchangeDataLoaded: false,
-      data: null
+      data: null,
     }
 
   }
 
   componentDidMount() {
+    // debugger
     this.props.requestExchanges().then(
       () => this.loadData()
     )
   }
 
+  componentDidUpdate(prevProps){
+    if (prevProps.cafeName !== this.props.match.params.cafeteriaName){
+      // this.setState({cafeName: this.props.match.params.cafeteriaName})
+      this.loadData()
+    }
+  }
+
   loadData() {
+    // debugger
     let data = [
       { preDate: 1, amount: 1, date: "2021-11-1", closePrice: 10.74 },
       { preDate: 2, amount: 1, date: "2021-11-02", closePrice: 8.17 },
@@ -52,7 +61,7 @@ class LinechartData extends React.Component {
       { preDate: 29, amount: 1, date: "2021-11-29", closePrice: 6.87 },
       { preDate: 30, amount: 1, date: "2021-11-30", closePrice: 6.08 }]
 
-    if (this.props.exchanges !== [] && !this.state.exchangeDataLoaded) {
+    if (this.props.exchanges !== []) {
       let allDate = data.map((d) => d.date);
       let exchanges;
 
@@ -84,7 +93,8 @@ class LinechartData extends React.Component {
           allDate = data.map((d) => d.date)
         }
       }
-      this.setState({ exchangeDataLoaded: true, data: data })
+      this.setState({ exchangeDataLoaded: true, data: data})
+      console.log("linechart data loaded")
     }
   }
   
@@ -148,6 +158,9 @@ class LinechartData extends React.Component {
     //   }
 
     // if (this.props.exchanges === []) return "";
+
+    // debugger
+
     if (this.state.exchangeDataLoaded) {
       return (
         <div className="graph-container"><LineChart data={this.state.data} /></div>
