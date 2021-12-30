@@ -53,7 +53,7 @@ class ThreadSellInput extends React.Component {
           <div className="offer-input-box">
             <input
               type="number"
-              defaultValue={parseFloat(sellOfferPrice)}
+              defaultValue={parseFloat(sellOfferPrice).toFixed(2)}
               step="0.01"
               onChange={this.handleInput("sellerOffer")}
             />
