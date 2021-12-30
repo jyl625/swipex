@@ -69,7 +69,7 @@ class LinechartData extends React.Component {
         let swipeId = [];
         this.props.cafeSwipes.map(swipe => {
           swipeId.push(swipe._id)
-          console.log(swipeId)
+          // console.log(swipeId)
         })
         exchanges = this.props.exchanges.filter(exchange => swipeId.includes(exchange.sellPost));
       } else {
@@ -163,7 +163,7 @@ class LinechartData extends React.Component {
 
     if (this.state.exchangeDataLoaded) {
       return (
-        <div className="graph-container"><LineChart data={this.state.data} /></div>
+        <div className="graph-container"><LineChart data={this.state.data} cafeId={this.props.cafeId}/></div>
       )
     } else {
       return (

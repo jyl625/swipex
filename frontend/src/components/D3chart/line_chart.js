@@ -3,7 +3,17 @@ import React from 'react';
 import * as d3 from 'd3';
 import { scaleTime } from 'd3-scale'
 
-function LineChart({ data }) {
+import { withRouter } from 'react-router-dom';
+
+function LineChart({ data, cafeId }) {
+
+  const plotColor = () => {
+    const diff = ((data[29].closePrice - data[28].closePrice)/data[28].closePrice*100)
+    if (diff >= 0)
+      return "#09A603"
+    else
+      return  "#ff5000"
+  }
 
   const ref = useD3(
     (svg) => {
@@ -11,7 +21,11 @@ function LineChart({ data }) {
       const width = 500;
       const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
-      d3.select("#line-chart-lines").remove();
+      // if (match.params.cafeteriaName !== "all")
+        // d3.select(`.line-chart-lines`).remove();  
+      // d3.select(`#line-chart-line-${cafeId}`).remove();
+      // d3.select(`.line-chart-lines`).remove();
+      d3.select(`#line-plot-area-${cafeId}`).select(`.line-chart-lines`).remove();
 
       const x = d3
         .scaleBand()
@@ -58,11 +72,13 @@ function LineChart({ data }) {
       //   return d.closePrice;
       // });
 
-      svg.append("path")
+      svg.select(`#line-plot-area-${cafeId}`).append("path")
+      // svg.select(".plot-area").append("path")
         .datum(data)
-        .attr("id", "line-chart-lines") // add id to the line and remove it at rerendering above at line 14: d3.select("#line-chart-lines").remove()
+        .attr("id", `line-chart-line-${cafeId}`) // add id to the line and remove it at rerendering above at line 14: d3.select("#line-chart-lines").remove()
+        .attr("class", `line-chart-lines`) // add id to the line and remove it at rerendering above at line 14: d3.select("#line-chart-lines").remove()
         .attr("fill", "none")
-        .attr("stroke", "#09A603")
+        .attr("stroke", plotColor())
         .attr("stroke-width", 3)
         .attr("d", d3.line()
           .x(function (d) { return x(d.preDate) })
@@ -77,27 +93,41 @@ function LineChart({ data }) {
     [data]
   );
 
-  console.log(data[29].closePrice)
+  const renderTodaysPrice = () => {
+    const delta = ((data[29].closePrice - data[28].closePrice)/data[28].closePrice*100).toFixed(2);
+    const deltaStr = delta < 0 ? ` (${delta}%)` : ` (+${delta}%)`
+    return (
+      <div className={delta < 0 ? "delta-neg" : "delta-pos"}>
+        <span className="price">{`$${data[29].closePrice.toFixed(2)} `}</span>
+        {deltaStr}
+        <span className="today"> Today</span>
+      </div>
+      )
+  }
 
   return (
-    <svg
-      ref={ref}
-      style={{
-        height: 500,
-        width: "100%",
-        marginRight: "0px",
-        marginLeft: "0px",
-        backgroundColor: "AliceBlue"
-      }}
-    >
-      <g className="plot-area" />
-      <g className="x-axis" />
-      <g className="y-axis" />
-    </svg>
-    // <div>
-    //   {data[29].closePrice}
-    // </div>
+    <>
+      <div className="today-stats">
+        {renderTodaysPrice()}
+      </div>
+      <svg
+        ref={ref}
+        style={{
+          height: 500,
+          width: "100%",
+          marginRight: "0px",
+          marginLeft: "0px",
+          // backgroundColor: "AliceBlue"
+          backgroundColor: "White"
+        }}
+      >
+        <g id={`line-plot-area-${cafeId}`} />
+        {/* <g className="plot-area" /> */}
+        <g className="x-axis" />
+        <g className="y-axis" />
+      </svg>
+    </>
   );
 }
 
-export default LineChart;
+export default withRouter(LineChart);

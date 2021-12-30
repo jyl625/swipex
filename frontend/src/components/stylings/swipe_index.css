@@ -16,20 +16,38 @@
 
 .left-panel {
   width: 80%;
+  padding-top: 20px;
+  margin-bottom: 120px;
 }
 
-/* .right-panel {
-  width: 20%;
-  background-color: green;
-} */
+.right-panel {
+  padding-top: 93px;
+  margin-bottom: 120px;
+}
+
+.section-title {
+  height: 48px;
+  padding-top: 10px;
+  font-family: "Capsule Sans Display",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: gray;
+  text-align: center;
+}
+
+.linechart-container-cafe, .barchart-container-cafe{
+  margin-bottom: 60px;
+  padding-bottom: 40px;
+  border-bottom: solid 1px gray;
+}
 
 .map-container {
   height: 400px;
   width: 400px;
-  background-color: gray;
-  margin-right: 2em;
+  /* margin-right: 2em;
   margin-top: 4em;
-  margin-bottom: 64px;
+  margin-bottom: 64px; */
+  margin: 4em auto 64px;
   /* position: sticky; */
   top: 73px;
 }
@@ -89,7 +107,7 @@
   border-radius: 25px;
   background-color: white;
   width: fit-content;
-  padding: 0.2em 0.5em;
+  padding: 10px 0.5em;
   z-index: 2;
 }
 

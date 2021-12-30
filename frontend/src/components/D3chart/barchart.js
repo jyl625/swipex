@@ -3,8 +3,7 @@ import React from 'react';
 import * as d3 from 'd3';
 import { scaleTime } from 'd3-scale'
 
-function BarChart({ data }) {
-  
+function BarChart({ data, cafeId }) {
   
   const ref = useD3(
     
@@ -13,7 +12,9 @@ function BarChart({ data }) {
       const width = 500;
       const margin = { top: 20, right: 30, bottom: 30, left: 40 };
 
-      d3.select("#bar-chart-bars").remove();
+      // d3.select(`#bar-chart-bars-${cafeId}`).remove();
+      // d3.select(`#bar-plot-area-${cafeId}`).select(`#bar-chart-bars-${cafeId}`).remove();
+      d3.select(`#bar-plot-area-${cafeId}`).select(".bar").remove();
 
 
       const x = d3
@@ -57,11 +58,11 @@ function BarChart({ data }) {
       svg.select(".y-axis").call(y1Axis);
 
       svg
-        .select(".plot-area")
+        .select(`#bar-plot-area-${cafeId}`)
         .selectAll(".bar")
         .data(data)
         .join("rect")
-        .attr("id", "bar-chart-bars") // add id to remove bars on rerendering
+        .attr("id", `bar-chart-bars-${cafeId}`) // add id to remove bars on rerendering
         .attr("class", "bar")
         .attr("fill", function (d) { 
           if (d.amount > 7){
@@ -79,24 +80,40 @@ function BarChart({ data }) {
     [data]
   );
 
-  console.log(`new bar data last point: ${data[29].closePrice}`)
-
+ const renderTodaysVolume = () => {
+    const delta = ((data[29].amount - data[28].amount)/data[28].amount*100).toFixed(2);
+    const deltaStr = delta < 0 ? ` (${delta}%)` : ` (+${delta}%)`
+    return (
+      <div className={delta < 0 ? "delta-neg" : "delta-pos"}>
+        <span className="amount">{`${data[29].amount}`}</span>
+        <span className="amount-unit"> swipe(s) sold</span>
+        {deltaStr}
+        <span className="today"> Today</span>
+      </div>
+      )
+  }
 
   return (
-    <svg
-      ref={ref}
-      style={{
-        height: 500,
-        width: "100%",
-        marginRight: "0px",
-        marginLeft: "0px",
-        backgroundColor: "AliceBlue"
-      }}
-    >
-      <g className="plot-area" />
-      <g className="x-axis" />
-      <g className="y-axis" />
-    </svg>
+    <>
+      <div className="today-stats">
+        {renderTodaysVolume()}
+      </div>
+      <svg
+        ref={ref}
+        style={{
+          height: 500,
+          width: "100%",
+          marginRight: "0px",
+          marginLeft: "0px",
+          // backgroundColor: "AliceBlue"
+          backgroundColor: "White"
+        }}
+      >
+        <g id={`bar-plot-area-${cafeId}`} />
+        <g className="x-axis" />
+        <g className="y-axis" />
+      </svg>
+    </>
   );
 }
 
