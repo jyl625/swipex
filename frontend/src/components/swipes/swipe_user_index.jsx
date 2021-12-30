@@ -38,7 +38,8 @@ class SwipeUserIndex extends React.Component {
   }
 
   render() {
-
+    if (!Array.isArray(this.props.swipes)) 
+      return null
     // if (Object.keys(this.props.swipes).length === 0)
     //   return 'No swipes for sale'
     

@@ -29,16 +29,16 @@ class UserShow extends React.Component {
   // }
 
   componentDidMount() {
-    if (!this.state.loaded) {
-
-      this.props.requestUser(this.props.userId)
-      .then(() => {
-        this.props.requestUserThreads(this.props.userId)
-        this.props.requestUserSwipes(this.props.userId)
-        this.props.requestUserExchanges(this.props.userId)
-        this.setState({ loaded: true })
+    // if (!this.state.loaded) {
+    //   this.setState({ loaded: true })
+      this.props.requestUser(this.props.userId).then(() => {
+        this.props.requestUserThreads(this.props.userId).then(() => {
+          this.props.requestUserExchanges(this.props.userId).then(() => {
+            this.props.requestUserSwipes(this.props.userId)
+          })
+        }) 
       })
-    }
+    // }
   }
 
   userShowInfo() {
@@ -47,18 +47,29 @@ class UserShow extends React.Component {
 
     
     if (this.props.match.path === "/profile") {
-      const userSwipes = this.props.userSwipes
-      console.log(Array.isArray(userSwipes))
-      return (
-        <div className="usershow-info-content">
-                    <div>Open Threads: <span>0</span></div>
-                    {/* <div>Current Swipes: <span>{this.state.CS}</span></div> */}
-                    {/* <div>Current Swipes: <span>{Array.isArray(userSwipes) ? userSwipes.length() : 0 }</span></div> */}
-                    {/* <div>Closed Deals: <span>{this.state.PS}</span></div> */}
-                    {/* <div>Closed Deals: <span>{this.props.userExchanges ? this.props.userExchanges.length() : 0}</span></div> */}
-                  </div>
-      )
+
+      if (!Array.isArray(this.props.userSwipes) || !Array.isArray(this.props.userExchanges)) {
+        debugger
+        return null;
+      } else {
+        return (
+          <div className="usershow-info-content">
+                      <div>Open Threads: <span>0</span></div>
+                      {/* <div>Current Swipes: <span>{this.state.CS}</span></div> */}
+                      <div>Current Swipes: <span>{this.countOpenSwipes()}</span></div>
+                      <div>Closed Deals: <span>{this.props.userExchanges ? this.props.userExchanges.length : 0}</span></div>
+                    </div>
+        )
+      }
+
     }
+  }
+
+  countOpenSwipes() {
+    if (Array.isArray(this.props.userSwipes)){
+      return this.props.userSwipes.filter(swipe => swipe.open).length
+    }
+    return 0;
   }
 
   countOpenThreads() {
@@ -71,16 +82,16 @@ class UserShow extends React.Component {
   }
 
   render() {
-    if (!this.props.user || Object.keys(this.props.user).length === 0 || !this.state.loaded)  
+    if (!this.props.user || Object.keys(this.props.user).length === 0 || !Array.isArray(this.props.userExchanges) || !Array.isArray(this.props.userSwipes))  
       return 'loading'
     // console.log(this.state)
 
    
     let userLink;
-    let otherUserContentCC;
-    let otherUserContentPC;
-    let otherUserStatsCC;
-    let otherUserStatsPC;
+    // let otherUserContentCC;
+    // let otherUserContentPC;
+    // let otherUserStatsCC;
+    // let otherUserStatsPC;
     if (this.props.type === 'current') {
 
       userLink = (
@@ -103,20 +114,20 @@ class UserShow extends React.Component {
       )
 
      
-      otherUserContentCC = (
-        <div id="CC" className="usershow-column">
-          {/* <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/> */}
-          <ThreadIndexCurrentContainer user={this.props.user} type={this.props.type}/>
-        </div>
-      )
+      // otherUserContentCC = (
+      //   <div id="CC" className="usershow-column">
+      //     {/* <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/> */}
+      //     <ThreadIndexCurrentContainer user={this.props.user} type={this.props.type}/>
+      //   </div>
+      // )
       // otherUserContentPC = (
       //   <div id="PC" className="usershow-column">
       //     <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/>
       //   </div>
       // )
-      otherUserStatsCC = (
-        <div>Open Threads: <span>{this.state.CC}</span></div>
-      )
+      // otherUserStatsCC = (
+      //   <div>Open Threads: <span>{this.state.CC}</span></div>
+      // )
       // otherUserStatsPC = (
       //   <div>Closed Threads: <span>{this.state.PC}</span></div>
       // )
@@ -146,14 +157,13 @@ class UserShow extends React.Component {
          {userLink}
 
           <div className="usershow-content-middle">
-            {otherUserContentCC}
+            <div id="CC" className="usershow-column">
+              <ThreadIndexCurrentContainer user={this.props.user} type={this.props.type}/>
+            </div>
             <div id="CS" className="usershow-column">
-              {/* <SwipeUserIndexContainer user={this.props.user} updateCount={this.updateCount} /> */}
               <SwipeUserIndexContainer user={this.props.user}/>
             </div>
-              {otherUserContentPC /* NOT USED */} 
             <div id="PS" className="usershow-column">
-              {/* <ExchangeIndexContainer user={this.props.user} updateCount={this.updateCount} /> */}
               <ExchangeIndexContainer user={this.props.user}/>
             </div>
           </div>
