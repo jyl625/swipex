@@ -18,6 +18,27 @@ class ThreadBuyInput extends React.Component {
       this.setState({ [type]: e.target.value });
     }
   }
+  // handleInput(type) {
+  //   return e => {
+  //     const str = `${e.currentTarget.value}`;
+  //     console.log(str)
+  //     const charArr = str.split("");
+  //     const numOnlyArr = charArr.filter(char => !isNaN(char))
+
+  //     if (numOnlyArr.length < 2) {
+  //       while (numOnlyArr.length < 2) {
+  //         numOnlyArr.unshift(0)
+  //       }
+  //     } else {
+  //       numOnlyArr.splice(numOnlyArr.length-2, 0, ".")
+  //     }
+
+  //     const numOnlyStr = numOnlyArr.join("")
+  //     // console.log(Number(numOnlyStr).toFixed(2))
+  //     // console.log(parseFloat(numOnlyStr))
+  //     this.setState({ [type]: Number(e.target.value).toFixed(2) });
+  //   }
+  // }
 
   handleBuyerOffer(e) {
     e.preventDefault();
@@ -38,19 +59,19 @@ class ThreadBuyInput extends React.Component {
     
     const {thread} = this.props;
     
-    // const buyOfferPrice = (thread.buyerOffer) ?
-    //   thread.buyerOffer : thread.sellPost.askPrice
+    const buyOfferPrice = (thread.buyerOffer) ?
+      thread.buyerOffer : thread.sellPost.askPrice
 
     //NEED REVIEW FROM JAMES
-    let buyOfferPrice
-    if (this.state.buyerOffer) 
-      buyOfferPrice = parseFloat(this.state.buyerOffer).toFixed(2)
-    else if (thread.buyerOffer) {
-      buyOfferPrice = thread.buyerOffer
-    } else {
-      buyOfferPrice = (thread.sellerOffer) ?
-        thread.sellerOffer : thread.sellPost.askPrice
-    }
+    // let buyOfferPrice
+    // if (this.state.buyerOffer || this.state.buyerOffer === "") 
+    //   buyOfferPrice = parseFloat(this.state.buyerOffer).toFixed(2)
+    // else if (thread.buyerOffer) {
+    //   buyOfferPrice = thread.buyerOffer
+    // } else {
+    //   buyOfferPrice = (thread.sellerOffer) ?
+    //     thread.sellerOffer : thread.sellPost.askPrice
+    // }
 
     const updatePrompt = (this.state.updated !== 0) ? <div>sending</div> : null;
 
@@ -64,11 +85,20 @@ class ThreadBuyInput extends React.Component {
           <div className="offer-input-box">
             <input
               type="number"
-              // defaultValue={parseFloat(buyOfferPrice).toFixed(2)}
-              value={parseFloat(buyOfferPrice).toFixed(2)}
+              defaultValue={parseFloat(buyOfferPrice).toFixed(2)}
+              // 2. NEED REVIEW FROM JAMES
+              // value={parseFloat(buyOfferPrice).toFixed(2)}
               step="0.01"
               onChange={this.handleInput("buyerOffer")}
             />
+
+            {/* NEED JAMES INPUT */}
+            {/* <input type="text" 
+                  value={parseFloat(buyOfferPrice).toFixed(2)}
+                  // value={this.state.askPrice}
+                  onChange={this.handleInput("buyerOffer")}
+                  placeholder="0.00"
+            /> */}
           </div>
           <button onClick={this.handleBuyerOffer}>
             Send

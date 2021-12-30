@@ -38,17 +38,17 @@ class ThreadSellInput extends React.Component {
     
     const {thread} = this.props;
     
-    // const sellOfferPrice = (thread.sellerOffer) ?
-    //   thread.sellerOffer : thread.sellPost.askPrice
+    const sellOfferPrice = (thread.sellerOffer) ?
+      thread.sellerOffer : thread.sellPost.askPrice
 
-    //NEED REVIEW FROM JAMES
-    let sellOfferPrice
-    if (this.state.sellerOffer) 
-      sellOfferPrice = parseFloat(this.state.sellerOffer).toFixed(2)
-    else {
-      sellOfferPrice = (thread.sellerOffer) ?
-        thread.sellerOffer : thread.sellPost.askPrice
-    }
+    // //1. NEED REVIEW FROM JAMES
+    // let sellOfferPrice
+    // if (this.state.sellerOffer) 
+    //   sellOfferPrice = parseFloat(this.state.sellerOffer).toFixed(2)
+    // else {
+    //   sellOfferPrice = (thread.sellerOffer) ?
+    //     thread.sellerOffer : thread.sellPost.askPrice
+    // }
 
     const updatePrompt = (this.state.updated !== 0) ? <div>sending</div> : null;
 
@@ -62,8 +62,9 @@ class ThreadSellInput extends React.Component {
           <div className="offer-input-box">
             <input
               type="number"
-              // defaultValue={parseFloat(sellOfferPrice).toFixed(2)}
-              value={parseFloat(sellOfferPrice).toFixed(2)}
+              defaultValue={parseFloat(sellOfferPrice).toFixed(2)}
+              // 2. NEED REVIEW FROM JAMES
+              // value={parseFloat(sellOfferPrice).toFixed(2)}
               step="0.01"
               onChange={this.handleInput("sellerOffer")}
             />
