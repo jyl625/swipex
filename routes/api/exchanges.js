@@ -26,6 +26,8 @@ router.get('/:id', (req, res) => {
 //get exchange by userId
 router.get('/user/:user_id', (req, res) => {
   Exchange.find({"$or": [{ seller: req.params.user_id }, { buyer: req.params.user_id }]})
+    .populate("seller", "username")
+    .populate("buyer", "username")  
     .then(exchanges => res.json(exchanges))
     .catch(err =>
       res.status(404).json({ noexchangesfound: 'No exchanges found'})    
@@ -52,7 +54,8 @@ router.post('/',
       closePrice: req.body.closePrice,
       sellPost: req.body.sellPost,
       seller: req.body.seller,
-      buyer: req.body.buyer
+      buyer: req.body.buyer,
+      conversationId: req.body.conversationId
     });
 
     newExchange.save()

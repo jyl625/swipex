@@ -253,7 +253,7 @@
   /* width: 100%; */
   /* margin-bottom: 32px; */
   width: 28em;
-  min-height: 500px;
+  min-height: 400px;
   padding: 1em;
   border-radius: 25px;
   border: 1px solid black;
@@ -287,7 +287,7 @@
 }
 
 .comment-box{
-  min-height: 400px;
+  min-height: 300px;
 }
 
 .otherUser-comment{
