@@ -136,7 +136,7 @@ class SwipeForm extends React.Component {
                     </select>
                   </div>
       
-                  <div className="input-label">Swipe Availalble Starting</div>
+                  <div className="input-label">Swipe Available Starting</div>
                   <input type="datetime-local" 
                         value={this.state.meetingTime}
                         onChange={this.update("meetingTime")}
