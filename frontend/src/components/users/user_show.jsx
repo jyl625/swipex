@@ -29,8 +29,8 @@ class UserShow extends React.Component {
   // }
 
   componentDidMount() {
-    // if (!this.state.loaded) {
-    //   this.setState({ loaded: true })
+    if (!this.state.loaded) {
+      this.setState({ loaded: true })
       this.props.requestUser(this.props.userId).then(() => {
         this.props.requestUserThreads(this.props.userId).then(() => {
           this.props.requestUserExchanges(this.props.userId).then(() => {
@@ -38,7 +38,7 @@ class UserShow extends React.Component {
           })
         }) 
       })
-    // }
+    }
   }
 
   userShowInfo() {
@@ -54,7 +54,7 @@ class UserShow extends React.Component {
       } else {
         return (
           <div className="usershow-info-content">
-                      <div>Open Threads: <span>0</span></div>
+                      <div>Open Threads: <span>{this.countOpenThreads()}</span></div>
                       {/* <div>Current Swipes: <span>{this.state.CS}</span></div> */}
                       <div>Current Swipes: <span>{this.countOpenSwipes()}</span></div>
                       <div>Closed Deals: <span>{this.props.userExchanges ? this.props.userExchanges.length : 0}</span></div>
@@ -73,8 +73,13 @@ class UserShow extends React.Component {
   }
 
   countOpenThreads() {
-    if (Array.isArray(this.props.userThreads))
-      return this.props.userThreads.length()
+    if (Array.isArray(this.props.userThreads) && Array.isArray(this.props.userSwipes)) {
+      const openSwipes = this.props.userSwipes.filter(swipe => swipe.open)
+      const openSwipeIds = openSwipes.map(swipe => swipe._id)
+      return this.props.userThreads.filter(thread => {
+        return openSwipeIds.includes(thread.sellPost)
+      }).length
+    }
 
     return 0;
 
@@ -82,13 +87,18 @@ class UserShow extends React.Component {
   }
 
   render() {
-    if (!this.props.user || Object.keys(this.props.user).length === 0 || !Array.isArray(this.props.userExchanges) || !Array.isArray(this.props.userSwipes))  
-      return 'loading'
+    if (this.props.match.path === "/profile") {
+      if (!this.props.user || Object.keys(this.props.user).length === 0 || !Array.isArray(this.props.userExchanges) || !Array.isArray(this.props.userSwipes))  
+        return 'loading'
+    } else {
+      if (!this.props.user || Object.keys(this.props.user).length === 0)
+        return 'loading'
+    }
     // console.log(this.state)
 
    
     let userLink;
-    // let otherUserContentCC;
+    let otherUserContentCC;
     // let otherUserContentPC;
     // let otherUserStatsCC;
     // let otherUserStatsPC;
@@ -114,12 +124,12 @@ class UserShow extends React.Component {
       )
 
      
-      // otherUserContentCC = (
-      //   <div id="CC" className="usershow-column">
-      //     {/* <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/> */}
-      //     <ThreadIndexCurrentContainer user={this.props.user} type={this.props.type}/>
-      //   </div>
-      // )
+      otherUserContentCC = (
+        <div id="CC" className="usershow-column">
+          {/* <ThreadIndexCurrentContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/> */}
+          <ThreadIndexCurrentContainer user={this.props.user} type={this.props.type}/>
+        </div>
+      )
       // otherUserContentPC = (
       //   <div id="PC" className="usershow-column">
       //     <ThreadIndexPastContainer user={this.props.user} updateCount={this.updateCount} type={this.props.type}/>
@@ -157,9 +167,7 @@ class UserShow extends React.Component {
          {userLink}
 
           <div className="usershow-content-middle">
-            <div id="CC" className="usershow-column">
-              <ThreadIndexCurrentContainer user={this.props.user} type={this.props.type}/>
-            </div>
+            {otherUserContentCC}
             <div id="CS" className="usershow-column">
               <SwipeUserIndexContainer user={this.props.user}/>
             </div>
