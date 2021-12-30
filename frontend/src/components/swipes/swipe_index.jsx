@@ -195,40 +195,37 @@ class SwipeIndex extends React.Component {
                 </div>
               </div>
             </div>
-            <div>
+            <div className="right-panel">
               <div className="barchart-container-cafe">< BarchartContainer cafeSwipes={cafeSwipes} cafeId={this.props.cafeteria._id}/></div>
               <div className="linechart-container-cafe"><LinechartContainer cafeSwipes={cafeSwipes}  cafeId={this.props.cafeteria._id}/></div>
-
-              <div className="right-panel">
-                <div className="map-container">
-                  {this.renderMap()}
-                </div>
-                <div className="menu-container">
-                  {/* <ul>Breakfast
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
-                    <li>Item 5</li>
-                  </ul>
-                  <ul>Lunch
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
-                    <li>Item 5</li>
-                  </ul>
-                  <ul>Dinner
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
-                    <li>Item 5</li>
-                  </ul> */}
-                </div>
+              <div className="map-container">
+                <div className="map-title">Map of Cafeteria</div>
+                {this.renderMap()}
+              </div>
+              <div className="menu-container">
+                {/* <ul>Breakfast
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                </ul>
+                <ul>Lunch
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                </ul>
+                <ul>Dinner
+                  <li>Item 1</li>
+                  <li>Item 2</li>
+                  <li>Item 3</li>
+                  <li>Item 4</li>
+                  <li>Item 5</li>
+                </ul> */}
               </div>
             </div>
-
           </div>
         </div>
       )
