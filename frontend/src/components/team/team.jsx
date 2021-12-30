@@ -1,5 +1,5 @@
 import React from "react";
-import { FaGithub, FaLinkedin} from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaAngellist} from "react-icons/fa";
 
 import "../stylings/team.css"
 
@@ -22,6 +22,9 @@ const Team = () => {
               <a href="https://www.linkedin.com/in/jeanyounlee/" target="_blank">
                 <FaLinkedin color="#09A603" size={50}></FaLinkedin>
               </a>
+              <a href={`https://angel.co/u/jean-youn-lee`} target="_blank">
+                <FaAngellist color="#09A603" size={50} />
+              </a>
             </div>
           </div>
           
@@ -37,6 +40,9 @@ const Team = () => {
               <a href="https://www.linkedin.com/in/zjhong/" target="_blank">
                 <FaLinkedin color="#09A603" size={50}></FaLinkedin>
               </a>
+              <a href={`https://angel.co/u/james-hong-20`} target="_blank">
+                <FaAngellist color="#09A603" size={50} />
+              </a>
             </div>
           </div>
 
@@ -51,6 +57,9 @@ const Team = () => {
               <a href="https://www.linkedin.com/in/alan-chiu-188ab6134/" target="_blank">
                 <FaLinkedin color="#09A603" size={50}></FaLinkedin>
               </a>
+              <a href={`https://angel.co/u/james-hong-20`} target="_blank">
+                <FaAngellist color="#09A603" size={50} />
+              </a>
             </div>
           </div>
 
@@ -64,6 +73,9 @@ const Team = () => {
               </a>
               <a href="https://www.linkedin.com/in/shuang-zheng-54a3109b/" target="_blank">
                 <FaLinkedin color="#09A603" size={50}></FaLinkedin>
+              </a>
+              <a href={`https://angel.co/u/shuang-zheng-2`} target="_blank">
+                <FaAngellist color="#09A603" size={50} />
               </a>
             </div>
           </div>
