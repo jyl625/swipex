@@ -269,12 +269,18 @@
   padding-bottom: 8px;
   margin-bottom: 8px;
   border-bottom: 1px var(--color3) solid;
-  color: var(--color1)
+  color: var(--color1);
 }
 
 .other-user-name span{
   font-weight: 700;
   color: black;
+
+}
+
+.other-user-name span:hover {
+  transform: scale(1.05);
+  color: #F28705;
 }
 
 .comment-box{
