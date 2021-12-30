@@ -61,17 +61,17 @@ function LineChart({ data, cafeId }) {
       //     d3.axisBottom(x).tickFormat(d3.timeFormat("Week %V")).tickValues(data.map(d=>new Date(d.date)))
       //   );
 
-      const xAxis_test = (g) =>
-        g.attr("transform", `translate(0,${height - margin.bottom})`).call(
-          d3
-            .axisBottom(x)
-            .tickValues(
-              d3
-                .ticks(...d3.extent(x.domain()), width / 40)
-                .filter((v) => x(v) !== undefined)
-            )
-            .tickSizeOuter(0)
-        );
+      // const xAxis_test = (g) =>
+      //   g.attr("transform", `translate(0,${height - margin.bottom})`).call(
+      //     d3
+      //       .axisBottom(x)
+      //       .tickValues(
+      //         d3
+      //           .ticks(...d3.extent(x.domain()), width / 40)
+      //           .filter((v) => x(v) !== undefined)
+      //       )
+      //       .tickSizeOuter(0)
+      //   );
 
       const yAxis = (g) =>
         g
@@ -89,7 +89,7 @@ function LineChart({ data, cafeId }) {
           );
 
       // svg.select(".x-axis").call(xAxis);
-      svg.select(".x-axis").call(xAxis_test);
+      svg.select(".x-axis").call(xAxis);
       svg.select(".y-axis").call(yAxis);
 
 
