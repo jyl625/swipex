@@ -127,7 +127,7 @@ class SwipeShow extends React.Component {
             <div><strong>$ {this.props.swipe.askPrice}</strong></div>
             <div>Details:</div>
             <div><strong>Expiration Date:</strong> {this.props.swipe.expiration}</div>
-            <div><strong>Let's meet at:</strong> {this.parseTimeString(this.props.swipe.meetingTime)}</div>
+            <div><strong>Available from:</strong> {this.parseTimeString(this.props.swipe.meetingTime)}</div>
             <div className="seller-id">Seller ID: {this.props.swipe.seller}</div>
           </div>
           {this.renderContactSellerButton()}

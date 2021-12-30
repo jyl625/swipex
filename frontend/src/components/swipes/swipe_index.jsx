@@ -81,9 +81,22 @@ class SwipeIndex extends React.Component {
     // console.log("swipes", this.props.swipes)
     // console.log("cafeId", cafeteriaId)
     // if (swipes.length !== 0) {
-      return swipes.filter(swipe => {
-        return swipe.cafeId === cafeteriaId && swipe.open === true
-      })
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+    const today = new Date().toLocaleString("en-US", {
+      timeZone: timezone,
+      year: 'numeric',
+      month: 'numeric',
+      day: 'numeric'
+    })
+
+    const todayDate = new Date(today).toJSON().slice(0, 10)
+
+    return swipes.filter(swipe => {
+      // debugger
+      // return swipe.cafeId === cafeteriaId && swipe.open === true
+      return swipe.cafeId === cafeteriaId && swipe.open === true && (new Date(swipe.expiration) >= new Date(todayDate))
+    })
     // } else {
     //   return []
     // }

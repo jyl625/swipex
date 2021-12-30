@@ -52,7 +52,7 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
         <div className="top-detail-container">
           <h1>$ {Number(swipe.askPrice).toFixed(2)}</h1>
           <h2>{capitalize(swipe.mealType)}</h2>
-          <h2>Meet @ {parseTimeString(swipe.meetingTime)}</h2>
+          <h2>Available from {parseTimeString(swipe.meetingTime)}</h2>
         </div>
         <div className="stripe-container">
           <div className="stripe"></div>

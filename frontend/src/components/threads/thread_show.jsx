@@ -301,7 +301,7 @@ class ThreadShow extends React.Component{
                 {(thread.sellPost.cafeId.name).toUpperCase()} @ {thread.sellPost.cafeId.location}
               </h2>
               <h2>
-                Meet @ {parseTimeString(thread.sellPost.meetingTime)}
+                Available from {parseTimeString(thread.sellPost.meetingTime)}
               </h2>
             </div>
             <div className="stripe-container">

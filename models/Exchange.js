@@ -20,6 +20,10 @@ const ExchangeSchema = new Schema(
     buyer: {
       type: Schema.Types.ObjectId,
       ref: "User"
+    },
+    conversationId:{
+      type: String,
+      required: true
     }
   },
   {

@@ -8,8 +8,10 @@
 
 .thread-page-wrapper{
   width: 90%;
-  height: fit-content;
+  /* height: fit-content; */
+  height: 100vh;
   margin: 2em auto;
+  margin-bottom: 0;
   padding-bottom: 2em;
   max-width: 1600px;
   display: flex;
@@ -251,7 +253,7 @@
   /* width: 100%; */
   /* margin-bottom: 32px; */
   width: 28em;
-  min-height: 500px;
+  min-height: 400px;
   padding: 1em;
   border-radius: 25px;
   border: 1px solid black;
@@ -285,7 +287,7 @@
 }
 
 .comment-box{
-  min-height: 400px;
+  min-height: 300px;
 }
 
 .otherUser-comment{

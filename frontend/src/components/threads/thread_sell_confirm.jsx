@@ -18,7 +18,8 @@ class ThreadSellConfirm extends React.Component {
       closePrice: closePrice,
       sellPost: this.props.thread.sellPost._id,
       seller: this.props.thread.buyer._id,
-      buyer: this.props.thread.seller._id
+      buyer: this.props.thread.seller._id,
+      conversationId: this.props.thread._id
     }
     // debugger
     this.props.createNewExchange(newExchange)
@@ -38,6 +39,8 @@ class ThreadSellConfirm extends React.Component {
   }
 
   render(){
+
+    // debugger
     
     const capitalize = (string) => {
       return string[0].toUpperCase() + string.slice(1)
@@ -97,7 +100,7 @@ class ThreadSellConfirm extends React.Component {
               {(thread.sellPost.cafeId.name).toUpperCase()} @ {thread.sellPost.cafeId.location}
             </h2>
             <h2>
-              Meet @ {parseTimeString(thread.sellPost.meetingTime)}
+              Available from {parseTimeString(thread.sellPost.meetingTime)}
             </h2>
           </div>
           <div className="stripe-container">
