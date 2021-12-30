@@ -52,6 +52,13 @@
   padding-left: 3.3em;
 }
 
+.swipe-show-error-own {
+  position: absolute;
+  color: red;
+  font-size: 14px;
+  padding-left: 3.3em;
+}
+
 input[type=button] {
   background-color: #5DD959;
   border: none;
@@ -73,6 +80,7 @@ input[type=button]:hover {
 
 input[type=button].your-own {
   background-color: gray;
+  cursor:not-allowed
 }
 
 .close-x{

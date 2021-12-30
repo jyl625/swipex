@@ -33,12 +33,35 @@ function LineChart({ data, cafeId }) {
         .rangeRound([margin.left, width - margin.right])
         .padding(0.1);
 
+      //test
+      // const x = d3.scaleTime().range([0, width - margin.left - margin.right]);
+      // x.domain(d3.extent(data, function(d) { return new Date(d.date); }))
+      //   .rangeRound([margin.left, width - margin.right]); 
+
       const y = d3
         .scaleLinear()
         .domain([0, d3.max(data, (d) => d.closePrice)])
         .rangeRound([height - margin.bottom, margin.top]);
 
       const xAxis = (g) =>
+        g.attr("transform", `translate(0,${height - margin.bottom})`).call(
+          d3
+            .axisBottom(x)
+            .tickValues(
+              d3
+                .ticks(...d3.extent(x.domain()), width / 40)
+                .filter((v) => x(v) !== undefined)
+            )
+            .tickSizeOuter(0)
+        );
+
+      //test
+      // const xAxis_test = (g) => 
+      //   g.attr("transform", `translate(0,${height - margin.bottom})`).call(
+      //     d3.axisBottom(x).tickFormat(d3.timeFormat("Week %V")).tickValues(data.map(d=>new Date(d.date)))
+      //   );
+
+      const xAxis_test = (g) =>
         g.attr("transform", `translate(0,${height - margin.bottom})`).call(
           d3
             .axisBottom(x)
@@ -65,12 +88,10 @@ function LineChart({ data, cafeId }) {
             .text(data.y)
           );
 
-      svg.select(".x-axis").call(xAxis);
+      // svg.select(".x-axis").call(xAxis);
+      svg.select(".x-axis").call(xAxis_test);
       svg.select(".y-axis").call(yAxis);
 
-      // var dataSum = d3.sum(data, function (d) {
-      //   return d.closePrice;
-      // });
 
       svg.select(`#line-plot-area-${cafeId}`).append("path")
       // svg.select(".plot-area").append("path")
@@ -82,12 +103,10 @@ function LineChart({ data, cafeId }) {
         .attr("stroke-width", 3)
         .attr("d", d3.line()
           .x(function (d) { return x(d.preDate) })
+          // .x(function (d) { return x(new Date(d.date)) })
           .y(function (d) { return y(d.closePrice) })
         )
-        // .attr("d2", d3.line()
-        //   .x(function (d) { return x(d.preDate) })
-        //   .y(function (d) { return y(dataSum / d.length) })
-        // )
+
 
     },
     [data]

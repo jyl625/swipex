@@ -79,7 +79,7 @@ class SwipeShow extends React.Component {
 
   renderContactSellerButton() {
     if (this.props.currentUser && this.props.currentUser.id === this.props.swipe.seller) {
-      return <input class="your-own" type="button" value="Contact Seller"/>
+      return <input class="your-own" type="button" value="Cannot buy your own"/>
     } else {
       return <input type="button" value="Contact Seller" onClick={this.handleClick()}/>
     }
