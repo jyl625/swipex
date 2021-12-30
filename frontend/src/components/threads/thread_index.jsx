@@ -7,9 +7,9 @@ import '../stylings/user_show.css'
 class ThreadIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({
-      countUpdated: false
-    })
+    // this.state = ({
+    //   countUpdated: false
+    // })
   }
   
   componentDidMount() {
@@ -23,6 +23,7 @@ class ThreadIndex extends React.Component {
 
     let filteredThreads = [];
     // debugger
+  
     this.props.swipes.forEach(swipe => {
       // console.log(swipe)
       if ((this.props.threadType === 'Past' && !swipe.open) || (this.props.threadType === 'Current' && swipe.open)) {
@@ -44,13 +45,13 @@ class ThreadIndex extends React.Component {
       else return -1;
     });
     const countType = (this.props.threadType === 'Past') ? 'PC' : 'CC';
-    if (!this.state.countUpdated) {
-      this.props.updateCount(countType, sortedThreads.length)
-      this.setState({
-        countUpdated: true
-      })
-    }
-    console.log(sortedThreads)
+    // if (!this.state.countUpdated) {
+    //   // this.props.updateCount(countType, sortedThreads.length)
+    //   this.setState({
+    //     countUpdated: true
+    //   })
+    // }
+    // console.log(sortedThreads)
       if (sortedThreads.length === 0)
       return 'No threads yet';
     return sortedThreads.map(thread => 
@@ -63,7 +64,30 @@ class ThreadIndex extends React.Component {
     )
   }
 
+  // render() {
+  //   let title;
+  //   if (this.props.threadType === 'Past')
+  //     title = (<div className="usershow-item-title" >Closed Threads</div>)
+  //     // title = (<div className="usershow-item-title" >Past Chats of {this.props.user.username}</div>)
+  //   else
+  //     title = (<div className="usershow-item-title" >Open Threads</div>)
+  //     // title = (<div className="usershow-item-title" >Open Chats of {this.props.user.username}</div>)
+
+  //   return (
+  //     <div className="usershow-item-container">
+  //       {title}
+  //       <div className="usershow-item">
+  //       {
+  //         this.listThread()
+  //       }
+  //       </div>
+  //     </div>
+  //   )
+  // }
   render() {
+    if (!Array.isArray(this.props.swipes)) 
+      return null
+    
     let title;
     if (this.props.threadType === 'Past')
       title = (<div className="usershow-item-title" >Closed Threads</div>)
@@ -72,10 +96,11 @@ class ThreadIndex extends React.Component {
       title = (<div className="usershow-item-title" >Open Threads</div>)
       // title = (<div className="usershow-item-title" >Open Chats of {this.props.user.username}</div>)
 
+    // console.log("count: ", document.getElementById("test-container").children.length)  
     return (
       <div className="usershow-item-container">
         {title}
-        <div className="usershow-item">
+        <div id="test-container" className="usershow-item">
         {
           this.listThread()
         }

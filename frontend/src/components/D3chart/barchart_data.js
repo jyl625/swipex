@@ -155,7 +155,7 @@ class BarchartData extends React.Component {
       
     // if (this.props.exchanges === []) return "";
     if (this.state.exchangeDataLoaded){
-      console.log("inner",this.props.cafeSwipes)
+      // console.log("inner",this.props.cafeSwipes)
     return (
 
       <div className="graph-container"><BarChart data = {this.state.data} cafeId={this.props.cafeId}/></div>

@@ -7,9 +7,9 @@ import '../stylings/user_show.css'
 class SwipeUserIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({
-      countUpdated: false
-    })
+    // this.state = ({
+    //   countUpdated: false
+    // })
   }
   
   componentDidMount() {
@@ -19,17 +19,17 @@ class SwipeUserIndex extends React.Component {
   listSwipes() {
 
       
-    const sortedSwipes = this.props.swipes.sort(function(a, b) {
+    const sortedSwipes = this.props.swipes.filter(swipe => swipe.open).sort(function(a, b) {
       var keyA = new Date(a.expiration), keyB = new Date (b.expiration);
       if (keyA < keyB) return 1;
       else return -1;
     });
-    if (!this.state.countUpdated) {
-      this.props.updateCount('CS', sortedSwipes.length)
-      this.setState({
-        countUpdated: true
-      })
-    }
+    // if (!this.state.countUpdated) {
+    //   // this.props.updateCount('CS', sortedSwipes.length)
+    //   this.setState({
+    //     countUpdated: true
+    //   })
+    // }
       if (sortedSwipes.length === 0)
         return 'No swipes for sale yet'
       return sortedSwipes.map(swipe => 
@@ -38,7 +38,8 @@ class SwipeUserIndex extends React.Component {
   }
 
   render() {
-
+    if (!Array.isArray(this.props.swipes)) 
+      return null
     // if (Object.keys(this.props.swipes).length === 0)
     //   return 'No swipes for sale'
     

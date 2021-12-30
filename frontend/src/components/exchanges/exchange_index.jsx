@@ -7,9 +7,9 @@ import '../stylings/user_show.css'
 class ExchangeIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = ({
-      countUpdated: false
-    })
+    // this.state = ({
+    //   countUpdated: false
+    // })
   }
   componentDidMount() {
 
@@ -19,14 +19,14 @@ class ExchangeIndex extends React.Component {
 
     if (this.props.exchanges.length === 0)
     return 'No exchanges yet'
-    if (!this.state.countUpdated) {
-      this.props.updateCount('PS', this.props.exchanges.length)
-      this.setState({
-        countUpdated: true
-      })
-    }
+    // if (!this.state.countUpdated) {
+    //   // this.props.updateCount('PS', this.props.exchanges.length)
+    //   this.setState({
+    //     countUpdated: true
+    //   })
+    // }
     return this.props.exchanges.map(exchange => {
-      return <ExchangeIndexItem exchange={exchange} user={this.props.user}/>
+      return <ExchangeIndexItem exchange={exchange} user={this.props.user} key={exchange._id}/>
     })
   }
 

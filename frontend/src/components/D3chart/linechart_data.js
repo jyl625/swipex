@@ -94,7 +94,7 @@ class LinechartData extends React.Component {
         }
       }
       this.setState({ exchangeDataLoaded: true, data: data})
-      console.log("linechart data loaded")
+      // console.log("linechart data loaded")
     }
   }
   
