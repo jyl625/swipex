@@ -106,7 +106,8 @@ class SwipeForm extends React.Component {
   }
 
   getTodayDateString() {
-    return new Date().toISOString().split('T')[0]
+    let tzoffset = 28800000; //need to address this
+    return (new Date(Date.now() - tzoffset)).toISOString().split('T')[0]
   }
 
   render() {
