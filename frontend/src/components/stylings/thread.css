@@ -8,8 +8,10 @@
 
 .thread-page-wrapper{
   width: 90%;
-  height: fit-content;
+  /* height: fit-content; */
+  height: 100vh;
   margin: 2em auto;
+  margin-bottom: 0;
   padding-bottom: 2em;
   max-width: 1600px;
   display: flex;
