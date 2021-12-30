@@ -98,7 +98,10 @@ class SwipeForm extends React.Component {
   }
 
   getTodayDateTimeString() {
-    return new Date().toISOString().split(":").slice(0,2).join(":")
+    // return new Date().toISOString().split(":").slice(0,2).join(":")
+    let tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    let localISOTime = (new Date(Date.now() - tzoffset)).toISOString().split(":").slice(0,2).join(":")
+    return localISOTime;
   }
 
   getTodayDateString() {
@@ -154,7 +157,9 @@ class SwipeForm extends React.Component {
                   <input type="submit" value="Submit"/>
                 {/* </div> */}
               </form>
-              {this.renderMap()}
+              <div className="form-map-container">
+                {this.renderMap()}
+              </div>
             </div>
           </div>
         </div>
