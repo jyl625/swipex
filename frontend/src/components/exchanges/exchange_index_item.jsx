@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { requestUser } from '../../actions/user_actions';
-import { requestUserThreads } from '../../actions/thread_actions';
+import { requestUserDealThreads } from '../../actions/thread_actions';
 import { Link } from 'react-router-dom';
 
 class ExchangeIndexItem extends React.Component {
@@ -9,9 +9,8 @@ class ExchangeIndexItem extends React.Component {
 
   componentDidMount() {
     this.props.requestUser(this.props.exchange.buyer)
-    .then(userId => this.props.requestUserThreads(userId))
     this.props.requestUser(this.props.exchange.seller)
-    .then(userId => this.props.requestUserThreads(userId))
+    this.props.requestUserDealThreads(this.props.user.id);
   }
 
 
@@ -59,13 +58,13 @@ class ExchangeIndexItem extends React.Component {
 
 const mSTP = (state, ownProps) => ({
   allUser: Object.values(state.users.all),
-  threads: state.threads.user,
+  threads: Object.values(state.threads.userDeal),
   currentUser: state.session.user
 })
 
 const mDTP = dispatch => ({
   requestUser: userId => dispatch(requestUser(userId)),
-  requestUserThreads: userId => dispatch(requestUserThreads(userId))
+  requestUserDealThreads: userId => dispatch(requestUserDealThreads(userId))
 })
 
  export default connect(mSTP, mDTP)(ExchangeIndexItem);

@@ -1,6 +1,7 @@
 import { 
   RECEIVE_THREAD,
   RECEIVE_USER_THREADS,
+  RECEIVE_USER_DEAL_THREADS,
   REMOVE_THREAD
 } from "../actions/thread_actions";
 
@@ -32,13 +33,16 @@ import {
 
 // import { RECEIVE_USER_THREADS, RECEIVE_NEW_THREAD } from '../actions/thread_actions';
 
-const ThreadsReducer = (state = { all: {}, user: {}, new: undefined}, action) => {
+const ThreadsReducer = (state = { all: {}, user: {}, userDeal: {}, new: undefined}, action) => {
   Object.freeze(state);
   const nextState = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_USER_THREADS:
       nextState.user = action.userThreads.data;
       // debugger
+      return nextState;
+    case RECEIVE_USER_DEAL_THREADS:
+      nextState.userDeal = action.userDealThreads.data;
       return nextState;
     case RECEIVE_THREAD:
       nextState.new = action.thread.data;

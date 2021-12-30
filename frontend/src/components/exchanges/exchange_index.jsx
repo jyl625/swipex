@@ -12,7 +12,7 @@ class ExchangeIndex extends React.Component {
     })
   }
   componentDidMount() {
-   
+
   }
 
   listExchange() {

@@ -31,7 +31,6 @@ class ThreadIndex extends React.Component {
             // console.log(thread.sellPost === swipe._id)
           if (thread.sellPost === swipe._id) {
             filteredThreads.push(thread)
-
           }
         })
       }

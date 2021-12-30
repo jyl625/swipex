@@ -13,6 +13,10 @@ export const fetchUserThreads = userId => {
   return axios.get(`api/conversations/user/${userId}`);
 }
 
+export const fetchUserDealThreads = userId => (
+  axios.get(`api/conversations/user/${userId}/deal`)
+)
+
 export const createThread = threadData => {
   return axios.post('api/conversations/', threadData);
 }
