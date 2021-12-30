@@ -22,7 +22,7 @@ const ThreadIndexItem = ({thread, threadType, currentUser}) => {
 
   const otherUser = (thread.buyer.username === currentUser.username) ? thread.seller : thread.buyer
 
-
+  console.log(thread)
 
   let seller;
   let buy;
@@ -34,6 +34,7 @@ const ThreadIndexItem = ({thread, threadType, currentUser}) => {
     seller = (<p>Previous thread with <span className="usershow-otheruser-name">{otherUser.username}</span></p>)
     buy = (<p>Sold to {thread.seller.username}</p>)
   }
+ 
   return (
     <Link to={`/threads/${thread._id}`}>
       <div className="messages">

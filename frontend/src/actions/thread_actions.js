@@ -3,6 +3,7 @@ import * as ThreadAPIUtil from "../util/thread_api_util";
 export const RECEIVE_THREADS = "RECEIVE_THREADS";
 export const RECEIVE_THREAD = "RECEIVE_THREAD";
 export const RECEIVE_USER_THREADS = "RECEIVE_USER_THREADS";
+export const RECEIVE_USER_DEAL_THREADS = "RECEIVE_USER_DEAL_THREADS";
 export const REMOVE_THREAD = "REMOVE_THREAD";
 
 export const receiveThreads = (threads) => ({
@@ -18,6 +19,11 @@ export const receiveThread = (thread) => ({
 export const receiveUserThreads = (userThreads) => ({
   type: RECEIVE_USER_THREADS,
   userThreads
+})
+
+export const receiveUserDealThreads = (userDealThreads) => ({
+  type: RECEIVE_USER_DEAL_THREADS,
+  userDealThreads
 })
 
 export const removeThread = (threadId) => ({
@@ -39,6 +45,11 @@ export const requestThread = (threadId) => dispatch => (
 export const requestUserThreads = (userId) => dispatch => (
   ThreadAPIUtil.fetchUserThreads(userId)
     .then(threads => dispatch(receiveUserThreads(threads)))
+)
+
+export const requestUserDealThreads = userId => dispatch => (
+  ThreadAPIUtil.fetchUserDealThreads(userId)
+    .then(threads => dispatch(receiveUserDealThreads(threads)))
 )
 
 export const createThread = (thread) => dispatch => (
