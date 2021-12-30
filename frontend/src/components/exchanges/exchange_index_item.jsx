@@ -9,58 +9,32 @@ class ExchangeIndexItem extends React.Component {
 
   componentDidMount() {
     this.props.requestUser(this.props.exchange.buyer)
-    .then(userId => this.props.requestUserThreads(userId))
-    this.props.requestUser(this.props.exchange.seller)
-    .then(userId => this.props.requestUserThreads(userId))
+    .then((userId) => this.props.requestUserThreads(userId))
   }
 
 
   render() {
-    const buyer = this.props.allUser.filter(user => user.id === this.props.exchange.buyer)[0];
-    const seller = this.props.allUser.filter(user => user.id === this.props.exchange.seller)[0];
+    const singleUser = this.props.user.filter(user => user.id === this.props.exchange.buyer)[0];
     const thread = this.props.threads.filter(thread => thread.sellPost === this.props.exchange.sellPost)[0];
-    if (!buyer || !seller || !thread)
-      return "";
-    let username;
-    let message;
-    if (this.props.exchange.buyer !== this.props.user.id) {
-      username = (<div><span className="usershow-index-item-grey">Buyer:</span> {buyer.username}</div>)
-    }
-    else {
-      username = (<div><span className="usershow-index-item-grey">Seller:</span> {seller.username}</div>)
-    }
-    if (this.props.user.id === this.props.currentUser.id) {
-      message = (
-        <Link to={`/threads/${thread._id}`}>
+  
+    if (!singleUser || singleUser.length === 0 || !thread || thread.length === 0)
+      return "loading";
+    return (
+      <Link to={`/threads/${thread._id}`}>
         <div className="messages">
-          {username}
+          {/* <div><span className="usershow-index-item-grey">SellPost:</span> {exchange.sellPost}</div> */}
+          <div><span className="usershow-index-item-grey">Buyer:</span> {singleUser.username}</div>
           <div><span className="usershow-index-item-grey">Closed at:</span> ${Number(this.props.exchange.closePrice).toFixed(2)}</div>
           <div><span className="usershow-index-item-grey">Last updated at:</span> {this.props.exchange.updatedAt}</div>
         </div>
       </Link>
-      )
-    }
-    else {
-      message = (
-        <div className="messages">
-          {username}
-          <div><span className="usershow-index-item-grey">Closed at:</span> ${Number(this.props.exchange.closePrice).toFixed(2)}</div>
-          <div><span className="usershow-index-item-grey">Last updated at:</span> {this.props.exchange.updatedAt}</div>
-        </div>
-      )
-    }
-    return (
-      <>
-        {message}
-      </>
     )
   }
 }
 
-const mSTP = (state, ownProps) => ({
-  allUser: Object.values(state.users.all),
-  threads: state.threads.user,
-  currentUser: state.session.user
+const mSTP = state => ({
+  user: Object.values(state.users.all),
+  threads: state.threads.user
 })
 
 const mDTP = dispatch => ({
