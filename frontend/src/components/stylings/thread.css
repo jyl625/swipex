@@ -27,7 +27,7 @@
 
 .thread-page-swipe-details{
   display: inline-block;
-  height: 12em;
+  height: 16em;
   width: 28em;
   margin-top: 2em;
   margin-bottom: 1em;
@@ -37,9 +37,7 @@
   box-shadow: 4px 4px #888888;
   font-weight: bold;
   color: black;
-  background: linear-gradient(
-     var(--color3) 50%, var(--color3)
-  );
+  background: white;
   background-size: 100% 202%;
   transition: all 0.1s ease;
   /* animation: down-bump 0.1s ease; */
@@ -52,10 +50,13 @@
 
 .thread-page-swipe-details h2 {
   font-size: 17px;
+  line-height: 22px;
 }
 
 .thread-page-swipe-details h3 {
   color: #999;
+  text-align: right;
+  line-height: 22px;
 }
 
 
@@ -214,7 +215,7 @@
 
 .thread-page-nav>button{
   margin: 0 16px;
-  width: 130px;
+  width: 150px;
   height: 54px;
   /* display: flex;
   justify-content: center;

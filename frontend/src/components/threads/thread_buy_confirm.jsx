@@ -99,6 +99,9 @@ class ThreadBuyConfirm extends React.Component {
               Meet @ {parseTimeString(thread.sellPost.meetingTime)}
             </h2>
           </div>
+          <div className="stripe-container">
+            <div className="stripe"></div>
+          </div>
           <h3>
             Post expires:  {thread.sellPost.expiration}
           </h3>
