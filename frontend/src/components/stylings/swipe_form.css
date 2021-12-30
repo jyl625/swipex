@@ -3,6 +3,30 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  color: var(--color1);
+}
+
+.swipe-form-title{
+  color: var(--color1);
+  font-size: 36px;
+  text-align: center;
+  font-weight: bolder;
+}
+
+.form-content input[type="text"] {
+  font-size: 16px;
+}
+
+.form-content select {
+  font-size: 16px;
+}
+
+.form-content input[type="datetime-local"] {
+  font-size: 16px;
+}
+
+.form-content input[type="date"] {
+  font-size: 16px;
 }
 
 .swipe-form-wrapper {
@@ -25,7 +49,7 @@
   margin-top: 1.5em;
   margin-bottom: 0.25em;
   padding-left: 0.25em;
-  font-size: 16px;
+  font-size: 24px;
   font-weight: bold;
 }
 
@@ -79,7 +103,7 @@
   text-decoration: none;
   cursor: pointer;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .swipe-form-wrapper input[type="submit"]:hover {
