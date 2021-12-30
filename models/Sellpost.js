@@ -24,7 +24,8 @@ const SellPostSchema = new Schema({
   },
   timeCreated: {
     type: Date,
-    default: new Date().toISOString().slice(0, 10)
+    // default: new Date().toISOString().slice(0, 10)
+    default: new Date().toISOString()
   },
   mealType: {
     type: String,
