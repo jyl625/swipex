@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
 
 //get exchange by userId
 router.get('/user/:user_id', (req, res) => {
-  Exchange.find({"$or": [{ seller: req.params.user_id }, { buyer: req.params.user_id }]})
+  Exchange.find({ seller: req.params.user_id })
     .then(exchanges => res.json(exchanges))
     .catch(err =>
       res.status(404).json({ noexchangesfound: 'No exchanges found'})    

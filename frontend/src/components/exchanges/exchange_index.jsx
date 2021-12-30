@@ -26,7 +26,7 @@ class ExchangeIndex extends React.Component {
       })
     }
     return this.props.exchanges.map(exchange => {
-      return <ExchangeIndexItem exchange={exchange} user={this.props.user}/>
+      return <ExchangeIndexItem exchange={exchange}/>
     })
   }
 
