@@ -3,6 +3,8 @@ import React from 'react';
 import '../stylings/reset.css'
 import '../stylings/swipe_form.css'
 
+require('dotenv').config();
+
 class SwipeForm extends React.Component {
   constructor(props) {
     super(props);
@@ -66,7 +68,7 @@ class SwipeForm extends React.Component {
     const cafeteria = this.props.allCafeterias.filter(cafeteria => cafeteria._id === this.state.cafeId)
     const lat = cafeteria[0].lat
     const lng = cafeteria[0].lng
-    const googleAPIKey = require('../../config/keys').googleAPIKey
+    const googleAPIKey = process.env.REACT_APP_GOOGLE_API_KEY;
     return (
       <a href={`https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`} target="_blank">
         <img src={`https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lng}&zoom=17&size=400x400&maptype=roadmap&markers=size:large%7Ccolor:blue%7C${lat},${lng}&key=${googleAPIKey}`} alt="map" />
