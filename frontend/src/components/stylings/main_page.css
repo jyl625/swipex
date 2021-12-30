@@ -105,6 +105,10 @@
   /* border: 1px solid black; */
 }
 
+.x-axis .tick {
+  opacity: 0;
+}
+
 .cafeteria-links-container{
   display:flex;
   flex-wrap: wrap;
