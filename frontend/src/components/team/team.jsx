@@ -57,7 +57,7 @@ const Team = () => {
               <a href="https://www.linkedin.com/in/alan-chiu-188ab6134/" target="_blank">
                 <FaLinkedin color="#09A603" size={50}></FaLinkedin>
               </a>
-              <a href={`https://angel.co/u/james-hong-20`} target="_blank">
+              <a href={`https://angel.co/u/alan-chiu-3`} target="_blank">
                 <FaAngellist color="#09A603" size={50} />
               </a>
             </div>
