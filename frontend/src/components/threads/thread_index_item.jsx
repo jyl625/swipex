@@ -22,7 +22,7 @@ const ThreadIndexItem = ({thread, threadType, currentUser}) => {
 
   const otherUser = (thread.buyer.username === currentUser.username) ? thread.seller : thread.buyer
 
-  console.log(thread)
+  // console.log(thread)
 
   let seller;
   let buy;
