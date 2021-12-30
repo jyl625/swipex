@@ -58,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   ///////// FOR TESTING ONLY //////////
-  window.dispatch = store.dispatch
-  window.login = login
-  window.axios = axios
-  window.getState = store.getState
+  // window.dispatch = store.dispatch
+  // window.login = login
+  // window.axios = axios
+  // window.getState = store.getState
 });
