@@ -13,6 +13,22 @@ class ExchangeIndexItem extends React.Component {
     this.props.requestUserDealThreads(this.props.user.id);
   }
 
+  parseTimeStringShort = (timeStr) => {
+    const dateObj = new Date(timeStr)
+    const dateString = dateObj.toLocaleString("en-US", {
+      timeZone: "America/Los_Angeles",
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    })
+    const timeString = dateObj.toLocaleTimeString("en-US", {
+      timeZone: "America/Los_Angeles",
+      hour: '2-digit',
+      minute: '2-digit'
+    })
+    return `${dateString} at ${timeString}`
+  }
+
 
   render() {
     const buyer = this.props.allUser.filter(user => user.id === this.props.exchange.buyer)[0];
@@ -34,7 +50,7 @@ class ExchangeIndexItem extends React.Component {
         <div className="messages">
           {username}
           <div><span className="usershow-index-item-grey">Closed at:</span> ${Number(this.props.exchange.closePrice).toFixed(2)}</div>
-          <div><span className="usershow-index-item-grey">Last updated at:</span> {this.props.exchange.updatedAt}</div>
+          <div><span className="usershow-index-item-grey">Last updated at:</span> {this.parseTimeStringShort(this.props.exchange.updatedAt)}</div>
         </div>
       </Link>
       )
@@ -44,7 +60,7 @@ class ExchangeIndexItem extends React.Component {
         <div className="messages">
           {username}
           <div><span className="usershow-index-item-grey">Closed at:</span> ${Number(this.props.exchange.closePrice).toFixed(2)}</div>
-          <div><span className="usershow-index-item-grey">Last updated at:</span> {this.props.exchange.updatedAt}</div>
+          <div><span className="usershow-index-item-grey">Last updated at:</span> {this.parseTimeStringShort(this.props.exchange.updatedAt)}</div>
         </div>
       )
     }
