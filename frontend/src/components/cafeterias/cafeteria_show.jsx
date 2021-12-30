@@ -47,8 +47,8 @@ class CafeteriaShow extends React.Component {
           //       <div className="cafeteria-name-container">
           //         <div className="cafeteria-name-wrapper">{cafeteria.name.toUpperCase()}</div>
           //       </div>
-                <div>
-                  <SwipeIndexContainer cafeteria={cafeteria} key={idx}/>
+                <div  key={cafeteria._id}>
+                  <SwipeIndexContainer cafeteria={cafeteria}/>
                 </div>
               /* </div>
             </div>
