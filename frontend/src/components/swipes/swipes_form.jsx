@@ -99,7 +99,8 @@ class SwipeForm extends React.Component {
 
   getTodayDateTimeString() {
     // return new Date().toISOString().split(":").slice(0,2).join(":")
-    let tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    // let tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    let tzoffset = 28800000; //need to address this
     let localISOTime = (new Date(Date.now() - tzoffset)).toISOString().split(":").slice(0,2).join(":")
     return localISOTime;
   }
