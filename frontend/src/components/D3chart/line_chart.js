@@ -98,7 +98,9 @@ function LineChart({ data, cafeId }) {
     const deltaStr = delta < 0 ? ` (${delta}%)` : ` (+${delta}%)`
     return (
       <div className={delta < 0 ? "delta-neg" : "delta-pos"}>
-        <span className="price">{`$${data[29].closePrice.toFixed(2)} `}</span>{deltaStr}
+        <span className="price">{`$${data[29].closePrice.toFixed(2)} `}</span>
+        {deltaStr}
+        <span className="today"> Today</span>
       </div>
       )
   }

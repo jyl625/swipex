@@ -91,7 +91,7 @@ class BarchartData extends React.Component {
         }
       }
       this.setState({ exchangeDataLoaded: true, data: data })
-        console.log("barchart data loaded")
+        // console.log("barchart data loaded")
     }
   }
 

@@ -86,7 +86,9 @@ function BarChart({ data, cafeId }) {
     return (
       <div className={delta < 0 ? "delta-neg" : "delta-pos"}>
         <span className="amount">{`${data[29].amount}`}</span>
-        <span className="amount-unit"> swipe(s) sold</span>{deltaStr}
+        <span className="amount-unit"> swipe(s) sold</span>
+        {deltaStr}
+        <span className="today"> Today</span>
       </div>
       )
   }
