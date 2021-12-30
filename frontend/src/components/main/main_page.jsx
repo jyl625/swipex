@@ -52,7 +52,7 @@ class MainPage extends React.Component {
           <div className="content-wrapper-container">
             <div className="chart-wrapper">
               <div className="chart-title">
-                <span className="close-price">Daily Average Meal Swipe Price (Past 30 days)</span>
+                <span className="close-price">Average Meal Swipe Price (Past 30 days)</span>
               </div>
               <div className="linechart-container"><LinechartContainer/></div>
             </div>

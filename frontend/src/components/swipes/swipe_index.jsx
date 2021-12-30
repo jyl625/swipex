@@ -196,9 +196,9 @@ class SwipeIndex extends React.Component {
               </div>
             </div>
             <div className="right-panel">
-              <div className="section-title">Map of Cafeteria</div>
+              <div className="section-title">Avg Meal Swipe Price (Past 30 days)</div>
               <div className="linechart-container-cafe"><LinechartContainer cafeSwipes={cafeSwipes}  cafeId={this.props.cafeteria._id}/></div>
-              <div className="section-title">Map of Cafeteria</div>
+              <div className="section-title">Swipe Exchange Volume (Past 30 days)</div>
               <div className="barchart-container-cafe">< BarchartContainer cafeSwipes={cafeSwipes} cafeId={this.props.cafeteria._id}/></div>
               <div className="map-container">
                 <div className="section-title">Map of Cafeteria</div>

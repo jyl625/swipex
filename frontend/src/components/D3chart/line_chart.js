@@ -7,6 +7,14 @@ import { withRouter } from 'react-router-dom';
 
 function LineChart({ data, cafeId }) {
 
+  const plotColor = () => {
+    const diff = ((data[29].closePrice - data[28].closePrice)/data[28].closePrice*100)
+    if (diff >= 0)
+      return "#09A603"
+    else
+      return  "#ff5000"
+  }
+
   const ref = useD3(
     (svg) => {
       const height = 500;
@@ -70,7 +78,7 @@ function LineChart({ data, cafeId }) {
         .attr("id", `line-chart-line-${cafeId}`) // add id to the line and remove it at rerendering above at line 14: d3.select("#line-chart-lines").remove()
         .attr("class", `line-chart-lines`) // add id to the line and remove it at rerendering above at line 14: d3.select("#line-chart-lines").remove()
         .attr("fill", "none")
-        .attr("stroke", "#09A603")
+        .attr("stroke", plotColor())
         .attr("stroke-width", 3)
         .attr("d", d3.line()
           .x(function (d) { return x(d.preDate) })
@@ -85,10 +93,21 @@ function LineChart({ data, cafeId }) {
     [data]
   );
 
-  console.log(data[29].closePrice)
+  const renderTodaysPrice = () => {
+    const delta = ((data[29].closePrice - data[28].closePrice)/data[28].closePrice*100).toFixed(2);
+    const deltaStr = delta < 0 ? ` (${delta}%)` : ` (+${delta}%)`
+    return (
+      <div className={delta < 0 ? "delta-neg" : "delta-pos"}>
+        <span className="price">{`$${data[29].closePrice.toFixed(2)} `}</span>{deltaStr}
+      </div>
+      )
+  }
 
   return (
     <>
+      <div className="today-stats">
+        {renderTodaysPrice()}
+      </div>
       <svg
         ref={ref}
         style={{
@@ -105,9 +124,6 @@ function LineChart({ data, cafeId }) {
         <g className="x-axis" />
         <g className="y-axis" />
       </svg>
-      <div>
-        Today's average price: ${data[29].closePrice}
-      </div>
     </>
   );
 }

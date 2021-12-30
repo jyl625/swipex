@@ -34,6 +34,32 @@
   background-color: white;
 }
 
+.today-stats {
+  margin-bottom: 10px;
+}
+
+.price, .amount {
+  font-size: 38px;
+}
+
+.amount-unit {
+  font-size: 18px;
+}
+
+.delta-neg {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff5000;
+  padding: 8px 0 8px 20px;
+}
+
+.delta-pos {
+  font-size: 24px;  
+  font-weight: bold;
+  color: #09A603;
+  padding: 8px 0 8px 20px;
+}
+
 .exchange-count, .close-price {
   /* padding-left: 100px; */
   font-size: 19px;

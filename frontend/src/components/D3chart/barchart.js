@@ -5,7 +5,6 @@ import { scaleTime } from 'd3-scale'
 
 function BarChart({ data, cafeId }) {
   
-  
   const ref = useD3(
     
     (svg) => {
@@ -81,11 +80,22 @@ function BarChart({ data, cafeId }) {
     [data]
   );
 
-  console.log(`new bar data last point: ${data[29].closePrice}`)
-
+ const renderTodaysVolume = () => {
+    const delta = ((data[29].amount - data[28].amount)/data[28].amount*100).toFixed(2);
+    const deltaStr = delta < 0 ? ` (${delta}%)` : ` (+${delta}%)`
+    return (
+      <div className={delta < 0 ? "delta-neg" : "delta-pos"}>
+        <span className="amount">{`${data[29].amount}`}</span>
+        <span className="amount-unit"> swipe(s) sold</span>{deltaStr}
+      </div>
+      )
+  }
 
   return (
     <>
+      <div className="today-stats">
+        {renderTodaysVolume()}
+      </div>
       <svg
         ref={ref}
         style={{
@@ -101,9 +111,6 @@ function BarChart({ data, cafeId }) {
         <g className="x-axis" />
         <g className="y-axis" />
       </svg>
-      <div>
-        Today's Volume: {data[29].amount} exchange(s)
-      </div>
     </>
   );
 }
