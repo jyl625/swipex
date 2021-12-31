@@ -65,7 +65,7 @@ class SwipeIndex extends React.Component {
     //"new", "priceAsc", "priceDec", "exp"
     switch (this.state.sort) {
       case "new":
-        return (a,b) => a.timeCreated > b.timeCreated;
+        return (a,b) => new Date(b.timeCreated) - new Date(a.timeCreated);
       case "priceAsc":
         return (a,b) => a.askPrice - b.askPrice;
       case "priceDec":
