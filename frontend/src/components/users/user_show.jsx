@@ -79,8 +79,8 @@ class UserShow extends React.Component {
       const openThreads = this.props.userThreads.filter(thread => {
         return openSwipeIds.includes(thread.sellPost)
       })
-      console.log(openSwipeIds)
-      console.log(this.props.userThreads)
+      // console.log(openSwipeIds)
+      // console.log(this.props.userThreads)
       return openThreads.length
     }
 
