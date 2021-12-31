@@ -73,14 +73,13 @@ class UserShow extends React.Component {
   }
 
   countOpenThreads() {
-    if (Array.isArray(this.props.userThreads) && Array.isArray(this.props.userSwipes)) {
-      const openSwipes = this.props.userSwipes.filter(swipe => swipe.open)
-      const openSwipeIds = openSwipes.map(swipe => swipe._id)
+    if (Array.isArray(this.props.userThreads)) {
       const openThreads = this.props.userThreads.filter(thread => {
-        return openSwipeIds.includes(thread.sellPost)
+        if (thread.sellPost)
+          return thread.sellPost.open
+        else
+          return false
       })
-      // console.log(openSwipeIds)
-      // console.log(this.props.userThreads)
       return openThreads.length
     }
 

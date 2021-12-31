@@ -51,6 +51,7 @@ router.get('/user/:user_id', (req, res) => {
     .populate("seller", "username")
     .populate("buyer", "username")
     .populate("comments", "timeCreated")
+    .populate("sellPost", "open")
     .sort({ updatedAt: -1 })
     .exec()
     .then(conversations => res.json(conversations))
