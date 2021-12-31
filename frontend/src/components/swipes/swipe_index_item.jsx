@@ -23,12 +23,13 @@ const SwipeIndexItem = ({ swipe, swipeShow, requestSwipe }) => {
       month: 'numeric', 
       day: 'numeric' 
     })
-    const timeString = dateObj.toLocaleTimeString("en-US", {
-      timeZone: "America/Los_Angeles",
-      hour: '2-digit',
-      minute: '2-digit'
-    })
-    return `${dateString} at ${timeString}`
+    // const timeString = dateObj.toLocaleTimeString("en-US", {
+    //   timeZone: "America/Los_Angeles",
+    //   hour: '2-digit',
+    //   minute: '2-digit'
+    // })
+    // return `${dateString} at ${timeString}`
+    return `${dateString}`
   }
 
   const capitalize = (string) => {
