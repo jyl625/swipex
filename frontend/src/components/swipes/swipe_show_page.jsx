@@ -2,7 +2,7 @@ import React from 'react';
 import '../stylings/swipe_show.css';
 import { withRouter } from "react-router";
 
-class SwipeShow extends React.Component {
+class SwipeShowPage extends React.Component {
   constructor(props) {
     super(props);
 
@@ -79,7 +79,7 @@ class SwipeShow extends React.Component {
 
   renderContactSellerButton() {
     if (this.props.currentUser && this.props.currentUser.id === this.props.swipe.seller) {
-      return <input class="your-own" type="button" value="Cannot buy your own"/>
+      return <input className="your-own" type="button" value="Cannot buy your own"/>
     } else {
       return <input type="button" value="Contact Seller" onClick={this.handleClick()}/>
     }
@@ -133,4 +133,4 @@ class SwipeShow extends React.Component {
   }
 }
 
-export default withRouter(SwipeShow);
+export default withRouter(SwipeShowPage);

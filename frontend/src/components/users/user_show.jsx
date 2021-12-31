@@ -32,9 +32,9 @@ class UserShow extends React.Component {
     if (!this.state.loaded) {
       this.setState({ loaded: true })
       this.props.requestUser(this.props.userId).then(() => {
-        this.props.requestUserThreads(this.props.userId).then(() => {
+        this.props.requestUserSwipes(this.props.userId).then(() => {
           this.props.requestUserExchanges(this.props.userId).then(() => {
-            this.props.requestUserSwipes(this.props.userId)
+            this.props.requestUserThreads(this.props.userId)
           })
         }) 
       })
@@ -76,14 +76,25 @@ class UserShow extends React.Component {
     if (Array.isArray(this.props.userThreads) && Array.isArray(this.props.userSwipes)) {
       const openSwipes = this.props.userSwipes.filter(swipe => swipe.open)
       const openSwipeIds = openSwipes.map(swipe => swipe._id)
-      return this.props.userThreads.filter(thread => {
+      const openThreads = this.props.userThreads.filter(thread => {
         return openSwipeIds.includes(thread.sellPost)
-      }).length
+      })
+      // console.log(openSwipeIds)
+      // console.log(this.props.userThreads)
+      return openThreads.length
     }
 
     return 0;
 
 
+  }
+
+  showUserName() {
+    const charLimit = 8
+    if (this.props.user.username.length > charLimit)
+      return `${this.props.user.username.slice(0,charLimit)}...`
+    else
+      return this.props.user.username
   }
 
   render() {
@@ -179,7 +190,7 @@ class UserShow extends React.Component {
           <div className="usershow-info-right">
             <div className="usershow-info-wrapper">
               <div className="usershow-info-title">
-                {this.props.user.username}'s
+                {this.showUserName()}'s
                 Homepage
               </div>
               
