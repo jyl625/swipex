@@ -21,24 +21,29 @@ class ThreadIndex extends React.Component {
 
   listThread() {
 
-    let filteredThreads = [];
+    let filteredThreads = this.props.threads.filter(thread => {
+        if (thread.sellPost)
+          return thread.sellPost.open
+        else
+          return false
+    })
     // debugger
-  
-    this.props.swipes.forEach(swipe => {
-      // console.log(swipe)
-      if ((this.props.threadType === 'Past' && !swipe.open) || (this.props.threadType === 'Current' && swipe.open)) {
-        // console.log(this.props.threads)
-          this.props.threads.forEach(thread => {
-            // console.log(thread.sellPost === swipe._id)
-          if (thread.sellPost === swipe._id) {
-            filteredThreads.push(thread)
-          }
-        })
-      }
+
+    //old CODE
+    // this.props.swipes.forEach(swipe => {
+    //   // console.log(swipe)
+    //   if ((this.props.threadType === 'Past' && !swipe.open) || (this.props.threadType === 'Current' && swipe.open)) {
+    //     // console.log(this.props.threads)
+    //       this.props.threads.forEach(thread => {
+    //         // console.log(thread.sellPost === swipe._id)
+    //       if (thread.sellPost === swipe._id) {
+    //         filteredThreads.push(thread)
+    //       }
+    //     })
+    //   }
         
-    });
-    // console.log(this.props.threadType)
-    // console.log(filteredThreads);
+    // });
+
     const sortedThreads = filteredThreads.sort(function(a, b) {
       var keyA = new Date(a.updatedAt), keyB = new Date (b.updatedAt);
       if (keyA < keyB) return 1;
@@ -52,7 +57,7 @@ class ThreadIndex extends React.Component {
     //   })
     // }
     // console.log(sortedThreads)
-      if (sortedThreads.length === 0)
+    if (sortedThreads.length === 0)
       return 'No threads yet';
     return sortedThreads.map(thread => 
        <ThreadIndexItem 
