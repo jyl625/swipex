@@ -124,7 +124,7 @@ class SwipeShow extends React.Component {
             <div className="swipe-info-header"><strong>{this.findCafeteria(this.props.swipe.cafeId).name.toUpperCase()}</strong> Meal Swipe</div>
             <div>{this.props.swipe.mealType.toUpperCase()}</div>
             <div className="post-at">posted at: {this.props.swipe.timeCreated.slice(0,10)}</div>
-            <div><strong>$ {this.props.swipe.askPrice}</strong></div>
+            <div><strong>$ {Number(this.props.swipe.askPrice).toFixed(2)}</strong></div>
             <div>Details:</div>
             <div><strong>Expiration Date:</strong> {this.props.swipe.expiration}</div>
             <div><strong>Available from:</strong> {this.parseTimeString(this.props.swipe.meetingTime)}</div>
