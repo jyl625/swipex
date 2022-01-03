@@ -4,6 +4,7 @@ import {requestCafeterias} from '../../actions/cafetera_actions'
 
 const mSTP = state => ({
   cafeterias: state.cafeterias.all,
+  currentUser: state.session.user
 })
 
 const mDTP = dispatch => ({
