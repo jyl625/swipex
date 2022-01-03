@@ -121,7 +121,7 @@ class MainPage extends React.Component {
                 <h2>Contact the Seller or the Buyer</h2>
                   After clicking on the meal swipe for more details, click on “Contact Seller” to start a message thread with the seller. You can leave a message for the other user or make an offer or a counter offer through this page.
                 </div>
-                <img src="images/section-preview-3.png" alt="" />
+                <img src="images/swipex_section_preview_contact.gif" alt="" />
               </div>
             </div>
 
