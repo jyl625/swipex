@@ -127,6 +127,7 @@
 
 .chart-wrapper-container {
   height: 685px;
+  width: 564px;
   display: flex;
   justify-content: space-evenly;
   max-width: 1600px;
@@ -138,6 +139,8 @@
 }
 
 #main-bar, #main-line {
+  height: 685px;
+  width: 564px;
   margin-right: 0;
 }
 
