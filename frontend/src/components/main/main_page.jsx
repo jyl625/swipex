@@ -10,7 +10,8 @@ class MainPage extends React.Component {
     super(props);
 
     this.state = {
-      loadedCafeterias: false
+      loadedCafeterias: false,
+      selectedChart: "line" // "line" "bar"
     }
   }
 
@@ -43,6 +44,40 @@ class MainPage extends React.Component {
               </div>
       })
     // }
+  }
+
+  changeChartType() {
+    return () => {
+      this.setState({
+        selectedChart: this.state.selectedChart === "line" ? "bar" : "line"
+      })
+    }
+  }
+
+  displayCharts() {
+    if (this.state.selectedChart === "line") {
+      return (
+        <div className="chart-wrapper-container" id="main-chart-wrapper">
+          <div className="chart-wrapper" id="main-line">
+            <div className="chart-title">
+              <span className="close-price">Avg Meal Swipe Price (Past 30 days)</span>
+            </div>
+            <div className="linechart-container"><LinechartContainer /></div>
+          </div>
+        </div> 
+      )
+    } else if (this.state.selectedChart === "bar") {
+      return (
+        <div className="chart-wrapper-container" id="main-chart-wrapper">
+          <div className="chart-wrapper"  id="main-bar">
+            <div className="chart-title">
+              <span className="exchange-count">Swipe Exchange Volume (Past 30 days)</span>
+            </div>
+            <div className="barchart-container"><BarchartContainer /></div>
+          </div>
+        </div>  
+      )
+    }
   }
 
   render() {
@@ -96,22 +131,13 @@ class MainPage extends React.Component {
               <div className="main-page-introduction-section">
                 <div className="main-page-introduction-info">
                   <h2>Track latest meal swipe price movements</h2>
-                  See the graphs on the right side of the cafeteria page to keep track of the latest meal swipe price movements.
+                  The price and volume of meal swipe exchanges are graphed for each cafeteria.
+
+                  <p>
+                    <span className="chart-toggle-link" onClick={this.changeChartType()}>Click to view today's {(this.state.selectedChart === "line" ? "volume" : "price")} for all cafeterias &#x2192;</span>
+                  </p>
                 </div>
-                <div className="chart-wrapper-container">
-                  <div className="chart-wrapper">
-                    <div className="chart-title">
-                      <span className="close-price">Avg Meal Swipe Price (Past 30 days)</span>
-                    </div>
-                    <div className="linechart-container"><LinechartContainer /></div>
-                  </div>
-                  <div className="chart-wrapper">
-                    <div className="chart-title">
-                      <span className="exchange-count">Swipe Exchange Volume (Past 30 days)</span>
-                    </div>
-                    <div className="barchart-container"><BarchartContainer /></div>
-                  </div>
-                </div>
+                {this.displayCharts()}
               </div>
             </div>
 
