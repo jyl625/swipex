@@ -145,6 +145,7 @@
   border: 1px solid #09A603;
   margin-right: 0.5em;
   cursor: pointer;
+  text-align: center;
 }
 
 .sort.selected, .filter.selected {

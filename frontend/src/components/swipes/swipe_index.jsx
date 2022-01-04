@@ -125,9 +125,9 @@ class SwipeIndex extends React.Component {
           <div className={`sort ${this.sortSelected("exp")}`} 
                 onClick={this.selectSort("exp")}>Expiring Soon</div>
           <div className={`sort ${this.sortSelected("priceAsc")}`} 
-                onClick={this.selectSort("priceAsc")}>Price (asc)</div>
+                onClick={this.selectSort("priceAsc")}>Price &#x2191;</div>
           <div className={`sort ${this.sortSelected("priceDec")}`} 
-                onClick={this.selectSort("priceDec")}>Price (dsc)</div>
+                onClick={this.selectSort("priceDec")}>Price &#x2193;</div>
  
         </div>
         <div className="filter-container">
