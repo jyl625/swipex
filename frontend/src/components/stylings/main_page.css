@@ -31,6 +31,7 @@
 .main-page-top-content>h1{
   font-size: 4vh;
   color: var(--color5);
+  font-weight: 600;
 }
 
 .main-page-top-info{
@@ -82,11 +83,15 @@
   align-items: center;
 }
 
+.main-page-introduction>div:last-child{
+  border-bottom: none
+}
+
 .main-page-introduction-section{
   width: 80vw;
   display: flex;
   justify-content: space-between;
-  padding: 3vh 0;
+  padding: 6vh 0;
 }
 
 .main-page-introduction-info{
@@ -120,7 +125,7 @@
   display: flex;
   justify-content: space-evenly;
   max-width: 1600px;
-  margin: 0 auto 32px;
+  margin: 0 auto;
 }
 
 #main-chart-wrapper {
