@@ -115,8 +115,8 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  padding: 0 0 10px 5%;
-  margin: 0 auto;
+  padding: 0 0 10px 25px;
+  margin: 20px auto;
   background-color: white;
   /* position: sticky; */
   top: 73px;
