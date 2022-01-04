@@ -26,6 +26,8 @@
 
 .main-page-top-content{
   width: 80vw;
+  max-width: 1600px;
+  padding-left: 16px;
 }
 
 .main-page-top-content>h1{
@@ -89,6 +91,7 @@
 
 .main-page-introduction-section{
   width: 80vw;
+  max-width: 1600px;
   display: flex;
   justify-content: space-between;
   padding: 6vh 0;
@@ -96,6 +99,8 @@
 
 .main-page-introduction-info{
   width: 30vw;
+  padding-left: 16px;
+  padding-right: 32px;
   font-size: 2vh;
   line-height: 150%;
 }
