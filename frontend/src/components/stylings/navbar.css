@@ -28,7 +28,6 @@
   display: flex;
   justify-content: left;
   align-items: center;
-
 }
 
 .navbar-logo {
@@ -39,7 +38,9 @@
   height: 40px;
 }
 
-
+.navbar-wrapper-bottom>div {
+  margin-right: 4em;
+}
 
 .navbar-links-container {
   width: 170px;
@@ -63,7 +64,7 @@
   height: 40px;
   width: fit-content;
   padding: 10px 0 10px 0;
-  margin-right: 4em;
+  /* margin-right: 4em; */
   color: #09A603;
 }
 
