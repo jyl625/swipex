@@ -92,6 +92,7 @@
 .main-page-introduction-info{
   width: 30vw;
   font-size: 2vh;
+  line-height: 150%;
 }
 
 .main-page-introduction-info>h2{
@@ -104,11 +105,30 @@
   max-width: 40vw;
 }
 
+.main-page-introduction-info>p{
+  margin-top: 2vh;
+}
+
+.main-page-introduction .chart-toggle-link{
+  text-decoration: underline;
+  color: var(--color1);
+  cursor: pointer;
+}
+
 .chart-wrapper-container {
+  height: 685px;
   display: flex;
   justify-content: space-evenly;
   max-width: 1600px;
   margin: 0 auto 32px;
+}
+
+#main-chart-wrapper {
+  margin-left: 16vw;
+}
+
+#main-bar, #main-line {
+  margin-right: 0;
 }
 
 .chart-wrapper {
